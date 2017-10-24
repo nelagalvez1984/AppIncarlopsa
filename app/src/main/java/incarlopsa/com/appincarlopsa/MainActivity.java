@@ -7,30 +7,31 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements IVista{
 
+
     //Propiedades
 
 
 
+    @Override
+    public void inicializarVista() {
+        //ToDO
+    }
+
+    @Override
+    public void onClick(View v) {
+        //ToDO
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void inicializarVista() {
-
+        //ToDO
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        //ToDO
     }
 
 }
