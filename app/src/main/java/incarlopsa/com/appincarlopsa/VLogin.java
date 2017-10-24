@@ -1,12 +1,10 @@
 package incarlopsa.com.appincarlopsa;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements IVista{
-
+public class VLogin extends AppCompatActivity implements IVista{
 
     //Propiedades
 
@@ -22,16 +20,11 @@ public class MainActivity extends AppCompatActivity implements IVista{
         //ToDO
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //ToDO
+        setContentView(R.layout.activity_login);
+        inicializarVista();
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //ToDO
-    }
-
 }
