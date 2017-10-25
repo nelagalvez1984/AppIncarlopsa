@@ -32,5 +32,4 @@ public class SingleCredenciales extends Usuario {
         return ourInstance;
     }
 
-
 }
