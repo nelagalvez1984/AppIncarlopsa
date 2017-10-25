@@ -70,4 +70,32 @@
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintVertical_bias="0.322" />
 
+        android:id="@+id/usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="USUARIO"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="PASSWORD"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="271dp" />
 </android.support.constraint.ConstraintLayout>
