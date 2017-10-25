@@ -8,9 +8,7 @@ public class SingleCredenciales extends Usuario {
     private SingleCredenciales() {
 
     }
-
-    //hola
-
+    //hello
     public String getUsuario() {
         return usuario;
     }
