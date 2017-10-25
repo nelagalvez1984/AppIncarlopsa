@@ -17,8 +17,11 @@ public class Usuario {
         this.foto = foto;
     }
 
+<<<<<<<<< Temporary merge branch 1
+=========
     public Usuario(){}
 
+>>>>>>>>> Temporary merge branch 2
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -96,7 +99,11 @@ public class Usuario {
         result = 31 * result + (foto != null ? foto.hashCode() : 0);
         return result;
     }
+<<<<<<<<< Temporary merge branch 1
+    
+=========
 
+>>>>>>>>> Temporary merge branch 2
     //ToDo
 
     //Contiene una imagen de tipo Foto
