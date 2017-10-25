@@ -13,5 +13,8 @@ public interface ICodigos extends ICodigosAntonio,
     int CANCELAR = -1;
     int SALIR = -999;
 
+    String SERVIDOR_BBDD = "127.0.0.1";
+    String PUERTO_BBDD = "";
+
 
 }
