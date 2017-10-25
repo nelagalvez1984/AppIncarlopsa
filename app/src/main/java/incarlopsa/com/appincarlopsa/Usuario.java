@@ -9,7 +9,7 @@ public class Usuario {
     Foto foto;
     String ok;
 
-    String hola;
+    String hola;;
     //ToDo
 
     //Contiene una imagen de tipo Foto
