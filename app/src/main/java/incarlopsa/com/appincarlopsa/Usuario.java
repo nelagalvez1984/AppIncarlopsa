@@ -7,7 +7,6 @@ public class Usuario {
     String dni;
     String tipoEmpleado;
     Foto foto;
-    String ok;
 
     public Usuario(Integer idUsuario, String nombre, String apellidos, String dni, String tipoEmpleado, Foto foto) {
         this.idUsuario = idUsuario;
