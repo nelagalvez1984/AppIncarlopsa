@@ -4,10 +4,10 @@ public class SingleCredenciales extends Usuario {
     private String usuario;
     private String password;
 
-
     private SingleCredenciales() {
 
     }
+
     //hello
     public String getUsuario() {
         return usuario;
