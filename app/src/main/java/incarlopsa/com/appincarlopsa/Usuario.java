@@ -94,7 +94,7 @@ public class Usuario {
         result = 31 * result + (foto != null ? foto.hashCode() : 0);
         return result;
     }
-    
+
     //ToDo
 
     //Contiene una imagen de tipo Foto
