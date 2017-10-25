@@ -2,7 +2,6 @@ package incarlopsa.com.appincarlopsa;
 
 public class TipoFichero {
 
-    //ToDO
 
     private int id;
     private String nombre;
