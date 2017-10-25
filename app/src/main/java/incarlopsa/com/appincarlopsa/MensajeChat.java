@@ -11,8 +11,15 @@ public class MensajeChat extends MensajeBase {
         this.leidoPorDestino = leidoPorDestino;
     }
 
+    public Boolean getLeidoPorDestino() {
+        return leidoPorDestino;
+    }
 
-    //ToDo
+    public void setLeidoPorDestino(Boolean leidoPorDestino) {
+        this.leidoPorDestino = leidoPorDestino;
+    }
+
+//ToDo
 
 
 
