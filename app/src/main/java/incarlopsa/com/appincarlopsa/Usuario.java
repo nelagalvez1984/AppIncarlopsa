@@ -17,6 +17,8 @@ public class Usuario {
         this.foto = foto;
     }
 
+    public Usuario(){}
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
