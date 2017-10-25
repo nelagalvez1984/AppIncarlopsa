@@ -7,6 +7,7 @@ public class Usuario {
     String dni;
     String tipoEmpleado;
     Foto foto;
+    String ok;
 
     String hola;
     //ToDo
