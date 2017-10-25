@@ -14,50 +14,50 @@ public class VLogin extends AppCompatActivity implements IVista{
     //Propiedades
     EditText etUsuario;
     EditText etPassword;
-    Button btnconectar;
+    Button btnConectar;
     SingleCredenciales credenciales;
+    Intent intent;
 
     @Override
     public void inicializarVista() {
         etUsuario = (EditText)findViewById(R.id.etUsuario);
         etPassword = (EditText)findViewById(R.id.etPassword);
-        btnconectar = (Button) findViewById(R.id.btnconectar);
-        btnconectar.setOnClickListener(this);
-        btnconectar.setEnabled(false);
+        btnConectar = (Button) findViewById(R.id.btnconectar);
+        btnConectar.setOnClickListener(this);
+        btnConectar.setEnabled(false);
         credenciales = credenciales.getInstance();
     }
 
     @Override
     public void onClick(View v) {
-     if (etUsuario.length()> 0) {
-         //Los dos campos YA estan rellenos
 
-         //Intentar conexion con ambos
-         // -> Si true: Rellenas login+password del singleton
-         //              Lanzas el intent
-         // -> Si false: Toast
+        credenciales.setLogin(etUsuario.getText().toString());
+        credenciales.setPassword(etPassword.getText().toString());
 
+        Boolean conexionOK = false;
 
-         Intent intent = new Intent(this, Conexion.class);
-     }else{
-         Toast.makeText(getApplicationContext(),
-                 "Introduzca nombre y contraseña", Toast.LENGTH_SHORT);
-
-
-     }
-
-
-
-
+        //ToDO
+        //1.- INTENTAR CONEXION (devolver la condicion a la variable conexionOK
+        if (conexionOK){
+            //2.- Conseguir el usuario correspondiente a ese login
+            //3.- Enchufar sus datos al credenciales
+  //          intent = new Intent(this, destino.class); //AUN NO ESTA ESCRITA ESA VISTA!!!
+            startActivity(intent);
+        }else{
+            Toast.makeText(getApplicationContext(),
+                    "Introduzca nombre y contraseña", Toast.LENGTH_SHORT);
+        }
     }
 
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-
-
+        if (etUsuario.length()> 0 && etPassword.length() >0) {
+            btnConectar.setEnabled(true);
+        }else{
+            btnConectar.setEnabled(false);
+        }
         return false;
-
     }
 
     @Override

@@ -2,22 +2,23 @@ package incarlopsa.com.appincarlopsa;
 
 public class Adjunto {
 
+    //Propiedades
     private TipoFichero tipo;
-
-    //ToDo
-    private int idadjunto;
-    private int idtipofichero;
+    private int idAdjunto;
+    private int idTipoFichero;
     private String localizacion;
-    private String nombreadjunto;
+    private String nombreAdjunto;
 
-    public Adjunto(TipoFichero tipo, int idadjunto, int idtipofichero, String localizacion, String nombreadjunto) {
+    //Constructor
+    public Adjunto(TipoFichero tipo, int idAdjunto, int idTipoFichero, String localizacion, String nombreAdjunto) {
         this.tipo = tipo;
-        this.idadjunto = idadjunto;
-        this.idtipofichero = idtipofichero;
+        this.idAdjunto = idAdjunto;
+        this.idTipoFichero = idTipoFichero;
         this.localizacion = localizacion;
-        this.nombreadjunto = nombreadjunto;
+        this.nombreAdjunto = nombreAdjunto;
     }
 
+    //Getter / Setter
     public TipoFichero getTipo() {
         return tipo;
     }
@@ -26,20 +27,20 @@ public class Adjunto {
         this.tipo = tipo;
     }
 
-    public int getIdadjunto() {
-        return idadjunto;
+    public int getIdAdjunto() {
+        return idAdjunto;
     }
 
-    public void setIdadjunto(int idadjunto) {
-        this.idadjunto = idadjunto;
+    public void setIdAdjunto(int idAdjunto) {
+        this.idAdjunto = idAdjunto;
     }
 
-    public int getIdtipofichero() {
-        return idtipofichero;
+    public int getIdTipoFichero() {
+        return idTipoFichero;
     }
 
-    public void setIdtipofichero(int idtipofichero) {
-        this.idtipofichero = idtipofichero;
+    public void setIdTipoFichero(int idTipoFichero) {
+        this.idTipoFichero = idTipoFichero;
     }
 
     public String getLocalizacion() {
@@ -50,11 +51,38 @@ public class Adjunto {
         this.localizacion = localizacion;
     }
 
-    public String getNombreadjunto() {
-        return nombreadjunto;
+    public String getNombreAdjunto() {
+        return nombreAdjunto;
     }
 
-    public void setNombreadjunto(String nombreadjunto) {
-        this.nombreadjunto = nombreadjunto;
+    public void setNombreAdjunto(String nombreAdjunto) {
+        this.nombreAdjunto = nombreAdjunto;
+    }
+
+    //Equals y Hash
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Adjunto adjunto = (Adjunto) o;
+
+        if (idAdjunto != adjunto.idAdjunto) return false;
+        if (idTipoFichero != adjunto.idTipoFichero) return false;
+        if (!tipo.equals(adjunto.tipo)) return false;
+        if (!localizacion.equals(adjunto.localizacion)) return false;
+        return nombreAdjunto.equals(adjunto.nombreAdjunto);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = tipo.hashCode();
+        result = 31 * result + idAdjunto;
+        result = 31 * result + idTipoFichero;
+        result = 31 * result + localizacion.hashCode();
+        result = 31 * result + nombreAdjunto.hashCode();
+        return result;
     }
 }

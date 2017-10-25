@@ -1,6 +1,8 @@
 package incarlopsa.com.appincarlopsa;
 
 public class Usuario {
+
+    //Propiedades
     Integer idUsuario;
     String nombre;
     String apellidos;
@@ -8,6 +10,7 @@ public class Usuario {
     String tipoEmpleado;
     Foto foto;
 
+    //Constructores
     public Usuario(Integer idUsuario, String nombre, String apellidos, String dni, String tipoEmpleado, Foto foto) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
@@ -17,6 +20,9 @@ public class Usuario {
         this.foto = foto;
     }
 
+    public Usuario(){}
+
+    //Getter/Setter
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -65,6 +71,7 @@ public class Usuario {
         this.foto = foto;
     }
 
+    //Equals&Hash
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,7 +102,4 @@ public class Usuario {
         return result;
     }
 
-    //ToDo
-
-    //Contiene una imagen de tipo Foto
 }
