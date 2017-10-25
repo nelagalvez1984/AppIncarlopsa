@@ -7,6 +7,8 @@ public class Usuario {
     String dni;
     String tipoEmpleado;
     Foto foto;
+
+    String hola;
     //ToDo
 
     //Contiene una imagen de tipo Foto
