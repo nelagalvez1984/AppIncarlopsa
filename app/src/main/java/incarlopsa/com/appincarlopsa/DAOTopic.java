@@ -38,7 +38,7 @@ public class DAOTopic<T> implements IDAO<T> {
     }
 
     @Override
-    public Boolean update(T elementoConQueActualizar) {
+    public Boolean update(Integer idPublicacion_o_ChatOrigen, T elementoConQueActualizar) {
         //ToDO
         return null;
     }

@@ -21,7 +21,7 @@ public class DAOAdjunto implements IDAO<Adjunto> {
     }
 
     @Override
-    public Boolean update(Adjunto elementoConQueActualizar) {
+    public Boolean update(Integer idAdjuntoOrigen, Adjunto elementoConQueActualizar) {
         //ToDO
         return null;
     }

@@ -22,7 +22,7 @@ public class DAOTipoFichero implements IDAO<TipoFichero> {
     }
 
     @Override
-    public Boolean update(TipoFichero elementoConQueActualizar) {
+    public Boolean update(Integer idTipoFicheroOrigen, TipoFichero elementoConQueActualizar) {
         //ToDO
         return null;
     }

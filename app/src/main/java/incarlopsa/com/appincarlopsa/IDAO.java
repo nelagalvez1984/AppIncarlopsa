@@ -7,8 +7,8 @@ import java.sql.SQLException;
  */
 
 public interface IDAO<T> {
-    Boolean create(T elementoACrear) throws SQLException;
+    Boolean  create(T elementoACrear) throws SQLException;
     T read(Integer id);
-    Boolean update(T elementoConQueActualizar);
+    Boolean update(Integer idOrigen, T elementoConQueActualizar);
     Boolean delete(T elementoABorrar);
 }

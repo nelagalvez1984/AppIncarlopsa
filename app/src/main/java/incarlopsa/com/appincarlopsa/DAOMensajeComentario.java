@@ -1,6 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
-public class DAOMensajeComentario implements IDAO<MensajeComentario> {
+public class DAOMensajeComentario implements IDAOdobleID<MensajeComentario> {
 
     //Propiedades
     private String nombreTabla = "comentario";
@@ -16,13 +16,13 @@ public class DAOMensajeComentario implements IDAO<MensajeComentario> {
     }
 
     @Override
-    public MensajeComentario read(Integer idComentario) {
+    public MensajeComentario read(Integer idPublicacion, Integer idComentario) {
         //ToDo
         return null;
     }
 
     @Override
-    public Boolean update(MensajeComentario elementoConQueActualizar) {
+    public Boolean update(Integer idPublicacionOrigen, Integer idComentarioOrigen,  MensajeComentario elementoConQueActualizar) {
         //ToDo
         return null;
     }

@@ -25,7 +25,7 @@ public class DAOLoginUsuario implements IDAO<Usuario> {
     }
 
     @Override
-    public Boolean update(Usuario elementoConQueActualizar) { //NO USADO
+    public Boolean update(Integer idOrigen, Usuario elementoConQueActualizar) { //NO USADO
         return null;
     }
 

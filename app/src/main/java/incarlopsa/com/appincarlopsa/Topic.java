@@ -2,13 +2,12 @@ package incarlopsa.com.appincarlopsa;
 
 import java.util.Date;
 
-public class Topic {
+public class Topic extends DataBaseItem{
 
 
     //Es la cabecera de una publicacion o chat
 
     //Propiedades
-    private Integer idTopic;
     private String titulo;
     private Date fechaUltimoUpdate;
     private Integer idUsuario;
@@ -16,7 +15,7 @@ public class Topic {
 
     //Constructor
     public Topic(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario) {
-        this.idTopic = idTopic;
+        this.id = idTopic;
         this.titulo = titulo;
         this.fechaUltimoUpdate = fechaUltimoUpdate;
         this.idUsuario = idUsuario;
@@ -25,12 +24,10 @@ public class Topic {
     //Getter y Setter
 
     public Integer getIdTopic() {
-        return idTopic;
+        return getId();
     }
 
-    public void setIdTopic(Integer idTopic) {
-        this.idTopic = idTopic;
-    }
+    public void setIdTopic(Integer idTopic) { setId(idTopic); }
 
     public String getTitulo() {
         return titulo;
@@ -44,9 +41,7 @@ public class Topic {
         return fechaUltimoUpdate;
     }
 
-    public void setFechaUltimoUpdate(Date fechaUltimoUpdate) {
-        this.fechaUltimoUpdate = fechaUltimoUpdate;
-    }
+    public void setFechaUltimoUpdate(Date fechaUltimoUpdate) { this.fechaUltimoUpdate = fechaUltimoUpdate; }
 
     public Integer getAutor() {
         return idUsuario;
@@ -62,10 +57,10 @@ public class Topic {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         Topic topic = (Topic) o;
 
-        if (!idTopic.equals(topic.idTopic)) return false;
         if (!titulo.equals(topic.titulo)) return false;
         if (!fechaUltimoUpdate.equals(topic.fechaUltimoUpdate)) return false;
         if (!idUsuario.equals(topic.idUsuario)) return false;
@@ -75,7 +70,7 @@ public class Topic {
 
     @Override
     public int hashCode() {
-        int result = idTopic.hashCode();
+        int result = super.hashCode();
         result = 31 * result + titulo.hashCode();
         result = 31 * result + fechaUltimoUpdate.hashCode();
         result = 31 * result + idUsuario.hashCode();

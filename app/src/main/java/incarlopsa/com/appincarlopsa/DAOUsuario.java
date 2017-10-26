@@ -23,7 +23,7 @@ public class DAOUsuario implements IDAO<Usuario> {
     }
 
     @Override
-    public Boolean update(Usuario elementoConQueActualizar) {
+    public Boolean update(Integer idUsuarioOrigen, Usuario elementoConQueActualizar) {
         //ToDo
         return null;
     }

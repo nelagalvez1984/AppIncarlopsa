@@ -1,9 +1,8 @@
 package incarlopsa.com.appincarlopsa;
 
-public class TipoFichero {
+public class TipoFichero extends DataBaseItem{
 
     //Propiedades
-    private int id;
     private String nombre;
     private Boolean mostrable = true;
 
@@ -22,11 +21,7 @@ public class TipoFichero {
     }
 
     //Getter/Setter
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -48,14 +43,15 @@ public class TipoFichero {
 
     //Equals y Hash
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         TipoFichero that = (TipoFichero) o;
 
-        if (id != that.id) return false;
         if (!nombre.equals(that.nombre)) return false;
         return mostrable.equals(that.mostrable);
 
@@ -63,7 +59,7 @@ public class TipoFichero {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = super.hashCode();
         result = 31 * result + nombre.hashCode();
         result = 31 * result + mostrable.hashCode();
         return result;

@@ -2,10 +2,9 @@ package incarlopsa.com.appincarlopsa;
 
 import java.util.Date;
 
-public class MensajeBase {
+public class MensajeBase extends DataBaseItem{
 
     //Propiedades
-    private Integer id;
     private Integer idMensaje;
     private Integer idUsuario;
     private String mensaje;

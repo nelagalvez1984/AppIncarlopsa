@@ -7,47 +7,34 @@ import java.util.Date;
 public class Publicacion extends Topic{
 
     //Propiedades
-    private int idPublicacion;
     private MensajeComentario anuncio;
     private ArrayList<MensajeComentario> comentarios;
     private ArrayList<Adjunto> adjuntos;
 
     //Constructor
 
-    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, int idPublicacion, MensajeComentario anuncio, ArrayList<MensajeComentario> comentarios, ArrayList<Adjunto> adjuntos) {
+    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, MensajeComentario anuncio, ArrayList<MensajeComentario> comentarios, ArrayList<Adjunto> adjuntos) {
         super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        this.idPublicacion = idPublicacion;
         this.anuncio = anuncio;
         this.comentarios = comentarios;
         this.adjuntos = adjuntos;
     }
 
-    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, int idPublicacion, MensajeComentario anuncio, ArrayList<Adjunto> adjuntos) {
+    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, MensajeComentario anuncio, ArrayList<Adjunto> adjuntos) {
         super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        this.idPublicacion = idPublicacion;
         this.anuncio = anuncio;
         this.adjuntos = adjuntos;
         comentarios = new ArrayList<>();
     }
 
-    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, int idPublicacion, MensajeComentario anuncio) {
+    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, MensajeComentario anuncio) {
         super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        this.idPublicacion = idPublicacion;
         this.anuncio = anuncio;
         adjuntos = new ArrayList<>();
         comentarios = new ArrayList<>();
     }
 
     //Getters y setters
-
-    public int getIdPublicacion() {
-        return idPublicacion;
-    }
-
-    public void setIdPublicacion(int idPublicacion) {
-        this.idPublicacion = idPublicacion;
-    }
-
     public MensajeComentario getAnuncio() {
         return anuncio;
     }
@@ -74,8 +61,6 @@ public class Publicacion extends Topic{
 
 
     //Equals y hash
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,21 +69,18 @@ public class Publicacion extends Topic{
 
         Publicacion that = (Publicacion) o;
 
-        if (idPublicacion != that.idPublicacion) return false;
         if (!anuncio.equals(that.anuncio)) return false;
-        if (comentarios != null ? !comentarios.equals(that.comentarios) : that.comentarios != null)
-            return false;
-        return adjuntos != null ? adjuntos.equals(that.adjuntos) : that.adjuntos == null;
+        if (!comentarios.equals(that.comentarios)) return false;
+        return adjuntos.equals(that.adjuntos);
 
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + idPublicacion;
         result = 31 * result + anuncio.hashCode();
-        result = 31 * result + (comentarios != null ? comentarios.hashCode() : 0);
-        result = 31 * result + (adjuntos != null ? adjuntos.hashCode() : 0);
+        result = 31 * result + comentarios.hashCode();
+        result = 31 * result + adjuntos.hashCode();
         return result;
     }
 }

@@ -21,7 +21,7 @@ public class DAOPublicacion implements IDAO<Publicacion> {
     }
 
     @Override
-    public Boolean update(Publicacion elementoConQueActualizar) {
+    public Boolean update(Integer idPublicacionOrigen, Publicacion elementoConQueActualizar) {
         //ToDo
         return null;
     }

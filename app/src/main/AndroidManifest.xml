@@ -12,10 +12,12 @@
         <activity android:name=".VMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VLogin"></activity>
+        <activity android:name=".VLogin" />
+        <activity android:name=".VPruebaNOTocar"></activity>
     </application>
 
 </manifest>

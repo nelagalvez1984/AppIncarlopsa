@@ -20,7 +20,7 @@ public class DAOMensajeChat implements IDAO<MensajeChat> {
     }
 
     @Override
-    public Boolean update(MensajeChat elementoConQueActualizar) {
+    public Boolean update(Integer idMensajeOrigen, MensajeChat elementoConQueActualizar) {
         //ToDo
         return null;
     }
