@@ -5,30 +5,30 @@ public class SingleCredenciales extends Usuario {
     //Singleton con el usuario de la APP! contiene su login, pass, y lo demas
 
     //Propiedades
-    private String login;
-    private String password;
+    public static String LOGIN;
+    public static String PASSWORD;
     private static final SingleCredenciales ourInstance = new SingleCredenciales();
 
     //Constructor
     private SingleCredenciales() {
-        login = null;
-        password = null;
+        LOGIN = null;
+        PASSWORD = null;
     }
 
     //Getter/Setter
     public String getLogin() {
-        return login;
+        return LOGIN;
     }
 
     public void setLogin(String login) {
-        this.login = login;
+        this.LOGIN = login;
     }
 
     public String getPassword() {
-        return password;
+        return PASSWORD;
     }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(String password) { this.PASSWORD = password; }
 
     //Get Instance
     static SingleCredenciales getInstance() {
