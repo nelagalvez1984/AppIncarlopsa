@@ -1,13 +1,13 @@
 package incarlopsa.com.appincarlopsa;
 
-public class Topic<T> {
+public class Topic {
 
     //ToDo
 
     //Es la cabecera de una publicacion o chat
 
     //Contiene:
-    //Titutlo
+    //Titulo
     //Fecha del ultimo update
     //Autor
 
