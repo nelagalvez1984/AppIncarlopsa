@@ -1,28 +1,45 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.graphics.BitmapFactory;
+
+import android.graphics.Bitmap;
+
+import java.io.ByteArrayOutputStream;
+
 public class Foto {
 
-    Foto foto;
-    String nombre;
+    //Para dudas, consultar: https://stackoverflow.com/questions/13854742/byte-array-of-image-into-imageview
+    //En caso de duda consultar: https://stackoverflow.com/questions/10513976/how-to-convert-image-into-byte-array-and-byte-array-to-base64-string-in-android
 
-    public Foto getFoto() {
-        return foto;
-    }
+    //Propiedades
+    private byte[] foto;
 
-    public void setFoto(Foto foto) {
+    //Constructores
+    public Foto(byte[] foto){
         this.foto = foto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Foto(Bitmap fotoBMP){
+        setFotoBMP(fotoBMP);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    //Getter / Setter
+    public byte[] getFotoBytes(){
+        return foto;
     }
 
-    //ToDo
+    public void setFotoBytes(byte[] foto){
+        this.foto = foto;
+    }
 
-    //Forma de guardar la foto del usuario
+    public Bitmap getFotoBMP(){
+        Bitmap bmp = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+        return bmp;
+    }
 
+    public void setFotoBMP(Bitmap fotoBMP){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        fotoBMP.compress(Bitmap.CompressFormat.JPEG, 100 , baos);
+        foto = baos.toByteArray();
+    }
 }

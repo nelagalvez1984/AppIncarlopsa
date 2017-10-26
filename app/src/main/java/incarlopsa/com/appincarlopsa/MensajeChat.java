@@ -4,13 +4,21 @@ import java.util.Date;
 
 public class MensajeChat extends MensajeBase {
 
-    private Boolean leidoPorDestino;
+    //Propiedades
+    private Boolean leidoPorDestino = false;
 
+    //Constructor
     public MensajeChat(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha, Boolean leidoPorDestino) {
         super(idChat, idMensaje, idUsuario, mensaje, fecha);
         this.leidoPorDestino = leidoPorDestino;
     }
 
+    public MensajeChat(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha) {
+        super(idChat, idMensaje, idUsuario, mensaje, fecha);
+        this.leidoPorDestino = false;
+    }
+
+    //Getter/Setter
     public Boolean getLeidoPorDestino() {
         return leidoPorDestino;
     }
@@ -19,9 +27,22 @@ public class MensajeChat extends MensajeBase {
         this.leidoPorDestino = leidoPorDestino;
     }
 
-//ToDo
+    //Equals y Hash
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
+        MensajeChat that = (MensajeChat) o;
 
+        return leidoPorDestino.equals(that.leidoPorDestino);
+    }
 
-
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + leidoPorDestino.hashCode();
+        return result;
+    }
 }

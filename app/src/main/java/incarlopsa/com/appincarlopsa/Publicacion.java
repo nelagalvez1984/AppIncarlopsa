@@ -1,6 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
-public class Publicacion {
+public class Publicacion extends Topic{
 
     //ToDo
 
