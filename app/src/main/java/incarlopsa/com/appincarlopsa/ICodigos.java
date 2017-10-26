@@ -16,5 +16,6 @@ public interface ICodigos extends ICodigosAntonio,
 
     String SERVIDOR_BBDD = "127.0.0.1";
     String PUERTO_BBDD = "3306";
+    String DIRECCION_BBDD = SERVIDOR_BBDD + ":" + PUERTO_BBDD;
 
 }

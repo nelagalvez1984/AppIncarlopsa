@@ -14,7 +14,7 @@ public class DAOMensajeChat implements IDAO<MensajeChat> {
     }
 
     @Override
-    public MensajeChat read() {
+    public MensajeChat read(Integer idMensaje) {
         //ToDo
         return null;
     }

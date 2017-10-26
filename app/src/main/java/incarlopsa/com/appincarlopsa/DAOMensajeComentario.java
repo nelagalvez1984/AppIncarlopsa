@@ -16,7 +16,7 @@ public class DAOMensajeComentario implements IDAO<MensajeComentario> {
     }
 
     @Override
-    public MensajeComentario read() {
+    public MensajeComentario read(Integer idComentario) {
         //ToDo
         return null;
     }

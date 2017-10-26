@@ -17,7 +17,7 @@ public class DAOUsuario implements IDAO<Usuario> {
     }
 
     @Override
-    public Usuario read() {
+    public Usuario read(Integer idUsuario) {
         //ToDo
         return null;
     }

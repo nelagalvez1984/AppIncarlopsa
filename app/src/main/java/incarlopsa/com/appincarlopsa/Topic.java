@@ -7,27 +7,30 @@ public class Topic {
 
     //Es la cabecera de una publicacion o chat
 
-    //Contiene:
-    //Titulo
-    //Fecha del ultimo update
-    //Autor
-
     //Propiedades
+    private Integer idTopic;
     private String titulo;
-    private Date fecha;
-    private String Autor;
-    protected Boolean finalizado=false;
+    private Date fechaUltimoUpdate;
+    private Integer idUsuario;
+    protected Boolean finalizado = false;
 
     //Constructor
-    public Topic(String titulo, Date fecha, String autor) {
+    public Topic(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario) {
+        this.idTopic = idTopic;
         this.titulo = titulo;
-        this.fecha = fecha;
-        Autor = autor;
+        this.fechaUltimoUpdate = fechaUltimoUpdate;
+        this.idUsuario = idUsuario;
     }
-
 
     //Getter y Setter
 
+    public Integer getIdTopic() {
+        return idTopic;
+    }
+
+    public void setIdTopic(Integer idTopic) {
+        this.idTopic = idTopic;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -37,46 +40,46 @@ public class Topic {
         this.titulo = titulo;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaUltimoUpdate() {
+        return fechaUltimoUpdate;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaUltimoUpdate(Date fechaUltimoUpdate) {
+        this.fechaUltimoUpdate = fechaUltimoUpdate;
     }
 
-    public String getAutor() {
-        return Autor;
+    public Integer getAutor() {
+        return idUsuario;
     }
 
-    public void setAutor(String autor) {
-        Autor = autor;
+    public void setAutor(Integer autor) {
+        this.idUsuario = autor;
     }
-
 
     //Equals y hash
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Topic)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Topic topic = (Topic) o;
 
-        if (getTitulo() != null ? !getTitulo().equals(topic.getTitulo()) : topic.getTitulo() != null)
-            return false;
-        if (getFecha() != null ? !getFecha().equals(topic.getFecha()) : topic.getFecha() != null)
-            return false;
-        return getAutor() != null ? getAutor().equals(topic.getAutor()) : topic.getAutor() == null;
+        if (!idTopic.equals(topic.idTopic)) return false;
+        if (!titulo.equals(topic.titulo)) return false;
+        if (!fechaUltimoUpdate.equals(topic.fechaUltimoUpdate)) return false;
+        if (!idUsuario.equals(topic.idUsuario)) return false;
+        return finalizado.equals(topic.finalizado);
 
     }
 
     @Override
     public int hashCode() {
-        int result = getTitulo() != null ? getTitulo().hashCode() : 0;
-        result = 31 * result + (getFecha() != null ? getFecha().hashCode() : 0);
-        result = 31 * result + (getAutor() != null ? getAutor().hashCode() : 0);
+        int result = idTopic.hashCode();
+        result = 31 * result + titulo.hashCode();
+        result = 31 * result + fechaUltimoUpdate.hashCode();
+        result = 31 * result + idUsuario.hashCode();
+        result = 31 * result + finalizado.hashCode();
         return result;
     }
 }

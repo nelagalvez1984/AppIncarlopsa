@@ -32,7 +32,7 @@ public class DAOTopic<T> implements IDAO<T> {
     }
 
     @Override
-    public T read() {
+    public T read(Integer idPublicacion_o_idChat) {
         //ToDO
         return null;
     }

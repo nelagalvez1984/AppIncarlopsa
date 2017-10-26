@@ -6,55 +6,55 @@ import java.util.Date;
 public class Chat extends Topic {
 
 
-    //Contiene arrayList de MensajeChat
+    //Propiedades
+    private ArrayList<MensajeChat> mensajes;
 
-    ArrayList<MensajeChat> mensajeChats;
-
-    public Chat(String titulo, Date fecha, String autor, MensajeChat mensaje) {
-        super(titulo, fecha, autor);
-        mensajeChats = new ArrayList<>();
-        mensajeChats.add(mensaje);
+    //Constructores
+    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, ArrayList<MensajeChat> mensajes) {
+        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
+        this.mensajes = mensajes;
     }
 
-    //metodo para abrir o cerrar el chat
+    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, MensajeChat mensaje) {
+        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
+        mensajes = new ArrayList<>();
+        mensajes.add(mensaje);
+    }
+
+    //Metodo para dar por finalizado el chat
     public void finalizarChat(){
         finalizado = true;
     }
 
-    //constructor
-    public Chat(String titulo, Date fecha, String autor, ArrayList<MensajeChat> mensajeChats) {
-        super(titulo, fecha, autor);
-        this.mensajeChats = mensajeChats;
+    //Getters y setters
+    public ArrayList<MensajeChat> getMensajes() {
+        return mensajes;
     }
 
-    //getters y setters
-    public ArrayList<MensajeChat> getMensajeChats() {
-        return mensajeChats;
+    public void setMensajes(ArrayList<MensajeChat> mensajes) {
+        this.mensajes = mensajes;
     }
 
-    public void setMensajeChats(ArrayList<MensajeChat> mensajeChats) {
-        this.mensajeChats = mensajeChats;
+    public void setNuevoMensaje(MensajeChat mensaje){
+        mensajes.add(mensaje);
     }
 
-
-    //equals y hash
+    //Equals y hash
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Chat)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
         Chat chat = (Chat) o;
 
-        return getMensajeChats() != null ? getMensajeChats().equals(chat.getMensajeChats()) : chat.getMensajeChats() == null;
-
+        return mensajes.equals(chat.mensajes);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (getMensajeChats() != null ? getMensajeChats().hashCode() : 0);
+        result = 31 * result + mensajes.hashCode();
         return result;
     }
-
 }

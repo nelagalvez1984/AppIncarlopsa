@@ -15,7 +15,7 @@ public class DAOAdjunto implements IDAO<Adjunto> {
     }
 
     @Override
-    public Adjunto read() {
+    public Adjunto read(Integer idAdjunto) {
         //ToDO
         return null;
     }

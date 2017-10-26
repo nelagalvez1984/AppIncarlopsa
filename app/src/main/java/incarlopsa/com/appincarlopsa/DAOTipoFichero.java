@@ -16,7 +16,7 @@ public class DAOTipoFichero implements IDAO<TipoFichero> {
     }
 
     @Override
-    public TipoFichero read() {
+    public TipoFichero read(Integer idTipoFichero) {
         //ToDO
         return null;
     }

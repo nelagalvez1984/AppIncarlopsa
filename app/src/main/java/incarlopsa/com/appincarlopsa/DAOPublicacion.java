@@ -15,7 +15,7 @@ public class DAOPublicacion implements IDAO<Publicacion> {
     }
 
     @Override
-    public Publicacion read() {
+    public Publicacion read(Integer idPublicacion) {
         //ToDo
         return null;
     }

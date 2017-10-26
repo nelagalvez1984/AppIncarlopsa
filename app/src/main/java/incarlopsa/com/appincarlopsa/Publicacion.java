@@ -1,32 +1,45 @@
 package incarlopsa.com.appincarlopsa;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-
-//Contiene un mensajeComentario con 0-X adjuntos
-//Contiene un arraylist de mensajeComentarios
 
 
 public class Publicacion extends Topic{
 
+    //Propiedades
     private int idPublicacion;
-    MensajeComentario mensajeComentario[];
-    ArrayList<MensajeComentario> mensajeComentarios;
-    ArrayList<Adjunto> adjuntos;
-
+    private MensajeComentario anuncio;
+    private ArrayList<MensajeComentario> comentarios;
+    private ArrayList<Adjunto> adjuntos;
 
     //Constructor
-    public Publicacion(String titulo, Date fecha, String autor, int idPublicacion, MensajeComentario[] mensajeComentario, ArrayList<MensajeComentario> mensajeComentarios, ArrayList<Adjunto> adjuntos) {
-        super(titulo, fecha, autor);
+
+    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, int idPublicacion, MensajeComentario anuncio, ArrayList<MensajeComentario> comentarios, ArrayList<Adjunto> adjuntos) {
+        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
         this.idPublicacion = idPublicacion;
-        this.mensajeComentario = mensajeComentario;
-        this.mensajeComentarios = mensajeComentarios;
+        this.anuncio = anuncio;
+        this.comentarios = comentarios;
         this.adjuntos = adjuntos;
     }
 
+    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, int idPublicacion, MensajeComentario anuncio, ArrayList<Adjunto> adjuntos) {
+        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
+        this.idPublicacion = idPublicacion;
+        this.anuncio = anuncio;
+        this.adjuntos = adjuntos;
+        comentarios = new ArrayList<>();
+    }
+
+    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, int idPublicacion, MensajeComentario anuncio) {
+        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
+        this.idPublicacion = idPublicacion;
+        this.anuncio = anuncio;
+        adjuntos = new ArrayList<>();
+        comentarios = new ArrayList<>();
+    }
 
     //Getters y setters
+
     public int getIdPublicacion() {
         return idPublicacion;
     }
@@ -35,20 +48,20 @@ public class Publicacion extends Topic{
         this.idPublicacion = idPublicacion;
     }
 
-    public MensajeComentario[] getMensajeComentario() {
-        return mensajeComentario;
+    public MensajeComentario getAnuncio() {
+        return anuncio;
     }
 
-    public void setMensajeComentario(MensajeComentario[] mensajeComentario) {
-        this.mensajeComentario = mensajeComentario;
+    public void setAnuncio(MensajeComentario anuncio) {
+        this.anuncio = anuncio;
     }
 
-    public ArrayList<MensajeComentario> getMensajeComentarios() {
-        return mensajeComentarios;
+    public ArrayList<MensajeComentario> getComentarios() {
+        return comentarios;
     }
 
-    public void setMensajeComentarios(ArrayList<MensajeComentario> mensajeComentarios) {
-        this.mensajeComentarios = mensajeComentarios;
+    public void setComentarios(ArrayList<MensajeComentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
     public ArrayList<Adjunto> getAdjuntos() {
@@ -59,31 +72,33 @@ public class Publicacion extends Topic{
         this.adjuntos = adjuntos;
     }
 
+
     //Equals y hash
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Publicacion)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
         Publicacion that = (Publicacion) o;
 
-        if (getIdPublicacion() != that.getIdPublicacion()) return false;
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        if (!Arrays.equals(getMensajeComentario(), that.getMensajeComentario())) return false;
-        if (getMensajeComentarios() != null ? !getMensajeComentarios().equals(that.getMensajeComentarios()) : that.getMensajeComentarios() != null)
+        if (idPublicacion != that.idPublicacion) return false;
+        if (!anuncio.equals(that.anuncio)) return false;
+        if (comentarios != null ? !comentarios.equals(that.comentarios) : that.comentarios != null)
             return false;
-        return getAdjuntos() != null ? getAdjuntos().equals(that.getAdjuntos()) : that.getAdjuntos() == null;
+        return adjuntos != null ? adjuntos.equals(that.adjuntos) : that.adjuntos == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + getIdPublicacion();
-        result = 31 * result + Arrays.hashCode(getMensajeComentario());
-        result = 31 * result + (getMensajeComentarios() != null ? getMensajeComentarios().hashCode() : 0);
-        result = 31 * result + (getAdjuntos() != null ? getAdjuntos().hashCode() : 0);
+        result = 31 * result + idPublicacion;
+        result = 31 * result + anuncio.hashCode();
+        result = 31 * result + (comentarios != null ? comentarios.hashCode() : 0);
+        result = 31 * result + (adjuntos != null ? adjuntos.hashCode() : 0);
         return result;
     }
 }
