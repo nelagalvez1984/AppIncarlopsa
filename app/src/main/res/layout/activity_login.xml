@@ -15,10 +15,10 @@
         android:inputType="textPersonName"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.503"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_editor_absoluteY="73dp" />
+        tools:layout_editor_absoluteY="162dp" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -28,13 +28,13 @@
         android:hint="Password"
         android:inputType="textPersonName"
         android:password="true"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        tools:layout_editor_absoluteY="145dp" />
+        tools:layout_editor_absoluteY="234dp" />
 
     <TextView
         android:id="@+id/datostxt"
@@ -43,13 +43,9 @@
         android:text="¡Bienvenido!"
         android:textSize="24sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="62dp"
-        android:layout_marginBottom="61dp"
+        android:layout_marginBottom="91dp"
         app:layout_constraintBottom_toTopOf="@+id/etUsuario"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintVertical_bias="0.58"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
@@ -63,11 +59,23 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/holo_green_dark"
         android:text="Conectar"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintVertical_bias="0.322" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="335dp"
+        android:layout_height="74dp"
+        android:gravity="center"
+        android:text="*para borrar*   YO PONDRÍA AQUÍ EL LOGO DE INCARLOPSA"
+        android:textColor="@android:color/holo_red_dark"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="88dp" />
 
 </android.support.constraint.ConstraintLayout>
