@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 public class DAOMensajeComentario implements IDAO<MensajeComentario> {
 
     //Propiedades
-    private String nombreTabla = "item_comentario";
+    private String nombreTabla = "comentario";
     private String nombreIdTabla1 = "idpublicacion";
     private String nombreIdTabla2 = "idcomentario";
 
