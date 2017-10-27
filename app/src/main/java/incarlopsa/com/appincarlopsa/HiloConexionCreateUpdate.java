@@ -21,11 +21,16 @@ public class HiloConexionCreateUpdate<T,Z> extends AsyncTask<Z, Void, Boolean> i
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        /*     public HiloConexionCreateUpdate(T dao) throws IllegalAccessException, InstantiationException {
+        T var= (T) Object.class.newInstance();
+        this.dao = dao;
+        } */
     }
 
     private T dao;
 
-    public HiloConexionCreateUpdate(T dao){
+    public HiloConexionCreateUpdate(T dao) {
         this.dao = dao;
     }
     @Override

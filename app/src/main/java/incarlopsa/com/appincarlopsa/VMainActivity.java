@@ -27,7 +27,12 @@ public class VMainActivity extends AppCompatActivity implements IVista{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        SingleCredenciales credenciales = SingleCredenciales.getInstance();
+        credenciales.setLogin(USUARIO_TEST_NORMAL);
+        credenciales.setPassword(PASSWORD_TEST_NORMAL);
+        SingleConexion conexion = SingleConexion.getInstance();
+        conexion.conectar();
+        conexion.desconectar();
 
 
         //ToDO
