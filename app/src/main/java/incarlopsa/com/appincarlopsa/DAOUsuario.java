@@ -1,5 +1,10 @@
 package incarlopsa.com.appincarlopsa;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class DAOUsuario implements IDAO<Usuario> {
 
     //Propiedades
@@ -12,7 +17,18 @@ public class DAOUsuario implements IDAO<Usuario> {
 
     @Override
     public Boolean create(Usuario elementoACrear) {
-        //ToDo
+
+
+        SingleConexion conexion = SingleConexion.getInstance();
+        Statement st = null;
+        boolean resultado = false;
+        try {
+            st = conexion.conectar().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            resultado = st.execute("insert into usuario set nombre='prueba'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conexion.desconectar();
         return null;
     }
 
