@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bienvenido">¡Bienvenido!</string>
+    <string name="usuario">usuario</string>
+    <string name="titulo">Titulo</string>
+    <string name="megusta">Megusta</string>
+    <string name="hora">Hora</string>
+    <string name="publicacion">Publicacion</string>
+    <string name="ctntlogo">ctntLogo</string>
 </resources>

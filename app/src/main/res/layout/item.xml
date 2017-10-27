@@ -1,0 +1,83 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="551dp"
+        android:orientation="horizontal">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="49dp"
+            android:id="@+id/gridLayout"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/ctntlogo"
+                android:text="@string/publicacion"
+                tools:ignore="DuplicateIds" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="0dp"
+            android:layout_marginTop="8dp"
+            card_view:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:text="@string/megusta" />
+        </GridLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:srcCompat="@mipmap/icono_incarlopsa"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/titulo"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="230dp"
+            android:text="@string/hora"
+            android:textSize="8sp"
+            card_view:layout_gravity="right"
+            tools:ignore="RtlHardcoded,SmallSp" />
+
+    </GridLayout>
+
+</android.support.v7.widget.CardView>
