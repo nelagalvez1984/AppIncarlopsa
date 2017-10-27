@@ -15,13 +15,13 @@ public class DAOAdjunto implements IDAO<Adjunto> {
     }
 
     @Override
-    public Adjunto read() {
+    public Adjunto read(Integer idAdjunto) {
         //ToDO
         return null;
     }
 
     @Override
-    public Boolean update(Adjunto elementoConQueActualizar) {
+    public Boolean update(Integer idAdjuntoOrigen, Adjunto elementoConQueActualizar) {
         //ToDO
         return null;
     }

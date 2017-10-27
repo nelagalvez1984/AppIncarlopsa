@@ -32,13 +32,13 @@ public class DAOTopic<T> implements IDAO<T> {
     }
 
     @Override
-    public T read() {
+    public T read(Integer idPublicacion_o_idChat) {
         //ToDO
         return null;
     }
 
     @Override
-    public Boolean update(T elementoConQueActualizar) {
+    public Boolean update(Integer idPublicacion_o_ChatOrigen, T elementoConQueActualizar) {
         //ToDO
         return null;
     }

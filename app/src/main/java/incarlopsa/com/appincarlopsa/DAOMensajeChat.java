@@ -14,13 +14,13 @@ public class DAOMensajeChat implements IDAO<MensajeChat> {
     }
 
     @Override
-    public MensajeChat read() {
+    public MensajeChat read(Integer idMensaje) {
         //ToDo
         return null;
     }
 
     @Override
-    public Boolean update(MensajeChat elementoConQueActualizar) {
+    public Boolean update(Integer idMensajeOrigen, MensajeChat elementoConQueActualizar) {
         //ToDo
         return null;
     }

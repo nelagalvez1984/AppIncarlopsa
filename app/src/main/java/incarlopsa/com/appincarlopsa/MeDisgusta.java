@@ -6,7 +6,7 @@ public class MeDisgusta extends MeAlgo {
     private String tipo="MeDisgusta";
 
     //Constructor
-    public MeDisgusta(Usuario usuario) {
-        super(usuario);
+    public MeDisgusta(Integer idUsuario, Integer idComentario) {
+        super(idUsuario,idComentario);
     }
 }

@@ -16,13 +16,13 @@ public class DAOTipoFichero implements IDAO<TipoFichero> {
     }
 
     @Override
-    public TipoFichero read() {
+    public TipoFichero read(Integer idTipoFichero) {
         //ToDO
         return null;
     }
 
     @Override
-    public Boolean update(TipoFichero elementoConQueActualizar) {
+    public Boolean update(Integer idTipoFicheroOrigen, TipoFichero elementoConQueActualizar) {
         //ToDO
         return null;
     }

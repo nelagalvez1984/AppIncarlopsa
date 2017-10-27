@@ -17,13 +17,13 @@ public class DAOUsuario implements IDAO<Usuario> {
     }
 
     @Override
-    public Usuario read() {
+    public Usuario read(Integer idUsuario) {
         //ToDo
         return null;
     }
 
     @Override
-    public Boolean update(Usuario elementoConQueActualizar) {
+    public Boolean update(Integer idUsuarioOrigen, Usuario elementoConQueActualizar) {
         //ToDo
         return null;
     }

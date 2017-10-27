@@ -19,13 +19,13 @@ public class DAOLoginUsuario implements IDAO<Usuario> {
     }
 
     @Override
-    public Usuario read() {
+    public Usuario read(Integer idUsuario) {
         //ToDo
         return null;
     }
 
     @Override
-    public Boolean update(Usuario elementoConQueActualizar) { //NO USADO
+    public Boolean update(Integer idOrigen, Usuario elementoConQueActualizar) { //NO USADO
         return null;
     }
 

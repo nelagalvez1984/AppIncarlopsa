@@ -1,18 +1,17 @@
 package incarlopsa.com.appincarlopsa;
 
-public class Usuario {
+public class Usuario extends DataBaseItem{
 
     //Propiedades
-    Integer idUsuario;
-    String nombre;
-    String apellidos;
-    String dni;
-    String tipoEmpleado;
-    Foto foto;
+    private String nombre;
+    private String apellidos;
+    private String dni;
+    private String tipoEmpleado;
+    private Foto foto;
 
     //Constructores
     public Usuario(Integer idUsuario, String nombre, String apellidos, String dni, String tipoEmpleado, Foto foto) {
-        this.idUsuario = idUsuario;
+        this.id = idUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -24,11 +23,11 @@ public class Usuario {
 
     //Getter/Setter
     public Integer getIdUsuario() {
-        return idUsuario;
+        return getId();
     }
 
     public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+        setId(idUsuario);
     }
 
     public String getNombre() {
@@ -72,34 +71,32 @@ public class Usuario {
     }
 
     //Equals&Hash
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         Usuario usuario = (Usuario) o;
 
-        if (idUsuario != null ? !idUsuario.equals(usuario.idUsuario) : usuario.idUsuario != null)
-            return false;
-        if (nombre != null ? !nombre.equals(usuario.nombre) : usuario.nombre != null) return false;
+        if (!nombre.equals(usuario.nombre)) return false;
         if (apellidos != null ? !apellidos.equals(usuario.apellidos) : usuario.apellidos != null)
             return false;
-        if (dni != null ? !dni.equals(usuario.dni) : usuario.dni != null) return false;
-        if (tipoEmpleado != null ? !tipoEmpleado.equals(usuario.tipoEmpleado) : usuario.tipoEmpleado != null)
-            return false;
+        if (!dni.equals(usuario.dni)) return false;
+        if (!tipoEmpleado.equals(usuario.tipoEmpleado)) return false;
         return foto != null ? foto.equals(usuario.foto) : usuario.foto == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = idUsuario != null ? idUsuario.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        int result = super.hashCode();
+        result = 31 * result + nombre.hashCode();
         result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
-        result = 31 * result + (dni != null ? dni.hashCode() : 0);
-        result = 31 * result + (tipoEmpleado != null ? tipoEmpleado.hashCode() : 0);
+        result = 31 * result + dni.hashCode();
+        result = 31 * result + tipoEmpleado.hashCode();
         result = 31 * result + (foto != null ? foto.hashCode() : 0);
         return result;
     }
-
 }

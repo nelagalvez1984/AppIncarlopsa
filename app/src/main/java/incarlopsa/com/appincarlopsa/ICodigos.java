@@ -12,8 +12,19 @@ public interface ICodigos extends ICodigosAntonio,
     int TODO_OK = 0;
     int CANCELAR = -1;
     int SALIR = -999;
+    int ENTRADA_DUPLICADA = 1062;
 
-    String SERVIDOR_BBDD = "127.0.0.1";
+    String SERVIDOR_BBDD = "10.20.32.116";
     String PUERTO_BBDD = "3306";
+    String BBDD = "incarlopsa";
+    String DIRECCION_BBDD_RAIZ = "jdbc:mysql://"+SERVIDOR_BBDD + ":" + PUERTO_BBDD
+                            +"/"+BBDD;
+    String DIRECCION_BBDD_USUARIO = "?user=";
+    String DIRECCION_BBDD_PASSWORD = "&password=";
+
+    String USUARIO_TEST_NORMAL = "TESTUSER";
+    String PASSWORD_TEST_NORMAL = "TESTUSER";
+    String USUARIO_TEST_RRHH = "TESTRRHH";
+    String PASSWORD_TEST_RRHH = "TESTRRHH";
 
 }
