@@ -10,7 +10,7 @@ public class HiloConexionReadUno<T,Z> extends AsyncTask<Integer, Void, Z> implem
     private void ejemploLlamada(){
         //CODIGO DE EJEMPLO
         Usuario usuarioPrueba = new Usuario(1,"a","b","c","d",new Foto("045450544".getBytes()));
-        HiloConexionCreateUpdate<DAOUsuario,Usuario> hilo = new HiloConexionCreateUpdate<>();
+        HiloConexionCreateUpdate<DAOUsuario,Usuario> hilo = new HiloConexionCreateUpdate<>(new DAOUsuario());
         boolean retornoCreacion = false;
         try {
             retornoCreacion = hilo.execute(usuarioPrueba).get();
@@ -22,6 +22,10 @@ public class HiloConexionReadUno<T,Z> extends AsyncTask<Integer, Void, Z> implem
     }
 
     private T dao;
+
+    public HiloConexionReadUno(T dao){
+        this.dao = dao;
+    }
 
     @Override
     protected Z doInBackground(Integer... parametros) {
