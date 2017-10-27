@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppIncarlopsa</string>
+    <string name="app_name">Unicornios y Jamones</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -10,4 +10,10 @@
     <string name="hora">Hora</string>
     <string name="publicacion">Publicacion</string>
     <string name="ctntlogo">ctntLogo</string>
+    <string name="garc_a">García</string>
+    <string name="unicornio">Unicornio</string>
+    <string name="bienvenido2">¡Bienvenido!</string>
+    <string name="titulotopic">Titulo</string>
+    <string name="unicornio_garcia">Unicornio Garcia</string>
+    <string name="fecha_de_creacion">fecha de creacion</string>
 </resources>
