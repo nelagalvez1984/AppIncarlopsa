@@ -1,6 +1,8 @@
 package incarlopsa.com.appincarlopsa;
 
-public class DAOTopic<T> implements IDAO<T> {
+import java.sql.SQLException;
+
+public class DAOTopic<T> extends DAOBase implements IDAO<T> {
 
     //ToDO
 
@@ -11,7 +13,7 @@ public class DAOTopic<T> implements IDAO<T> {
 
     public DAOTopic(){
 
-        if (aux.getClass().getSimpleName().equals("Publicacion")){ // Es un DAOTopic de publicacion
+        if (aux instanceof Publicacion){ // Es un DAOTopic de publicacion
             //La consulta se prepara usando la tabla Publicacion
             nombreTabla = "publicacion";
             nombreIdTabla = "idpublicacion";
@@ -25,27 +27,32 @@ public class DAOTopic<T> implements IDAO<T> {
 
     }
 
+    //CREACION
+    //Preparar una consulta de create y cargar sus parametros
     @Override
-    public Boolean create(T elementoACrear) {
+    protected void prepararCreate(Object elementoAModelar) throws SQLException {
         //ToDO
-        return null;
     }
 
+    //LECTURA
+    //Tipo de filtro a aplicar a la consulta de lectura
+    // (por que campo se tirara para determinar la consulta concreta)
     @Override
-    public T read(Integer idPublicacion_o_idChat) {
+    protected void prepararFiltroConsultaRead(Object filtro) {
         //ToDO
-        return null;
     }
 
+    //Rellenar el array de resultados con cada resultado
     @Override
-    public Boolean update(Integer idPublicacion_o_ChatOrigen, T elementoConQueActualizar) {
+    protected void rellenarObjetos() throws SQLException {
         //ToDO
-        return null;
     }
 
+    //UPDATE
+    //Preparar una consulta de update y cargar sus parametros
     @Override
-    public Boolean delete(T elementoABorrar) {
+    protected void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException {
         //ToDO
-        return null;
     }
+
 }

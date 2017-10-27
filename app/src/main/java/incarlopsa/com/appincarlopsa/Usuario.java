@@ -1,5 +1,9 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.graphics.Bitmap;
+
+import java.sql.Blob;
+
 public class Usuario extends DataBaseItem{
 
     //Propiedades
@@ -68,6 +72,18 @@ public class Usuario extends DataBaseItem{
 
     public void setFoto(Foto foto) {
         this.foto = foto;
+    }
+
+    public Blob getFotoBlob() {
+        return foto.getFotoBlob();
+    }
+
+    public Bitmap getFotoBMP() {
+        return foto.getFotoBMP();
+    }
+
+    public void setFotoBlob(Blob foto) {
+        this.foto.setFotoBlob(foto);
     }
 
     //Equals&Hash

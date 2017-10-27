@@ -1,35 +1,46 @@
 package incarlopsa.com.appincarlopsa;
 
-public class DAOTipoFichero implements IDAO<TipoFichero> {
+import java.sql.SQLException;
+
+public class DAOTipoFichero extends DAOBase implements IDAO<TipoFichero> {
+
+    //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
 
     //Propiedades
     private String nombreTabla = "tipofichero";
     private String nombreIdTabla = "idtipofichero";
 
-    //ToDO
-    //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
+    //Consultas parametrizadas
+    private String consultaInsercion; //ToDO
+    private String consultaLecturaPorId; //ToDO
+    private String consultaUpdate; //ToDO
 
+    //CREACION
+    //Preparar una consulta de create y cargar sus parametros
     @Override
-    public Boolean create(TipoFichero elementoACrear) {
+    protected void prepararCreate(Object elementoAModelar) throws SQLException {
         //ToDO
-        return null;
     }
 
+    //LECTURA
+    //Tipo de filtro a aplicar a la consulta de lectura
+    // (por que campo se tirara para determinar la consulta concreta)
     @Override
-    public TipoFichero read(Integer idTipoFichero) {
+    protected void prepararFiltroConsultaRead(Object filtro) {
         //ToDO
-        return null;
     }
 
+    //Rellenar el array de resultados con cada resultado
     @Override
-    public Boolean update(Integer idTipoFicheroOrigen, TipoFichero elementoConQueActualizar) {
+    protected void rellenarObjetos() throws SQLException {
         //ToDO
-        return null;
     }
 
+    //UPDATE
+    //Preparar una consulta de update y cargar sus parametros
     @Override
-    public Boolean delete(TipoFichero elementoABorrar) {
+    protected void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException {
         //ToDO
-        return null;
     }
+
 }

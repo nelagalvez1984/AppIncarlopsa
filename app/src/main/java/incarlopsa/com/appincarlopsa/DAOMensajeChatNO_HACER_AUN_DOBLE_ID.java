@@ -1,15 +1,14 @@
 package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class DAOLoginUsuario extends DAOBase implements IDAO<Usuario> {
-
-    //Se usa para recuperar el usuario correspondiente a un username (Login)
+public class DAOMensajeChatNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<MensajeChat> {
 
     //Propiedades
-    private String nombreTabla = "loginusuario";
-    private String nombreIdTabla = "username";
-    private DAOUsuario daoUsuario; //Se delegara en el la recuperacion del usuario
+    private String nombreTabla = "mensaje";
+    private String nombreIdTabla1 = "idchat";
+    private String nombreIdTabla2 = "idmensaje";
 
     //Consultas parametrizadas
     private String consultaInsercion; //ToDO
@@ -42,5 +41,15 @@ public class DAOLoginUsuario extends DAOBase implements IDAO<Usuario> {
     @Override
     protected void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException {
         //ToDO
+    }
+
+    @Override
+    public ArrayList<DataBaseItem> read(Integer... ids) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Boolean update(Object elementoConQueActualizar, Integer... ids) {
+        return null;
     }
 }

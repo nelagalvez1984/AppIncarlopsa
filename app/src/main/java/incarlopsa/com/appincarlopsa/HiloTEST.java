@@ -13,7 +13,7 @@ public class HiloTEST<T,Z> extends AsyncTask<Z, Void, Boolean> implements ICodig
 
     private void ejemploLlamada(){
         //CODIGO DE EJEMPLO
-        Usuario usuarioPrueba = new Usuario(1,"a","b","c","d",new Foto("045450544".getBytes()));
+        Usuario usuarioPrueba = new Usuario(1,"a","b","c","d",null);
         HiloTEST<DAOUsuario,Usuario> hilo = new HiloTEST<>(new DAOUsuario());
         boolean retornoCreacion = false;
         try {
@@ -24,7 +24,7 @@ public class HiloTEST<T,Z> extends AsyncTask<Z, Void, Boolean> implements ICodig
             e.printStackTrace();
         }
 
-        /*     public HiloConexionCreateUpdate(T dao) throws IllegalAccessException, InstantiationException {
+        /*     public HiloParaCreateUpdate(T dao) throws IllegalAccessException, InstantiationException {
         T var= (T) Object.class.newInstance();
         this.dao = dao;
         } */
@@ -33,16 +33,19 @@ public class HiloTEST<T,Z> extends AsyncTask<Z, Void, Boolean> implements ICodig
     private T dao;
 
     public HiloTEST(T dao) {
+        super();
         this.dao = dao;
     }
     @Override
-    protected Boolean doInBackground(Z... parametros) {
+    protected Boolean doInBackground(Object... parametros) {
 
+        int numParametros = parametros.length;
+        Z dao = (Z)(parametros[0]);
 
-
+        /*
         DAOUsuario dao2 = new DAOUsuario();
         dao2.create(new Usuario());
-
+*/
         return false;
     }
 

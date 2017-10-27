@@ -36,10 +36,13 @@ public class VMainActivity extends AppCompatActivity implements IVista{
         conexion.conectar();
         conexion.desconectar();
 */
+        Usuario usuario = new Usuario(1,"a","b","33434","hola",null);
 
-        HiloConexionCreateUpdate<DAOUsuario,Usuario> hilo;
+        IDAO<Usuario> dao = new DAOUsuario();
+        HiloParaCreateUpdate<DAOUsuario,Usuario> hilo;
+
         try {
-            Boolean retorno = new HiloTEST<>(new DAOUsuario()).execute().get();
+            Boolean retorno = new HiloParaCreateUpdate<>(new DAOUsuario()).execute(usuario).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

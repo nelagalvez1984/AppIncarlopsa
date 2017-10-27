@@ -1,34 +1,43 @@
 package incarlopsa.com.appincarlopsa;
 
-public class DAOPublicacion implements IDAO<Publicacion> {
+import java.sql.SQLException;
+
+public class DAOPublicacion extends DAOBase implements IDAO<Publicacion> {
 
     //Propiedades
     private String nombreTabla = "publicacion";
     private String nombreIdTabla = "idpublicacion";
 
-    //ToDo
+    //Consultas parametrizadas
+    private String consultaInsercion; //ToDO
+    private String consultaLecturaPorId; //ToDO
+    private String consultaUpdate; //ToDO
 
+    //CREACION
+    //Preparar una consulta de create y cargar sus parametros
     @Override
-    public Boolean create(Publicacion elementoACrear) {
-        //ToDo
-        return null;
+    protected void prepararCreate(Object elementoAModelar) throws SQLException {
+        //ToDO
     }
 
+    //LECTURA
+    //Tipo de filtro a aplicar a la consulta de lectura
+    // (por que campo se tirara para determinar la consulta concreta)
     @Override
-    public Publicacion read(Integer idPublicacion) {
-        //ToDo
-        return null;
+    protected void prepararFiltroConsultaRead(Object filtro) {
+        //ToDO
     }
 
+    //Rellenar el array de resultados con cada resultado
     @Override
-    public Boolean update(Integer idPublicacionOrigen, Publicacion elementoConQueActualizar) {
-        //ToDo
-        return null;
+    protected void rellenarObjetos() throws SQLException {
+        //ToDO
     }
 
+    //UPDATE
+    //Preparar una consulta de update y cargar sus parametros
     @Override
-    public Boolean delete(Publicacion elementoABorrar) {
-        //ToDo
-        return null;
+    protected void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException {
+        //ToDO
     }
 }
