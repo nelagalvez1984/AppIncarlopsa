@@ -18,4 +18,7 @@ public interface ICodigos extends ICodigosAntonio,
     String PUERTO_BBDD = "3306";
     String DIRECCION_BBDD = SERVIDOR_BBDD + ":" + PUERTO_BBDD;
 
+    String USUARIO_TEST_NORMAL = "TESTUSER";
+    String USUARIO_TEST_RRHH = "TESTRRHH";
+
 }
