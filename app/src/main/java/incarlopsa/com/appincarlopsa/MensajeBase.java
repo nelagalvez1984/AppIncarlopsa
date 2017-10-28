@@ -11,8 +11,8 @@ public class MensajeBase extends DataBaseItem{
     private Date fecha;
 
     //Constructor
-    public MensajeBase(Integer id, Integer idMensaje, Integer idUsuario, String mensaje, Date fecha) {
-        this.id = id;
+    public MensajeBase(Integer idChatOPublicacion, Integer idMensaje, Integer idUsuario, String mensaje, Date fecha) {
+        this.id = idChatOPublicacion;
         this.idMensaje = idMensaje;
         this.idUsuario = idUsuario;
         this.mensaje = mensaje;
@@ -72,7 +72,6 @@ public class MensajeBase extends DataBaseItem{
         if (!idUsuario.equals(that.idUsuario)) return false;
         if (!mensaje.equals(that.mensaje)) return false;
         return fecha.equals(that.fecha);
-
     }
 
     @Override

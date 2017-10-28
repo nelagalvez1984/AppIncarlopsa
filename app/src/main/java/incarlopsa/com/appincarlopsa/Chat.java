@@ -7,15 +7,15 @@ public class Chat extends Topic {
 
 
     //Propiedades
-    private ArrayList<MensajeChat> mensajes;
+    private ArrayList<Mensaje> mensajes;
 
     //Constructores
-    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, ArrayList<MensajeChat> mensajes) {
+    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, ArrayList<Mensaje> mensajes) {
         super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
         this.mensajes = mensajes;
     }
 
-    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, MensajeChat mensaje) {
+    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, Mensaje mensaje) {
         super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
         mensajes = new ArrayList<>();
         mensajes.add(mensaje);
@@ -27,15 +27,15 @@ public class Chat extends Topic {
     }
 
     //Getters y setters
-    public ArrayList<MensajeChat> getMensajes() {
+    public ArrayList<Mensaje> getMensajes() {
         return mensajes;
     }
 
-    public void setMensajes(ArrayList<MensajeChat> mensajes) {
+    public void setMensajes(ArrayList<Mensaje> mensajes) {
         this.mensajes = mensajes;
     }
 
-    public void setNuevoMensaje(MensajeChat mensaje){
+    public void setNuevoMensaje(Mensaje mensaje){
         mensajes.add(mensaje);
     }
 

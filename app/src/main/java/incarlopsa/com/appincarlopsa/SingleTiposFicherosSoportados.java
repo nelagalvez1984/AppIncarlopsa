@@ -13,7 +13,7 @@ public class SingleTiposFicherosSoportados {
         return ourInstance;
     }
 
-    private List<TipoFichero> listaFicheros;
+    private ArrayList<TipoFichero> listaFicheros;
     private DAOTipoFichero dao;
 
     private SingleTiposFicherosSoportados() {

@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DAOMensajeChatNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<MensajeChat> {
+public class DAOMensajeChatNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<Mensaje> {
 
     //Propiedades
     private String nombreTabla = "mensaje";

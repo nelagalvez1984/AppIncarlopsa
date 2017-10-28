@@ -9,17 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * Created by Anonymous on 27/10/2017.
- */
-
-public abstract class DAOBase{
+public abstract class DAOBase implements IDAO{
 
     protected SingleConexion conector = SingleConexion.getInstance();
     protected PreparedStatement consulta = null;
     protected Connection conexion;
     protected ResultSet resultados;
-    protected int numeroResultados;
+    protected Integer numeroResultados;
     protected ArrayList<DataBaseItem> resultadoMultiple;
     protected String consultaSQL = "";
 
@@ -60,7 +56,6 @@ public abstract class DAOBase{
             }
             if (parametros[i] instanceof Boolean){ //Es un boolean!
                 consulta.setBoolean(i+1 , (Boolean) (parametros[i]) );
-                continue;
             }
 
         }
@@ -68,7 +63,7 @@ public abstract class DAOBase{
 
     //Lanzar consulta de insercion
     protected Boolean ejecutarConsultaCreate() throws SQLException{
-        int filasAfectadas = 0;
+        int filasAfectadas;
         Boolean retorno = false;
         filasAfectadas = consulta.executeUpdate();
         if (filasAfectadas != 0){
@@ -141,11 +136,11 @@ public abstract class DAOBase{
     }
 
     //Actualizar una fila correspondiente a un ID con un elemento ya relleno
-    public Boolean update(Integer idUsuarioOrigen, Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar, Integer idAModificar) {
         boolean resultado = false;
         try {
             conectar();
-            prepararUpdate(elementoConQueActualizar, idUsuarioOrigen);
+            prepararUpdate(elementoConQueActualizar, idAModificar);
             resultado = ejecutarConsultaUpdate();
             desconectar();
         } catch (SQLException e) {

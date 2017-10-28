@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DAOMensajeComentarioNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<MensajeComentario> {
+public class DAOMensajeComentarioNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<Comentario> {
 
     //Propiedades
     private String nombreTabla = "comentario";

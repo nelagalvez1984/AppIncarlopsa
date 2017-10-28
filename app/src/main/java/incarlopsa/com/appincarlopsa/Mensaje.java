@@ -2,18 +2,18 @@ package incarlopsa.com.appincarlopsa;
 
 import java.util.Date;
 
-public class MensajeChat extends MensajeBase {
+public class Mensaje extends MensajeBase {
 
     //Propiedades
     private Boolean leidoPorDestino = false;
 
     //Constructor
-    public MensajeChat(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha, Boolean leidoPorDestino) {
+    public Mensaje(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha, Boolean leidoPorDestino) {
         super(idChat, idMensaje, idUsuario, mensaje, fecha);
         this.leidoPorDestino = leidoPorDestino;
     }
 
-    public MensajeChat(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha) {
+    public Mensaje(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha) {
         super(idChat, idMensaje, idUsuario, mensaje, fecha);
         this.leidoPorDestino = false;
     }
@@ -34,7 +34,7 @@ public class MensajeChat extends MensajeBase {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        MensajeChat that = (MensajeChat) o;
+        Mensaje that = (Mensaje) o;
 
         return leidoPorDestino.equals(that.leidoPorDestino);
     }

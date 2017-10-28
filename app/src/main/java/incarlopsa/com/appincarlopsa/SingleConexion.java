@@ -1,20 +1,15 @@
 package incarlopsa.com.appincarlopsa;
 
-import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by Nela on 26/10/2017.
- */
-
 class SingleConexion implements ICodigos{
     private static final SingleConexion ourInstance = new SingleConexion();
 
-    Connection con = null;
-    String URLServidor;
+    private SingleCredenciales credenciales;
+    private Connection conexion = null;
+    private String URLServidor;
 
     static SingleConexion getInstance() {
         return ourInstance;
@@ -26,44 +21,37 @@ class SingleConexion implements ICodigos{
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             System.out.println("carga correcta del driver");
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        credenciales = SingleCredenciales.getInstance();
         URLServidor = DIRECCION_BBDD_RAIZ;
-        String loginUsuario = SingleCredenciales.LOGIN;
-        String passwordUsuario = SingleCredenciales.PASSWORD;
-        con = null;
+        String loginUsuario = credenciales.getLogin();
+        String passwordUsuario = credenciales.getPassword();
+        conexion = null;
 
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(URLServidor, loginUsuario, passwordUsuario);
-            Log.v("Mysql", "Me conecte!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (Exception e){
+            conexion = DriverManager.getConnection(URLServidor, loginUsuario, passwordUsuario);
+            System.out.println("Conexion establecida!");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return con;
+        return conexion;
     }
 
     public void desconectar(){
-        try {
-            con.close();
-            Log.v("Mysql","Me desconecte!");
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        if (conexion != null){
+            try {
+                conexion.close();
+                System.out.println("Desconexion!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
 }

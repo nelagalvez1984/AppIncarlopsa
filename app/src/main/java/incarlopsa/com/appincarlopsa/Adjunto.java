@@ -4,7 +4,7 @@ public class Adjunto extends DataBaseItem{
 
     //Propiedades
     private TipoFichero tipo;
-    private int idTipoFichero;
+    private Integer idTipoFichero;
     private String localizacion;
     private String nombreAdjunto;
 

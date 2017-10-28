@@ -42,22 +42,22 @@ public class HiloParaCreateUpdate extends AsyncTask<Object, Void, Boolean> imple
     }
 
     @Override
-    protected Boolean doInBackground(Object... parametros) {
+    protected Boolean doInBackground(Object... parametrosParaConsulta) {
 
-        int numParametros = parametros.length; //Si es 1, es una creacion. Si son 2, es un update
+        int numParametros = parametrosParaConsulta.length; //Si es 1, es una creacion. Si son 2, es un update
 
         boolean operacionCorrecta = false;
         try{
             if (numParametros == 1){ // Creacion --> [0] = objeto
-                operacionCorrecta = (dao.create(parametros[0]));
+                operacionCorrecta = (dao.create(parametrosParaConsulta[0]));
                 if (operacionCorrecta){
                     System.out.println("Creacion correcta!");
                 }else{
                     System.out.println("Creacion rechazada!");
                 }
-            }else{ // Update --> llamada: execute(viejo objeto, nuevo objeto)
-                operacionCorrecta = (dao.update( (Integer)parametros[0],
-                                                parametros[1]) );
+            }else{ // Update --> llamada: execute(nuevo objeto, ids)
+                operacionCorrecta = (dao.update( parametrosParaConsulta[0],
+                        (Integer)parametrosParaConsulta[1]) );
                 if (operacionCorrecta){
                     System.out.println("Actualizacion correcta!");
                 }else{

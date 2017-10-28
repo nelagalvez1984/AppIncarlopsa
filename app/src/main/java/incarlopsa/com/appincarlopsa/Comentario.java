@@ -3,20 +3,20 @@ package incarlopsa.com.appincarlopsa;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MensajeComentario extends MensajeBase {
+public class Comentario extends MensajeBase {
 
     //Propiedades
-    private ArrayList<MeAlgo> arrayAlgo;
+    private ArrayList<MeAlgo> arrayLikes;
 
     //Constructores
-    public MensajeComentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha, ArrayList<MeAlgo> algos) {
+    public Comentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha, ArrayList<MeAlgo> algos) {
         super(idPublicacion, idMensaje, idUsuario, mensaje, fecha);
-        arrayAlgo = algos;
+        arrayLikes = algos;
     }
 
-    public MensajeComentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha) {
+    public Comentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha) {
         super(idPublicacion, idMensaje, idUsuario, mensaje, fecha);
-        arrayAlgo = new ArrayList<>();
+        arrayLikes = new ArrayList<>();
     }
 
     //Getter/Setter
@@ -43,25 +43,25 @@ public class MensajeComentario extends MensajeBase {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        MensajeComentario that = (MensajeComentario) o;
+        Comentario that = (Comentario) o;
 
-        return arrayAlgo != null ? arrayAlgo.equals(that.arrayAlgo) : that.arrayAlgo == null;
+        return arrayLikes != null ? arrayLikes.equals(that.arrayLikes) : that.arrayLikes == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (arrayAlgo != null ? arrayAlgo.hashCode() : 0);
+        result = 31 * result + (arrayLikes != null ? arrayLikes.hashCode() : 0);
         return result;
     }
 
     //Funciones
     private Integer contar(String tipo){
         int cont=0;
-        for (int i=0; i<arrayAlgo.size();i++)
+        for (int i=0; i<arrayLikes.size();i++)
         {
-            if (arrayAlgo.get(i).getTipo().equals(tipo)){
+            if (arrayLikes.get(i).getTipo().equals(tipo)){
                 cont++;
             }
         }
@@ -70,9 +70,9 @@ public class MensajeComentario extends MensajeBase {
 
     private ArrayList<MeAlgo> recoger(String tipoAlgo){
         ArrayList<MeAlgo> meAlgos = new ArrayList<>();
-        for (int i=0; i<arrayAlgo.size();i++){
-            if (arrayAlgo.get(i).getTipo().equals(tipoAlgo)) {
-                meAlgos.add(arrayAlgo.get(i));
+        for (int i=0; i<arrayLikes.size();i++){
+            if (arrayLikes.get(i).getTipo().equals(tipoAlgo)) {
+                meAlgos.add(arrayLikes.get(i));
             }
         }
         return meAlgos;

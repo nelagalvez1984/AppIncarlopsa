@@ -1,12 +1,12 @@
 package incarlopsa.com.appincarlopsa;
 
-public class SingleCredenciales extends Usuario implements ICodigos {
+public class SingleCredenciales extends Usuario{
 
     //Singleton con el usuario de la APP! contiene su login, pass, y lo demas
 
     //Propiedades
-    public static String LOGIN;
-    public static String PASSWORD;
+    private String LOGIN;
+    private String PASSWORD;
     private static final SingleCredenciales ourInstance = new SingleCredenciales();
 
     //Constructor
