@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="72dp"
+            android:layout_height="71dp"
+            app:srcCompat="@mipmap/foto"
+            tools:layout_editor_absoluteY="16dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded"
+            android:contentDescription="" />
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="94dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="9dp"
+            android:gravity="left|center"
+            android:text="@string/nombre"
+            app:layout_constraintLeft_toRightOf="@+id/foto"
+            tools:layout_editor_absoluteY="16dp"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="94dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="left|center"
+            android:text="@string/fecha_hora"
+            app:layout_constraintLeft_toRightOf="@+id/nombre"
+            tools:layout_editor_absoluteY="16dp"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/comentario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/comentario"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toRightOf="@+id/foto"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/nombre"
+            tools:ignore="RtlHardcoded" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/meGusta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/meGusta"
+            tools:layout_editor_absoluteY="115dp"
+            app:layout_constraintRight_toLeftOf="@+id/noMeGusta"
+            android:layout_marginRight="8dp"
+            tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded"
+            android:contentDescription="" />
+
+        <ImageButton
+            android:id="@+id/noMeGusta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/noMeGusta"
+            tools:layout_editor_absoluteX="185dp"
+            tools:layout_editor_absoluteY="115dp"
+            tools:ignore="ContentDescription,MissingConstraints"
+            android:contentDescription="" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
