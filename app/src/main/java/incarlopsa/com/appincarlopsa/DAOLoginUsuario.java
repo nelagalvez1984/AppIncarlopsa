@@ -2,7 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
 
-public class DAOLoginUsuario extends DAOBase implements IDAO<Usuario> {
+public class DAOLoginUsuario extends DAOBase implements IDAO {
 
     //Se usa para recuperar el usuario correspondiente a un username (Login)
 

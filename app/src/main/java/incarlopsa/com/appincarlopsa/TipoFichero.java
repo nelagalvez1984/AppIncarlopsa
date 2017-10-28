@@ -64,4 +64,5 @@ public class TipoFichero extends DataBaseItem{
         result = 31 * result + mostrable.hashCode();
         return result;
     }
+
 }

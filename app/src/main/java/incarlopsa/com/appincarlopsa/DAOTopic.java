@@ -2,12 +2,12 @@ package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
 
-public class DAOTopic<T> extends DAOBase implements IDAO<T> {
+public class DAOTopic<T> extends DAOBase implements IDAO {
 
     //ToDO
 
     private T aux;
-    private IDAO<T> dao;
+    private IDAO dao;
     private String nombreTabla;
     private String nombreIdTabla;
 

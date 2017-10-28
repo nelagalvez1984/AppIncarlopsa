@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class DAOUsuario extends DAOBase implements IDAO<Usuario>{
+public class DAOUsuario extends DAOBase implements IDAO{
 
     //Propiedades
     private String consultaInsercion = "INSERT INTO usuario SET nombre = ? "

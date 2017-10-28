@@ -141,7 +141,7 @@ public abstract class DAOBase{
     }
 
     //Actualizar una fila correspondiente a un ID con un elemento ya relleno
-    public Boolean update(Object elementoConQueActualizar, Integer idUsuarioOrigen) {
+    public Boolean update(Integer idUsuarioOrigen, Object elementoConQueActualizar) {
         boolean resultado = false;
         try {
             conectar();

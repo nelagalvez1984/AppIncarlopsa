@@ -66,4 +66,6 @@ public class Foto {
     }
 
     public void setFotoBlob(Blob foto) {this.foto = foto;}
+
+
 }

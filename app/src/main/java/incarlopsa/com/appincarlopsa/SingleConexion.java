@@ -25,6 +25,7 @@ class SingleConexion implements ICodigos{
     public Connection conectar() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
+            System.out.println("carga correcta del driver");
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

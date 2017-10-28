@@ -2,7 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
 
-public class DAOTipoFichero extends DAOBase implements IDAO<TipoFichero> {
+public class DAOTipoFichero extends DAOBase implements IDAO {
 
     //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
 

@@ -2,30 +2,45 @@ package incarlopsa.com.appincarlopsa;
 
 import android.os.AsyncTask;
 import java.sql.SQLException;
-import java.util.concurrent.ExecutionException;
+
+public class HiloParaCreateUpdate extends AsyncTask<Object, Void, Boolean> implements ICodigos{
 
 
-public class HiloParaCreateUpdate<T,Z> extends AsyncTask<Z, Void, Boolean> implements ICodigos{
-
-    private void ejemploLlamada(){
-        //CODIGO DE EJEMPLO
-        Usuario usuarioPrueba = new Usuario(1,"a","b","c","d",null);
-        HiloParaCreateUpdate<DAOUsuario,Usuario> hilo = new HiloParaCreateUpdate<>(new DAOUsuario());
+    //CODIGO DE EJEMPLO DE CREACION // Creacion --> llamada: execute(objetoACrear)
+    /*
+        Usuario usuarioParaCrear = new Usuario(1,"a","b","c","d",null);
+        HiloParaCreateUpdate hilo = new HiloParaCreateUpdate(new DAOUsuario());
         boolean retornoCreacion = false;
         try {
-            retornoCreacion = hilo.execute(usuarioPrueba).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+            retornoCreacion = hilo.execute(usuarioParaCrear).get();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    private T dao;
+    //CODIGO DE EJEMPLO DE UPDATE // Update --> llamada: execute(idAModificar, nuevoObjeto)
+        Usuario viejoUsuarioLeido = new Usuario(1,"a","b","c","d",null);
+        Integer idViejoUsuarioLeido = viejoUsuarioLeido.getIdUsuario();
 
-    public HiloParaCreateUpdate(T dao) {
+        //Modificaciones
+        Usuario usuarioModificado = viejoUsuarioLeido;
+        usuarioModificado.setNombre("NuevoNombre");
+        HiloParaCreateUpdate hilo = new HiloParaCreateUpdate(new DAOUsuario());
+        boolean retornoCreacion = false;
+        try {
+            retornoCreacion = hilo.execute(idViejoUsuarioLeido, usuarioModificado).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+     */
+
+    //Propiedades
+    private DAOBase dao;
+
+    //Constructor
+    public HiloParaCreateUpdate(DAOBase dao) {
         this.dao = dao;
     }
+
     @Override
     protected Boolean doInBackground(Object... parametros) {
 
@@ -33,27 +48,28 @@ public class HiloParaCreateUpdate<T,Z> extends AsyncTask<Z, Void, Boolean> imple
 
         boolean operacionCorrecta = false;
         try{
-
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("carga correcta del driver");
-            if (numParametros == 1){ // Creacion
-                operacionCorrecta = ((IDAO<Z>)dao).create((Z)parametros[0]);
+            if (numParametros == 1){ // Creacion --> [0] = objeto
+                operacionCorrecta = (dao.create(parametros[0]));
                 if (operacionCorrecta){
                     System.out.println("Creacion correcta!");
+                }else{
+                    System.out.println("Creacion rechazada!");
                 }
-            }else{ // Update
-                operacionCorrecta = ((IDAO<Z>)dao).update((Z)parametros[0],
-                                                    ((DataBaseItem)(Z)parametros[1]).getId());
+            }else{ // Update --> llamada: execute(viejo objeto, nuevo objeto)
+                operacionCorrecta = (dao.update( (Integer)parametros[0],
+                                                parametros[1]) );
                 if (operacionCorrecta){
                     System.out.println("Actualizacion correcta!");
+                }else{
+                    System.out.println("Actualizacion rechazada!");
                 }
             }
         } catch (SQLException e) {
             if(e.getErrorCode() == ENTRADA_DUPLICADA){
                 System.out.println("Entrada duplicada");
+            }else{
+                e.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return operacionCorrecta;
     }

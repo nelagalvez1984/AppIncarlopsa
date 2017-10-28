@@ -2,7 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
 
-public class DAOPublicacion extends DAOBase implements IDAO<Publicacion> {
+public class DAOPublicacion extends DAOBase implements IDAO {
 
     //Propiedades
     private String nombreTabla = "publicacion";

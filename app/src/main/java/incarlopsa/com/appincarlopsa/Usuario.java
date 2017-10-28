@@ -115,4 +115,5 @@ public class Usuario extends DataBaseItem{
         result = 31 * result + (foto != null ? foto.hashCode() : 0);
         return result;
     }
+
 }
