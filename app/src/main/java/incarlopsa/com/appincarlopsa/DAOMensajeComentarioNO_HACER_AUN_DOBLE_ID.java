@@ -1,14 +1,16 @@
 package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class DAOTipoFichero extends DAOBase implements IDAO {
-
-    //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
+public class DAOMensajeComentarioNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<MensajeComentario> {
 
     //Propiedades
-    private String nombreTabla = "tipofichero";
-    private String nombreIdTabla = "idtipofichero";
+    private String nombreTabla = "comentario";
+    private String nombreIdTabla1 = "idpublicacion";
+    private String nombreIdTabla2 = "idcomentario";
+
+    //ToDo
 
     //Consultas parametrizadas
     private String consultaInsercion; //ToDO
@@ -43,4 +45,13 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
         //ToDO
     }
 
+    @Override
+    public ArrayList<DataBaseItem> read(Integer... ids) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Boolean update(Object elementoConQueActualizar, Integer... ids) {
+        return null;
+    }
 }

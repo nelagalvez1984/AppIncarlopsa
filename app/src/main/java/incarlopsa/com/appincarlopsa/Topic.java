@@ -77,4 +77,5 @@ public class Topic extends DataBaseItem{
         result = 31 * result + finalizado.hashCode();
         return result;
     }
+
 }

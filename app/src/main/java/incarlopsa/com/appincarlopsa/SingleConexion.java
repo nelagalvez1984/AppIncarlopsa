@@ -22,7 +22,17 @@ class SingleConexion implements ICodigos{
 
     private SingleConexion() { }
 
-    public Connection conectar(){
+    public Connection conectar() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            System.out.println("carga correcta del driver");
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         URLServidor = DIRECCION_BBDD_RAIZ;
         String loginUsuario = SingleCredenciales.LOGIN;
         String passwordUsuario = SingleCredenciales.PASSWORD;
@@ -30,8 +40,8 @@ class SingleConexion implements ICodigos{
 
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(URLServidor, loginUsuario , passwordUsuario);
-            Log.v("Mysql","Me conecte!");
+            con = DriverManager.getConnection(URLServidor, loginUsuario, passwordUsuario);
+            Log.v("Mysql", "Me conecte!");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -39,6 +49,8 @@ class SingleConexion implements ICodigos{
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
 

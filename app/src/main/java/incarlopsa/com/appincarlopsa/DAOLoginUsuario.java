@@ -1,6 +1,8 @@
 package incarlopsa.com.appincarlopsa;
 
-public class DAOLoginUsuario implements IDAO<Usuario> {
+import java.sql.SQLException;
+
+public class DAOLoginUsuario extends DAOBase implements IDAO {
 
     //Se usa para recuperar el usuario correspondiente a un username (Login)
 
@@ -9,30 +11,36 @@ public class DAOLoginUsuario implements IDAO<Usuario> {
     private String nombreIdTabla = "username";
     private DAOUsuario daoUsuario; //Se delegara en el la recuperacion del usuario
 
-    //Constructor
+    //Consultas parametrizadas
+    private String consultaInsercion; //ToDO
+    private String consultaLecturaPorId; //ToDO
+    private String consultaUpdate; //ToDO
 
-    //ToDo
-
+    //CREACION
+    //Preparar una consulta de create y cargar sus parametros
     @Override
-    public Boolean create(Usuario elementoACrear) { //NO USADO
-        return null;
+    protected void prepararCreate(Object elementoAModelar) throws SQLException {
+        //ToDO
     }
 
+    //LECTURA
+    //Tipo de filtro a aplicar a la consulta de lectura
+    // (por que campo se tirara para determinar la consulta concreta)
     @Override
-    public Usuario read(Integer idUsuario) {
-        //ToDo
-        return null;
+    protected void prepararFiltroConsultaRead(Object filtro) {
+        //ToDO
     }
 
+    //Rellenar el array de resultados con cada resultado
     @Override
-    public Boolean update(Integer idOrigen, Usuario elementoConQueActualizar) { //NO USADO
-        return null;
+    protected void rellenarObjetos() throws SQLException {
+        //ToDO
     }
 
+    //UPDATE
+    //Preparar una consulta de update y cargar sus parametros
     @Override
-    public Boolean delete(Usuario elementoABorrar) { //NO USADO
-        return null;
+    protected void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException {
+        //ToDO
     }
-
-
 }
