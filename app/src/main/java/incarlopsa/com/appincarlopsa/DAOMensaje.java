@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DAOMensajeChatNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAOMultipleID<Mensaje> {
+public class DAOMensaje extends DAOBase implements IDAO {
 
     //Propiedades
     private String nombreTabla = "mensaje";
@@ -39,17 +39,28 @@ public class DAOMensajeChatNO_HACER_AUN_DOBLE_ID extends DAOBase implements IDAO
     //UPDATE
     //Preparar una consulta de update y cargar sus parametros
     @Override
-    protected void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException {
+    protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         //ToDO
     }
 
+    //CONTROL DE CONSULTAS CRUD:
     @Override
-    public ArrayList<DataBaseItem> read(Integer... ids) throws SQLException {
-        return null;
+    public Boolean create(Object elementoACrear) throws SQLException {
+        return super.create(elementoACrear);
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar, Integer... ids) {
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+        return super.read(filtro);
+    }
+
+    @Override
+    public Boolean update(Object elementoConQueActualizar) {
+        return super.update(elementoConQueActualizar);
+    }
+
+    @Override
+    public Boolean delete(Object elementoABorrar) { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
         return null;
     }
 }

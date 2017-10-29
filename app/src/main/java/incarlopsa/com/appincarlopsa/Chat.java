@@ -7,7 +7,7 @@ public class Chat extends Topic {
 
 
     //Propiedades
-    private ArrayList<Mensaje> mensajes;
+    private ArrayList<Mensaje> mensajes = null;
 
     //Constructores
     public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, ArrayList<Mensaje> mensajes) {
@@ -20,6 +20,8 @@ public class Chat extends Topic {
         mensajes = new ArrayList<>();
         mensajes.add(mensaje);
     }
+
+    public Chat(){}
 
     //Metodo para dar por finalizado el chat
     public void finalizarChat(){

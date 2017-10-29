@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class HiloParaRead extends AsyncTask<Integer, Void, ArrayList<DataBaseItem>> implements ICodigos {
+public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem>> implements ICodigos {
 
     //CODIGO DE EJEMPLO
     /*
@@ -34,13 +34,14 @@ public class HiloParaRead extends AsyncTask<Integer, Void, ArrayList<DataBaseIte
     }
 
     @Override
-    protected ArrayList<DataBaseItem> doInBackground(Integer... parametrosParaConsulta) {
+    protected ArrayList<DataBaseItem> doInBackground(Object... parametrosParaConsulta) {
 
-        Integer id = parametrosParaConsulta[0];
+        int numParametros = parametrosParaConsulta.length; //Debe ser 1, si no es un error en la llamada
+
         ArrayList<DataBaseItem> retorno = null;
 
         try {
-            retorno = dao.read(id);
+            retorno = dao.read(parametrosParaConsulta[0]);
         } catch (SQLException e) {
             e.printStackTrace();
         }

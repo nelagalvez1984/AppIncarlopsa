@@ -7,9 +7,9 @@ import java.util.Date;
 public class Publicacion extends Topic{
 
     //Propiedades
-    private Comentario anuncio;
-    private ArrayList<Comentario> comentarios;
-    private ArrayList<Adjunto> adjuntos;
+    private Comentario anuncio = null;
+    private ArrayList<Comentario> comentarios = null;
+    private ArrayList<Adjunto> adjuntos = null;
 
     //Constructor
 
@@ -33,6 +33,8 @@ public class Publicacion extends Topic{
         adjuntos = new ArrayList<>();
         comentarios = new ArrayList<>();
     }
+
+    public Publicacion(){}
 
     //Getters y setters
     public Comentario getAnuncio() {

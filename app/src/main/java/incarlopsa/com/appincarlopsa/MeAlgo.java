@@ -1,15 +1,18 @@
 package incarlopsa.com.appincarlopsa;
 
-public abstract class MeAlgo extends DataBaseItemDobleId{
+public abstract class MeAlgo extends DataBaseItem{
 
     //Propiedades
     protected String tipo = "";
+    protected Integer idUsuario = null;
 
     //Constructor
     public MeAlgo(Integer idUsuario, Integer idComentario) {
-        id1 = idUsuario;
-        id2 = idComentario;
+        this.id = idComentario;
+        this.idUsuario = idUsuario;
     }
+
+    public MeAlgo(){}
 
     //Getter/Setter
     public String getTipo() {

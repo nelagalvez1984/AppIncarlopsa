@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public abstract class DAOBase implements IDAO{
+public abstract class DAOBase implements IDAO, ICodigos{
 
     protected SingleConexion conector = SingleConexion.getInstance();
     protected PreparedStatement consulta = null;
@@ -136,11 +136,11 @@ public abstract class DAOBase implements IDAO{
     }
 
     //Actualizar una fila correspondiente a un ID con un elemento ya relleno
-    public Boolean update(Object elementoConQueActualizar, Integer idAModificar) {
+    public Boolean update(Object elementoConQueActualizar) {
         boolean resultado = false;
         try {
             conectar();
-            prepararUpdate(elementoConQueActualizar, idAModificar);
+            prepararUpdate(elementoConQueActualizar);
             resultado = ejecutarConsultaUpdate();
             desconectar();
         } catch (SQLException e) {
@@ -161,5 +161,5 @@ public abstract class DAOBase implements IDAO{
     //Preparar la consulta de insercion
     protected abstract void prepararCreate(Object elementoAModelar) throws SQLException;
 
-    protected abstract void prepararUpdate(Object elementoAModelar, Integer idUsuarioOrigen) throws SQLException;
+    protected abstract void prepararUpdate(Object elementoAModelar) throws SQLException;
 }

@@ -18,6 +18,8 @@ public class Mensaje extends MensajeBase {
         this.leidoPorDestino = false;
     }
 
+    public Mensaje(){}
+
     //Getter/Setter
     public Boolean getLeidoPorDestino() {
         return leidoPorDestino;

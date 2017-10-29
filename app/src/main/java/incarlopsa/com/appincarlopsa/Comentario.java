@@ -6,7 +6,7 @@ import java.util.Date;
 public class Comentario extends MensajeBase {
 
     //Propiedades
-    private ArrayList<MeAlgo> arrayLikes;
+    private ArrayList<MeAlgo> arrayLikes = null;
 
     //Constructores
     public Comentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha, ArrayList<MeAlgo> algos) {
@@ -18,6 +18,8 @@ public class Comentario extends MensajeBase {
         super(idPublicacion, idMensaje, idUsuario, mensaje, fecha);
         arrayLikes = new ArrayList<>();
     }
+
+    public Comentario(){}
 
     //Getter/Setter
     Integer getNumeroMeGusta(){

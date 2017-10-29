@@ -7,7 +7,7 @@
     tools:context="incarlopsa.com.appincarlopsa.VMainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"

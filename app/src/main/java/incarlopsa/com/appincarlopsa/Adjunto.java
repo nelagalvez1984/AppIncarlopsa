@@ -3,10 +3,10 @@ package incarlopsa.com.appincarlopsa;
 public class Adjunto extends DataBaseItem{
 
     //Propiedades
-    private TipoFichero tipo;
-    private Integer idTipoFichero;
-    private String localizacion;
-    private String nombreAdjunto;
+    private TipoFichero tipo = null;
+    private Integer idTipoFichero = null;
+    private String localizacion = null;
+    private String nombreAdjunto = null;
 
     //Constructor
     public Adjunto(TipoFichero tipo, int idAdjunto, int idTipoFichero, String localizacion, String nombreAdjunto) {
@@ -16,6 +16,8 @@ public class Adjunto extends DataBaseItem{
         this.localizacion = localizacion;
         this.nombreAdjunto = nombreAdjunto;
     }
+
+    public Adjunto(){}
 
     //Getter / Setter
     public TipoFichero getTipo() {

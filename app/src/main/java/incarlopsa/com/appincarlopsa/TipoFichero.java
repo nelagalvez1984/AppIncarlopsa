@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 public class TipoFichero extends DataBaseItem{
 
     //Propiedades
-    private String nombre;
+    private String nombre = null;
     private Boolean mostrable = true;
 
     //Constructor
@@ -19,6 +19,8 @@ public class TipoFichero extends DataBaseItem{
         this.nombre = nombre;
         this.mostrable = true;
     }
+
+    public TipoFichero(){}
 
     //Getter/Setter
     public void setId(Integer id) {

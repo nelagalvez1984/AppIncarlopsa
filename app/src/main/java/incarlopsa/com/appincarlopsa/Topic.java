@@ -8,9 +8,9 @@ public class Topic extends DataBaseItem{
     //Es la cabecera de una publicacion o chat
 
     //Propiedades
-    private String titulo;
-    private Date fechaUltimoUpdate;
-    private Integer idUsuario;
+    private String titulo = null;
+    private Date fechaUltimoUpdate = null;
+    private Integer idUsuario = null;
     protected Boolean finalizado = false;
 
     //Constructor
@@ -20,6 +20,8 @@ public class Topic extends DataBaseItem{
         this.fechaUltimoUpdate = fechaUltimoUpdate;
         this.idUsuario = idUsuario;
     }
+
+    public Topic(){}
 
     //Getter y Setter
 

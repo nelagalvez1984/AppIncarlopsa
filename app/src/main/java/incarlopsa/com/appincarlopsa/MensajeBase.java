@@ -2,13 +2,13 @@ package incarlopsa.com.appincarlopsa;
 
 import java.util.Date;
 
-public class MensajeBase extends DataBaseItem{
+public abstract class MensajeBase extends DataBaseItem{
 
     //Propiedades
-    private Integer idMensaje;
-    private Integer idUsuario;
-    private String mensaje;
-    private Date fecha;
+    private Integer idMensaje = null;
+    private Integer idUsuario = null;
+    private String mensaje = null;
+    private Date fecha = null;
 
     //Constructor
     public MensajeBase(Integer idChatOPublicacion, Integer idMensaje, Integer idUsuario, String mensaje, Date fecha) {
@@ -18,6 +18,8 @@ public class MensajeBase extends DataBaseItem{
         this.mensaje = mensaje;
         this.fecha = fecha;
     }
+
+    public MensajeBase(){}
 
     //Getter/Setter
     public Integer getIdMensaje() { return idMensaje; }

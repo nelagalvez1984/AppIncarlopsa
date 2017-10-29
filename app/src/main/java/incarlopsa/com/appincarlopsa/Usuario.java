@@ -7,11 +7,11 @@ import java.sql.Blob;
 public class Usuario extends DataBaseItem{
 
     //Propiedades
-    private String nombre;
-    private String apellidos;
-    private String dni;
-    private String tipoEmpleado;
-    private Foto foto;
+    private String nombre = null;
+    private String apellidos = null;
+    private String dni = null;
+    private String tipoEmpleado = null;
+    private Foto foto = null;
 
     //Constructores
     public Usuario(Integer idUsuario, String nombre, String apellidos, String dni, String tipoEmpleado, Foto foto) {
@@ -23,7 +23,7 @@ public class Usuario extends DataBaseItem{
         this.foto = foto;
     }
 
-    public Usuario(){}
+    public Usuario(){ }
 
     //Getter/Setter
     public Integer getIdUsuario() {

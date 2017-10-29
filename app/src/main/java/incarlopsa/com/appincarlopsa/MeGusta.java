@@ -9,4 +9,6 @@ public class MeGusta extends MeAlgo {
     public MeGusta(Integer idUsuario, Integer idComentario) {
         super(idUsuario,idComentario);
     }
+
+    public MeGusta(){}
 }

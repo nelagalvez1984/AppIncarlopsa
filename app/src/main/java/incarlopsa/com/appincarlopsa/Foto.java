@@ -15,16 +15,16 @@ public class Foto {
     //Para trabajar con Blobs, mirar: https://docs.oracle.com/javase/7/docs/api/java/sql/Blob.html#setBytes(long,%20byte[])
 
     //Propiedades
-    private Blob foto;
+    private Blob foto = null;
 
     //Constructores
     public Foto(Blob foto){
         this.foto = foto;
     }
-
     public Foto(Bitmap fotoBMP){
         setFotoBMP(fotoBMP);
     }
+    public Foto(){}
 
     //Getter / Setter
     public Blob getFotoBlob() {return foto;}
@@ -35,9 +35,8 @@ public class Foto {
             retorno = foto.getBytes(1,(int)foto.length());
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            return retorno;
         }
+        return retorno;
     }
 
     public Bitmap getFotoBMP(){
