@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 public interface ICodigos extends ICodigosAntonio,
                                 ICodigosDavid,
                                 ICodigosEdu,
-                                ICodigosJohnatan,
+        ICodigosJonatan,
                                 ICodigosNela {
 
     //Codigos iguales o inferiores a 100

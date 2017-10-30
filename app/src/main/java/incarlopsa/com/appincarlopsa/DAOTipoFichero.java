@@ -12,15 +12,22 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     private String nombreIdTabla = "idtipofichero";
 
     //Consultas parametrizadas
-    private String consultaInsercion; //ToDO
-    private String consultaLecturaPorId; //ToDO
-    private String consultaUpdate; //ToDO
+    private String consultaInsercion = "INSERT INTO tipofichero SET nombre = ? "
+            + " , mostrable = ?";
+    private String consultaLecturaPorId = "SELECT idTipoFichero, nombre, mostrable"
+            + "FROM tipofichero WHERE idTipoFichero = ?";
+    private String consultaUpdate = "UPDATE tipofichero SET nombre = ?, mostrable = ? "
+            + "WHERE idTipoFichero = ?";
+    private String consultaLeerTodo = "SELECT idTipoFichero, nombre, mostrable" + "FROM tipofichero";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
-        //ToDO
+        TipoFichero aux = (TipoFichero) elementoAModelar;
+        prepararConsulta(consultaInsercion);
+        cargarConsulta(aux.getNombre(), aux.getMostrable(), aux.getId()
+        );
     }
 
     //LECTURA
@@ -28,20 +35,35 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     // (por que campo se tirara para determinar la consulta concreta)
     @Override
     protected void prepararFiltroConsultaRead(Object filtro) {
-        //ToDO
+        if (filtro instanceof String) {
+            if (((String) filtro).equals(DAME_TODOS)) {
+                consultaSQL = consultaLeerTodo;
+            }
+        } else {
+            if (filtro instanceof TipoFichero) {
+                consultaSQL = consultaLecturaPorId;
+            }
+        }
     }
 
     //Rellenar el array de resultados con cada resultado
     @Override
     protected void rellenarObjetos() throws SQLException {
-        //ToDO
+        TipoFichero tipoFichero = new TipoFichero(resultados.getInt(1),//idTipoFichero
+                resultados.getString(2), //nombre
+                resultados.getBoolean(3)); //mostrable
     }
 
     //UPDATE
     //Preparar una consulta de update y cargar sus parametros
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
-        //ToDO
+        TipoFichero elementoConQueActualizar = (TipoFichero) elementoAModelar;
+        Integer idUsuarioOrigen = elementoConQueActualizar.getId();
+        prepararConsulta(consultaUpdate);
+        cargarConsulta(elementoConQueActualizar.getNombre(),
+                elementoConQueActualizar.getMostrable(),
+                idUsuarioOrigen);
     }
 
     //CONTROL DE CONSULTAS CRUD:
@@ -51,7 +73,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     }
 
     @Override
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
         return super.read(filtro);
     }
 
