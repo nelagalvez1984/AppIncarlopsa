@@ -38,6 +38,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
         if (filtro instanceof String) {
             if (filtro.equals(DAME_TODOS)) {
                 consultaSQL = consultaLeerTodo;
+
             }
         } else {
             if (filtro instanceof TipoFichero) {
