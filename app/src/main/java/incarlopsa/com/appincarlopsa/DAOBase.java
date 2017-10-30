@@ -36,29 +36,35 @@ public abstract class DAOBase implements IDAO, ICodigos{
     //Rellenar los campos de la consulta
     protected void cargarConsulta(Object... parametros) throws SQLException{
         int x = parametros.length;
-        for(int i=0; i<x; i++){
+        if (parametros[0] instanceof String){
+            if ( (parametros[0]).equals(DAME_TODOS)){ //NO HAY PARAMETROS QUE INCRUSTAR!
+                //NADA
+            }else{
+                for(int i=0; i<x; i++){
 
-            if (parametros[i] instanceof Integer){ //Es un entero!
-                consulta.setInt(i+1 , (Integer) (parametros[i]) );
-                continue;
+                    if (parametros[i] instanceof Integer){ //Es un entero!
+                        consulta.setInt(i+1 , (Integer) (parametros[i]) );
+                        continue;
+                    }
+                    if (parametros[i] instanceof String){ //Es una cadena!
+                        consulta.setString(i+1 , (String) (parametros[i]) );
+                        continue;
+                    }
+                    if (parametros[i] instanceof Date){ //Es una fecha!
+                        consulta.setDate(i+1 , (Date) (parametros[i]) );
+                        continue;
+                    }
+                    if (parametros[i] instanceof Blob){ //Es un blob!
+                        consulta.setBlob(i+1 , (Blob) (parametros[i]) );
+                        continue;
+                    }
+                    if (parametros[i] instanceof Boolean){ //Es un boolean!
+                        consulta.setBoolean(i+1 , (Boolean) (parametros[i]) );
+                    }
+                }
             }
-            if (parametros[i] instanceof String){ //Es una cadena!
-                consulta.setString(i+1 , (String) (parametros[i]) );
-                continue;
-            }
-            if (parametros[i] instanceof Date){ //Es una fecha!
-                consulta.setDate(i+1 , (Date) (parametros[i]) );
-                continue;
-            }
-            if (parametros[i] instanceof Blob){ //Es un blob!
-                consulta.setBlob(i+1 , (Blob) (parametros[i]) );
-                continue;
-            }
-            if (parametros[i] instanceof Boolean){ //Es un boolean!
-                consulta.setBoolean(i+1 , (Boolean) (parametros[i]) );
-            }
-
         }
+
     }
 
     //Lanzar consulta de insercion

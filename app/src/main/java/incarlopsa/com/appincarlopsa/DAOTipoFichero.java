@@ -36,7 +36,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     @Override
     protected void prepararFiltroConsultaRead(Object filtro) {
         if (filtro instanceof String) {
-            if (((String) filtro).equals(DAME_TODOS)) {
+            if (filtro.equals(DAME_TODOS)) {
                 consultaSQL = consultaLeerTodo;
             }
         } else {
@@ -52,6 +52,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
         TipoFichero tipoFichero = new TipoFichero(resultados.getInt(1),//idTipoFichero
                 resultados.getString(2), //nombre
                 resultados.getBoolean(3)); //mostrable
+        resultadoMultiple.add(tipoFichero);
     }
 
     //UPDATE
@@ -59,11 +60,11 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         TipoFichero elementoConQueActualizar = (TipoFichero) elementoAModelar;
-        Integer idUsuarioOrigen = elementoConQueActualizar.getId();
+        Integer idTipoFichero = elementoConQueActualizar.getId();
         prepararConsulta(consultaUpdate);
         cargarConsulta(elementoConQueActualizar.getNombre(),
-                elementoConQueActualizar.getMostrable(),
-                idUsuarioOrigen);
+                        elementoConQueActualizar.getMostrable(),
+                        idTipoFichero);
     }
 
     //CONTROL DE CONSULTAS CRUD:

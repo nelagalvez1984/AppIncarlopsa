@@ -9,7 +9,7 @@ public class Adjunto extends DataBaseItem{
     private String nombreAdjunto = null;
 
     //Constructor
-    public Adjunto(TipoFichero tipo, int idAdjunto, int idTipoFichero, String localizacion, String nombreAdjunto) {
+    public Adjunto(int idAdjunto, int idTipoFichero, String localizacion, String nombreAdjunto, TipoFichero tipo ) {
         this.tipo = tipo;
         this.id = idAdjunto;
         this.idTipoFichero = idTipoFichero;

@@ -14,6 +14,8 @@ public class DAOUsuario extends DAOBase implements IDAO{
                                 + "FROM usuario WHERE idusuario = ?";
     private String consultaLecturaPorTipoEmpleado = "SELECT idusuario, nombre, apellidos, dni, tipoempleado, foto "
             + "FROM usuario WHERE tipoempleado = ?";
+    private String consultaLecturaPorUsername = "SELECT idusuario, nombre, apellidos, dni, tipoempleado, foto, username "
+            + "FROM usuario WHERE username = ?";
     private String consultaUpdate = "UPDATE usuario SET nombre = ?, apellidos = ?, dni = ?, "
                                 + "tipoempleado = ?, foto = ? WHERE idusuario = ?";
 
@@ -38,8 +40,8 @@ public class DAOUsuario extends DAOBase implements IDAO{
             if ( filtro.equals(DAME_TODOS)){ //Dame todos los registros!
                 consultaSQL  = consultaLecturaDameTodos;
             }else{
-                //Parametro incorrecto! Bad try! (devolucion estandar, SELECT *, osea, DAME_TODOS )
-                consultaSQL  = consultaLecturaDameTodos;
+                    //Parametro incorrecto! Bad try! (devolucion estandar, SELECT *, osea, DAME_TODOS )
+                    consultaSQL  = consultaLecturaDameTodos;
             }
         }else{ //Deberia ser un Usuario
             //Comprobar tipos de peticiones. Para ello revisamos los campos
@@ -47,21 +49,35 @@ public class DAOUsuario extends DAOBase implements IDAO{
             if (usuarioTemporal.getTipoEmpleado() != null){ //Aaaamigo, quieren leer por tipo de empleado
                 consultaSQL = consultaLecturaPorTipoEmpleado;
             }else{
-                //Resto de casos. Si no se nos ocurren mas casos, es que sera una lectura por ID
-                consultaSQL = consultaLecturaPorId;
+                if (usuarioTemporal.getUsername() != null){ //Se esta reclamando el perfil completo
+                    consultaSQL = consultaLecturaPorUsername;
+                }else{
+                    //Resto de casos. Si no se nos ocurren mas casos, es que sera una lectura por ID
+                    consultaSQL = consultaLecturaPorId;
+                }
             }
         }
     }
 
     //Rellenar el array de resultados con cada resultado
     protected void rellenarObjetos() throws SQLException{
-        Usuario usuarioAux = new Usuario( resultados.getInt(1), //IdUsuario
-                                            resultados.getString(2), //Nombre
-                                            resultados.getString(3), //Apellidos
-                                            resultados.getString(4), //Dni
-                                            resultados.getString(5), //TipoEmpleado
-                                            new Foto(resultados.getBlob(6)));
-
+        Usuario usuarioAux;
+        if (consultaSQL.equals(consultaLecturaPorUsername)){ //Hay que meterle el username
+            usuarioAux = new Usuario( resultados.getInt(1), //IdUsuario
+                    resultados.getString(2), //Nombre
+                    resultados.getString(3), //Apellidos
+                    resultados.getString(4), //Dni
+                    resultados.getString(5), //TipoEmpleado
+                    new Foto(resultados.getBlob(6)), //Foto
+                    resultados.getString(7) ); //Username
+        }else{ //sin username
+            usuarioAux = new Usuario( resultados.getInt(1), //IdUsuario
+                    resultados.getString(2), //Nombre
+                    resultados.getString(3), //Apellidos
+                    resultados.getString(4), //Dni
+                    resultados.getString(5), //TipoEmpleado
+                    new Foto(resultados.getBlob(6))); //Foto
+        }
         resultadoMultiple.add(usuarioAux); //Foto (blob))
     }
 

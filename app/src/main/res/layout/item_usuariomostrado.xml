@@ -22,8 +22,8 @@
 
         <TextView
             android:id="@+id/userName"
-            android:layout_width="227"
-            android:layout_height="33"
+            android:layout_width="227dp"
+            android:layout_height="33dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:gravity="left|center"

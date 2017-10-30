@@ -12,6 +12,7 @@ public class Usuario extends DataBaseItem{
     private String dni = null;
     private String tipoEmpleado = null;
     private Foto foto = null;
+    private String username = null;
 
     //Constructores
     public Usuario(Integer idUsuario, String nombre, String apellidos, String dni, String tipoEmpleado, Foto foto) {
@@ -21,6 +22,17 @@ public class Usuario extends DataBaseItem{
         this.dni = dni;
         this.tipoEmpleado = tipoEmpleado;
         this.foto = foto;
+    }
+
+    public Usuario(Integer idUsuario, String nombre, String apellidos,
+                   String dni, String tipoEmpleado, Foto foto, String username) {
+        this.id = idUsuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.dni = dni;
+        this.tipoEmpleado = tipoEmpleado;
+        this.foto = foto;
+        this.username = username;
     }
 
     public Usuario(){ }
@@ -86,6 +98,10 @@ public class Usuario extends DataBaseItem{
         this.foto.setFotoBlob(foto);
     }
 
+    public String getUsername() { return username; }
+
+    public void setUsername(String username) { this.username = username; }
+
     //Equals&Hash
 
     @Override
@@ -97,23 +113,22 @@ public class Usuario extends DataBaseItem{
         Usuario usuario = (Usuario) o;
 
         if (!nombre.equals(usuario.nombre)) return false;
-        if (apellidos != null ? !apellidos.equals(usuario.apellidos) : usuario.apellidos != null)
-            return false;
+        if (!apellidos.equals(usuario.apellidos)) return false;
         if (!dni.equals(usuario.dni)) return false;
         if (!tipoEmpleado.equals(usuario.tipoEmpleado)) return false;
-        return foto != null ? foto.equals(usuario.foto) : usuario.foto == null;
-
+        if (!foto.equals(usuario.foto)) return false;
+        return username.equals(usuario.username);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + nombre.hashCode();
-        result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
+        result = 31 * result + apellidos.hashCode();
         result = 31 * result + dni.hashCode();
         result = 31 * result + tipoEmpleado.hashCode();
-        result = 31 * result + (foto != null ? foto.hashCode() : 0);
+        result = 31 * result + foto.hashCode();
+        result = 31 * result + username.hashCode();
         return result;
     }
-
 }
