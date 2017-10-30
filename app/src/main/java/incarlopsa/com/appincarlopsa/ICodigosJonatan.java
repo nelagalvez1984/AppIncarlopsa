@@ -1,6 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
-public interface ICodigosJohnatan {
+public interface ICodigosJonatan {
 
     //Codigos del 501 al 600
 
