@@ -10,15 +10,21 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     private String nombreIdTabla = "idadjunto";
 
     //Consultas parametrizadas
-    private String consultaInsercion; //ToDO
-    private String consultaLecturaPorId; //ToDO
-    private String consultaUpdate; //ToDO
+    private String consultaInsercion = "INSERT INTO adjunto SET idTipoFichero = ?, localizacion = ? "
+            + " , nombre = ?";
+    private String consultaLecturaPorId = "SELECT idAdjunto,idTipoFichero, localizacion, nombre"
+            + "FROM adjunto WHERE idAdjunto = ?";
+    private String consultaUpdate = "UPDATE adjunto SET idTipoFichero = ?, localizacion = ?, nombre = ? "
+            + "WHERE idTipoFichero = ?";
+    private String consultaLeerTodo = "SELECT idAdjunto,idTipoFichero, localizacion, nombre" + "FROM adjunto";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
-        //ToDO
+        Adjunto aux = (Adjunto) elementoAModelar;
+        prepararConsulta(consultaInsercion);
+        cargarConsulta(aux.getIdTipoFichero(), aux.getLocalizacion(), aux.getNombreAdjunto(), aux.getId());
     }
 
     //LECTURA
@@ -49,7 +55,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     }
 
     @Override
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
         return super.read(filtro);
     }
 
