@@ -21,7 +21,7 @@
             android:contentDescription="" />
 
         <TextView
-            android:id="@+id/nombre"
+            android:id="@+id/userName"
             android:layout_width="94dp"
             android:layout_height="34dp"
             android:layout_marginLeft="9dp"
@@ -42,7 +42,7 @@
             android:gravity="left|center"
             android:text="Fecha/Hora"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/nombre"
+            app:layout_constraintLeft_toRightOf="@+id/userName"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
@@ -60,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/foto"
-            app:layout_constraintTop_toBottomOf="@+id/nombre"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
             tools:ignore="RtlHardcoded" />
 
     </android.support.constraint.ConstraintLayout>
