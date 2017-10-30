@@ -32,14 +32,27 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     // (por que campo se tirara para determinar la consulta concreta)
     @Override
     protected void prepararFiltroConsultaRead(Object filtro) {
-        //ToDO
+        if (filtro instanceof String) {
+            if (((String) filtro).equals(DAME_TODOS)) {
+                consultaSQL = consultaLeerTodo;
+            }
+        } else {
+            if (filtro instanceof TipoFichero) {
+                consultaSQL = consultaLecturaPorId;
+            }
+        }
     }
 
     //Rellenar el array de resultados con cada resultado
     @Override
     protected void rellenarObjetos() throws SQLException {
-        //ToDO
+        Adjunto adjunto = new Adjunto(resultados.getInt(1),//idAdjunto
+                resultados.getInt(2), // idTipoFichero
+                resultados.getString(3), //nombre
+                resultados.getString(4)); //mostrable
     }
+
+    // por revisar, "tipo" es del tipo TipoFichero y viene en otro orden diferente a la bbdd
 
     //UPDATE
     //Preparar una consulta de update y cargar sus parametros
