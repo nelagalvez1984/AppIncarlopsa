@@ -26,8 +26,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
         TipoFichero aux = (TipoFichero) elementoAModelar;
         prepararConsulta(consultaInsercion);
-        cargarConsulta(aux.getNombre(), aux.getMostrable(), aux.getId()
-        );
+        cargarConsulta(aux.getNombre(), aux.getMostrable(), aux.getId());
     }
 
     //LECTURA

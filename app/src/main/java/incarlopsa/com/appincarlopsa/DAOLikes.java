@@ -10,7 +10,9 @@ import java.util.ArrayList;
 public class DAOLikes extends DAOBase{
 
     //Propiedades
-
+    String consultaLecturaPorId = "SELECT idLike, idUsuario, idComentario, tipoLike FROM likes WHERE idComentario = ?";
+    String consultaInsercion = "INSERT INTO likes SET idUsuario = ? , idComentario = ? , tipoLike = ?";
+    String consultaUpdate = "UPDATE likes idUsuario = ? , idComentario = ? , tipoLike = ? WHERE idLike = ?";
 
     //Constructores
 
@@ -20,24 +22,50 @@ public class DAOLikes extends DAOBase{
     //LECTURA
     @Override
     protected void prepararFiltroConsultaRead(Object filtro) {
-
+        consultaSQL = consultaLecturaPorId;
     }
 
     @Override
     protected void rellenarObjetos() throws SQLException {
+        MeAlgo aux = null;
+        if (resultados.getString(4).equals("MeGusta")){
+            aux = new MeGusta(resultados.getInt(1),
+                                    resultados.getInt(2),
+                                    resultados.getInt(3));
+
+        }else{
+            if (resultados.getString(4).equals("NoMeGusta")){
+                aux = new MeDisgusta(resultados.getInt(1),
+                        resultados.getInt(2),
+                        resultados.getInt(3));
+            }else{
+                //NO existen mas casos
+            }
+        }
+
+        resultadoMultiple.add(aux);
 
     }
 
     //CREACION
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
-
+        MeAlgo aux = (MeAlgo)elementoAModelar;
+        prepararConsulta(consultaInsercion);
+        cargarConsulta(aux.getIdUsuario(),
+                                aux.getIdComentario(),
+                                aux.getTipo());
     }
 
     //ACTUALIZACION
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
-
+        MeAlgo aux = (MeAlgo)elementoAModelar;
+        prepararConsulta(consultaUpdate);
+        cargarConsulta(aux.getIdUsuario(),
+                                    aux.getIdComentario(),
+                                    aux.getTipo(),
+                                    aux.getId());
     }
 
     //CONTROL DE CONSULTAS CRUD:
@@ -57,7 +85,7 @@ public class DAOLikes extends DAOBase{
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
+    public Boolean delete(Object elementoABorrar) { //HACER!
         return null;
     }
 }

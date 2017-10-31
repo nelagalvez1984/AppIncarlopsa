@@ -9,14 +9,13 @@ public class Comentario extends MensajeBase {
     private ArrayList<MeAlgo> arrayLikes = null;
 
     //Constructores
-    public Comentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha, ArrayList<MeAlgo> algos) {
-        super(idPublicacion, idMensaje, idUsuario, mensaje, fecha);
-        arrayLikes = algos;
+    public Comentario(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje, ArrayList<MeAlgo> arrayLikes) {
+        super(idMensaje, idPublicacion, idUsuario, fecha, hora, mensaje);
+        this.arrayLikes = arrayLikes;
     }
 
-    public Comentario(int idPublicacion, int idMensaje, int idUsuario, String mensaje, Date fecha) {
-        super(idPublicacion, idMensaje, idUsuario, mensaje, fecha);
-        arrayLikes = new ArrayList<>();
+    public Comentario(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje) {
+        super(idMensaje, idPublicacion, idUsuario, fecha, hora, mensaje);
     }
 
     public Comentario(){}

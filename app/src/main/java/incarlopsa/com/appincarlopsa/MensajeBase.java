@@ -6,26 +6,42 @@ public abstract class MensajeBase extends DataBaseItem{
 
     //Propiedades
     private Integer idMensaje = null;
+    private Integer idPublicacion = null;
     private Integer idUsuario = null;
+    private String fecha = null;
+    private String hora = null;
     private String mensaje = null;
-    private Date fecha = null;
 
     //Constructor
-    public MensajeBase(Integer idChatOPublicacion, Integer idMensaje, Integer idUsuario, String mensaje, Date fecha) {
-        this.id = idChatOPublicacion;
+
+
+    public MensajeBase(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje) {
         this.idMensaje = idMensaje;
+        this.idPublicacion = idPublicacion;
         this.idUsuario = idUsuario;
         this.mensaje = mensaje;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     public MensajeBase(){}
 
     //Getter/Setter
-    public Integer getIdMensaje() { return idMensaje; }
+
+    public Integer getIdMensaje() {
+        return idMensaje;
+    }
 
     public void setIdMensaje(Integer idMensaje) {
         this.idMensaje = idMensaje;
+    }
+
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
     }
 
     public Integer getIdUsuario() {
@@ -44,21 +60,22 @@ public abstract class MensajeBase extends DataBaseItem{
         this.mensaje = mensaje;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Integer getId() {
-        return id;
+    public String getHora() {
+        return hora;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
+
 
     //Equals y Hash
 
@@ -66,23 +83,27 @@ public abstract class MensajeBase extends DataBaseItem{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         MensajeBase that = (MensajeBase) o;
 
-        if (!id.equals(that.id)) return false;
         if (!idMensaje.equals(that.idMensaje)) return false;
+        if (!idPublicacion.equals(that.idPublicacion)) return false;
         if (!idUsuario.equals(that.idUsuario)) return false;
         if (!mensaje.equals(that.mensaje)) return false;
-        return fecha.equals(that.fecha);
+        if (!fecha.equals(that.fecha)) return false;
+        return hora.equals(that.hora);
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = super.hashCode();
         result = 31 * result + idMensaje.hashCode();
+        result = 31 * result + idPublicacion.hashCode();
         result = 31 * result + idUsuario.hashCode();
         result = 31 * result + mensaje.hashCode();
         result = 31 * result + fecha.hashCode();
+        result = 31 * result + hora.hashCode();
         return result;
     }
 }

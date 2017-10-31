@@ -17,7 +17,7 @@ public abstract class DAOBase implements IDAO, ICodigos{
     protected ResultSet resultados;
     protected Integer numeroResultados;
     protected ArrayList<DataBaseItem> resultadoMultiple;
-    protected String consultaSQL = "";;
+    protected String consultaSQL = "";
 
     //Conexion/Desconexion
     protected void conectar() throws SQLException {
