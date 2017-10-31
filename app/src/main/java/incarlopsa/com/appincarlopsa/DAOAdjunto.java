@@ -14,7 +14,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     private String consultaLecturaPorId = "SELECT idAdjunto,idTipoFichero, localizacion, nombre "
             + "FROM adjunto WHERE idAdjunto = ?";
     private String consultaUpdate = "UPDATE adjunto SET idTipoFichero = ?, localizacion = ?, nombre = ? "
-            + "WHERE idTipoFichero = ?";
+            + "WHERE idAdjunto = ?";
     private String consultaLeerTodo = "SELECT idAdjunto,idTipoFichero, localizacion, nombre FROM adjunto";
 
     //CREACION
@@ -57,7 +57,12 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     //Preparar una consulta de update y cargar sus parametros
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
-        //ToDO
+        Adjunto elementoConQueActualizar = (Adjunto)elementoAModelar;
+        prepararConsulta(consultaUpdate);
+        cargarConsulta(elementoConQueActualizar.getIdTipoFichero(),
+                        elementoConQueActualizar.getLocalizacion(),
+                        elementoConQueActualizar.getNombreAdjunto(),
+                        elementoConQueActualizar.getId());
     }
 
     //CONTROL DE CONSULTAS CRUD:

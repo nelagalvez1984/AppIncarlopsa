@@ -8,16 +8,16 @@ public class DAOUsuario extends DAOBase implements IDAO{
     //Propiedades
     private String consultaInsercion = "INSERT INTO usuario SET nombre = ? "
                                 + " , apellidos = ?, dni = ?, tipoEmpleado = ?, foto = ?";
-    private String consultaLecturaDameTodos = "SELECT idusuario, nombre, apellidos, dni, tipoempleado, foto "
+    private String consultaLecturaDameTodos = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
             + "FROM usuario";
-    private String consultaLecturaPorId = "SELECT idusuario, nombre, apellidos, dni, tipoempleado, foto "
-                                + "FROM usuario WHERE idusuario = ?";
-    private String consultaLecturaPorTipoEmpleado = "SELECT idusuario, nombre, apellidos, dni, tipoempleado, foto "
-            + "FROM usuario WHERE tipoempleado = ?";
-    private String consultaLecturaPorUsername = "SELECT idusuario, nombre, apellidos, dni, tipoempleado, foto, username "
-            + "FROM usuario WHERE username = ?";
+    private String consultaLecturaPorId = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
+                                + "FROM usuario WHERE idUsuario = ?";
+    private String consultaLecturaPorTipoEmpleado = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
+            + "FROM usuario WHERE tipoEmpleado = ?";
+    private String consultaLecturaPorUsername = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto, userName "
+            + "FROM usuario WHERE userName = ?";
     private String consultaUpdate = "UPDATE usuario SET nombre = ?, apellidos = ?, dni = ?, "
-                                + "tipoempleado = ?, foto = ? WHERE idusuario = ?";
+                                + "tipoEmpleado = ?, foto = ? WHERE idUsuario = ?";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
