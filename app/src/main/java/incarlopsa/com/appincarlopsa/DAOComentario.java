@@ -13,9 +13,9 @@ public class DAOComentario extends DAOBase implements IDAO {
     //ToDo
 
     //Consultas parametrizadas
-    private String consultaInsercion; //ToDO
-    private String consultaLecturaPorId; //ToDO
-    private String consultaUpdate; //ToDO
+    private String consultaInsercion = "INSERT INTO comentario SET idPublicacion = ?, idUsuario = ?, fecha = ?, comentario = ?"; //ToDO
+    private String consultaLecturaPorId = "SELECT idComentario,idPublicacion, idUsuario, fecha, comentario FROM comentario WHERE idComentario = ?"; //ToDO
+    private String consultaUpdate = "UPDATE comentario SET idComentario = ?,idPublicacion = ?, idUsuario = ?, fecha = ?, comentario = ? WHERE idComentario"; //ToDO
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -52,7 +52,7 @@ public class DAOComentario extends DAOBase implements IDAO {
     }
 
     @Override
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
         return super.read(filtro);
     }
 
