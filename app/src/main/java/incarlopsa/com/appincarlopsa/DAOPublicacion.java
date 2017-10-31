@@ -10,9 +10,9 @@ public class DAOPublicacion extends DAOBase implements IDAO {
     private String nombreIdTabla = "idpublicacion";
 
     //Consultas parametrizadas
-    private String consultaInsercion; //ToDO
-    private String consultaLecturaPorId; //ToDO
-    private String consultaUpdate; //ToDO
+    private String consultaInsercion = "INSERT INTO tabla SET campos"; //ToDO
+    private String consultaLecturaPorId = "SELECT campos FROM tabla"; //ToDO
+    private String consultaUpdate = "UPDATE tabla SET campos"; //ToDO
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
