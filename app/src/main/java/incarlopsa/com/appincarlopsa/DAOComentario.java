@@ -13,9 +13,9 @@ public class DAOComentario extends DAOBase implements IDAO {
     //ToDo
 
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO tabla SET campos"; //ToDO
-    private String consultaLecturaPorId = "SELECT campos FROM tabla"; //ToDO
-    private String consultaUpdate = "UPDATE tabla SET campos"; //ToDO
+    private String consultaInsercion = "INSERT INTO comentario SET idPublicacion = ?, idUsuario = ?, fecha = ?, comentario = ?"; //ToDO
+    private String consultaLecturaPorId = "SELECT idComentario,idPublicacion, idUsuario, fecha, comentario FROM comentario WHERE idComentario = ?"; //ToDO
+    private String consultaUpdate = "UPDATE comentario SET idComentario = ?,idPublicacion = ?, idUsuario = ?, fecha = ?, comentario = ? WHERE idComentario"; //ToDO
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros

@@ -11,9 +11,9 @@ public class DAOMensaje extends DAOBase implements IDAO {
     private String nombreIdTabla2 = "idmensaje";
 
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO tabla SET campos"; //ToDO
-    private String consultaLecturaPorId = "SELECT campos FROM tabla"; //ToDO
-    private String consultaUpdate = "UPDATE tabla SET campos"; //ToDO
+    private String consultaInsercion = "INSERT INTO mensaje SET idUsuario = ?, mensaje = ?,fecha = ?,leidopordestino = ?";
+    private String consultaLecturaPorId = "SELECT idMensaje, idChat, idUsuario, mensaje, fecha, leidoPorDestino FROM mensaje WHERE idMensaje";
+    private String consultaUpdate = "UPDATE mensaje SET idUsuario = ?, mensaje = ?,fecha = ?,leidopordestino = ? WHERE idMensaje";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -50,7 +50,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
     }
 
     @Override
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
         return super.read(filtro);
     }
 

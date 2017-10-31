@@ -10,9 +10,9 @@ public class DAOPublicacion extends DAOBase implements IDAO {
     private String nombreIdTabla = "idpublicacion";
 
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO tabla SET campos"; //ToDO
-    private String consultaLecturaPorId = "SELECT campos FROM tabla"; //ToDO
-    private String consultaUpdate = "UPDATE tabla SET campos"; //ToDO
+    private String consultaInsercion = "INSERT INTO publicacion SET idUsuario = ?, mensaje = ?,fecha = ?,leidopordestino = ?";
+    private String consultaLecturaPorId = "SELECT idPublicacion, idUsuario, titulo, fecha, mensaje, ultimoUpdate FROM publicacion WHERE idPublicacion";
+    private String consultaUpdate = "UPDATE publicacion SET idUsuario = ?, mensaje = ?,fecha = ?,leidopordestino = ? WHERE idPublicacion";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -49,7 +49,7 @@ public class DAOPublicacion extends DAOBase implements IDAO {
     }
 
     @Override
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
         return super.read(filtro);
     }
 
