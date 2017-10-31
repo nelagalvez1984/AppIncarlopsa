@@ -71,12 +71,10 @@
 
         <ImageButton
             android:id="@+id/meGusta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="112dp"
+            android:layout_width="49"
+            android:layout_height="38"
+            android:layout_marginStart="140dp"
             android:contentDescription=""
-            app:layout_constraintRight_toLeftOf="@+id/noMeGusta"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@mipmap/me_gusta"
             tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded"
@@ -84,14 +82,38 @@
 
         <ImageButton
             android:id="@+id/noMeGusta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="104dp"
+            android:layout_width="49dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="84dp"
             android:contentDescription=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@mipmap/no_me_gusta"
             tools:ignore="ContentDescription,MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="21dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            app:layout_constraintEnd_toStartOf="@+id/meGusta"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="106dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="26dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            app:layout_constraintEnd_toStartOf="@+id/noMeGusta"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/meGusta"
+            tools:layout_editor_absoluteY="106dp" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
