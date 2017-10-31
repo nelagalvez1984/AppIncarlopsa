@@ -7,14 +7,33 @@
     android:background="@color/colorApp"
     tools:context="incarlopsa.com.appincarlopsa.VLogin">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="329dp"
+        android:layout_height="113dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datostxt"
+        app:srcCompat="@drawable/ic_logo_incarlopsaopt" />
+
     <EditText
         android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="232dp"
+        android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textColor="#1d871e"
+        android:textStyle="bold|italic"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,11 +47,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
         android:maxLines="1"
         android:password="true"
+        android:textColor="#1d871e"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -48,7 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="61dp"
         android:layout_marginTop="62dp"
+        android:background="@color/colorApp"
         android:text="¡Bienvenido!"
+        android:textColor="#1d871e"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/etUsuario"
         app:layout_constraintHorizontal_bias="0.501"
@@ -69,22 +92,17 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/background_light"
         android:text="Conectar"
+        android:textColor="#1d871e"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintVertical_bias="0.322"
         tools:ignore="HardcodedText"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="288dp"
-        android:layout_height="182dp"
-        app:srcCompat="@mipmap/icono_incarlopsa"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="62dp" />
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
