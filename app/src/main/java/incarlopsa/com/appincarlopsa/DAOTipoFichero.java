@@ -12,11 +12,11 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     private String nombreIdTabla = "idtipofichero";
 
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO tipofichero SET nombre = ? "
+    private String consultaInsercion = "INSERT INTO tipoFichero SET nombre = ? "
             + " , mostrable = ?";
     private String consultaLecturaPorId = "SELECT idTipoFichero, nombre, mostrable"
-            + "FROM tipofichero WHERE idTipoFichero = ?";
-    private String consultaUpdate = "UPDATE tipofichero SET nombre = ?, mostrable = ? "
+            + "FROM tipoFichero WHERE idTipoFichero = ?";
+    private String consultaUpdate = "UPDATE tipoFichero SET nombre = ?, mostrable = ? "
             + "WHERE idTipoFichero = ?";
     private String consultaLeerTodo = "SELECT idTipoFichero, nombre, mostrable" + "FROM tipofichero";
 
