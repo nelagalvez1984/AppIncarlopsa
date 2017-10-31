@@ -3,12 +3,13 @@ package incarlopsa.com.appincarlopsa;
 public class MeDisgusta extends MeAlgo {
 
     //Propiedades
-    private String tipo="MeDisgusta";
+    private final String tipo="MeDisgusta";
 
     //Constructor
-    public MeDisgusta(Integer idUsuario, Integer idComentario) {
-        super(idUsuario,idComentario);
+    public MeDisgusta(Integer idLike, Integer idUsuario, Integer idComentario) {
+        super(idLike, idUsuario, idComentario);
     }
+
 
     public MeDisgusta(){}
 }

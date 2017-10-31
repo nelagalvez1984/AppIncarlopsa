@@ -3,12 +3,14 @@ package incarlopsa.com.appincarlopsa;
 public abstract class MeAlgo extends DataBaseItem{
 
     //Propiedades
-    protected String tipo = "";
     protected Integer idUsuario = null;
+    protected Integer idComentario = null;
+    protected String tipo = "";
 
     //Constructor
-    public MeAlgo(Integer idUsuario, Integer idComentario) {
-        this.id = idComentario;
+    public MeAlgo(Integer idLike, Integer idUsuario, Integer idComentario) {
+        this.id = idLike;
+        this.idComentario = idComentario;
         this.idUsuario = idUsuario;
     }
 
@@ -23,8 +25,22 @@ public abstract class MeAlgo extends DataBaseItem{
         this.tipo = tipo;
     }
 
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
 
-    //Equals y Hash
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Integer getIdComentario() {
+        return idComentario;
+    }
+
+    public void setIdComentario(Integer idComentario) {
+        this.idComentario = idComentario;
+    }
+//Equals y Hash
 
 
     @Override

@@ -6,22 +6,29 @@ import java.util.ArrayList;
 public class DAOComentario extends DAOBase implements IDAO {
 
     //Propiedades
-    private String nombreTabla = "comentario";
-    private String nombreIdTabla1 = "idpublicacion";
-    private String nombreIdTabla2 = "idcomentario";
 
-    //ToDo
+    //Constructor
+
+
+    public DAOComentario() { }
 
     //Consultas parametrizadas
-    private String consultaInsercion; //ToDO
-    private String consultaLecturaPorId; //ToDO
-    private String consultaUpdate; //ToDO
+    private String consultaInsercion = "INSERT INTO comentario SET idPublicacion = ?, idUsuario = ?, fecha = NOW(), comentario = ?";
+    private String consultaLecturaPorId = "SELECT idComentario,idPublicacion, idUsuario, "
+                        +"DATE_FORMAT(fecha, '%d/%m/%y') AS fecha1, TIME_FORMAT(fecha, '%H:%i') AS hora1, "
+                        +"comentario FROM comentario WHERE idComentario = ? ORDER BY fecha DESC";
+    private String consultaUpdate = "UPDATE comentario SET idComentario = ?,idPublicacion = ?, idUsuario = ?, fecha = NOW(), comentario = ? WHERE idComentario = ?";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
-        //ToDO
+
+        Comentario aux = (Comentario)elementoAModelar;
+        prepararConsulta(consultaInsercion);
+        cargarConsulta(aux.getIdPublicacion(),
+                        aux.getIdUsuario(),
+                        aux.getMensaje());
     }
 
     //LECTURA
@@ -29,20 +36,26 @@ public class DAOComentario extends DAOBase implements IDAO {
     // (por que campo se tirara para determinar la consulta concreta)
     @Override
     protected void prepararFiltroConsultaRead(Object filtro) {
-        //ToDO
+        consultaSQL = consultaLecturaPorId;
     }
 
     //Rellenar el array de resultados con cada resultado
     @Override
     protected void rellenarObjetos() throws SQLException {
-        //ToDO
+        Comentario aux = new Comentario(resultados.getInt(1),
+                                        resultados.getInt(2),
+                                        resultados.getInt(3),
+                                        resultados.getString(4),
+                                        resultados.getString(5),
+                                        resultados.getString(6) );
+        resultadoMultiple.add(aux);
     }
 
     //UPDATE
     //Preparar una consulta de update y cargar sus parametros
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
-        //ToDO
+        //EN ESTA VERSION NO SE HARAN EDICIONES DE COMENTARIOS
     }
 
     //CONTROL DE CONSULTAS CRUD:
@@ -52,13 +65,14 @@ public class DAOComentario extends DAOBase implements IDAO {
     }
 
     @Override
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
         return super.read(filtro);
     }
 
     @Override
     public Boolean update(Object elementoConQueActualizar) {
-        return super.update(elementoConQueActualizar);
+        //EN ESTA VERSION NO SE HARAN EDICIONES DE COMENTARIOS
+        return null;
     }
 
     @Override
