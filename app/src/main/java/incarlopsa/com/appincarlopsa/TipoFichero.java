@@ -7,14 +7,14 @@ public class TipoFichero extends DataBaseItem{
     private Boolean mostrable = true;
 
     //Constructor
-    public TipoFichero(int id, String nombre, Boolean mostrable) {
+    public TipoFichero(Integer id, String nombre, Boolean mostrable) {
         this.id = id;
         this.nombre = nombre;
         this.mostrable = mostrable;
     }
 
     //Constructor
-    public TipoFichero(int id, String nombre) {
+    public TipoFichero(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
         this.mostrable = true;

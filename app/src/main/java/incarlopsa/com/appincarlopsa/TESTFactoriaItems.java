@@ -1,22 +1,13 @@
 package incarlopsa.com.appincarlopsa;
 
-import android.util.Base64;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
-
-/**
- * Created by Anonymous on 01/11/2017.
- */
 
 public class TESTFactoriaItems implements ICodigos {
 
     //Propiedades
     Random generadorAleatorios;
-    MessageDigest hash;
     ArrayList<DataBaseItem> resultados = null;
     Boolean retornoTrueFalse = false;
 
@@ -44,6 +35,7 @@ public class TESTFactoriaItems implements ICodigos {
     private DAOPublicacionAdjunto daoPublicacionAdjunto;
     private DAOTipoFichero daoTipoFichero;
     private DAOUsuario daoUsuario;
+    private ArrayList<Character> listaLetras;
 
     //Constructor: Inicializador de daos
     public TESTFactoriaItems(){
@@ -57,28 +49,94 @@ public class TESTFactoriaItems implements ICodigos {
         daoTipoFichero = new DAOTipoFichero();
         daoUsuario = new DAOUsuario();
         generadorAleatorios = new Random();
+        rellenarListaLetras();
     }
 
+    private void rellenarListaLetras() {
+        listaLetras = new ArrayList<>();
+        listaLetras.add('A');
+        listaLetras.add('B');
+        listaLetras.add('C');
+        listaLetras.add('D');
+        listaLetras.add('E');
+        listaLetras.add('F');
+        listaLetras.add('G');
+        listaLetras.add('H');
+        listaLetras.add('I');
+        listaLetras.add('J');
+        listaLetras.add('K');
+        listaLetras.add('L');
+        listaLetras.add('M');
+        listaLetras.add('N');
+        listaLetras.add('O');
+        listaLetras.add('P');
+        listaLetras.add('Q');
+        listaLetras.add('R');
+        listaLetras.add('S');
+        listaLetras.add('T');
+        listaLetras.add('U');
+        listaLetras.add('V');
+        listaLetras.add('W');
+        listaLetras.add('X');
+        listaLetras.add('Y');
+        listaLetras.add('Z');
+    }
+
+    //GENERADORES ALEATORIOS
     private Integer dameEntero(){
-        return (generadorAleatorios.nextInt(1000) + 1)*98765;
+        return (generadorAleatorios.nextInt(1000) + 1);
     }
 
     public String dameCadenaAleatoria(){
-        byte[] operacion;
+
         String cadena = "";
-        try {
-            hash = MessageDigest.getInstance("MD5"); //Inicializar constructor hash
-            Integer numAleatorio = dameEntero(); //Pedir un entero
-            operacion = hash.digest(numAleatorio.toString().getBytes()); //Crear hash
-            int longitud = operacion.length;
-            operacion = Base64.decode(operacion,Base64.DEFAULT); //Pasar el hash a base64
-            cadena = operacion.toString(); //Pasar el hash a string
-            cadena = cadena.substring(3); //obtener a partir del tercer caracter
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        //Determinar numeroDeLetras. Minimo 4, max 8
+        int longitudCadena = (dameEntero()%4)+5;
+        for(int i=0; i<longitudCadena; i++){
+            cadena += listaLetras.get(dameEntero()%26);
         }
+
         return cadena;
     }
+
+    public Boolean dameBoolAleatorio() { return (dameEntero()%2 == 0)?true:false;}
+
+    //GENERADORES DE OBJETOS CON ALEATORIEDAD
+    public Foto testCREARFoto(){
+        Foto foto = new Foto();
+        foto.setFotoBytes(dameCadenaAleatoria().getBytes());
+        return foto;
+    }
+
+    public Usuario testCREARUsuario(){
+        usuario = new Usuario(null,
+                dameCadenaAleatoria(),
+                dameCadenaAleatoria(),
+                dameCadenaAleatoria(),
+                TEST_TIPO_EMPLEADO,
+                testCREARFoto(),
+                dameCadenaAleatoria()
+        );
+        return usuario;
+    }
+
+    public TipoFichero testCREARTipoFichero(){
+        tipoFichero = new TipoFichero(null,
+                dameCadenaAleatoria(),
+                dameBoolAleatorio());
+        return tipoFichero;
+    }
+
+    public Adjunto testCREARAdjunto(){
+        adjunto = new Adjunto(null,
+                            null,
+                            dameCadenaAleatoria(),
+                            dameCadenaAleatoria(),
+                            testCREARTipoFichero());
+        return adjunto;
+    }
+
+
 
     public ArrayList<DataBaseItem> testReadUsuario(Integer filtro){
         usuario = new Usuario();
@@ -111,22 +169,24 @@ public class TESTFactoriaItems implements ICodigos {
         return resultados;
     }
 
-    public Boolean testCreateUsuario(Integer filtro){
-        usuario = new Usuario(null,
-                                dameCadenaAleatoria(),
-                                dameCadenaAleatoria(),
-                                dameCadenaAleatoria(),
-                                TEST_TIPO_EMPLEADO,
-                                foto,
-                                dameCadenaAleatoria()
-                );
+    public Boolean testCreateUsuario(){
         try {
-            retornoTrueFalse = daoUsuario.create(usuario);
+            retornoTrueFalse = daoUsuario.create(testCREARUsuario());
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return retornoTrueFalse;
-
     }
+
+    public Boolean testCreateUsuario(Usuario u){
+        try {
+            retornoTrueFalse = daoUsuario.create(u);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return retornoTrueFalse;
+    }
+
+
 
 }
