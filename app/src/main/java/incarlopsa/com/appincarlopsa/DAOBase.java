@@ -40,6 +40,7 @@ public abstract class DAOBase implements IDAO, ICodigos{
             if ( (parametros[0]).equals(DAME_TODOS)){ //NO HAY PARAMETROS QUE INCRUSTAR!
                 //NADA
             }else{
+                int acumulador = 0;
                 for(int i=0; i<x; i++){
 
                     if (parametros[i] instanceof Integer){ //Es un entero!
@@ -118,12 +119,11 @@ public abstract class DAOBase implements IDAO, ICodigos{
         }
     }
 
-    //Consulta de lectura sabiendo ya el filtro
-    protected void lanzarConsultaRead(Object filtro) throws SQLException {
+    //Proceso completo de lectura (filtro + consulta)
+    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
         try {
             conectar();
-            prepararConsulta(consultaSQL);
-            cargarConsulta(filtro);
+            prepararRead(filtro);
             ejecutarConsultaRead();
             while(resultados.next()) { //Por cada row, meter un objeto al array de resultados
                 rellenarObjetos();
@@ -132,12 +132,6 @@ public abstract class DAOBase implements IDAO, ICodigos{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    //Proceso completo de lectura (filtro + consulta)
-    public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
-        prepararFiltroConsultaRead(filtro);
-        lanzarConsultaRead(filtro);
         return resultadoMultiple;
     }
 
@@ -155,17 +149,39 @@ public abstract class DAOBase implements IDAO, ICodigos{
         return resultado;
     }
 
+    @Override
+    public Boolean delete(Object objetoABorrar) {
+        boolean resultado = false;
+        try {
+            conectar();
+            prepararDelete(objetoABorrar);
+            resultado = ejecutarConsultaDelete();
+            desconectar();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
+    private boolean ejecutarConsultaDelete() throws SQLException {
+        return ejecutarConsultaCreate();
+    }
+
 
     //RELLENAR ESPECIFICAMENTE PARA CADA DAO
 
     //Rellenar items con la info extraida
     protected abstract void rellenarObjetos() throws SQLException;
 
-    //Identificar el tipo de filtro para saber a que consulta se refiere
-    protected abstract void prepararFiltroConsultaRead(Object filtro);
-
-    //Preparar la consulta de insercion
+    //Preparar la consulta de create
     protected abstract void prepararCreate(Object elementoAModelar) throws SQLException;
 
+    //Preparar la consulta de read
+    protected abstract void prepararRead(Object filtro) throws SQLException;
+
+    //Preparar la consulta de update
     protected abstract void prepararUpdate(Object elementoAModelar) throws SQLException;
+
+    //Preparar la consulta de delete
+    protected abstract void prepararDelete(Object elementoAModelar) throws SQLException;
 }

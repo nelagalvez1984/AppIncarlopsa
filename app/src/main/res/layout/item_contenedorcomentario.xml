@@ -71,8 +71,8 @@
 
         <ImageButton
             android:id="@+id/meGusta"
-            android:layout_width="49"
-            android:layout_height="38"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
             android:layout_marginStart="140dp"
             android:contentDescription=""
             app:layout_constraintStart_toStartOf="parent"

@@ -15,7 +15,7 @@ public abstract class MensajeBase extends DataBaseItem{
     //Constructor
 
 
-    public MensajeBase(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje) {
+    public MensajeBase(Integer idPublicacion, Integer idMensaje, Integer idUsuario, String fecha, String hora, String mensaje) {
         this.idMensaje = idMensaje;
         this.idPublicacion = idPublicacion;
         this.idUsuario = idUsuario;
@@ -75,6 +75,7 @@ public abstract class MensajeBase extends DataBaseItem{
     public void setHora(String hora) {
         this.hora = hora;
     }
+
 
 
     //Equals y Hash

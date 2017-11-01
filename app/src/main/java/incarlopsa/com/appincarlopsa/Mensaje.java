@@ -8,13 +8,13 @@ public class Mensaje extends MensajeBase {
     private Boolean leidoPorDestino = false;
 
     //Constructor
-    public Mensaje(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha, Boolean leidoPorDestino) {
-        super(idChat, idMensaje, idUsuario, mensaje, fecha);
+    public Mensaje(int idMensaje, int idChat, int idUsuario, String mensaje, String fechaCreacion, String horaCreacion, Boolean leidoPorDestino) {
+        super(idMensaje, idChat, idUsuario, mensaje, fechaCreacion, horaCreacion);
         this.leidoPorDestino = leidoPorDestino;
     }
 
-    public Mensaje(int idChat, int idMensaje, int idUsuario, String mensaje, Date fecha) {
-        super(idChat, idMensaje, idUsuario, mensaje, fecha);
+    public Mensaje(int idMensaje, int idChat, int idUsuario, String mensaje, String fechaCreacion, String horaCreacion) {
+        super(idMensaje, idChat, idUsuario, mensaje, fechaCreacion, horaCreacion);
         this.leidoPorDestino = false;
     }
 

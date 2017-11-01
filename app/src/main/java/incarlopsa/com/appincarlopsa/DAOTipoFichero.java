@@ -8,10 +8,6 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
 
     //Propiedades
-    private String nombreTabla = "tipofichero";
-    private String nombreIdTabla = "idtipofichero";
-
-    //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO tipoFichero SET nombre = ? "
             + " , mostrable = ?";
     private String consultaLecturaPorId = "SELECT idTipoFichero, nombre, mostrable"
@@ -19,6 +15,12 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     private String consultaUpdate = "UPDATE tipoFichero SET nombre = ?, mostrable = ? "
             + "WHERE idTipoFichero = ?";
     private String consultaLeerTodo = "SELECT idTipoFichero, nombre, mostrable" + "FROM tipofichero";
+    private String consultaDelete = "DELETE FROM tipofichero WHERE idTipoFichero = ?";
+
+    //Constructor
+    public DAOTipoFichero() {
+    }
+
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -33,14 +35,20 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //Tipo de filtro a aplicar a la consulta de lectura
     // (por que campo se tirara para determinar la consulta concreta)
     @Override
-    protected void prepararFiltroConsultaRead(Object filtro) {
+    protected void prepararRead(Object filtro) throws SQLException {
+
         if (filtro instanceof String) {
             if (filtro.equals(DAME_TODOS)) {
                 consultaSQL = consultaLeerTodo;
+                prepararConsulta(consultaSQL);
+                cargarConsulta(DAME_TODOS);
             }
         } else {
             if (filtro instanceof TipoFichero) {
                 consultaSQL = consultaLecturaPorId;
+                prepararConsulta(consultaSQL);
+                TipoFichero aux = (TipoFichero)filtro;
+                cargarConsulta(aux.getId());
             }
         }
     }
@@ -59,11 +67,18 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         TipoFichero elementoConQueActualizar = (TipoFichero) elementoAModelar;
-        Integer idTipoFichero = elementoConQueActualizar.getId();
         prepararConsulta(consultaUpdate);
         cargarConsulta(elementoConQueActualizar.getNombre(),
                         elementoConQueActualizar.getMostrable(),
-                        idTipoFichero);
+                        elementoConQueActualizar.getId());
+    }
+
+    //DELETE
+    @Override
+    protected void prepararDelete(Object elementoAModelar) throws SQLException {
+        TipoFichero elementoABorrar = (TipoFichero) elementoAModelar;
+        prepararConsulta(consultaDelete);
+        cargarConsulta(elementoABorrar.getId());
     }
 
     //CONTROL DE CONSULTAS CRUD:
@@ -83,7 +98,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
-        return null;
+    public Boolean delete(Object elementoABorrar) {
+        return super.delete(elementoABorrar);
     }
 }

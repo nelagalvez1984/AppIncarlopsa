@@ -15,7 +15,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
             + "FROM adjunto WHERE idAdjunto = ?";
     private String consultaUpdate = "UPDATE adjunto SET idTipoFichero = ?, localizacion = ?, nombre = ? "
             + "WHERE idAdjunto = ?";
-    private String consultaLeerTodo = "SELECT idAdjunto,idTipoFichero, localizacion, nombre FROM adjunto";
+    private String consultaDelete = "DELETE FROM adjunto WHERE idAdjunto = ?";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -30,16 +30,11 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     //Tipo de filtro a aplicar a la consulta de lectura
     // (por que campo se tirara para determinar la consulta concreta)
     @Override
-    protected void prepararFiltroConsultaRead(Object filtro) {
-        if (filtro instanceof String) {
-            if ( filtro.equals(DAME_TODOS)) {
-                consultaSQL = consultaLeerTodo;
-            }
-        } else {
-            if (filtro instanceof TipoFichero) {
-                consultaSQL = consultaLecturaPorId;
-            }
-        }
+    protected void prepararRead(Object filtro) throws SQLException {
+        Adjunto aux = (Adjunto)filtro;
+        consultaSQL = consultaLecturaPorId;
+        prepararConsulta(consultaSQL);
+        cargarConsulta(aux.getId());
     }
 
     //Rellenar el array de resultados con cada resultado
@@ -65,6 +60,14 @@ public class DAOAdjunto extends DAOBase implements IDAO {
                         elementoConQueActualizar.getId());
     }
 
+    //DELETE
+    @Override
+    protected void prepararDelete(Object elementoAModelar) throws SQLException {
+        Adjunto elementoConQueActualizar = (Adjunto)elementoAModelar;
+        prepararConsulta(consultaDelete);
+        cargarConsulta(elementoConQueActualizar.getId());
+    }
+
     //CONTROL DE CONSULTAS CRUD:
     @Override
     public Boolean create(Object elementoACrear) throws SQLException {
@@ -87,7 +90,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
-        return null;
+    public Boolean delete(Object elementoABorrar) {
+        return super.delete(elementoABorrar);
     }
 }

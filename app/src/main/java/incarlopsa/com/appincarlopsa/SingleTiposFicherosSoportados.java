@@ -1,9 +1,10 @@
 package incarlopsa.com.appincarlopsa;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SingleTiposFicherosSoportados {
+public class SingleTiposFicherosSoportados implements ICodigos{
 
     //Singleton con los tipos que soportara la aplicacion!
 
@@ -13,12 +14,21 @@ public class SingleTiposFicherosSoportados {
         return ourInstance;
     }
 
-    private ArrayList<TipoFichero> listaFicheros;
+    private ArrayList<DataBaseItem> listaFicheros;
     private DAOTipoFichero dao;
 
     private SingleTiposFicherosSoportados() {
         listaFicheros = new ArrayList<>();
-        //LEER LOS TIPOS DE FICHEROS DE LA TABLA TIPOFICHERO Y METERLOS EN EL ARRAY
-        //HACER LOS METODOS CORRESPONDIENTES PARA DEVOLVER EL FICHERO CORRESPONDIENTE SEGUN UN ID
+        dao = new DAOTipoFichero();
+        try {
+            listaFicheros = dao.read(DAME_TODOS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    public ArrayList<DataBaseItem> getListaFicherosSoportados() {
+        return listaFicheros;
+    }
+
 }

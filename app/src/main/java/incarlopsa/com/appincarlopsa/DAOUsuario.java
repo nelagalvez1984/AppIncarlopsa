@@ -18,6 +18,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
             + "FROM usuario WHERE userName = ?";
     private String consultaUpdate = "UPDATE usuario SET nombre = ?, apellidos = ?, dni = ?, "
                                 + "tipoEmpleado = ?, foto = ? WHERE idUsuario = ?";
+    private String consultaDelete = "DELETE FROM usuario WHERE idUsuario = ?";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -34,26 +35,30 @@ public class DAOUsuario extends DAOBase implements IDAO{
     //LECTURA
     //Tipo de filtro a aplicar a la consulta de lectura
     // (por que campo se tirara para determinar la consulta concreta)
-    protected void prepararFiltroConsultaRead(Object filtro) {
+    @Override
+    protected void prepararRead(Object filtro) throws SQLException {
         //Seleccionar tipo de consulta
         if (filtro instanceof String){ //DamelosTodos!
-            if ( filtro.equals(DAME_TODOS)){ //Dame todos los registros!
-                consultaSQL  = consultaLecturaDameTodos;
-            }else{
-                    //Parametro incorrecto! Bad try! (devolucion estandar, SELECT *, osea, DAME_TODOS )
-                    consultaSQL  = consultaLecturaDameTodos;
-            }
+            consultaSQL  = consultaLecturaDameTodos;
+            prepararConsulta(consultaSQL);
+            cargarConsulta( DAME_TODOS );
         }else{ //Deberia ser un Usuario
             //Comprobar tipos de peticiones. Para ello revisamos los campos
             Usuario usuarioTemporal = (Usuario)filtro;
             if (usuarioTemporal.getTipoEmpleado() != null){ //Aaaamigo, quieren leer por tipo de empleado
                 consultaSQL = consultaLecturaPorTipoEmpleado;
+                prepararConsulta(consultaSQL);
+                cargarConsulta(usuarioTemporal.getTipoEmpleado());
             }else{
                 if (usuarioTemporal.getUsername() != null){ //Se esta reclamando el perfil completo
                     consultaSQL = consultaLecturaPorUsername;
+                    prepararConsulta(consultaSQL);
+                    cargarConsulta(usuarioTemporal.getUsername());
                 }else{
                     //Resto de casos. Si no se nos ocurren mas casos, es que sera una lectura por ID
                     consultaSQL = consultaLecturaPorId;
+                    prepararConsulta(consultaSQL);
+                    cargarConsulta(usuarioTemporal.getId());
                 }
             }
         }
@@ -95,6 +100,15 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 idUsuarioOrigen);
     }
 
+    //Delete
+    @Override
+    protected void prepararDelete(Object elementoAModelar) throws SQLException {
+        Usuario elementoConQueActualizar = (Usuario)elementoAModelar;
+        Integer idUsuarioOrigen = elementoConQueActualizar.getIdUsuario();
+        prepararConsulta(consultaDelete);
+        cargarConsulta( elementoConQueActualizar.getId());
+    }
+
     //CONTROL DE CONSULTAS CRUD:
     @Override
     public Boolean create(Object elementoACrear) throws SQLException {
@@ -113,6 +127,6 @@ public class DAOUsuario extends DAOBase implements IDAO{
 
     @Override
     public Boolean delete(Object elementoABorrar) { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
-        return null;
+        return super.delete(elementoABorrar);
     }
 }

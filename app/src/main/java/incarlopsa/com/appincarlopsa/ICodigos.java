@@ -15,6 +15,8 @@ public interface ICodigos extends ICodigosAntonio,
     int ENTRADA_DUPLICADA = 1062;
 
     String DAME_TODOS = "DAME_TODOS";
+    String ACTUALIZA_FECHA = "ACTUALIZA_FECHA";
+    String DAME_LOS_TOPIC = "DAME_LOS_TOPIC";
     String SERVIDOR_BBDD = "10.20.32.116";
     String PUERTO_BBDD = "3306";
     String BBDD = "incarlopsa";

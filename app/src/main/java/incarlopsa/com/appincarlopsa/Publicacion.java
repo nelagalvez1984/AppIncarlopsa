@@ -7,62 +7,52 @@ import java.util.Date;
 public class Publicacion extends Topic{
 
     //Propiedades
-    private Comentario anuncio = null;
-    private ArrayList<Comentario> comentarios = null;
-    private ArrayList<Adjunto> adjuntos = null;
+    private ArrayList<DataBaseItem> comentarios = null;
+    private ArrayList<DataBaseItem> adjuntos = null;
 
     //Constructor
 
-    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, Comentario anuncio, ArrayList<Comentario> comentarios, ArrayList<Adjunto> adjuntos) {
-        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        this.anuncio = anuncio;
+
+    public Publicacion(Integer idTopic, Integer idUsuario, String titulo, String fechaCreacion, String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate, ArrayList<DataBaseItem> adjuntos) {
+        super(idTopic, idUsuario, titulo, fechaCreacion, horaCreacion, fechaUltimoUpdate, horaUltimoUpdate);
+        this.adjuntos = adjuntos;
+        this.comentarios = new ArrayList<>();
+    }
+
+    public Publicacion(Integer idTopic, Integer idUsuario, String titulo, String fechaCreacion, String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate, ArrayList<DataBaseItem> comentarios, ArrayList<DataBaseItem> adjuntos) {
+        super(idTopic, idUsuario, titulo, fechaCreacion, horaCreacion, fechaUltimoUpdate, horaUltimoUpdate);
         this.comentarios = comentarios;
         this.adjuntos = adjuntos;
     }
 
-    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, Comentario anuncio, ArrayList<Adjunto> adjuntos) {
-        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        this.anuncio = anuncio;
-        this.adjuntos = adjuntos;
-        comentarios = new ArrayList<>();
-    }
-
-    public Publicacion(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, Comentario anuncio) {
-        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        this.anuncio = anuncio;
-        adjuntos = new ArrayList<>();
-        comentarios = new ArrayList<>();
+    public Publicacion(Integer idTopic, Integer idUsuario, String titulo, String fechaCreacion, String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate) {
+        super(idTopic, idUsuario, titulo, fechaCreacion, horaCreacion, fechaUltimoUpdate, horaUltimoUpdate);
+        this.adjuntos = new ArrayList<>();
+        this.comentarios = new ArrayList<>();
     }
 
     public Publicacion(){}
 
     //Getters y setters
-    public Comentario getAnuncio() {
-        return anuncio;
-    }
-
-    public void setAnuncio(Comentario anuncio) {
-        this.anuncio = anuncio;
-    }
-
-    public ArrayList<Comentario> getComentarios() {
+    public ArrayList<DataBaseItem> getComentarios() {
         return comentarios;
     }
 
-    public void setComentarios(ArrayList<Comentario> comentarios) {
+    public void setComentarios(ArrayList<DataBaseItem> comentarios) {
         this.comentarios = comentarios;
     }
 
-    public ArrayList<Adjunto> getAdjuntos() {
+    public ArrayList<DataBaseItem> getAdjuntos() {
         return adjuntos;
     }
 
-    public void setAdjuntos(ArrayList<Adjunto> adjuntos) {
+    public void setAdjuntos(ArrayList<DataBaseItem> adjuntos) {
         this.adjuntos = adjuntos;
     }
 
-
     //Equals y hash
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,20 +61,16 @@ public class Publicacion extends Topic{
 
         Publicacion that = (Publicacion) o;
 
-        if (!anuncio.equals(that.anuncio)) return false;
         if (!comentarios.equals(that.comentarios)) return false;
         return adjuntos.equals(that.adjuntos);
-
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + anuncio.hashCode();
         result = 31 * result + comentarios.hashCode();
         result = 31 * result + adjuntos.hashCode();
         return result;
     }
-
 }
 

@@ -7,18 +7,25 @@ public class Chat extends Topic {
 
 
     //Propiedades
-    private ArrayList<Mensaje> mensajes = null;
+    private Integer idUsuarioDestino = null;
+    private ArrayList<DataBaseItem> mensajes = null;
 
     //Constructores
-    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, ArrayList<Mensaje> mensajes) {
-        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
+
+
+    public Chat(Integer idTopic, Integer idUsuario, Integer idUsuarioDestino, String titulo, String fechaCreacion,
+                String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate, Boolean finalizado,
+                ArrayList<DataBaseItem> mensajes) {
+        super(idTopic, idUsuario, titulo, fechaCreacion, horaCreacion, finalizado, fechaUltimoUpdate, horaUltimoUpdate);
+        this.idUsuarioDestino = idUsuarioDestino;
         this.mensajes = mensajes;
     }
 
-    public Chat(Integer idTopic, String titulo, Date fechaUltimoUpdate, Integer idUsuario, Mensaje mensaje) {
-        super(idTopic, titulo, fechaUltimoUpdate, idUsuario);
-        mensajes = new ArrayList<>();
-        mensajes.add(mensaje);
+    public Chat(Integer idTopic, Integer idUsuario, Integer idUsuarioDestino, String titulo, String fechaCreacion,
+                String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate, Boolean finalizado) {
+        super(idTopic, idUsuario, titulo, fechaCreacion, horaCreacion, finalizado, fechaUltimoUpdate, horaUltimoUpdate);
+        this.idUsuarioDestino = idUsuarioDestino;
+        this.mensajes = new ArrayList<>();
     }
 
     public Chat(){}
@@ -29,11 +36,11 @@ public class Chat extends Topic {
     }
 
     //Getters y setters
-    public ArrayList<Mensaje> getMensajes() {
+    public ArrayList<DataBaseItem> getMensajes() {
         return mensajes;
     }
 
-    public void setMensajes(ArrayList<Mensaje> mensajes) {
+    public void setMensajes(ArrayList<DataBaseItem> mensajes) {
         this.mensajes = mensajes;
     }
 
@@ -41,7 +48,16 @@ public class Chat extends Topic {
         mensajes.add(mensaje);
     }
 
+    public Integer getIdUsuarioDestino() {
+        return idUsuarioDestino;
+    }
+
+    public void setIdUsuarioDestino(Integer idUsuarioDestino) {
+        this.idUsuarioDestino = idUsuarioDestino;
+    }
+
     //Equals y hash
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,12 +66,14 @@ public class Chat extends Topic {
 
         Chat chat = (Chat) o;
 
+        if (!idUsuarioDestino.equals(chat.idUsuarioDestino)) return false;
         return mensajes.equals(chat.mensajes);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
+        result = 31 * result + idUsuarioDestino.hashCode();
         result = 31 * result + mensajes.hashCode();
         return result;
     }
