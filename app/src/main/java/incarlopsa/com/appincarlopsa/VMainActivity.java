@@ -12,16 +12,18 @@ public class VMainActivity extends AppCompatActivity implements IVista{
 
 
     //Propiedades
-
-
+    TESTFactoriaItems factoriaItems = new TESTFactoriaItems();
+    Button boton;
 
     @Override
     public void inicializarVista() {
-        //ToDO
+         boton = (Button)findViewById(R.id.btnTest);
+         boton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        boton.setText(factoriaItems.dameCadenaAleatoria());
         //ToDO
     }
 
@@ -30,13 +32,8 @@ public class VMainActivity extends AppCompatActivity implements IVista{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Usuario usuario = new Usuario(1,"Aqui estoy!","b","33434","hola",null);
-
-        ArrayList<DataBaseItem> array = new ArrayList<>();
-        array.add(usuario);
-        Usuario sacado = (Usuario)array.get(0);
-        Button b = (Button)findViewById(R.id.btnTest);
-        b.setText(sacado.getNombre());
+        inicializarVista();
+        boton.setText(factoriaItems.dameCadenaAleatoria());
 
         //ToDO
     }

@@ -14,9 +14,15 @@ public interface ICodigos extends ICodigosAntonio,
     int SALIR = -999;
     int ENTRADA_DUPLICADA = 1062;
 
+    //Codigos para TEST de consultas
+    String TEST_TIPO_EMPLEADO = "Empleado";
+
+    //Codigos para consultas
     String DAME_TODOS = "DAME_TODOS";
     String ACTUALIZA_FECHA = "ACTUALIZA_FECHA";
     String DAME_LOS_TOPIC = "DAME_LOS_TOPIC";
+
+    //Codigos para conexion a la BBDD
     String SERVIDOR_BBDD = "10.20.32.116";
     String PUERTO_BBDD = "3306";
     String BBDD = "incarlopsa";
