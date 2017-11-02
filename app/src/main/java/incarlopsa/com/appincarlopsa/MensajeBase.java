@@ -5,7 +5,6 @@ import java.util.Date;
 public abstract class MensajeBase extends DataBaseItem{
 
     //Propiedades
-    private Integer idMensaje = null;
     private Integer idPublicacion = null;
     private Integer idUsuario = null;
     private String fecha = null;
@@ -15,8 +14,8 @@ public abstract class MensajeBase extends DataBaseItem{
     //Constructor
 
 
-    public MensajeBase(Integer idPublicacion, Integer idMensaje, Integer idUsuario, String fecha, String hora, String mensaje) {
-        this.idMensaje = idMensaje;
+    public MensajeBase(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje) {
+        this.id = idMensaje;
         this.idPublicacion = idPublicacion;
         this.idUsuario = idUsuario;
         this.mensaje = mensaje;
@@ -27,14 +26,6 @@ public abstract class MensajeBase extends DataBaseItem{
     public MensajeBase(){}
 
     //Getter/Setter
-
-    public Integer getIdMensaje() {
-        return idMensaje;
-    }
-
-    public void setIdMensaje(Integer idMensaje) {
-        this.idMensaje = idMensaje;
-    }
 
     public Integer getIdPublicacion() {
         return idPublicacion;
@@ -88,7 +79,6 @@ public abstract class MensajeBase extends DataBaseItem{
 
         MensajeBase that = (MensajeBase) o;
 
-        if (!idMensaje.equals(that.idMensaje)) return false;
         if (!idPublicacion.equals(that.idPublicacion)) return false;
         if (!idUsuario.equals(that.idUsuario)) return false;
         if (!mensaje.equals(that.mensaje)) return false;
@@ -99,7 +89,6 @@ public abstract class MensajeBase extends DataBaseItem{
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + idMensaje.hashCode();
         result = 31 * result + idPublicacion.hashCode();
         result = 31 * result + idUsuario.hashCode();
         result = 31 * result + mensaje.hashCode();

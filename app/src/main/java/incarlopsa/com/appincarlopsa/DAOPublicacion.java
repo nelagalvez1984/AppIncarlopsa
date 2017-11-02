@@ -1,6 +1,5 @@
 package incarlopsa.com.appincarlopsa;
 
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -68,7 +67,7 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         Publicacion aux = (Publicacion) elementoAModelar;
-        if (aux.getTitulo().equals(ACTUALIZA_FECHA)){ //Actualizar fecha!
+        if (aux.getFechaUltimoUpdate().equals(ACTUALIZA_FECHA)){ //Actualizar fecha!
             consultaSQL = consultaActualizarFecha;
             prepararConsulta(consultaSQL);
             cargarConsulta(aux.getId());
@@ -110,10 +109,10 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
             auxComentario.setIdPublicacion(auxPublicacion.getId());
             ArrayList<DataBaseItem> comentarios = daoComentario.read(auxComentario);
             //3.- Leemos los adjuntos asociados
-            DAOPublicacionAdjunto daoPublicacionAdjunto = new DAOPublicacionAdjunto();
+            BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
             PublicacionAdjunto auxPublicacionAdjunto = new PublicacionAdjunto();
             auxPublicacionAdjunto.setIdPublicacion(auxPublicacion.getId());
-            ArrayList<DataBaseItem> adjuntos = daoPublicacionAdjunto.read(auxPublicacionAdjunto);
+            ArrayList<DataBaseItem> adjuntos = BORRARDAOPublicacionAdjunto.read(auxPublicacionAdjunto);
             //4.- Ensamblaje
             ((Publicacion)publicacion.get(0)).setComentarios(comentarios); //Meterle los comentarios
             ((Publicacion)publicacion.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
@@ -136,10 +135,10 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
         auxComentario.setIdPublicacion(auxPublicacion.getId());
         daoComentario.delete(auxComentario);
         //2.- Despues borrar sus adjuntos
-        DAOPublicacionAdjunto daoPublicacionAdjunto = new DAOPublicacionAdjunto();
+        BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
         PublicacionAdjunto auxPublicacionAdjunto = new PublicacionAdjunto();
         auxPublicacionAdjunto.setIdPublicacion(auxPublicacion.getId());
-        daoPublicacionAdjunto.delete(auxPublicacionAdjunto);
+        BORRARDAOPublicacionAdjunto.delete(auxPublicacionAdjunto);
         //3.- Ahora si, borrar la publicacion
         return super.delete(elementoABorrar);
     }

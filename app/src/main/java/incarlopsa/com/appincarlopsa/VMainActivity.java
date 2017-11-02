@@ -78,12 +78,70 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
 
         Usuario u = factoriaItems.testCREARUsuario();
 
+
+//        Usuario x = new Usuario();
+//        x.setIdUsuario(8);
+
 //      resultados = factoriaItems.testReadGenerico(DAME_TODOS, new DAOUsuario());
 //      tamano = resultados.size();
 
-        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(u,new DAOUsuario());
+//        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(u,new DAOUsuario());
+//        resultados = factoriaItems.testReadGenerico(x, new DAOUsuario());
+//        x = (Usuario)resultados.get(0);
+//        x.setNombre("HOLA");
+//        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(x, new DAOUsuario());
+//        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(x, new DAOUsuario());
 
+//        TipoFichero t = factoriaItems.testCREARTipoFichero();
+//        TipoFichero t = new TipoFichero();
+//        t.setId(4);
+//        resultados = factoriaItems.testReadGenerico(t, new DAOTipoFichero());
+//        t = (TipoFichero)resultados.get(0);
+//        t.setNombre("HOLA");
+//        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(t,new DAOTipoFichero());
+//        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(t,new DAOTipoFichero());
 
+//        Adjunto a = factoriaItems.testCREARAdjunto();
+//        a.setIdTipoFichero(3);
+//        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(a, new DAOAdjunto());
+
+/*        TipoFichero t = new TipoFichero();
+        t.setId(3);
+        resultados = factoriaItems.testReadGenerico(t, new DAOTipoFichero());
+
+        Adjunto a = new Adjunto();
+        a.setId(3);
+        a.setIdTipoFichero(3);
+        a.setTipo((TipoFichero)resultados.get(0));
+
+        resultados = factoriaItems.testReadGenerico(a, new DAOAdjunto());
+
+        Adjunto a2 = (Adjunto)resultados.get(0);
+        a2.setLocalizacion("PAMPLONAAA");
+        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(a2, new DAOAdjunto());
+
+        Adjunto a = new Adjunto();
+        a.setId(5);
+        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(a, new DAOAdjunto());
+*/
+/*        Comentario p = new Comentario();
+        p.setIdPublicacion(2);
+        resultados = factoriaItems.testReadGenerico(p, new DAOComentario());
+
+        p = (Comentario)resultados.get(0);
+        p.setMensaje("Aqui estoy again!");
+        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(p, new DAOComentario());
+*/
+/*
+        Publicacion p = factoriaItems.testCREARPublicacion();
+        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(p , new DAOPublicacion());
+*/
+        Comentario c = new Comentario();
+        c.setId(4);
+        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(c , new DAOComentario());
+
+        System.out.print("QUIETOOOL");
+        System.out.print("QUIETOOOL-2");
         //ToDO
     }
 

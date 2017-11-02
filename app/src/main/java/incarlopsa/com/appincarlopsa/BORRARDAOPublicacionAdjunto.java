@@ -3,17 +3,17 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DAOPublicacionAdjunto extends DAOBase implements IDAO{
+public class BORRARDAOPublicacionAdjunto extends DAOBase implements IDAO{
 
     //Propiedades
-    String consultaLecturaPorId = "SELECT idPublicacionAdjunto,idPublicacion, idAdjunto FROM PublicacionAdjunto WHERE idPublicacion=?";
+    String consultaLecturaPorId = "SELECT idPublicacionAdjunto,idPublicacion, idAdjunto FROM publicacionadjunto WHERE idPublicacion=?";
     String consultaInsercion = "INSERT INTO publicacionadjunto SET idPublicacion = ? , idAdjunto = ?";
-    String consultaUpdate = "UPDATE idPublicacionAdjunto SET idPublicacion = ? , idAdjunto = ? WHERE idPublicacionAdjunto = ?";
+    String consultaUpdate = "UPDATE publicacionadjunto SET idPublicacion = ? , idAdjunto = ? WHERE idPublicacionAdjunto = ?";
     String consultaDelete = "DELETE FROM publicacionadjunto WHERE idPublicacionAdjunto = ?";
 
     //Constructores
 
-    public DAOPublicacionAdjunto() {}
+    public BORRARDAOPublicacionAdjunto() {}
 
     //Metodos
     //LECTURA
@@ -38,7 +38,8 @@ public class DAOPublicacionAdjunto extends DAOBase implements IDAO{
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
         PublicacionAdjunto aux = (PublicacionAdjunto)elementoAModelar;
-        prepararConsulta(consultaInsercion);
+        consultaSQL = consultaInsercion;
+        prepararConsulta(consultaSQL);
         cargarConsulta(aux.getIdPublicacion(),
                         aux.getIdAdjunto());
     }
@@ -49,7 +50,8 @@ public class DAOPublicacionAdjunto extends DAOBase implements IDAO{
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         PublicacionAdjunto aux = (PublicacionAdjunto)elementoAModelar;
-        prepararConsulta(consultaUpdate);
+        consultaSQL = consultaUpdate;
+        prepararConsulta(consultaSQL);
         cargarConsulta(aux.getIdPublicacion(),
                         aux.getIdAdjunto(),
                         aux.getId());
@@ -59,7 +61,8 @@ public class DAOPublicacionAdjunto extends DAOBase implements IDAO{
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         PublicacionAdjunto aux = (PublicacionAdjunto)elementoAModelar;
-        prepararConsulta(consultaDelete);
+        consultaSQL = consultaDelete;
+        prepararConsulta(consultaSQL);
         cargarConsulta(aux.getId());
     }
 
@@ -76,18 +79,21 @@ public class DAOPublicacionAdjunto extends DAOBase implements IDAO{
         tablaValores = super.read(filtro);
 
         //Array para meter todos los adjuntos correspondientes a esa tabla
-        ArrayList<DataBaseItem> resultados;
-        resultados = new ArrayList<>();
+        ArrayList<DataBaseItem> resultados = new ArrayList<>();
 
         //Dao para recoger los adjuntos
         DAOAdjunto dao = new DAOAdjunto();
 
-        //Recorremos la tabla
+        Adjunto temporal;
+        //Recorremos la tabla de publicaciones-adjunto
         for(DataBaseItem aux : tablaValores){
-            resultados.addAll(dao.read(aux));
+            //Crear un template Adjunto con id igual al que contenga AUX
+            temporal = new Adjunto();
+            temporal.setId( ((PublicacionAdjunto)aux).getIdAdjunto());
+            resultados.addAll(dao.read(temporal)); //Recoger el adjunto asociado a ese id
         }
 
-        return resultados;
+        return resultados; //Esto ya devuelve un array de adjuntos!
 
     }
 

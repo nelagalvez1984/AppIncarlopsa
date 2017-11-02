@@ -29,7 +29,8 @@ public class TESTFactoriaItems implements ICodigos {
     //Hilos
     private HiloParaRead hiloParaRead;
     private HiloParaCreate hiloParaCreate;
-    private HiloParaUpdate hiloParaDelete;
+    private HiloParaUpdate hiloParaUpdate;
+    private HiloParaDelete hiloParaDelete;
 
     //Daos
     private DAOAdjunto daoAdjunto;
@@ -38,7 +39,7 @@ public class TESTFactoriaItems implements ICodigos {
     private DAOLikes daoLikes;
     private DAOMensaje daoMensaje;
     private DAOPublicacion daoPublicacion;
-    private DAOPublicacionAdjunto daoPublicacionAdjunto;
+    private BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto;
     private DAOTipoFichero daoTipoFichero;
     private DAOUsuario daoUsuario;
     private ArrayList<Character> listaLetras;
@@ -51,7 +52,7 @@ public class TESTFactoriaItems implements ICodigos {
         daoLikes = new DAOLikes();
         daoMensaje = new DAOMensaje();
         daoPublicacion = new DAOPublicacion();
-        daoPublicacionAdjunto = new DAOPublicacionAdjunto();
+        BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
         daoTipoFichero = new DAOTipoFichero();
         daoUsuario = new DAOUsuario();
         generadorAleatorios = new Random();
@@ -137,10 +138,32 @@ public class TESTFactoriaItems implements ICodigos {
     public Adjunto testCREARAdjunto(){
         adjunto = new Adjunto(null,
                             null,
+                            null,
                             dameCadenaAleatoria(),
                             dameCadenaAleatoria(),
-                            testCREARTipoFichero());
+                            null);
         return adjunto;
+    }
+
+    public Publicacion testCREARPublicacion(){
+        publicacion = new Publicacion(null,
+                1,
+                dameCadenaAleatoria(),
+                null,
+                null,
+                null,
+        null);
+        return publicacion;
+    }
+
+    public Comentario testCREARComentario(){
+        comentario = new Comentario(null,
+                1,
+                1,
+                null,
+                null,
+                dameCadenaAleatoria());
+        return comentario;
     }
 
 
@@ -170,6 +193,29 @@ public class TESTFactoriaItems implements ICodigos {
     }
 
 
+    public Boolean testUpdateGenerico(Object filtro, DAOBase dao){
+        try {
+            hiloParaUpdate = new HiloParaUpdate(dao);
+            retornoTrueFalse = hiloParaUpdate.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return retornoTrueFalse;
+    }
+
+    public Boolean testDeleteGenerico(Object filtro, DAOBase dao){
+        try {
+            hiloParaDelete = new HiloParaDelete(dao);
+            retornoTrueFalse = hiloParaDelete.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return retornoTrueFalse;
+    }
 
 
 
