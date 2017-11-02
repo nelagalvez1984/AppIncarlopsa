@@ -17,7 +17,7 @@ public class VMainActivity extends AppCompatActivity implements IVista{
 
     @Override
     public void inicializarVista() {
-         boton = (Button)findViewById(R.id.btnTest);
+      //   boton = (Button)findViewById(R.id.btnTest);
          boton.setOnClickListener(this);
     }
 
