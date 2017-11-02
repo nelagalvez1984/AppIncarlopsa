@@ -3,6 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class TESTFactoriaItems implements ICodigos {
 
@@ -24,6 +25,11 @@ public class TESTFactoriaItems implements ICodigos {
     private TipoFichero tipoFichero;
     private Topic topic;
     private Usuario usuario;
+
+    //Hilos
+    private HiloParaRead hiloParaRead;
+    private HiloParaCreate hiloParaCreate;
+    private HiloParaUpdate hiloParaDelete;
 
     //Daos
     private DAOAdjunto daoAdjunto;
@@ -151,8 +157,11 @@ public class TESTFactoriaItems implements ICodigos {
 
     public ArrayList<DataBaseItem> testReadUsuario(String filtro){
         try {
-            resultados = daoUsuario.read(filtro);
-        } catch (SQLException e) {
+            hiloParaRead = new HiloParaRead(daoUsuario);
+            resultados = hiloParaRead.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         return resultados;
