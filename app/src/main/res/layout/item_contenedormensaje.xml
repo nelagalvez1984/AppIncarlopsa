@@ -9,28 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/foto"
-            android:layout_width="72dp"
-            android:layout_height="71dp"
-            app:srcCompat="@mipmap/foto"
-            tools:layout_editor_absoluteY="16dp"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded"
-            android:contentDescription="" />
-
         <TextView
             android:id="@+id/userName"
             android:layout_width="94dp"
             android:layout_height="34dp"
-            android:layout_marginLeft="9dp"
             android:layout_marginTop="8dp"
             android:gravity="left|center"
             android:text="Nombre"
-            app:layout_constraintLeft_toRightOf="@+id/foto"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
+            tools:ignore="MissingConstraints,RtlHardcoded"
+            tools:layout_editor_absoluteX="75dp" />
 
         <TextView
             android:id="@+id/fecha"
@@ -52,35 +40,14 @@
             android:layout_height="48dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="Mensaje"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/foto"
             app:layout_constraintTop_toBottomOf="@+id/userName"
             tools:ignore="RtlHardcoded" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <CheckBox
-            android:id="@+id/leido"
-            android:layout_width="107dp"
-            android:layout_height="53dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="120dp"
-            android:text="Leído"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

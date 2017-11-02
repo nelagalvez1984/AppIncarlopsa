@@ -7,12 +7,13 @@
     <item
         android:id="@+id/publicacion"
         android:title="@string/publicacion" />
+
     <item
         android:id="@+id/chat"
         android:title="@string/chat" />
 
     <item
-        android:id="@+id/menu"
-        android:title="@string/menu" />
+        android:id="@+id/desconectar"
+        android:title="@string/desconectar" />
 
 </menu>

@@ -9,4 +9,5 @@
     <string name="publicacion">Publicar</string>
     <string name="chat">Chat</string>
     <string name="menu">Menú</string>
+    <string name="desconectar">Desconectar</string>
 </resources>
