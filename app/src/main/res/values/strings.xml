@@ -6,4 +6,7 @@
     <string name="nombre">Nombre</string>
     <string name="comentario">Comentario</string>
     <string name="fecha_hora">fecha/hora</string>
+    <string name="publicacion">Publicar</string>
+    <string name="chat">Chat</string>
+    <string name="menu">Menú</string>
 </resources>
