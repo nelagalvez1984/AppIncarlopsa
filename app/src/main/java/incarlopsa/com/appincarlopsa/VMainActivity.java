@@ -25,6 +25,7 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
     Button boton8;
     Integer tamano;
     Integer contador = 0;
+    Boolean retornoVerdaderoOFalso = false;
 
     @Override
     public void inicializarVista() {
@@ -45,18 +46,23 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
 
     @Override
     public void onClick(View v) {
-
+/*
+        tamano = resultados.size();
         Usuario temp = (Usuario)resultados.get(contador);
         contador++;
         contador%=tamano;
 
-        boton1.setText(temp.getIdUsuario());
+        //PARA READ
+        boton1.setText(temp.getIdUsuario().toString());
         boton2.setText(temp.getNombre());
         boton3.setText(temp.getApellidos());
         boton4.setText(temp.getDni());
         boton5.setText(temp.getTipoEmpleado());
         boton6.setText(temp.getFoto().toString());
-        boton7.setText(temp.getUsername());
+ */
+        //PARA CREATE
+        boton1.setText(retornoVerdaderoOFalso.toString());
+        //boton7.setText(temp.getUsername());
 
         //ToDO
     }
@@ -68,8 +74,13 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
 
         inicializarVista();
 
-        resultados = factoriaItems.testReadUsuario(DAME_TODOS);
-        tamano = resultados.size();
+        Usuario u = factoriaItems.testCREARUsuario();
+
+//      resultados = factoriaItems.testReadGenerico(DAME_TODOS, new DAOUsuario());
+//      tamano = resultados.size();
+
+        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(u,new DAOUsuario());
+
 
         //ToDO
     }

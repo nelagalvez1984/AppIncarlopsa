@@ -29,7 +29,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 elementoACrear.getApellidos(),
                 elementoACrear.getDni(),
                 elementoACrear.getTipoEmpleado(),
-                elementoACrear.getFoto().getFotoBlob());
+                elementoACrear.getFoto().getFotoBytes());
     }
 
     //LECTURA
@@ -42,6 +42,8 @@ public class DAOUsuario extends DAOBase implements IDAO{
             consultaSQL  = consultaLecturaDameTodos;
             prepararConsulta(consultaSQL);
             cargarConsulta( DAME_TODOS );
+
+
         }else{ //Deberia ser un Usuario
             //Comprobar tipos de peticiones. Para ello revisamos los campos
             Usuario usuarioTemporal = (Usuario)filtro;
@@ -49,16 +51,22 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 consultaSQL = consultaLecturaPorTipoEmpleado;
                 prepararConsulta(consultaSQL);
                 cargarConsulta(usuarioTemporal.getTipoEmpleado());
+
+
             }else{
                 if (usuarioTemporal.getUsername() != null){ //Se esta reclamando el perfil completo
                     consultaSQL = consultaLecturaPorUsername;
                     prepararConsulta(consultaSQL);
                     cargarConsulta(usuarioTemporal.getUsername());
+
+
                 }else{
                     //Resto de casos. Si no se nos ocurren mas casos, es que sera una lectura por ID
                     consultaSQL = consultaLecturaPorId;
                     prepararConsulta(consultaSQL);
                     cargarConsulta(usuarioTemporal.getId());
+
+
                 }
             }
         }
@@ -73,7 +81,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                     resultados.getString(3), //Apellidos
                     resultados.getString(4), //Dni
                     resultados.getString(5), //TipoEmpleado
-                    new Foto(resultados.getBlob(6)), //Foto
+                    new Foto(resultados.getBytes(6)), //Foto
                     resultados.getString(7) ); //Username
         }else{ //sin username
             usuarioAux = new Usuario( resultados.getInt(1), //IdUsuario
@@ -81,7 +89,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                     resultados.getString(3), //Apellidos
                     resultados.getString(4), //Dni
                     resultados.getString(5), //TipoEmpleado
-                    new Foto(resultados.getBlob(6))); //Foto
+                    new Foto(resultados.getBytes(6))); //Foto
         }
         resultadoMultiple.add(usuarioAux); //Foto (blob))
     }
@@ -96,7 +104,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 elementoConQueActualizar.getApellidos(),
                 elementoConQueActualizar.getDni(),
                 elementoConQueActualizar.getTipoEmpleado(),
-                elementoConQueActualizar.getFoto().getFotoBlob(),
+                elementoConQueActualizar.getFoto().getFotoBytes(),
                 idUsuarioOrigen);
     }
 

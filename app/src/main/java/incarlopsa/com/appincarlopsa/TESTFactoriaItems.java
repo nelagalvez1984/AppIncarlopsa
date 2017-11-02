@@ -110,7 +110,8 @@ public class TESTFactoriaItems implements ICodigos {
     //GENERADORES DE OBJETOS CON ALEATORIEDAD
     public Foto testCREARFoto(){
         Foto foto = new Foto();
-        foto.setFotoBytes(dameCadenaAleatoria().getBytes());
+        byte[] cosa =   dameCadenaAleatoria().getBytes();
+        foto.setFotoBytes(cosa);
         return foto;
     }
 
@@ -143,21 +144,10 @@ public class TESTFactoriaItems implements ICodigos {
     }
 
 
-
-    public ArrayList<DataBaseItem> testReadUsuario(Integer filtro){
-        usuario = new Usuario();
-        usuario.setIdUsuario(filtro);
+    public ArrayList<DataBaseItem> testReadGenerico(Object filtro, DAOBase dao){
+        ArrayList<DataBaseItem> resultados = null;
         try {
-            resultados = daoUsuario.read(usuario);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return resultados;
-    }
-
-    public ArrayList<DataBaseItem> testReadUsuario(String filtro){
-        try {
-            hiloParaRead = new HiloParaRead(daoUsuario);
+            hiloParaRead = new HiloParaRead(dao);
             resultados = hiloParaRead.execute(filtro).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -165,27 +155,23 @@ public class TESTFactoriaItems implements ICodigos {
             e.printStackTrace();
         }
         return resultados;
-
     }
 
-    public ArrayList<DataBaseItem> testReadUsuario(Usuario filtro){
-        ArrayList<DataBaseItem> resultados = null;
+    public Boolean testCreateGenerico(Object filtro, DAOBase dao){
         try {
-            resultados = daoUsuario.read(filtro);
-        } catch (SQLException e) {
+            hiloParaCreate = new HiloParaCreate(dao);
+            retornoTrueFalse = hiloParaCreate.execute(filtro).get();
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        return resultados;
-    }
-
-    public Boolean testCreateUsuario(){
-        try {
-            retornoTrueFalse = daoUsuario.create(testCREARUsuario());
-        } catch (SQLException e) {
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         return retornoTrueFalse;
     }
+
+
+
+
 
     public Boolean testCreateUsuario(Usuario u){
         try {
