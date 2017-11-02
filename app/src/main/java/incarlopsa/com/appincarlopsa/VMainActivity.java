@@ -3,12 +3,14 @@ package incarlopsa.com.appincarlopsa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class VMainActivity extends AppCompatActivity implements IVista{
+public class VMainActivity extends AppCompatActivity implements IVista {
 
 
     //Propiedades
@@ -17,8 +19,8 @@ public class VMainActivity extends AppCompatActivity implements IVista{
 
     @Override
     public void inicializarVista() {
-         boton = (Button)findViewById(R.id.btnTest);
-         boton.setOnClickListener(this);
+        boton = (Button) findViewById(R.id.btnTest);
+        boton.setOnClickListener(this);
     }
 
     @Override
@@ -43,4 +45,25 @@ public class VMainActivity extends AppCompatActivity implements IVista{
         //ToDO
     }
 
+    // éste método sirve para crear las opciones del menú
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //
+    @Override
+    public boolean onOptionsItemSelected(MenuItem opcionMenu) {
+        int id = opcionMenu.getItemId();
+
+        if (id == R.id.mensaje) {
+            return true;
+        }
+
+        if (id == R.id.chat) {
+            return true;
+        }
+        return super.onOptionsItemSelected(opcionMenu);
+    }
 }
