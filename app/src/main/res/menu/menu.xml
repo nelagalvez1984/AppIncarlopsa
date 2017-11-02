@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".VMainActivity">
+
+    <item
+        android:id="@+id/mensaje"
+        android:title="Mensaje" />
+
+    <item
+        android:id="@+id/chat"
+        android:title="Chat" />
+
+    <item
+        android:id="@+id/menu"
+        android:title="Menú" />
+
+</menu>
