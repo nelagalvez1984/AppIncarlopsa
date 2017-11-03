@@ -6,10 +6,10 @@ import java.util.Date;
 public class Comentario extends MensajeBase {
 
     //Propiedades
-    private ArrayList<MeAlgo> arrayLikes = null;
+    private ArrayList<DataBaseItem> arrayLikes = null;
 
     //Constructores
-    public Comentario(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje, ArrayList<MeAlgo> arrayLikes) {
+    public Comentario(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje, ArrayList<DataBaseItem> arrayLikes) {
         super(idMensaje, idPublicacion, idUsuario, fecha, hora, mensaje);
         this.arrayLikes = arrayLikes;
     }
@@ -29,12 +29,20 @@ public class Comentario extends MensajeBase {
         return contar("MeDisgusta");
     }
 
-    ArrayList<MeAlgo> getMeGusta(){
+    ArrayList<DataBaseItem> getMeGusta(){
         return recoger("MeGusta");
     }
 
-    ArrayList<MeAlgo> getMeDisgusta(){
+    ArrayList<DataBaseItem> getMeDisgusta(){
         return recoger("MeDisgusta");
+    }
+
+    public ArrayList<DataBaseItem> getArrayLikes() {
+        return arrayLikes;
+    }
+
+    public void setArrayLikes(ArrayList<DataBaseItem> arrayLikes) {
+        this.arrayLikes = arrayLikes;
     }
 
     //Equals y Hash
@@ -62,17 +70,17 @@ public class Comentario extends MensajeBase {
         int cont=0;
         for (int i=0; i<arrayLikes.size();i++)
         {
-            if (arrayLikes.get(i).getTipo().equals(tipo)){
+            if (((MeAlgo)arrayLikes.get(i)).getTipo().equals(tipo)){
                 cont++;
             }
         }
         return cont;
     }
 
-    private ArrayList<MeAlgo> recoger(String tipoAlgo){
-        ArrayList<MeAlgo> meAlgos = new ArrayList<>();
+    private ArrayList<DataBaseItem> recoger(String tipoAlgo){
+        ArrayList<DataBaseItem> meAlgos = new ArrayList<>();
         for (int i=0; i<arrayLikes.size();i++){
-            if (arrayLikes.get(i).getTipo().equals(tipoAlgo)) {
+            if ( ((MeAlgo)arrayLikes.get(i)).getTipo().equals(tipoAlgo)) {
                 meAlgos.add(arrayLikes.get(i));
             }
         }

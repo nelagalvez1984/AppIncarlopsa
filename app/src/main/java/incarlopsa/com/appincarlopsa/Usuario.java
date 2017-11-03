@@ -82,20 +82,16 @@ public class Usuario extends DataBaseItem{
         return foto;
     }
 
-    public void setFoto(Foto foto) {
+    public void setFotoBytes(Foto foto) {
         this.foto = foto;
     }
 
-    public Blob getFotoBlob() {
-        return foto.getFotoBlob();
+    public byte[] getFotoBytes() {
+        return foto.getFotoBytes();
     }
 
     public Bitmap getFotoBMP() {
         return foto.getFotoBMP();
-    }
-
-    public void setFotoBlob(Blob foto) {
-        this.foto.setFotoBlob(foto);
     }
 
     public String getUsername() { return username; }

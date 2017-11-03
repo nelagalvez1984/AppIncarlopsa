@@ -7,9 +7,12 @@ public class DAOLikes extends DAOBase implements IDAO{
 
     //Propiedades
     String consultaLecturaPorId = "SELECT idLike, idUsuario, idComentario, tipoLike FROM likes WHERE idComentario = ?";
+    String consultaVerSiHaVotado = "SELECT idLike, idUsuario, idComentario, tipoLike FROM likes " +
+            "WHERE idComentario = ? AND idUsuario = ?";
     String consultaInsercion = "INSERT INTO likes SET idUsuario = ? , idComentario = ? , tipoLike = ?";
-    String consultaUpdate = "UPDATE likes idUsuario = ? , idComentario = ? , tipoLike = ? WHERE idLike = ?";
-    String consultaDelete = "DELETE FROM likes WHERE idLike = ?";
+    String consultaUpdate = "UPDATE likes SET idUsuario = ? , idComentario = ? , tipoLike = ? WHERE idLike = ?";
+    String consultaDeleteComentarioEntero = "DELETE FROM likes WHERE idComentario = ?";
+    String consultaDeleteSoloLike = "DELETE FROM likes WHERE idLike = ?";
 
     //Constructores
 
@@ -20,9 +23,17 @@ public class DAOLikes extends DAOBase implements IDAO{
     @Override
     protected void prepararRead(Object filtro) throws SQLException {
         MeAlgo aux = (MeAlgo)filtro;
-        consultaSQL = consultaLecturaPorId;
-        prepararConsulta(consultaSQL);
-        cargarConsulta(aux.getIdComentario());
+        if (aux.getIdUsuario() != null && aux.getIdComentario() != null){ //Comprobar si ese usuario ya ha votado el comentario!
+            consultaSQL = consultaVerSiHaVotado;
+            prepararConsulta(consultaSQL);
+            cargarConsulta(aux.getIdComentario(),
+                    aux.getIdUsuario());
+        }else{ //Se trata de recuperar los votos del comentario
+            consultaSQL = consultaLecturaPorId;
+            prepararConsulta(consultaSQL);
+            cargarConsulta(aux.getIdComentario());
+
+        }
     }
 
     @Override
@@ -60,26 +71,56 @@ public class DAOLikes extends DAOBase implements IDAO{
     //ACTUALIZACION
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
-        MeAlgo aux = (MeAlgo)elementoAModelar;
         prepararConsulta(consultaUpdate);
-        cargarConsulta(aux.getIdUsuario(),
-                                    aux.getIdComentario(),
-                                    aux.getTipo(),
-                                    aux.getId());
+        if (elementoAModelar instanceof MeGusta){
+            MeGusta aux = (MeGusta) elementoAModelar;
+            cargarConsulta(aux.getIdUsuario(),
+                    aux.getIdComentario(),
+                    aux.getTipo(),
+                    aux.getId());
+
+        }else{
+            MeDisgusta aux = (MeDisgusta) elementoAModelar;
+            cargarConsulta(aux.getIdUsuario(),
+                    aux.getIdComentario(),
+                    aux.getTipo(),
+                    aux.getId());
+
+        }
     }
 
     //DELETE
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         MeAlgo aux = (MeAlgo)elementoAModelar;
-        prepararConsulta(consultaDelete);
-        cargarConsulta(aux.getId());
+        if (aux.idComentario != null){ //Borrado en cadena por borrado del comentario
+            consultaSQL = consultaDeleteComentarioEntero;
+            prepararConsulta(consultaSQL);
+            cargarConsulta(aux.getIdComentario());
+        }else{ //Solo borrar el Like
+            consultaSQL = consultaDeleteSoloLike;
+            prepararConsulta(consultaSQL);
+            cargarConsulta(aux.getId());
+        }
+
     }
 
     //CONTROL DE CONSULTAS CRUD:
     @Override
     public Boolean create(Object elementoACrear) throws SQLException {
-        return super.create(elementoACrear);
+        Boolean retorno = false;
+        ArrayList<DataBaseItem> resultados;
+        //Comprobar si ya ha dado su voto
+        resultados = read(elementoACrear);
+
+        if (resultados.size()>0){ //Ya habia votado! (de hecho debe ser size=1)
+            retorno = false;
+            System.out.println("No se permite votar dos veces!");
+        }else{ //aun no ha votado, se permite su voto
+            retorno = super.create(elementoACrear);
+        }
+
+        return retorno;
     }
 
     @Override

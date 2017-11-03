@@ -14,9 +14,10 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
     private String consultaInsercion = "INSERT INTO comentario SET idPublicacion = ?, idUsuario = ?, fecha = NOW(), comentario = ?";
     private String consultaLecturaPorId = "SELECT idComentario,idPublicacion, idUsuario, "
                         +"DATE_FORMAT(fecha, '%d/%m/%y') AS fecha1, TIME_FORMAT(fecha, '%H:%i') AS hora1, "
-                        +"comentario FROM comentario WHERE idComentario = ? ORDER BY fecha DESC";
+                        +"comentario FROM comentario WHERE idPublicacion = ? ORDER BY fecha DESC";
     private String consultaUpdate = "UPDATE comentario SET idPublicacion = ?, idUsuario = ?, fecha = NOW(), comentario = ? WHERE idComentario = ?";
-    private String consultaDelete = "DELETE FROM comentario WHERE idComentario = ?";
+    private String consultaDeleteComentario = "DELETE FROM comentario WHERE idComentario = ?";
+    private String consultaDeletePublicacion = "DELETE FROM comentario WHERE idPublicacion = ?";
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -40,7 +41,7 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
         Comentario aux = (Comentario)filtro;
         consultaSQL = consultaLecturaPorId;
         prepararConsulta(consultaSQL);
-        cargarConsulta(aux.getId());
+        cargarConsulta(aux.getIdPublicacion());
     }
 
     //Rellenar el array de resultados con cada resultado
@@ -60,6 +61,7 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         Comentario aux = (Comentario) elementoAModelar;
+        consultaSQL = consultaUpdate;
         prepararConsulta(consultaUpdate);
         cargarConsulta(aux.getIdPublicacion(),
                       aux.getIdUsuario(),
@@ -71,8 +73,16 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         Comentario aux = (Comentario)elementoAModelar;
-        prepararConsulta(consultaDelete);
-        cargarConsulta(aux.getId());
+        if (aux.getId() != null){ //Borrar solo ese comentario
+            consultaSQL = consultaDeleteComentario;
+            prepararConsulta(consultaDeleteComentario);
+            cargarConsulta(aux.getId());
+        }else{ //Borrar la publicacion entera
+            consultaSQL = consultaDeleteComentario;
+            prepararConsulta(consultaDeletePublicacion);
+            cargarConsulta(aux.getId());
+
+        }
     }
 
     //CONTROL DE CONSULTAS CRUD:
@@ -83,7 +93,25 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
 
     @Override
     public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
-        return super.read(filtro);
+        //Se lee los comentarios
+        resultadoMultiple = super.read(filtro);
+
+        //Por cada comentario, se busca sus likes (si tiene)
+        DAOLikes daoLikes = new DAOLikes();
+        for(DataBaseItem comentario:resultadoMultiple){
+            //se crea un "mealgo" (megusta por ejemplo) y se le inyecta el ID del comentario a modo de filtro
+            Comentario auxComentario = (Comentario)comentario;
+            MeGusta auxMeAlgo = new MeGusta();
+            auxMeAlgo.setIdComentario(auxComentario.getId());
+            ArrayList<DataBaseItem> resultadoMeAlgo = daoLikes.read(auxMeAlgo); //Ojo, puede estar vacio!
+            if (resultadoMeAlgo != null){
+                auxComentario.setArrayLikes(resultadoMeAlgo);
+            }else{ //Array vacio!
+                auxComentario.setArrayLikes(new ArrayList<DataBaseItem>());
+            }
+        }
+
+        return resultadoMultiple;
     }
 
     @Override
@@ -92,10 +120,10 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
         //Ahora actualizamos la publicacion con la fecha actual
         Comentario comentarioAux = (Comentario)elementoConQueActualizar;
         DAOPublicacion dao = new DAOPublicacion();
-        Publicacion aux = new Publicacion();
-        aux.setId(comentarioAux.getIdPublicacion());
-        aux.setFechaUltimoUpdate(ACTUALIZA_FECHA); //SE PASA POR ESTE CAMPO MISMAMENTE
-        dao.update(aux);
+        Publicacion auxPublicacion = new Publicacion();
+        auxPublicacion.setId(comentarioAux.getIdPublicacion());
+        auxPublicacion.setFechaUltimoUpdate(ACTUALIZA_FECHA); //SE PASA POR ESTE CAMPO MISMAMENTE
+        dao.update(auxPublicacion);
         return retorno;
     }
 
@@ -104,9 +132,9 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
         //Borrar primero todos los likes asociados
         Comentario comentarioAux = (Comentario)elementoABorrar;
         DAOLikes dao = new DAOLikes();
-        MeAlgo aux = new MeGusta(); //da igual si es megusta o medisgusta para este caso
-        aux.setIdComentario(comentarioAux.getId());
-        dao.delete(aux);
+        MeAlgo auxMeAlgo = new MeGusta(); //da igual si es megusta o medisgusta para este caso
+        auxMeAlgo.setIdComentario(comentarioAux.getId());
+        dao.delete(auxMeAlgo);
         //Y ahora borrar el comentario
         return super.delete(elementoABorrar);
     }

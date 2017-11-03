@@ -5,57 +5,52 @@ import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
-public class Foto {
+public class Foto{
 
     //Para dudas, consultar: https://stackoverflow.com/questions/13854742/byte-array-of-image-into-imageview
     //En caso de duda consultar: https://stackoverflow.com/questions/10513976/how-to-convert-image-into-byte-array-and-byte-array-to-base64-string-in-android
     //Para trabajar con Blobs, mirar: https://docs.oracle.com/javase/7/docs/api/java/sql/Blob.html#setBytes(long,%20byte[])
 
     //Propiedades
-    private Blob foto = null;
+    private byte[] foto = null;
 
     //Constructores
-    public Foto(Blob foto){
+    public Foto(byte[] foto){
         this.foto = foto;
     }
     public Foto(Bitmap fotoBMP){
         setFotoBMP(fotoBMP);
     }
-    public Foto(){}
+    public Foto(){ setFotoEstandar(); }
 
     //Getter / Setter
-    public Blob getFotoBlob() {return foto;}
-
-    public byte[] getFotoBytes(){
-        byte[] retorno = null;
-        try {
-            retorno = foto.getBytes(1,(int)foto.length());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return retorno;
-    }
-
     public Bitmap getFotoBMP(){
-        Bitmap bmp = null;
-        try {
-            bmp = BitmapFactory.decodeByteArray(getFotoBytes(), 0, (int)foto.length());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Bitmap bmp = BitmapFactory.decodeByteArray(foto, 0, (int)foto.length);
         return bmp;
     }
 
+    public byte[] getFotoBytes(){return foto;}
 
-    public void setFotoBytes(byte[] foto){
+    public void setFotoEstandar(){
+        File resume = new File("@drawable\foto_usuario_estandar,png");
+        byte[] fileContent = new byte[(int) resume.length()];
         try {
-            this.foto.setBytes(1L, foto);
-        } catch (SQLException e) {
+            FileInputStream fileInputStream = new FileInputStream(resume);
+
+            fileInputStream.read(fileContent);
+            fileInputStream.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setFotoBytes(byte[] foto){
+        this.foto = foto;
     }
 
     public void setFotoBMP(Bitmap fotoBMP){
@@ -63,8 +58,5 @@ public class Foto {
         fotoBMP.compress(Bitmap.CompressFormat.JPEG, 100 , baos);
         setFotoBytes(baos.toByteArray());
     }
-
-    public void setFotoBlob(Blob foto) {this.foto = foto;}
-
 
 }

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class DAOUsuario extends DAOBase implements IDAO{
 
     //Propiedades
-    private String consultaInsercion = "INSERT INTO usuario SET nombre = ? "
-                                + " , apellidos = ?, dni = ?, tipoEmpleado = ?, foto = ?";
+    private String consultaInsercion = "INSERT INTO usuario SET nombre = ?, "
+                                + "apellidos = ?, dni = ?, tipoEmpleado = ?, foto = ?, userName = ?";
     private String consultaLecturaDameTodos = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
             + "FROM usuario";
     private String consultaLecturaPorId = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
@@ -24,12 +24,15 @@ public class DAOUsuario extends DAOBase implements IDAO{
     //Preparar una consulta de create y cargar sus parametros
     protected void prepararCreate(Object elementoAModelar) throws SQLException{
         Usuario elementoACrear = (Usuario)elementoAModelar;
-        prepararConsulta(consultaInsercion);
+        consultaSQL = consultaInsercion;
+        prepararConsulta(consultaSQL);
         cargarConsulta( elementoACrear.getNombre(),
                 elementoACrear.getApellidos(),
                 elementoACrear.getDni(),
                 elementoACrear.getTipoEmpleado(),
-                elementoACrear.getFoto().getFotoBlob());
+                elementoACrear.getFoto().getFotoBytes(),
+                elementoACrear.getUsername()
+        );
     }
 
     //LECTURA
@@ -41,7 +44,9 @@ public class DAOUsuario extends DAOBase implements IDAO{
         if (filtro instanceof String){ //DamelosTodos!
             consultaSQL  = consultaLecturaDameTodos;
             prepararConsulta(consultaSQL);
-            cargarConsulta( DAME_TODOS );
+            // No se hace ---> cargarConsulta( DAME_TODOS ); <--- Porque no hay nada que cargar
+
+
         }else{ //Deberia ser un Usuario
             //Comprobar tipos de peticiones. Para ello revisamos los campos
             Usuario usuarioTemporal = (Usuario)filtro;
@@ -49,16 +54,22 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 consultaSQL = consultaLecturaPorTipoEmpleado;
                 prepararConsulta(consultaSQL);
                 cargarConsulta(usuarioTemporal.getTipoEmpleado());
+
+
             }else{
                 if (usuarioTemporal.getUsername() != null){ //Se esta reclamando el perfil completo
                     consultaSQL = consultaLecturaPorUsername;
                     prepararConsulta(consultaSQL);
                     cargarConsulta(usuarioTemporal.getUsername());
+
+
                 }else{
                     //Resto de casos. Si no se nos ocurren mas casos, es que sera una lectura por ID
                     consultaSQL = consultaLecturaPorId;
                     prepararConsulta(consultaSQL);
                     cargarConsulta(usuarioTemporal.getId());
+
+
                 }
             }
         }
@@ -73,7 +84,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                     resultados.getString(3), //Apellidos
                     resultados.getString(4), //Dni
                     resultados.getString(5), //TipoEmpleado
-                    new Foto(resultados.getBlob(6)), //Foto
+                    new Foto(resultados.getBytes(6)), //Foto
                     resultados.getString(7) ); //Username
         }else{ //sin username
             usuarioAux = new Usuario( resultados.getInt(1), //IdUsuario
@@ -81,7 +92,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                     resultados.getString(3), //Apellidos
                     resultados.getString(4), //Dni
                     resultados.getString(5), //TipoEmpleado
-                    new Foto(resultados.getBlob(6))); //Foto
+                    new Foto(resultados.getBytes(6))); //Foto
         }
         resultadoMultiple.add(usuarioAux); //Foto (blob))
     }
@@ -96,7 +107,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 elementoConQueActualizar.getApellidos(),
                 elementoConQueActualizar.getDni(),
                 elementoConQueActualizar.getTipoEmpleado(),
-                elementoConQueActualizar.getFoto().getFotoBlob(),
+                elementoConQueActualizar.getFoto().getFotoBytes(),
                 idUsuarioOrigen);
     }
 
