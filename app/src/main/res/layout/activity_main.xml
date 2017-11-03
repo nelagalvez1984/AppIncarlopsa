@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context="incarlopsa.com.appincarlopsa.VMainActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <Button
         android:id="@+id/btnTest1"
         android:layout_width="wrap_content"
@@ -19,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"/>
+        app:layout_constraintVertical_bias="0.131" />
 
     <Button
         android:id="@+id/btnTest2"
@@ -34,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248"/>
+        app:layout_constraintVertical_bias="0.248" />
 
     <Button
         android:id="@+id/btnTest3"
@@ -49,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355"/>
+        app:layout_constraintVertical_bias="0.355" />
 
     <Button
         android:id="@+id/btnTest4"
@@ -64,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478"/>
+        app:layout_constraintVertical_bias="0.478" />
 
     <Button
         android:id="@+id/btnTest5"
@@ -79,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.601"/>
+        app:layout_constraintVertical_bias="0.601" />
 
     <Button
         android:id="@+id/btnTest6"
@@ -94,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727"/>
+        app:layout_constraintVertical_bias="0.727" />
 
     <Button
         android:id="@+id/btnTest7"
@@ -109,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852"/>
+        app:layout_constraintVertical_bias="0.852" />
 
     <Button
         android:id="@+id/btnTest8"
@@ -124,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982"/>
+        app:layout_constraintVertical_bias="0.982" />
 
     <TextView
         android:id="@+id/TESTlblNumElementos"
@@ -140,7 +144,7 @@
         app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"/>
+        app:layout_constraintVertical_bias="0.017" />
 
     <TextView
         android:id="@+id/TESTnumElementos"
@@ -156,6 +160,6 @@
         app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085"/>
+        app:layout_constraintVertical_bias="0.085" />
 
 </android.support.constraint.ConstraintLayout>

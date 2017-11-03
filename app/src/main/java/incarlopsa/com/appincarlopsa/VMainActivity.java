@@ -7,11 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
 
-public class VMainActivity extends AppCompatActivity implements IVista, ICodigos{
+public class VMainActivity extends AppCompatActivity implements IVista, ICodigos {
+
+    // propiedad para la barra de herramientas
+    // propiedad para la barra de herramientas
+    private Toolbar toolbar;
 
     //Propiedades
     SingleCredenciales credenciales = SingleCredenciales.getInstance();
@@ -29,20 +34,21 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
     Integer contador = 0;
     Boolean retornoVerdaderoOFalso = false;
 
+
     @Override
     public void inicializarVista() {
         credenciales.setLogin(USUARIO_TEST_NORMAL);
         credenciales.setPassword(PASSWORD_TEST_NORMAL);
-        boton1 = (Button)findViewById(R.id.btnTest1);
-        boton2 = (Button)findViewById(R.id.btnTest2);
-        boton3 = (Button)findViewById(R.id.btnTest3);
-        boton4 = (Button)findViewById(R.id.btnTest4);
-        boton5 = (Button)findViewById(R.id.btnTest5);
-        boton6 = (Button)findViewById(R.id.btnTest6);
-        boton7 = (Button)findViewById(R.id.btnTest7);
-        boton8 = (Button)findViewById(R.id.btnTest8);
+        boton1 = (Button) findViewById(R.id.btnTest1);
+        boton2 = (Button) findViewById(R.id.btnTest2);
+        boton3 = (Button) findViewById(R.id.btnTest3);
+        boton4 = (Button) findViewById(R.id.btnTest4);
+        boton5 = (Button) findViewById(R.id.btnTest5);
+        boton6 = (Button) findViewById(R.id.btnTest6);
+        boton7 = (Button) findViewById(R.id.btnTest7);
+        boton8 = (Button) findViewById(R.id.btnTest8);
 
-         boton8.setOnClickListener(this);
+        boton8.setOnClickListener(this);
 
     }
 
@@ -52,7 +58,7 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
         tamano = resultados.size();
         Usuario temp = (Usuario)resultados.get(contador);
         contador++;
-        contador%=tamano;
+        contador %= tamano;
 
         //PARA READ
         boton1.setText(temp.getIdUsuario().toString());
@@ -74,6 +80,9 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // llamamos al toolbar creado
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         inicializarVista();
 
         Usuario u = factoriaItems.testCREARUsuario();
@@ -181,6 +190,10 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
         //ToDO
     }
 
+    private void setSupportActionBar(Toolbar toolbar) {
+    }
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //ToDO
@@ -207,4 +220,5 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
         }
         return super.onOptionsItemSelected(opcionMenu);
     }
+
 }
