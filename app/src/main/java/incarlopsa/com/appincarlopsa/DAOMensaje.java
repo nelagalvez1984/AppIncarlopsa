@@ -7,12 +7,13 @@ public class DAOMensaje extends DAOBase implements IDAO {
 
     //Propiedades
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO mensaje SET idUsuario = ?, mensaje = ?,fecha = NOW(),leidoPorDestino = ?";
+    private String consultaInsercion = "INSERT INTO mensaje SET idChat = ?, idUsuario = ?, mensaje = ?,fecha = NOW(), leidoPorDestino = ?";
     private String consultaLecturaPorId = "SELECT idMensaje, idChat, idUsuario, mensaje, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(fecha, '%d/%m/%y') AS fechaupdate, " +
             "leidoPorDestino FROM mensaje WHERE idChat = ? ORDER BY fecha DESC";
     private String consultaUpdate = "UPDATE mensaje SET idChat = ?, idUsuario = ?, mensaje = ?, leidoPorDestino = ? WHERE idMensaje = ?";
-    private String consultaDelete = "DELETE FROM mensaje WHERE idMensaje = ?";
+    private String consultaDeleteChat = "DELETE FROM mensaje WHERE idChat = ?";
+    private String consultaDeleteMensaje = "DELETE FROM mensaje WHERE idMensaje = ?";
 
     //Constructor
     public DAOMensaje() { }
@@ -22,8 +23,10 @@ public class DAOMensaje extends DAOBase implements IDAO {
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
         Mensaje aux = (Mensaje) elementoAModelar;
-        prepararConsulta(consultaInsercion);
-        cargarConsulta(aux.getIdUsuario(),
+        consultaSQL = consultaInsercion;
+        prepararConsulta(consultaSQL);
+        cargarConsulta(aux.getIdPublicacion(),
+                aux.getIdUsuario(),
                 aux.getMensaje(),
                 false);
     }
@@ -70,16 +73,37 @@ public class DAOMensaje extends DAOBase implements IDAO {
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         Mensaje aux = (Mensaje)elementoAModelar;
-        prepararConsulta(consultaDelete);
-        cargarConsulta(aux.getId());
+        if (aux.getId() != null){ //Borrado de un unico mensaje
+            prepararConsulta(consultaDeleteMensaje);
+            cargarConsulta(aux.getId());
+        }else{ //Borrado del chat entero
+            prepararConsulta(consultaDeleteChat);
+            cargarConsulta(aux.getIdPublicacion());
+
+        }
     }
 
     //CONTROL DE CONSULTAS CRUD:
     @Override
     public Boolean create(Object elementoACrear) throws SQLException {
-        //Actualizar la fecha de su chat
+        //Crear el mensaje
+        Boolean retorno = super.create(elementoACrear);
 
-        return super.create(elementoACrear);
+        actualizarFechaChatPadre(elementoACrear);
+
+        //Ahora crear el mensaje
+        return retorno;
+    }
+
+    private void actualizarFechaChatPadre(Object elemento){
+        //Actualizar la fecha de su chat
+        Mensaje auxMensaje = (Mensaje)elemento;
+        Chat chatAux = new Chat();
+        chatAux.setId(auxMensaje.getIdPublicacion());
+        chatAux.setFechaUltimoUpdate(ACTUALIZA_FECHA);
+        DAOChat dao = new DAOChat();
+        Boolean todoOk = dao.update(chatAux);
+        Boolean borrar;
     }
 
     @Override
@@ -104,11 +128,20 @@ public class DAOMensaje extends DAOBase implements IDAO {
 
     @Override
     public Boolean update(Object elementoConQueActualizar) {
-        return super.update(elementoConQueActualizar);
+        //Primero actualizar el item
+        Boolean retorno = super.update(elementoConQueActualizar);
+
+        //Despues modificar la fecha de update del chat padre
+        actualizarFechaChatPadre(elementoConQueActualizar);
+
+        return retorno;
     }
 
     @Override
     public Boolean delete(Object elementoABorrar) {
+        //Si se va a borrar un unico mensaje, actualizar la publicacion
+
+
         return super.delete(elementoABorrar);
     }
 }

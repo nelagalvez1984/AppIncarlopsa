@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/foto"
-            android:layout_width="64"
-            android:layout_height="64"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginLeft="16dp"
             android:contentDescription=""
             app:layout_constraintLeft_toLeftOf="parent"
@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/userName"
-            android:layout_width="128"
+            android:layout_width="128dp"
             android:layout_height="34dp"
             android:layout_marginLeft="9dp"
             android:layout_marginTop="8dp"
@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/fecha"
-            android:layout_width="64"
+            android:layout_width="64dp"
             android:layout_height="34dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
@@ -82,7 +82,7 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/nomegusta"
+            app:srcCompat="@drawable/foto_usuario_estandar"
             tools:layout_editor_absoluteX="180dp"
             tools:layout_editor_absoluteY="108dp" />
 
@@ -90,7 +90,7 @@
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/megusta"
+            app:srcCompat="@drawable/foto_usuario_estandar"
             tools:layout_editor_absoluteX="133dp"
             tools:layout_editor_absoluteY="108dp" />
 

@@ -9,12 +9,12 @@ public class Mensaje extends MensajeBase {
 
     //Constructor
     public Mensaje(Integer idMensaje, Integer idChat, Integer idUsuario, String mensaje, String fechaCreacion, String horaCreacion, Boolean leidoPorDestino) {
-        super(idMensaje, idChat, idUsuario, mensaje, fechaCreacion, horaCreacion);
+        super(idMensaje, idChat, idUsuario, fechaCreacion, horaCreacion, mensaje);
         this.leidoPorDestino = leidoPorDestino;
     }
 
     public Mensaje(Integer idMensaje, Integer idChat, Integer idUsuario, String mensaje, String fechaCreacion, String horaCreacion) {
-        super(idMensaje, idChat, idUsuario, mensaje, fechaCreacion, horaCreacion);
+        super(idMensaje, idChat, idUsuario, fechaCreacion, horaCreacion, mensaje);
         this.leidoPorDestino = false;
     }
 

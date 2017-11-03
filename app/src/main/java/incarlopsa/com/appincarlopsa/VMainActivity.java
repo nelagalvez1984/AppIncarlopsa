@@ -79,14 +79,14 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/*
         // llamamos al toolbar creado
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         inicializarVista();
 
         Usuario u = factoriaItems.testCREARUsuario();
-
+*/
 
 //        Usuario x = new Usuario();
 //        x.setIdUsuario(8);
@@ -175,16 +175,50 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
 
         SingleCredenciales singleCredenciales = SingleCredenciales.getInstance();
         singleCredenciales.setIdUsuario(2);
+        singleCredenciales.setLogin(USUARIO_TEST_NORMAL);
+        singleCredenciales.setPassword(PASSWORD_TEST_NORMAL);
+/*
 /*
         resultados = factoriaItems.testReadGenerico(DAME_LOS_TOPIC_HACIA_MI, new DAOChat());
-
+*/
+/*
         Chat c = new Chat();
-        c.setIdUsuario(2);
+        c.setIdUsuario(singleCredenciales.getIdUsuario()); // 2
         c.setIdUsuarioDestino(1);
         c.setTitulo("PERICOOOO, cushame!");
+
+        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(c,new DAOChat());
+*//*
+
+        Mensaje m = new Mensaje();
+        m.setIdPublicacion(5);
+        m.setIdUsuario(3);
+        m.setMensaje("Aqui venimoooooos 2");
+
+        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(m , new DAOMensaje());
+*/
+/*
+        Mensaje m = new Mensaje();
+        m.setIdPublicacion(5);
+        m.setId(7);
+        m.setMensaje("Ya no wapi");
+        m.setIdUsuario(4);
+        m.setLeidoPorDestino(false);
+
+        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(m, new DAOMensaje());
 */
 
+        Chat c = new Chat();
+        c.setId(5);
+        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(c , new DAOChat());
 
+/*
+        resultados = factoriaItems.testReadGenerico(c , new DAOChat());
+
+        c = (Chat)resultados.get(0);
+        c.setTitulo("Lo he cambiado!");
+        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(c, new DAOChat());
+*/
         System.out.print("QUIETOOOL");
         System.out.print("QUIETOOOL-2");
         //ToDO
