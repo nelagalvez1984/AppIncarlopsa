@@ -44,7 +44,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
         if (filtro instanceof String){ //DamelosTodos!
             consultaSQL  = consultaLecturaDameTodos;
             prepararConsulta(consultaSQL);
-            cargarConsulta( DAME_TODOS );
+            // No se hace ---> cargarConsulta( DAME_TODOS ); <--- Porque no hay nada que cargar
 
 
         }else{ //Deberia ser un Usuario

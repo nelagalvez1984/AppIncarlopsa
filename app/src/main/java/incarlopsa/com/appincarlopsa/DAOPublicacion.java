@@ -9,14 +9,14 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO publicacion SET idUsuario = ?, titulo = ?, fecha = NOW(), ultimoUpdate = NOW()";
     private String consultaLecturaPorId = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
-            "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, TIME_FORMAT(ultimoUpdate, '%d/%m/%y'') AS fechaupdate " +
-            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate WHERE idPublicacion = ?";
+            "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion WHERE idPublicacion = ?";
     private String consultaUpdate = "UPDATE publicacion SET idUsuario = ?, titulo = ?, ultimoUpdate = NOW() WHERE idPublicacion = ?";
     private String consultaActualizarFecha = "UPDATE publicacion SET ultimoUpdate = NOW() WHERE idPublicacion = ?";
     private String consultaDelete = "DELETE FROM publicacion WHERE idPublicacion = ?";
     private String consultaTopics = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
-            "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, TIME_FORMAT(ultimoUpdate, '%d/%m/%y'') AS fechaupdate " +
-            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate ORDER BY ultimoUpdate DESC";
+            "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion ORDER BY ultimoUpdate DESC";
 
     //Constructor
     public DAOPublicacion() {}
@@ -36,13 +36,13 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     // (por que campo se tirara para determinar la consulta concreta)
     @Override
     protected void prepararRead(Object filtro) throws SQLException {
-        Publicacion aux = (Publicacion)filtro;
-        if (aux.getTitulo().equals(DAME_LOS_TOPIC)){ //Se recogen TODAS las publicaciones
-            //pero solo las cabeceras
+        if (filtro instanceof String){ //Se recogen TODAS las publicaciones(DAME_LOS_TOPIC)
+                                       //pero solo las cabeceras
             consultaSQL = consultaTopics;
             prepararConsulta(consultaSQL);
-            cargarConsulta();
+            // No se hace --->   cargarConsulta();   <--- Porque NO hay nada que cargar
         }else{
+            Publicacion aux = (Publicacion)filtro;
             consultaSQL = consultaLecturaPorId;
             prepararConsulta(consultaSQL);
             cargarConsulta(aux.getId());
@@ -95,30 +95,37 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
 
     @Override
     public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
-        Publicacion auxPublicacion = (Publicacion)filtro;
-        ArrayList<DataBaseItem> publicacion = null;
-        if (auxPublicacion.getTitulo().equals(DAME_LOS_TOPIC)){ //Solo se devuelve las cabeceras,
-                                                                // sin comentarios ni adjuntos
-            publicacion = super.read(filtro);
+        Publicacion auxPublicacion;
+        if (filtro instanceof String){ //Solo se devuelve las cabeceras, (DAME_LOS_TOPIC)
+            // sin comentarios ni adjuntos
+            resultadoMultiple = super.read(filtro);
         }else{
+            auxPublicacion = (Publicacion)filtro;
+            ArrayList<DataBaseItem> publicacion = null;
             //1.- Leemos la publicacion
-            publicacion = super.read(filtro);
-            //2.- Leemos los comentarios asociados
-            DAOComentario daoComentario = new DAOComentario();
-            Comentario auxComentario = new Comentario();
-            auxComentario.setIdPublicacion(auxPublicacion.getId());
-            ArrayList<DataBaseItem> comentarios = daoComentario.read(auxComentario);
-            //3.- Leemos los adjuntos asociados
-            BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
-            PublicacionAdjunto auxPublicacionAdjunto = new PublicacionAdjunto();
-            auxPublicacionAdjunto.setIdPublicacion(auxPublicacion.getId());
-            ArrayList<DataBaseItem> adjuntos = BORRARDAOPublicacionAdjunto.read(auxPublicacionAdjunto);
-            //4.- Ensamblaje
-            ((Publicacion)publicacion.get(0)).setComentarios(comentarios); //Meterle los comentarios
-            ((Publicacion)publicacion.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
+            resultadoMultiple = super.read(filtro);
+            if (resultadoMultiple.size()>0){
+                //2.- Leemos los comentarios asociados
+                DAOComentario daoComentario = new DAOComentario();
+                Comentario auxComentario = new Comentario();
+                auxComentario.setIdPublicacion(auxPublicacion.getId());
+                ArrayList<DataBaseItem> comentarios = new ArrayList<>();
+                comentarios.addAll(daoComentario.read(auxComentario));
+
+                //3.- Leemos los adjuntos asociados
+                DAOAdjunto daoAdjunto = new DAOAdjunto();
+                Adjunto auxAdjunto = new Adjunto();
+                auxAdjunto.setIdPublicacion(auxPublicacion.getId());
+                ArrayList<DataBaseItem> adjuntos = new ArrayList<>();
+                adjuntos.addAll(daoAdjunto.read(auxAdjunto));
+
+                //4.- Ensamblaje
+                ((Publicacion)publicacion.get(0)).setComentarios(comentarios); //Meterle los comentarios
+                ((Publicacion)publicacion.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
+            }
         }
         //5.- Devolver la publicacion o LOS topic
-        return publicacion;
+        return resultadoMultiple;
     }
 
     @Override
@@ -129,17 +136,38 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     @Override
     public Boolean delete(Object elementoABorrar) {
         Publicacion auxPublicacion = (Publicacion)elementoABorrar;
+        Integer idPublicacion = auxPublicacion.getId();
         //1.- Borrar primero sus comentarios
-        DAOComentario daoComentario = new DAOComentario();
-        Comentario auxComentario = new Comentario();
-        auxComentario.setIdPublicacion(auxPublicacion.getId());
-        daoComentario.delete(auxComentario);
-        //2.- Despues borrar sus adjuntos
-        BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
-        PublicacionAdjunto auxPublicacionAdjunto = new PublicacionAdjunto();
-        auxPublicacionAdjunto.setIdPublicacion(auxPublicacion.getId());
-        BORRARDAOPublicacionAdjunto.delete(auxPublicacionAdjunto);
+        borradoEnCascada(new DAOComentario(), new Comentario(), idPublicacion);
+        //2.- Borrar sus adjuntos
+        borradoEnCascada(new DAOAdjunto(), new Adjunto(), idPublicacion);
         //3.- Ahora si, borrar la publicacion
         return super.delete(elementoABorrar);
     }
+
+    private void borradoEnCascada(DAOBase dao, DataBaseItem item, Integer idPublicacion){
+
+        ArrayList<DataBaseItem> resultadosCascada = new ArrayList<>();
+
+        //Fijar el ID de la publicacion
+        if (item instanceof Comentario) { // Es un Comentario
+            ((Comentario) item).setIdPublicacion(idPublicacion);
+        }else { // Es un Adjunto
+            ((Adjunto) item).setIdPublicacion(idPublicacion);
+        }
+
+        //Leer todos los items con esa idPublicacion
+        try {
+            resultadosCascada = dao.read(item);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Borrarlos uno a uno
+        for(DataBaseItem a : resultadosCascada){
+            dao.delete(a);
+        }
+
+    }
+
 }

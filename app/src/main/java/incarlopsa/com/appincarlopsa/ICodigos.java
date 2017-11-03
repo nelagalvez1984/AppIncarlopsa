@@ -20,7 +20,9 @@ public interface ICodigos extends ICodigosAntonio,
     //Codigos para consultas
     String DAME_TODOS = "DAME_TODOS";
     String ACTUALIZA_FECHA = "ACTUALIZA_FECHA";
-    String DAME_LOS_TOPIC = "DAME_LOS_TOPIC";
+    String DAME_LOS_TOPIC = "DAME_LOS_TOPIC";  //ESTE ES PARA PUBLICACIONES
+    String DAME_LOS_TOPIC_DESDE_MI= "DAME_LOS_TOPIC_DESDE_MI";
+    String DAME_LOS_TOPIC_HACIA_MI = "DAME_LOS_TOPIC_HACIA_MI";
 
     //Codigos para conexion a la BBDD
     String SERVIDOR_BBDD = "192.168.0.101";

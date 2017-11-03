@@ -136,9 +136,45 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
         Publicacion p = factoriaItems.testCREARPublicacion();
         retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(p , new DAOPublicacion());
 */
+/*
         Comentario c = new Comentario();
         c.setId(4);
         retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(c , new DAOComentario());
+*/
+
+/*        MeGusta m = new MeGusta();
+        m.setIdUsuario(3);
+        m.setIdComentario(3);
+        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(m , new DAOLikes());
+*/
+/*
+        Publicacion p = new Publicacion();
+        p.setId(2);
+        resultados = factoriaItems.testReadGenerico(p , new DAOPublicacion());
+        p = (Publicacion)resultados.get(0);
+        p.setTitulo("HOLAAAAA");
+        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(p, new DAOPublicacion());
+*/
+/*
+        Publicacion p = new Publicacion();
+        p.setId(6);
+        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(p, new DAOPublicacion());
+*/
+/*
+        resultados = factoriaItems.testReadGenerico(DAME_LOS_TOPIC , new DAOPublicacion());
+        */
+
+        SingleCredenciales singleCredenciales = SingleCredenciales.getInstance();
+        singleCredenciales.setIdUsuario(2);
+/*
+        resultados = factoriaItems.testReadGenerico(DAME_LOS_TOPIC_HACIA_MI, new DAOChat());
+
+        Chat c = new Chat();
+        c.setIdUsuario(2);
+        c.setIdUsuarioDestino(1);
+        c.setTitulo("PERICOOOO, cushame!");
+*/
+
 
         System.out.print("QUIETOOOL");
         System.out.print("QUIETOOOL-2");
