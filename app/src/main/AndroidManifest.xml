@@ -17,6 +17,11 @@
         </activity>
         <activity android:name=".VLogin"></activity>
         <activity android:name=".VPruebaNOTocar"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="TEST Settings"
+            android:parentActivityName=".VMainActivity">
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
