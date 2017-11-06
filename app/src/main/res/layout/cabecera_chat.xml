@@ -10,67 +10,94 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/FechaCreacion"
-            android:layout_width="64dp"
-            android:layout_height="34dp"
-            android:layout_marginLeft="136dp"
-            android:layout_marginTop="96dp"
+            android:id="@+id/FechaCreacionChat"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginEnd="8dp"
             android:gravity="left|center"
             android:text="@string/fecha_hora"
-            app:layout_constraintLeft_toRightOf="@+id/Titulo"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintStart_toEndOf="@+id/UltimaModificacionChat"
+            app:layout_constraintTop_toBottomOf="@+id/FechaChat"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/Titulo"
-            android:layout_width="128dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/tituloChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:gravity="left|center"
-            android:text="@string/nombre"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="titulo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CreadoChat"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/FechaChat"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="left|center"
+            android:text="@string/fecha_hora"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteX="16dp" />
+            tools:layout_editor_absoluteY="21dp" />
 
         <TextView
-            android:id="@+id/Fecha"
-            android:layout_width="64dp"
-            android:layout_height="34dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="136dp"
-            android:gravity="left|center"
-            android:text="@string/fecha_hora"
-            app:layout_constraintBottom_toTopOf="@+id/FechaCreacion"
-            app:layout_constraintLeft_toRightOf="@+id/Titulo"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
-
-        <TextView
-            android:id="@+id/Autor"
-            android:layout_width="51dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="28dp"
-            android:text="idautor"
-            app:layout_constraintBottom_toTopOf="@+id/Fecha"
+            android:id="@+id/autorChat"
+            android:layout_width="55dp"
+            android:layout_height="16dp"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="16dp"
+            android:text="idAutor"
+            app:layout_constraintBottom_toTopOf="@+id/FechaCreacionChat"
             app:layout_constraintEnd_toEndOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="85dp"
-            android:layout_height="31dp"
+        <TextView
+            android:id="@+id/idAutorChat"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginBottom="48dp"
             android:layout_marginEnd="8dp"
-            android:text="responder"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            tools:layout_editor_absoluteY="107dp" />
+            android:text="id"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/autorChat"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toEndOf="@+id/tituloChat" />
 
+        <TextView
+            android:id="@+id/CreadoChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Creado :"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/FechaChat"
+            app:layout_constraintHorizontal_bias="0.558"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/UltimaModificacionChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
+            android:text="Ultima modificacion :"
+            app:layout_constraintEnd_toStartOf="@+id/FechaChat"
+            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
