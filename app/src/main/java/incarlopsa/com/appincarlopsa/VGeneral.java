@@ -118,8 +118,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     @Override
     public void onClick(View v) {
         //Al hacer click en el fondo, sacar el menu
@@ -132,144 +130,25 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     }
 
-    private void tests(){
-        /*
-        // llamamos al toolbar creado
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        inicializarVista();
 
-        Usuario u = factoriaItems.testCREARUsuario();
-*/
 
-//        Usuario x = new Usuario();
-//        x.setIdUsuario(8);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-//      resultados = factoriaItems.testReadGenerico(DAME_TODOS, new DAOUsuario());
-//      tamano = resultados.size();
+        reyclerViewUser = (RecyclerView) findViewById(R.id.reyclerViewUser);
 
-//        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(u,new DAOUsuario());
-//        resultados = factoriaItems.testReadGenerico(x, new DAOUsuario());
-//        x = (Usuario)resultados.get(0);
-//        x.setNombre("HOLA");
-//        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(x, new DAOUsuario());
-//        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(x, new DAOUsuario());
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        reyclerViewUser.setHasFixedSize(true);
 
-//        TipoFichero t = factoriaItems.testCREARTipoFichero();
-//        TipoFichero t = new TipoFichero();
-//        t.setId(4);
-//        resultados = factoriaItems.testReadGenerico(t, new DAOTipoFichero());
-//        t = (TipoFichero)resultados.get(0);
-//        t.setNombre("HOLA");
-//        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(t,new DAOTipoFichero());
-//        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(t,new DAOTipoFichero());
+        // use a linear layout manager
+        reyclerViewUser.setLayoutManager(new LinearLayoutManager(this));
 
-//        Adjunto a = factoriaItems.testCREARAdjunto();
-//        a.setIdTipoFichero(3);
-//        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(a, new DAOAdjunto());
+        // specify an adapter with the list to show
+        mAdapter = new UserAdapter(getData());
+        reyclerViewUser.setAdapter(mAdapter);
 
-/*        TipoFichero t = new TipoFichero();
-        t.setId(3);
-        resultados = factoriaItems.testReadGenerico(t, new DAOTipoFichero());
-
-        Adjunto a = new Adjunto();
-        a.setId(3);
-        a.setIdTipoFichero(3);
-        a.setTipo((TipoFichero)resultados.get(0));
-
-        resultados = factoriaItems.testReadGenerico(a, new DAOAdjunto());
-
-        Adjunto a2 = (Adjunto)resultados.get(0);
-        a2.setLocalizacion("PAMPLONAAA");
-        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(a2, new DAOAdjunto());
-
-        Adjunto a = new Adjunto();
-        a.setId(5);
-        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(a, new DAOAdjunto());
-*/
-/*        Comentario p = new Comentario();
-        p.setIdPublicacion(2);
-        resultados = factoriaItems.testReadGenerico(p, new DAOComentario());
-
-        p = (Comentario)resultados.get(0);
-        p.setMensaje("Aqui estoy again!");
-        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(p, new DAOComentario());
-*/
-/*
-        Publicacion p = factoriaItems.testCREARPublicacion();
-        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(p , new DAOPublicacion());
-*/
-/*
-        Comentario c = new Comentario();
-        c.setId(4);
-        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(c , new DAOComentario());
-*/
-
-/*        MeGusta m = new MeGusta();
-        m.setIdUsuario(3);
-        m.setIdComentario(3);
-        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(m , new DAOLikes());
-*/
-/*
-        Publicacion p = new Publicacion();
-        p.setId(2);
-        resultados = factoriaItems.testReadGenerico(p , new DAOPublicacion());
-        p = (Publicacion)resultados.get(0);
-        p.setTitulo("HOLAAAAA");
-        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(p, new DAOPublicacion());
-*/
-/*
-        Publicacion p = new Publicacion();
-        p.setId(6);
-        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(p, new DAOPublicacion());
-*/
-/*
-        resultados = factoriaItems.testReadGenerico(DAME_LOS_TOPIC , new DAOPublicacion());
-        */
-
-        /*
-/*
-        resultados = factoriaItems.testReadGenerico(DAME_LOS_TOPIC_HACIA_MI, new DAOChat());
-*/
-/*
-        Chat c = new Chat();
-        c.setIdUsuario(singleCredenciales.getIdUsuario()); // 2
-        c.setIdUsuarioDestino(1);
-        c.setTitulo("PERICOOOO, cushame!");
-
-        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(c,new DAOChat());
-*//*
-
-        Mensaje m = new Mensaje();
-        m.setIdPublicacion(5);
-        m.setIdUsuario(3);
-        m.setMensaje("Aqui venimoooooos 2");
-
-        retornoVerdaderoOFalso = factoriaItems.testCreateGenerico(m , new DAOMensaje());
-*/
-/*
-        Mensaje m = new Mensaje();
-        m.setIdPublicacion(5);
-        m.setId(7);
-        m.setMensaje("Ya no wapi");
-        m.setIdUsuario(4);
-        m.setLeidoPorDestino(false);
-
-        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(m, new DAOMensaje());
-*/
-/*
-
-        Chat c = new Chat();
-        c.setId(5);
-        retornoVerdaderoOFalso = factoriaItems.testDeleteGenerico(c , new DAOChat());
-*/
-/*
-        resultados = factoriaItems.testReadGenerico(c , new DAOChat());
-
-        c = (Chat)resultados.get(0);
-        c.setTitulo("Lo he cambiado!");
-        retornoVerdaderoOFalso = factoriaItems.testUpdateGenerico(c, new DAOChat());
-*/
     }
 
 }
