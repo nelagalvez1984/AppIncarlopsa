@@ -80,17 +80,17 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/no_me_gusta-web"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/no_me_gusta_web"
             tools:layout_editor_absoluteX="180dp"
             tools:layout_editor_absoluteY="108dp"/>
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/me_gusta-web"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/me_gusta_web"
             tools:layout_editor_absoluteX="133dp"
             tools:layout_editor_absoluteY="108dp"/>
 

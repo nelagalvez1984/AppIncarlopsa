@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Connection;
+
 public class VLogin extends AppCompatActivity implements IVista{
 
     //Propiedades
@@ -16,6 +18,8 @@ public class VLogin extends AppCompatActivity implements IVista{
     EditText etPassword;
     Button btnConectar;
     SingleCredenciales credenciales;
+    SingleConexion conector;
+    Connection conexion;
     Intent intent;
 
     @Override
@@ -25,7 +29,8 @@ public class VLogin extends AppCompatActivity implements IVista{
         btnConectar = (Button) findViewById(R.id.btnconectar);
         btnConectar.setOnClickListener(this);
         btnConectar.setEnabled(false);
-        credenciales = credenciales.getInstance();
+        credenciales = SingleCredenciales.getInstance();
+        conector = SingleConexion.getInstance();
     }
 
     @Override
@@ -36,8 +41,12 @@ public class VLogin extends AppCompatActivity implements IVista{
 
         Boolean conexionOK = false;
 
+        conector.conectar();
+
         //ToDO
         //1.- INTENTAR CONEXION (devolver la condicion a la variable conexionOK
+
+
         if (conexionOK){
             //2.- Conseguir el usuario correspondiente a ese login
             //3.- Enchufar sus datos al credenciales

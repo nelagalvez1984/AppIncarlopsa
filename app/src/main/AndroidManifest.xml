@@ -10,12 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".VMainActivity">
+        </activity>
+        <activity android:name=".VLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VLogin"></activity>
         <activity android:name=".VPruebaNOTocar"></activity>
         <activity
             android:name=".SettingsActivity"
