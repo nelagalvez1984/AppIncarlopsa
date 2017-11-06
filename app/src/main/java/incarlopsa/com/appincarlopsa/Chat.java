@@ -30,7 +30,7 @@ public class Chat extends Topic {
 
     public Chat(){}
 
-    //Metodo para dar por finalizado el chat
+    //Metodo para dar por finalizado el mensaje
     public void finalizarChat(){
         finalizado = true;
     }

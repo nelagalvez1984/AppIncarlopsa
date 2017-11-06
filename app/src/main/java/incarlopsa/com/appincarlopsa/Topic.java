@@ -5,7 +5,7 @@ import java.util.Date;
 public class Topic extends DataBaseItem{
 
 
-    //Es la cabecera de una publicacion o chat
+    //Es la cabecera de una comentario o mensaje
 
     //Propiedades
     private Integer idUsuario = null;

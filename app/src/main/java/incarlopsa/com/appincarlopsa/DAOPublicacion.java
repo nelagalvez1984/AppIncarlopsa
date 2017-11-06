@@ -7,16 +7,16 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
 
     //Propiedades
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO publicacion SET idUsuario = ?, titulo = ?, fecha = NOW(), ultimoUpdate = NOW()";
+    private String consultaInsercion = "INSERT INTO comentario SET idUsuario = ?, titulo = ?, fecha = NOW(), ultimoUpdate = NOW()";
     private String consultaLecturaPorId = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
-            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion WHERE idPublicacion = ?";
-    private String consultaUpdate = "UPDATE publicacion SET idUsuario = ?, titulo = ?, ultimoUpdate = NOW() WHERE idPublicacion = ?";
-    private String consultaActualizarFecha = "UPDATE publicacion SET ultimoUpdate = NOW() WHERE idPublicacion = ?";
-    private String consultaDelete = "DELETE FROM publicacion WHERE idPublicacion = ?";
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM comentario WHERE idPublicacion = ?";
+    private String consultaUpdate = "UPDATE comentario SET idUsuario = ?, titulo = ?, ultimoUpdate = NOW() WHERE idPublicacion = ?";
+    private String consultaActualizarFecha = "UPDATE comentario SET ultimoUpdate = NOW() WHERE idPublicacion = ?";
+    private String consultaDelete = "DELETE FROM comentario WHERE idPublicacion = ?";
     private String consultaTopics = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
-            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion ORDER BY ultimoUpdate DESC";
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM comentario ORDER BY ultimoUpdate DESC";
 
     //Constructor
     public DAOPublicacion() {}
@@ -102,7 +102,7 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
         }else{
             auxPublicacion = (Publicacion)filtro;
             ArrayList<DataBaseItem> publicacion = null;
-            //1.- Leemos la publicacion
+            //1.- Leemos la comentario
             resultadoMultiple = super.read(filtro);
             if (resultadoMultiple.size()>0){
                 //2.- Leemos los comentarios asociados
@@ -124,7 +124,7 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
                 ((Publicacion)publicacion.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
             }
         }
-        //5.- Devolver la publicacion o LOS topic
+        //5.- Devolver la comentario o LOS topic
         return resultadoMultiple;
     }
 
@@ -141,7 +141,7 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
         borradoEnCascada(new DAOComentario(), new Comentario(), idPublicacion);
         //2.- Borrar sus adjuntos
         borradoEnCascada(new DAOAdjunto(), new Adjunto(), idPublicacion);
-        //3.- Ahora si, borrar la publicacion
+        //3.- Ahora si, borrar la comentario
         return super.delete(elementoABorrar);
     }
 
@@ -149,7 +149,7 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
 
         ArrayList<DataBaseItem> resultadosCascada = new ArrayList<>();
 
-        //Fijar el ID de la publicacion
+        //Fijar el ID de la comentario
         if (item instanceof Comentario) { // Es un Comentario
             ((Comentario) item).setIdPublicacion(idPublicacion);
         }else { // Es un Adjunto

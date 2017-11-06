@@ -62,12 +62,12 @@ class DrawerLateral {
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 return true;
-                            case R.id.item_navigation_drawer_nuevo_chat: //Crear chat
+                            case R.id.item_navigation_drawer_nuevo_chat: //Crear mensaje
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
                                 return true;
-                            case R.id.item_navigation_drawer_nueva_publicacion: //Crear publicacion
+                            case R.id.item_navigation_drawer_nueva_publicacion: //Crear comentario
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);

@@ -66,7 +66,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         Adjunto elementoABorrar = (Adjunto)elementoAModelar;
-        if (elementoABorrar.getIdPublicacion() != null){ //Borrar toda la publicacion
+        if (elementoABorrar.getIdPublicacion() != null){ //Borrar toda la comentario
             consultaSQL = consultaDeletePublicacion;
             prepararConsulta(consultaSQL);
             cargarConsulta(elementoABorrar.getIdPublicacion());
