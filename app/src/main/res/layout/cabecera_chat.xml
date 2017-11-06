@@ -10,65 +10,94 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/FechaCreacion"
+            android:id="@+id/FechaCreacionChat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginEnd="8dp"
             android:gravity="left|center"
             android:text="@string/fecha_hora"
-            tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteX="288dp"
-            tools:layout_editor_absoluteY="33dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintStart_toEndOf="@+id/UltimaModificacionChat"
+            app:layout_constraintTop_toBottomOf="@+id/FechaChat"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
             android:id="@+id/tituloChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:gravity="left|center"
             android:text="titulo"
-            tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CreadoChat"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/Fecha"
+            android:id="@+id/FechaChat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:gravity="left|center"
             android:text="@string/fecha_hora"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteX="288dp"
-            tools:layout_editor_absoluteY="17dp" />
+            tools:layout_editor_absoluteY="21dp" />
 
         <TextView
-            android:id="@+id/autor"
+            android:id="@+id/autorChat"
             android:layout_width="55dp"
             android:layout_height="16dp"
-            android:text="idautor"
-            tools:layout_editor_absoluteX="289dp" />
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="16dp"
+            android:text="idAutor"
+            app:layout_constraintBottom_toTopOf="@+id/FechaCreacionChat"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/idAutor"
+            android:id="@+id/idAutorChat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginBottom="48dp"
+            android:layout_marginEnd="8dp"
             android:text="id"
-            tools:layout_editor_absoluteX="267dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/autorChat"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toEndOf="@+id/tituloChat" />
 
         <TextView
-            android:id="@+id/FechaCreacionChat"
+            android:id="@+id/CreadoChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:text="Creado :"
-            tools:layout_editor_absoluteX="144dp"
-            tools:layout_editor_absoluteY="17dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/FechaChat"
+            app:layout_constraintHorizontal_bias="0.558"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/FechaUltimaModificacion"
+            android:id="@+id/UltimaModificacionChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
             android:text="Ultima modificacion :"
-            tools:layout_editor_absoluteX="144dp"
-            tools:layout_editor_absoluteY="33dp" />
+            app:layout_constraintEnd_toStartOf="@+id/FechaChat"
+            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
