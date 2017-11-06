@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/md_green_50"
-        android:text="CHAT"
+        android:text="@string/chat"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
@@ -30,7 +30,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/edtComentario"
+            android:id="@+id/edtMensaje"
             android:layout_width="230dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
             tools:hint="Introduce tu mensaje" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/buttonEnviar"
             android:layout_width="79dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
