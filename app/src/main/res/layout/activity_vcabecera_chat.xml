@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/consCabecera"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_amber_50">
@@ -12,14 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
         android:text="Salientes"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="240dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyEntrantesChat"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/txtEntrantesChat"
@@ -35,24 +38,30 @@
         android:textSize="24sp"
         android:textStyle="bold"
 
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recySalientesChat"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:background="@color/cardview_light_background"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSalientesChat"
+        tools:ignore="MissingConstraints" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyEntrantesChat"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
         android:background="@color/cardview_light_background"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="41dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEntrantesChat"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

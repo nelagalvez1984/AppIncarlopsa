@@ -17,15 +17,17 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/etUsuario"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datostxt"
+        app:layout_constraintVertical_bias="0.16"
         app:srcCompat="@drawable/ic_logo_incarlopsaopt" />
 
     <EditText
         android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="320dp"
         android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="Usuario"
@@ -40,8 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_editor_absoluteY="477dp"/>
+        tools:layout_constraintTop_creator="1" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -89,13 +90,16 @@
 
     <Button
         android:id="@+id/btnConectar"
+        style="@android:style/Widget.Material.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/toolbar"
+        android:backgroundTint="@color/colorAccent"
+        android:fontFamily="sans-serif"
         android:text="Conectar"
-        android:textColor="@color/colorRosaApp"
+        android:textColor="@color/cardview_light_background"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
