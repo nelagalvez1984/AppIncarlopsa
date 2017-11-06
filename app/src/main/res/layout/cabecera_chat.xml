@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/FechaCreacion"
+            android:layout_width="64dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="136dp"
+            android:layout_marginTop="96dp"
+            android:gravity="left|center"
+            android:text="@string/fecha_hora"
+            app:layout_constraintLeft_toRightOf="@+id/Titulo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/Titulo"
+            android:layout_width="128dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left|center"
+            android:text="@string/nombre"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/Fecha"
+            android:layout_width="64dp"
+            android:layout_height="34dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="136dp"
+            android:gravity="left|center"
+            android:text="@string/fecha_hora"
+            app:layout_constraintBottom_toTopOf="@+id/FechaCreacion"
+            app:layout_constraintLeft_toRightOf="@+id/Titulo"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/Autor"
+            android:layout_width="51dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="28dp"
+            android:text="idautor"
+            app:layout_constraintBottom_toTopOf="@+id/Fecha"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="85dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="8dp"
+            android:text="responder"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            tools:layout_editor_absoluteY="107dp" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
