@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="incarlopsa.com.appincarlopsa">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icono_incarlopsa"
@@ -9,20 +12,23 @@
         android:roundIcon="@mipmap/icono_incarlopsa"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VMainActivity">
+        <activity android:name=".VGeneral">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".VLogin"></activity>
-        <activity android:name=".VPruebaNOTocar"></activity>
+        <activity android:name=".VLogin">
+        </activity>
+        <activity android:name=".VPruebaNOTocar"/>
         <activity
             android:name=".SettingsActivity"
             android:label="TEST Settings"
-            android:parentActivityName=".VMainActivity">
+            android:parentActivityName=".VGeneral">
+        </activity>
+        <activity android:name=".VCabeceraChat">
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

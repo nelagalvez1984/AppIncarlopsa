@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_amber_100"
+    android:orientation="vertical"
+    android:textAlignment="center">
+
+    <TextView
+        android:id="@+id/txtChatTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_green_50"
+        android:text="@string/chat"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerChats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_deep_orange_50" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtChatMensaje"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            tools:hint="Introduce tu mensaje" />
+
+        <ImageButton
+            android:id="@+id/buttonChatEnviar"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_content_send" />
+
+    </LinearLayout>
 
 </LinearLayout>
