@@ -77,7 +77,7 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
             consultaSQL = consultaDeleteComentario;
             prepararConsulta(consultaDeleteComentario);
             cargarConsulta(aux.getId());
-        }else{ //Borrar la publicacion entera
+        }else{ //Borrar la comentario entera
             consultaSQL = consultaDeleteComentario;
             prepararConsulta(consultaDeletePublicacion);
             cargarConsulta(aux.getId());
@@ -117,7 +117,7 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
     @Override
     public Boolean update(Object elementoConQueActualizar) {
         Boolean retorno = super.update(elementoConQueActualizar);
-        //Ahora actualizamos la publicacion con la fecha actual
+        //Ahora actualizamos la comentario con la fecha actual
         Comentario comentarioAux = (Comentario)elementoConQueActualizar;
         DAOPublicacion dao = new DAOPublicacion();
         Publicacion auxPublicacion = new Publicacion();

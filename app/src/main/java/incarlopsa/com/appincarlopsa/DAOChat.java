@@ -6,24 +6,24 @@ import java.util.ArrayList;
 public class DAOChat extends DAOBase implements IDAO, ICodigos {
     //Propiedades
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
+    private String consultaInsercion = "INSERT INTO mensaje SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
             "ultimoUpdate = NOW(), finalizado = ?";
     private String consultaLecturaPorId = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado FROM chat WHERE idChat = ?";
-    private String consultaUpdate = "UPDATE chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
+            "finalizado FROM mensaje WHERE idChat = ?";
+    private String consultaUpdate = "UPDATE mensaje SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
             "finalizado = ? WHERE idChat = ?";
-    private String consultaActualizarFecha = "UPDATE chat SET ultimoUpdate = NOW() WHERE idChat = ?";
-    private String consultaDelete = "DELETE FROM chat WHERE idChat = ?";
+    private String consultaActualizarFecha = "UPDATE mensaje SET ultimoUpdate = NOW() WHERE idChat = ?";
+    private String consultaDelete = "DELETE FROM mensaje WHERE idChat = ?";
     private String consultaTopicsPorAutor = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado FROM chat WHERE idUsuario = ? AND finalizado = false";
+            "finalizado FROM mensaje WHERE idUsuario = ? AND finalizado = false";
     private String consultaTopicsPorDestinatario = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado FROM chat WHERE idUsuarioDestino = ? AND finalizado = false";
+            "finalizado FROM mensaje WHERE idUsuarioDestino = ? AND finalizado = false";
 
     //Constructor
 
@@ -118,12 +118,12 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
 
     @Override
     public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
-        //¿Recoger topics o recoger tod.o el chat?
+        //¿Recoger topics o recoger tod.o el mensaje?
         if (filtro instanceof String){ //Solo se devuelve las cabeceras, (DAME_LOS_TOPIC)
             // sin comentarios ni adjuntos
             resultadoMultiple = super.read(filtro);
         }else {
-            //Primero leer el chat
+            //Primero leer el mensaje
             resultadoMultiple = super.read(filtro);
             //Despues recoger sus mensajes
             DAOMensaje dao = new DAOMensaje();
@@ -131,7 +131,7 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
             auxMensaje.setIdPublicacion(resultadoMultiple.get(0).getId());
             ArrayList<DataBaseItem> mensajesRecogidos = dao.read(auxMensaje);
             ((Chat) resultadoMultiple.get(0)).setMensajes(mensajesRecogidos);
-            //Devolver el chat completo
+            //Devolver el mensaje completo
         }
         return resultadoMultiple;
     }
@@ -149,7 +149,7 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
         Mensaje auxMensaje = new Mensaje();
         auxMensaje.setIdPublicacion(auxChat.getId());
         dao.delete(auxMensaje);
-        //Ahora borrar el chat
+        //Ahora borrar el mensaje
         return super.delete(elementoABorrar);
     }
 }

@@ -76,7 +76,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
         if (aux.getId() != null){ //Borrado de un unico mensaje
             prepararConsulta(consultaDeleteMensaje);
             cargarConsulta(aux.getId());
-        }else{ //Borrado del chat entero
+        }else{ //Borrado del mensaje entero
             prepararConsulta(consultaDeleteChat);
             cargarConsulta(aux.getIdPublicacion());
 
@@ -96,7 +96,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
     }
 
     private void actualizarFechaChatPadre(Object elemento){
-        //Actualizar la fecha de su chat
+        //Actualizar la fecha de su mensaje
         Mensaje auxMensaje = (Mensaje)elemento;
         Chat chatAux = new Chat();
         chatAux.setId(auxMensaje.getIdPublicacion());
@@ -131,7 +131,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
         //Primero actualizar el item
         Boolean retorno = super.update(elementoConQueActualizar);
 
-        //Despues modificar la fecha de update del chat padre
+        //Despues modificar la fecha de update del mensaje padre
         actualizarFechaChatPadre(elementoConQueActualizar);
 
         return retorno;
@@ -139,7 +139,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
 
     @Override
     public Boolean delete(Object elementoABorrar) {
-        //Si se va a borrar un unico mensaje, actualizar la publicacion
+        //Si se va a borrar un unico mensaje, actualizar la comentario
 
 
         return super.delete(elementoABorrar);
