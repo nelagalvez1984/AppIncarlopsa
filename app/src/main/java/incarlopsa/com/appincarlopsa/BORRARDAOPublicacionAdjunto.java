@@ -110,6 +110,6 @@ public class BORRARDAOPublicacionAdjunto extends DAOBase implements IDAO{
         Adjunto aux = new Adjunto();
         aux.setId(publicacionAdjuntoAux.getIdAdjunto());
         dao.delete(aux); //Borrar el adjunto asociado primeramente
-        return super.delete(elementoABorrar); //Y ahora se borra la publicacion-adjunto
+        return super.delete(elementoABorrar); //Y ahora se borra la comentario-adjunto
     }
 }
