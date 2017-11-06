@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_amber_100"
@@ -7,19 +9,44 @@
     android:textAlignment="center">
 
     <TextView
-        android:id="@+id/txtTitulo"
+        android:id="@+id/txtChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chat"
+        android:background="@color/md_green_50"
+        android:text="CHAT"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
-        android:textColorLink="@color/colorAccent"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/md_amber_50"
-        android:textAlignment="center" />
+        android:background="@color/md_deep_orange_50" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtComentario"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            tools:hint="Introduce tu mensaje" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_action_content_send" />
+
+    </LinearLayout>
+
 </LinearLayout>
