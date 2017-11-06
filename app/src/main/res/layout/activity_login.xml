@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorApp"
+    android:background="@color/md_white_1000"
     tools:context="incarlopsa.com.appincarlopsa.VLogin">
 
     <ImageView
@@ -24,8 +24,8 @@
     <EditText
         android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="260dp"
         android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="Usuario"
@@ -40,7 +40,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_editor_absoluteY="477dp"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -69,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="61dp"
         android:layout_marginTop="62dp"
-        android:background="@color/colorApp"
+        android:background="@color/md_white_1000"
         android:text="¡Bienvenido!"
         android:textColor="#1d871e"
         android:textSize="24sp"
@@ -87,14 +88,14 @@
 
 
     <Button
-        android:id="@+id/btnconectar"
+        android:id="@+id/btnConectar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/background_light"
+        android:background="@color/toolbar"
         android:text="Conectar"
-        android:textColor="#1d871e"
+        android:textColor="@color/colorRosaApp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
