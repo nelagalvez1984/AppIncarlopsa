@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/FechaCreacionChat"
+            android:id="@+id/fechaCreacionChat"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_marginEnd="8dp"
@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.68"
             app:layout_constraintStart_toEndOf="@+id/UltimaModificacionChat"
-            app:layout_constraintTop_toBottomOf="@+id/FechaChat"
+            app:layout_constraintTop_toBottomOf="@+id/fechaChat"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
@@ -32,13 +32,13 @@
             android:gravity="left|center"
             android:text="titulo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/CreadoChat"
+            app:layout_constraintEnd_toStartOf="@+id/creadoChat"
             app:layout_constraintHorizontal_bias="0.108"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/FechaChat"
+            android:id="@+id/fechaChat"
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:layout_marginEnd="8dp"
@@ -58,7 +58,7 @@
             android:layout_marginBottom="28dp"
             android:layout_marginEnd="16dp"
             android:text="idAutor"
-            app:layout_constraintBottom_toTopOf="@+id/FechaCreacionChat"
+            app:layout_constraintBottom_toTopOf="@+id/fechaCreacionChat"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
@@ -74,7 +74,7 @@
             app:layout_constraintStart_toEndOf="@+id/tituloChat" />
 
         <TextView
-            android:id="@+id/CreadoChat"
+            android:id="@+id/creadoChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -82,7 +82,7 @@
             android:layout_marginStart="8dp"
             android:text="Creado :"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/FechaChat"
+            app:layout_constraintEnd_toStartOf="@+id/fechaChat"
             app:layout_constraintHorizontal_bias="0.558"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -94,7 +94,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="44dp"
             android:text="Ultima modificacion :"
-            app:layout_constraintEnd_toStartOf="@+id/FechaChat"
+            app:layout_constraintEnd_toStartOf="@+id/fechaChat"
             app:layout_constraintHorizontal_bias="0.934"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

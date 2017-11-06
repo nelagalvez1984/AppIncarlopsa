@@ -92,11 +92,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         public ViewHolder(View v) {
             super(v);
-            titulo = (TextView) v.findViewById(R.id.textUserName);
-            idAutor = (TextView) v.findViewById(R.id.textUserName);
-            autor = (TextView) v.findViewById(R.id.textUserName);
-            fechaCreacion = (TextView) v.findViewById(R.id.textUserName);
-            horaCreacion = (TextView) v.findViewById(R.id.textUserName);
+            titulo = (TextView) v.findViewById(R.id.tituloChat);
+            idAutor = (TextView) v.findViewById(R.id.idAutorChat);
+            autor = (TextView) v.findViewById(R.id.autorChat);
+            fechaCreacion = (TextView) v.findViewById(R.id.fechanChat);
+            horaCreacion = (TextView) v.findViewById(R.id.);
             fechaUpdate = (TextView) v.findViewById(R.id.textUserName);
             horaUpdate = (TextView) v.findViewById(R.id.textUserName);
 
