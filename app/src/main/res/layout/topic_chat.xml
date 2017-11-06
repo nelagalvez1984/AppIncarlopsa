@@ -6,7 +6,7 @@
     android:background="@color/md_amber_50">
 
     <TextView
-        android:id="@+id/txtSalientes"
+        android:id="@+id/txtSalientesChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salientes"
@@ -14,29 +14,37 @@
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="246dp" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="240dp" />
 
     <TextView
-        android:id="@+id/txtEntrantes"
+        android:id="@+id/txtEntrantesChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrantes"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyEntrantes"
-        android:layout_width="wrap_content"
+        android:id="@+id/recySalientesChat"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="300dp" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recySalientes"
-        android:layout_width="78dp"
-        android:layout_height="144dp"
+        android:id="@+id/recyEntrantesChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="41dp" />
 </android.support.constraint.ConstraintLayout>
