@@ -11,66 +11,64 @@
 
         <TextView
             android:id="@+id/FechaCreacion"
-            android:layout_width="64dp"
-            android:layout_height="34dp"
-            android:layout_marginLeft="136dp"
-            android:layout_marginTop="96dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="left|center"
             android:text="@string/fecha_hora"
-            app:layout_constraintLeft_toRightOf="@+id/Titulo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
+            tools:ignore="MissingConstraints,RtlHardcoded"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="33dp" />
 
         <TextView
-            android:id="@+id/Titulo"
-            android:layout_width="128dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/tituloChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="left|center"
-            android:text="@string/nombre"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="titulo"
             tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteX="16dp" />
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <TextView
             android:id="@+id/Fecha"
-            android:layout_width="64dp"
-            android:layout_height="34dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="136dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="left|center"
             android:text="@string/fecha_hora"
-            app:layout_constraintBottom_toTopOf="@+id/FechaCreacion"
-            app:layout_constraintLeft_toRightOf="@+id/Titulo"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
+            tools:ignore="MissingConstraints,RtlHardcoded"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="17dp" />
 
         <TextView
-            android:id="@+id/Autor"
-            android:layout_width="51dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="28dp"
+            android:id="@+id/autor"
+            android:layout_width="55dp"
+            android:layout_height="16dp"
             android:text="idautor"
-            app:layout_constraintBottom_toTopOf="@+id/Fecha"
-            app:layout_constraintEnd_toEndOf="parent" />
+            tools:layout_editor_absoluteX="289dp" />
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/idAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id"
+            tools:layout_editor_absoluteX="267dp"
+            tools:layout_editor_absoluteY="0dp" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/FechaCreacionChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creado :"
+            tools:layout_editor_absoluteX="144dp"
+            tools:layout_editor_absoluteY="17dp" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="85dp"
-            android:layout_height="31dp"
-            android:layout_marginEnd="8dp"
-            android:text="responder"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            tools:layout_editor_absoluteY="107dp" />
-
-
+        <TextView
+            android:id="@+id/FechaUltimaModificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ultima modificacion :"
+            tools:layout_editor_absoluteX="144dp"
+            tools:layout_editor_absoluteY="33dp" />
 
     </android.support.constraint.ConstraintLayout>
 
