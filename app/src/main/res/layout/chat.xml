@@ -9,7 +9,7 @@
     android:textAlignment="center">
 
     <TextView
-        android:id="@+id/txtChat"
+        android:id="@+id/txtChatTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/md_green_50"
@@ -20,6 +20,7 @@
         android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerChats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/md_deep_orange_50" />
@@ -30,7 +31,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/edtMensaje"
+            android:id="@+id/edtChatMensaje"
             android:layout_width="230dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -41,7 +42,7 @@
             tools:hint="Introduce tu mensaje" />
 
         <ImageButton
-            android:id="@+id/buttonEnviar"
+            android:id="@+id/buttonChatEnviar"
             android:layout_width="79dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
