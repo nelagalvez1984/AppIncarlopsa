@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/icono_incarlopsa"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VMainActivity">
+        <activity android:name=".VGeneral">
         </activity>
         <activity android:name=".VLogin">
             <intent-filter>
@@ -21,7 +21,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="TEST Settings"
-            android:parentActivityName=".VMainActivity">
+            android:parentActivityName=".VGeneral">
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
