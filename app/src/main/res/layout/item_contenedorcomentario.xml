@@ -82,17 +82,17 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/foto_usuario_estandar"
+            app:srcCompat="@drawable/no_me_gusta-web"
             tools:layout_editor_absoluteX="180dp"
-            tools:layout_editor_absoluteY="108dp" />
+            tools:layout_editor_absoluteY="108dp"/>
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/foto_usuario_estandar"
+            app:srcCompat="@drawable/me_gusta-web"
             tools:layout_editor_absoluteX="133dp"
-            tools:layout_editor_absoluteY="108dp" />
+            tools:layout_editor_absoluteY="108dp"/>
 
         <Button
             android:id="@+id/button"
