@@ -8,16 +8,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class VMainActivity extends AppCompatActivity implements IVista, ICodigos {
+public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     //Propiedades
     private SingleCredenciales credenciales = SingleCredenciales.getInstance();
@@ -71,7 +67,7 @@ public class VMainActivity extends AppCompatActivity implements IVista, ICodigos
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-                                Intent intent = new Intent(VMainActivity.this, SettingsActivity.class);
+                                Intent intent = new Intent(VGeneral.this, SettingsActivity.class);
                                 startActivity(intent);
                                 return true;
                         }
