@@ -10,16 +10,16 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/fechaCreacionChat"
+            android:id="@+id/fechaModChat"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_marginEnd="8dp"
             android:gravity="left|center"
-            android:text="@string/fecha_hora"
+            android:text="fecha"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintHorizontal_bias="0.321"
             app:layout_constraintStart_toEndOf="@+id/UltimaModificacionChat"
-            app:layout_constraintTop_toBottomOf="@+id/fechaChat"
+            app:layout_constraintTop_toBottomOf="@+id/fechaCrearChat"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
@@ -38,15 +38,15 @@
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/fechaChat"
+            android:id="@+id/fechaCrearChat"
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:gravity="left|center"
-            android:text="@string/fecha_hora"
+            android:text="fecha"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintHorizontal_bias="0.701"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded"
             tools:layout_editor_absoluteY="21dp" />
@@ -58,7 +58,7 @@
             android:layout_marginBottom="28dp"
             android:layout_marginEnd="16dp"
             android:text="idAutor"
-            app:layout_constraintBottom_toTopOf="@+id/fechaCreacionChat"
+            app:layout_constraintBottom_toTopOf="@+id/fechaModChat"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
@@ -76,14 +76,14 @@
         <TextView
             android:id="@+id/creadoChat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_height="14dp"
+            android:layout_marginBottom="24dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="Creado :"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fechaChat"
-            app:layout_constraintHorizontal_bias="0.558"
+            app:layout_constraintEnd_toStartOf="@+id/fechaCrearChat"
+            app:layout_constraintHorizontal_bias="0.237"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -94,10 +94,35 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="44dp"
             android:text="Ultima modificacion :"
-            app:layout_constraintEnd_toStartOf="@+id/fechaChat"
-            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintEnd_toStartOf="@+id/fechaCrearChat"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/horaModChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="hora"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.703"
+            app:layout_constraintStart_toEndOf="@+id/fechaModChat"
+            tools:layout_editor_absoluteY="44dp" />
+
+        <TextView
+            android:id="@+id/horaChat"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="hora"
+            app:layout_constraintBottom_toTopOf="@+id/horaModChat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.703"
+            app:layout_constraintStart_toEndOf="@+id/fechaCrearChat" />
 
     </android.support.constraint.ConstraintLayout>
 
