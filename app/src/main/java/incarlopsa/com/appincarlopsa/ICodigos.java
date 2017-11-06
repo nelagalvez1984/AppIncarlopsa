@@ -20,10 +20,13 @@ public interface ICodigos extends ICodigosAntonio,
     //Codigos para consultas
     String DAME_TODOS = "DAME_TODOS";
     String ACTUALIZA_FECHA = "ACTUALIZA_FECHA";
-    String DAME_LOS_TOPIC = "DAME_LOS_TOPIC";
+    String DAME_LOS_TOPIC = "DAME_LOS_TOPIC";  //ESTE ES PARA PUBLICACIONES
+    String DAME_LOS_TOPIC_DESDE_MI= "DAME_LOS_TOPIC_DESDE_MI";
+    String DAME_LOS_TOPIC_HACIA_MI = "DAME_LOS_TOPIC_HACIA_MI";
 
     //Codigos para conexion a la BBDD
-    String SERVIDOR_BBDD = "10.20.32.116";
+    String SERVIDOR_BBDD = "192.168.0.101";
+//    String SERVIDOR_BBDD = "10.20.32.116";
     String PUERTO_BBDD = "3306";
     String BBDD = "incarlopsa";
     String DIRECCION_BBDD_RAIZ = "jdbc:mysql://"+SERVIDOR_BBDD + ":" + PUERTO_BBDD

@@ -6,23 +6,24 @@ import java.util.ArrayList;
 public class DAOChat extends DAOBase implements IDAO, ICodigos {
     //Propiedades
     //Consultas parametrizadas
-    String consultaInsercion = "INSERT INTO chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
+    private String consultaInsercion = "INSERT INTO chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
             "ultimoUpdate = NOW(), finalizado = ?";
-    String consultaLecturaPorId = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
-            "TIME_FORMAT(fecha, '%d/%m/%y'') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
-            "TIME_FORMAT(ultimoUpdate, '%d/%m/%y'') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado WHERE idChat = ?";
-    String consultaUpdate = "UPDATE chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
+    private String consultaLecturaPorId = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
+            "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
+            "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
+            "finalizado FROM chat WHERE idChat = ?";
+    private String consultaUpdate = "UPDATE chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
             "finalizado = ? WHERE idChat = ?";
-    String consultaDelete = "DELETE FROM chat WHERE idChat = ?";
-    String consultaTopicsPorAutor = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
-            "TIME_FORMAT(fecha, '%d/%m/%y'') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
-            "TIME_FORMAT(ultimoUpdate, '%d/%m/%y'') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado WHERE idUsuario = ?";
-    String consultaTopicsPorDestinatario = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
-            "TIME_FORMAT(fecha, '%d/%m/%y'') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
-            "TIME_FORMAT(ultimoUpdate, '%d/%m/%y'') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado WHERE idUsuarioDestino = ?";
+    private String consultaActualizarFecha = "UPDATE chat SET ultimoUpdate = NOW() WHERE idChat = ?";
+    private String consultaDelete = "DELETE FROM chat WHERE idChat = ?";
+    private String consultaTopicsPorAutor = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
+            "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
+            "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
+            "finalizado FROM chat WHERE idUsuario = ? AND finalizado = false";
+    private String consultaTopicsPorDestinatario = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
+            "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
+            "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
+            "finalizado FROM chat WHERE idUsuarioDestino = ? AND finalizado = false";
 
     //Constructor
 
@@ -47,19 +48,20 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
 
     @Override
     protected void prepararRead(Object filtro) throws SQLException{
-        Chat aux = (Chat) filtro;
+
         SingleCredenciales perfil = SingleCredenciales.getInstance();
-        if (aux.getTitulo().equals(DAME_LOS_TOPIC)){
-            if (aux.getIdUsuario() == perfil.getIdUsuario()){ //Soy autor
+        if (filtro instanceof String){ //DAME LOS TOPIC
+
+            if (filtro.equals(DAME_LOS_TOPIC_DESDE_MI)){ //Soy autor
                 consultaSQL = consultaTopicsPorAutor;
-                prepararConsulta(consultaSQL);
-                cargarConsulta(aux.getIdUsuario());
-            }else{ //Soy destinatario
+            }else { //Soy destinatario  (DAME_LOS_TOPIC_HACIA_MI)
                 consultaSQL = consultaTopicsPorDestinatario;
-                prepararConsulta(consultaSQL);
-                cargarConsulta(aux.getIdUsuarioDestino()); // deberia ser igual a perfil.getIdUsuario()
             }
+            prepararConsulta(consultaSQL);
+            cargarConsulta(perfil.getIdUsuario());
+
         }else{ //Es una consulta por Id
+            Chat aux = (Chat) filtro;
             consultaSQL = consultaLecturaPorId;
             prepararConsulta(consultaSQL);
             cargarConsulta(aux.getId());
@@ -85,13 +87,19 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         Chat aux = (Chat) elementoAModelar;
-        consultaSQL = consultaUpdate;
-        prepararConsulta(consultaSQL);
-        cargarConsulta(aux.getIdUsuario(),
+        if (aux.getFechaUltimoUpdate().equals(ACTUALIZA_FECHA)){ //Actualizar fecha!
+            consultaSQL = consultaActualizarFecha;
+            prepararConsulta(consultaSQL);
+            cargarConsulta(aux.getId());
+        }else{ //Actualizar normal
+            consultaSQL = consultaUpdate;
+            prepararConsulta(consultaSQL);
+            cargarConsulta(aux.getIdUsuario(),
                 aux.getIdUsuarioDestino(),
                 aux.getTitulo(),
                 aux.getFinalizado(),
                 aux.getId());
+        }
     }
 
     //DELETE
@@ -110,16 +118,22 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
 
     @Override
     public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
-        //Primero leer el chat
-        ArrayList<DataBaseItem> chatRecogido = super.read(filtro);
-        //Despues recoger sus mensajes
-        DAOMensaje dao = new DAOMensaje();
-        Mensaje auxMensaje = new Mensaje();
-        auxMensaje.setIdPublicacion(chatRecogido.get(0).getId());
-        ArrayList<DataBaseItem> mensajesRecogidos = dao.read(auxMensaje);
-        ((Chat)chatRecogido.get(0)).setMensajes(mensajesRecogidos);
-        //Devolver el chat completo
-        return chatRecogido;
+        //¿Recoger topics o recoger tod.o el chat?
+        if (filtro instanceof String){ //Solo se devuelve las cabeceras, (DAME_LOS_TOPIC)
+            // sin comentarios ni adjuntos
+            resultadoMultiple = super.read(filtro);
+        }else {
+            //Primero leer el chat
+            resultadoMultiple = super.read(filtro);
+            //Despues recoger sus mensajes
+            DAOMensaje dao = new DAOMensaje();
+            Mensaje auxMensaje = new Mensaje();
+            auxMensaje.setIdPublicacion(resultadoMultiple.get(0).getId());
+            ArrayList<DataBaseItem> mensajesRecogidos = dao.read(auxMensaje);
+            ((Chat) resultadoMultiple.get(0)).setMensajes(mensajesRecogidos);
+            //Devolver el chat completo
+        }
+        return resultadoMultiple;
     }
 
     @Override

@@ -8,13 +8,13 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
 
     //Propiedades
-    private String consultaInsercion = "INSERT INTO tipoFichero SET nombre = ? "
+    private String consultaInsercion = "INSERT INTO tipofichero SET nombre = ? "
             + " , mostrable = ?";
-    private String consultaLecturaPorId = "SELECT idTipoFichero, nombre, mostrable"
-            + "FROM tipoFichero WHERE idTipoFichero = ?";
-    private String consultaUpdate = "UPDATE tipoFichero SET nombre = ?, mostrable = ? "
+    private String consultaLecturaPorId = "SELECT idTipoFichero, nombre, mostrable "
+            + "FROM tipofichero WHERE idTipoFichero = ?";
+    private String consultaUpdate = "UPDATE tipofichero SET nombre = ?, mostrable = ? "
             + "WHERE idTipoFichero = ?";
-    private String consultaLeerTodo = "SELECT idTipoFichero, nombre, mostrable" + "FROM tipofichero";
+    private String consultaLeerTodo = "SELECT idTipoFichero, nombre, mostrable FROM tipofichero";
     private String consultaDelete = "DELETE FROM tipofichero WHERE idTipoFichero = ?";
 
     //Constructor
@@ -27,6 +27,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
         TipoFichero aux = (TipoFichero) elementoAModelar;
+        consultaSQL = consultaInsercion;
         prepararConsulta(consultaInsercion);
         cargarConsulta(aux.getNombre(), aux.getMostrable(), aux.getId());
     }
@@ -67,7 +68,8 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         TipoFichero elementoConQueActualizar = (TipoFichero) elementoAModelar;
-        prepararConsulta(consultaUpdate);
+        consultaSQL = consultaUpdate;
+        prepararConsulta(consultaSQL);
         cargarConsulta(elementoConQueActualizar.getNombre(),
                         elementoConQueActualizar.getMostrable(),
                         elementoConQueActualizar.getId());
@@ -77,7 +79,8 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         TipoFichero elementoABorrar = (TipoFichero) elementoAModelar;
-        prepararConsulta(consultaDelete);
+        consultaSQL = consultaDelete;
+        prepararConsulta(consultaSQL);
         cargarConsulta(elementoABorrar.getId());
     }
 

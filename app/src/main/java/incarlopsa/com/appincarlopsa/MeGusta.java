@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 public class MeGusta extends MeAlgo {
 
     //Propiedades
-    private final String tipo="MeGusta";
+    private String tipo="MeGusta";
 
     //Constructor
     public MeGusta(Integer idLike, Integer idUsuario, Integer idComentario) {
@@ -11,4 +11,15 @@ public class MeGusta extends MeAlgo {
     }
 
     public MeGusta(){}
+
+    //Getter/Setter
+    @Override
+    public String getTipo() {
+        return tipo;
+    }
+
+    @Override
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

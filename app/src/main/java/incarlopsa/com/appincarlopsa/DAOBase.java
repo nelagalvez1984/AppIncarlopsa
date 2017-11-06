@@ -36,10 +36,9 @@ public abstract class DAOBase implements IDAO, ICodigos{
     //Rellenar los campos de la consulta
     protected void cargarConsulta(Object... parametros) throws SQLException{
         int x = parametros.length;
-        if (parametros[0] instanceof String){
-            if ( (parametros[0]).equals(DAME_TODOS)){ //NO HAY PARAMETROS QUE INCRUSTAR!
-                //NADA
-            }else{
+        if (parametros[0].equals(DAME_TODOS)) {
+            //NO HAY PARAMETROS QUE INCRUSTAR!
+        }else{
                 int acumulador = 0;
                 for(int i=0; i<x; i++){
 
@@ -55,16 +54,16 @@ public abstract class DAOBase implements IDAO, ICodigos{
                         consulta.setDate(i+1 , (Date) (parametros[i]) );
                         continue;
                     }
-                    if (parametros[i] instanceof Blob){ //Es un blob!
-                        consulta.setBlob(i+1 , (Blob) (parametros[i]) );
+                    if (parametros[i] instanceof byte[]){ //Es un blob!
+                        consulta.setBytes(i+1 , (byte[])(parametros[i]) );
                         continue;
                     }
                     if (parametros[i] instanceof Boolean){ //Es un boolean!
                         consulta.setBoolean(i+1 , (Boolean) (parametros[i]) );
                     }
                 }
-            }
         }
+
 
     }
 

@@ -4,13 +4,15 @@ public class Adjunto extends DataBaseItem{
 
     //Propiedades
     private TipoFichero tipo = null;
+    private Integer idPublicacion = null;
     private Integer idTipoFichero = null;
     private String localizacion = null;
     private String nombreAdjunto = null;
 
     //Constructor
-    public Adjunto(Integer idAdjunto, Integer idTipoFichero, String localizacion, String nombreAdjunto, TipoFichero tipo ) {
+    public Adjunto(Integer idAdjunto, Integer idPublicacion, Integer idTipoFichero, String localizacion, String nombreAdjunto, TipoFichero tipo ) {
         this.tipo = tipo;
+        this.idPublicacion = idPublicacion;
         this.id = idAdjunto;
         this.idTipoFichero = idTipoFichero;
         this.localizacion = localizacion;
@@ -52,7 +54,20 @@ public class Adjunto extends DataBaseItem{
         this.nombreAdjunto = nombreAdjunto;
     }
 
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
+    }
+
+    public void setIdTipoFichero(Integer idTipoFichero) {
+        this.idTipoFichero = idTipoFichero;
+    }
+
     //Equals y Hash
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,18 +76,19 @@ public class Adjunto extends DataBaseItem{
 
         Adjunto adjunto = (Adjunto) o;
 
-        if (idTipoFichero != adjunto.idTipoFichero) return false;
         if (!tipo.equals(adjunto.tipo)) return false;
+        if (!idPublicacion.equals(adjunto.idPublicacion)) return false;
+        if (!idTipoFichero.equals(adjunto.idTipoFichero)) return false;
         if (!localizacion.equals(adjunto.localizacion)) return false;
         return nombreAdjunto.equals(adjunto.nombreAdjunto);
-
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + tipo.hashCode();
-        result = 31 * result + idTipoFichero;
+        result = 31 * result + idPublicacion.hashCode();
+        result = 31 * result + idTipoFichero.hashCode();
         result = 31 * result + localizacion.hashCode();
         result = 31 * result + nombreAdjunto.hashCode();
         return result;

@@ -3,6 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class TESTFactoriaItems implements ICodigos {
 
@@ -25,6 +26,12 @@ public class TESTFactoriaItems implements ICodigos {
     private Topic topic;
     private Usuario usuario;
 
+    //Hilos
+    private HiloParaRead hiloParaRead;
+    private HiloParaCreate hiloParaCreate;
+    private HiloParaUpdate hiloParaUpdate;
+    private HiloParaDelete hiloParaDelete;
+
     //Daos
     private DAOAdjunto daoAdjunto;
     private DAOChat daoChat;
@@ -32,7 +39,7 @@ public class TESTFactoriaItems implements ICodigos {
     private DAOLikes daoLikes;
     private DAOMensaje daoMensaje;
     private DAOPublicacion daoPublicacion;
-    private DAOPublicacionAdjunto daoPublicacionAdjunto;
+    private BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto;
     private DAOTipoFichero daoTipoFichero;
     private DAOUsuario daoUsuario;
     private ArrayList<Character> listaLetras;
@@ -45,7 +52,7 @@ public class TESTFactoriaItems implements ICodigos {
         daoLikes = new DAOLikes();
         daoMensaje = new DAOMensaje();
         daoPublicacion = new DAOPublicacion();
-        daoPublicacionAdjunto = new DAOPublicacionAdjunto();
+        BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
         daoTipoFichero = new DAOTipoFichero();
         daoUsuario = new DAOUsuario();
         generadorAleatorios = new Random();
@@ -104,7 +111,8 @@ public class TESTFactoriaItems implements ICodigos {
     //GENERADORES DE OBJETOS CON ALEATORIEDAD
     public Foto testCREARFoto(){
         Foto foto = new Foto();
-        foto.setFotoBytes(dameCadenaAleatoria().getBytes());
+        byte[] cosa =   dameCadenaAleatoria().getBytes();
+        foto.setFotoBytes(cosa);
         return foto;
     }
 
@@ -130,53 +138,86 @@ public class TESTFactoriaItems implements ICodigos {
     public Adjunto testCREARAdjunto(){
         adjunto = new Adjunto(null,
                             null,
+                            null,
                             dameCadenaAleatoria(),
                             dameCadenaAleatoria(),
-                            testCREARTipoFichero());
+                            null);
         return adjunto;
     }
 
-
-
-    public ArrayList<DataBaseItem> testReadUsuario(Integer filtro){
-        usuario = new Usuario();
-        usuario.setIdUsuario(filtro);
-        try {
-            resultados = daoUsuario.read(usuario);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return resultados;
+    public Publicacion testCREARPublicacion(){
+        publicacion = new Publicacion(null,
+                1,
+                dameCadenaAleatoria(),
+                null,
+                null,
+                null,
+        null);
+        return publicacion;
     }
 
-    public ArrayList<DataBaseItem> testReadUsuario(String filtro){
-        try {
-            resultados = daoUsuario.read(filtro);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return resultados;
-
+    public Comentario testCREARComentario(){
+        comentario = new Comentario(null,
+                1,
+                1,
+                null,
+                null,
+                dameCadenaAleatoria());
+        return comentario;
     }
 
-    public ArrayList<DataBaseItem> testReadUsuario(Usuario filtro){
+
+    public ArrayList<DataBaseItem> testReadGenerico(Object filtro, DAOBase dao){
         ArrayList<DataBaseItem> resultados = null;
         try {
-            resultados = daoUsuario.read(filtro);
-        } catch (SQLException e) {
+            hiloParaRead = new HiloParaRead(dao);
+            resultados = hiloParaRead.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         return resultados;
     }
 
-    public Boolean testCreateUsuario(){
+    public Boolean testCreateGenerico(Object filtro, DAOBase dao){
         try {
-            retornoTrueFalse = daoUsuario.create(testCREARUsuario());
-        } catch (SQLException e) {
+            hiloParaCreate = new HiloParaCreate(dao);
+            retornoTrueFalse = hiloParaCreate.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         return retornoTrueFalse;
     }
+
+
+    public Boolean testUpdateGenerico(Object filtro, DAOBase dao){
+        try {
+            hiloParaUpdate = new HiloParaUpdate(dao);
+            retornoTrueFalse = hiloParaUpdate.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return retornoTrueFalse;
+    }
+
+    public Boolean testDeleteGenerico(Object filtro, DAOBase dao){
+        try {
+            hiloParaDelete = new HiloParaDelete(dao);
+            retornoTrueFalse = hiloParaDelete.execute(filtro).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return retornoTrueFalse;
+    }
+
+
 
     public Boolean testCreateUsuario(Usuario u){
         try {
