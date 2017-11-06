@@ -130,25 +130,4 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     }
 
-
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        reyclerViewUser = (RecyclerView) findViewById(R.id.reyclerViewUser);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        reyclerViewUser.setHasFixedSize(true);
-
-        // use a linear layout manager
-        reyclerViewUser.setLayoutManager(new LinearLayoutManager(this));
-
-        // specify an adapter with the list to show
-        mAdapter = new UserAdapter(getData());
-        reyclerViewUser.setAdapter(mAdapter);
-
-    }
-
 }

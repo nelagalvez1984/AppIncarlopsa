@@ -10,119 +10,118 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/fechaModChat"
+            android:id="@+id/editCabeceraChatFechaActualizacion"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="44dp"
             android:gravity="left|center"
-            android:text="fecha"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.321"
-            app:layout_constraintStart_toEndOf="@+id/UltimaModificacionChat"
-            app:layout_constraintTop_toBottomOf="@+id/fechaCrearChat"
+            android:text="Fecha_update"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lblCabeceraChatUltimaModificacion"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/tituloChat"
+            android:id="@+id/lblCabeceraChatTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="44dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:gravity="left|center"
-            android:text="titulo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/creadoChat"
-            app:layout_constraintHorizontal_bias="0.108"
+            android:text="Titulo"
+            app:layout_constraintBottom_toTopOf="@+id/lblCabeceraChatUltimaModificacion"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/fechaCrearChat"
+            android:id="@+id/editCabeceraChatFechaCreacion"
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
             android:gravity="left|center"
-            android:text="fecha"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.701"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteY="21dp" />
+            android:text="Fecha_creación"
+            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatHoraCreacion"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/autorChat"
+            android:id="@+id/editCabeceraChatIdUsuario"
             android:layout_width="55dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="28dp"
-            android:layout_marginEnd="16dp"
-            android:text="idAutor"
-            app:layout_constraintBottom_toTopOf="@+id/fechaModChat"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/idAutorChat"
-            android:layout_width="wrap_content"
             android:layout_height="17dp"
-            android:layout_marginBottom="48dp"
-            android:layout_marginEnd="8dp"
-            android:text="id"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/autorChat"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toEndOf="@+id/tituloChat" />
-
-        <TextView
-            android:id="@+id/creadoChat"
-            android:layout_width="wrap_content"
-            android:layout_height="14dp"
             android:layout_marginBottom="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Creado :"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fechaCrearChat"
-            app:layout_constraintHorizontal_bias="0.237"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Autor"
+            app:layout_constraintBottom_toTopOf="@+id/editCabeceraChatFechaActualizacion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/UltimaModificacionChat"
+            android:id="@+id/lblCabeceraChatCreado"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Creado:"
+            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatFechaCreacion"
+            app:layout_constraintHorizontal_bias="0.413"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo" />
+
+        <TextView
+            android:id="@+id/lblCabeceraChatUltimaModificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="44dp"
-            android:text="Ultima modificacion :"
-            app:layout_constraintEnd_toStartOf="@+id/fechaCrearChat"
-            app:layout_constraintHorizontal_bias="0.504"
+            android:layout_marginTop="64dp"
+            android:text="Ultima modificación:"
+            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatFechaCreacion"
+            app:layout_constraintHorizontal_bias="0.228"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/horaModChat"
+            android:id="@+id/editCabeceraChatHoraActualizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Hora_update"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.733"
+            app:layout_constraintStart_toEndOf="@+id/editCabeceraChatFechaActualizacion"
+            app:layout_constraintTop_toBottomOf="@+id/editCabeceraChatHoraCreacion"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/editCabeceraChatHoraCreacion"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Hora_creación"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editCabeceraChatIdUsuario" />
+
+        <TextView
+            android:id="@+id/editCabeceraChatTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="hora"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.703"
-            app:layout_constraintStart_toEndOf="@+id/fechaModChat"
-            tools:layout_editor_absoluteY="44dp" />
-
-        <TextView
-            android:id="@+id/horaChat"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="hora"
-            app:layout_constraintBottom_toTopOf="@+id/horaModChat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.703"
-            app:layout_constraintStart_toEndOf="@+id/fechaCrearChat" />
+            android:layout_marginTop="8dp"
+            android:text="Titulo"
+            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatIdUsuario"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toEndOf="@+id/lblCabeceraChatTitulo"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
