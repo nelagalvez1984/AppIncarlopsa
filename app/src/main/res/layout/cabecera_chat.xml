@@ -95,7 +95,7 @@
             android:layout_marginTop="44dp"
             android:text="Ultima modificacion :"
             app:layout_constraintEnd_toStartOf="@+id/FechaChat"
-            app:layout_constraintHorizontal_bias="0.447"
+            app:layout_constraintHorizontal_bias="0.575"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
