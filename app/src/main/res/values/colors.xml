@@ -462,7 +462,7 @@
         <item>@color/md_amber_A700</item>
     </array>
     <color name="md_amber_50">#b50128</color>
-    <color name="md_amber_100">#9c7a14</color>
+    <color name="md_amber_100">#e3e3e3</color>
     <color name="md_amber_200">#ffe082</color>
     <color name="md_amber_300">#ffd54f</color>
     <color name="md_amber_400">#ffca28</color>
@@ -683,9 +683,9 @@
 
     <color name="colorPrimary">#008443</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#eda8c0</color>
+    <color name="colorAccent">#b50128</color>
     <color name="colorVerdeApp">#1d871e</color>
-    <color name="colorRosaApp">#fcb7cf</color>
+    <color name="colorRosaApp">#f5f4f0</color>
     <color name="colorAzulApp">#3F51B5</color>
     <color name="toolbar">#e1e1e1</color>
 
