@@ -74,6 +74,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         holder.fechaUpdate.setText(fechaUpdate);
         holder.horaUpdate.setText(horaUpdate);
 
+
     }
 
     @Override

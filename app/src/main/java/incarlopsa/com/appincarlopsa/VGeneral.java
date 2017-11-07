@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     //Propiedades
@@ -29,7 +32,25 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //todo RETIRAR ESTO, ESTA DE PRUEBAS!
+        credenciales.setLogin(USUARIO_TEST_NORMAL);
+        credenciales.setPassword(PASSWORD_TEST_NORMAL);
+        credenciales.setUsername(USUARIO_TEST_NORMAL);
+        HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
+        ArrayList<DataBaseItem> resultados = null;
+        try {
+            resultados = hilo.execute(credenciales).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        Usuario u = (Usuario)resultados.get(0);
+        credenciales.setIdUsuario(u.getIdUsuario());
+        credenciales.setApellidos(u.getApellidos());
+        credenciales.setDni(u.getDni());
+        credenciales.setFotoBytes(u.getFoto());
+
+        //TODO aqui sigue con naturalidad
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         if (navigationView != null) {
@@ -129,5 +150,42 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
 
     }
+    /* éstas líneas son necesarias para el permiso de descargar archivos de manera externa pero no sé cómo va la cosa*/
+                // el enlace es el de abajo
+                // https://androidstudiofaqs.com/tutoriales/dar-permisos-a-aplicaciones-en-android-studio
+                /*
++    int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
++    if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)
++
++    {
++
++        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
++                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
++
++        } else {
++
++            ActivityCompat.requestPermissions(this,
++                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
++                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
++        }
++    }
++
++    @Override
++    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
++        switch (requestCode) {
++            case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
++                // If request is cancelled, the result arrays are empty.
++                if (grantResults.length >
++                        && grantResults[] == PackageManager.PERMISSION_GRANTED) {
++
++                } else {
++
++                }
++                return;
++            }
++        }
++    }
++    */
+                /* hasta aquí*/
 
 }
