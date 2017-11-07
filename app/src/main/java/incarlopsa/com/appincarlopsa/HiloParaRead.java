@@ -3,7 +3,6 @@ package incarlopsa.com.appincarlopsa;
 import android.os.AsyncTask;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem>> implements ICodigos {
 
@@ -38,12 +37,13 @@ public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem
 
         int numParametros = parametrosParaConsulta.length; //Debe ser 1, si no es un error en la llamada
 
-        ArrayList<DataBaseItem> retorno = null;
+        ArrayList<DataBaseItem> retorno = new ArrayList<>();
 
         try {
             retorno = dao.read(parametrosParaConsulta[0]);
         } catch (SQLException e) {
-            e.printStackTrace();
+            SingleTostada singleTostada = SingleTostada.getInstance();
+            singleTostada.errorConexionBBDD();
         }
         if (retorno != null){
             System.out.println("Lectura correcta!");

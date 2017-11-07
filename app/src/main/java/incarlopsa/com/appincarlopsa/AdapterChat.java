@@ -47,7 +47,8 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         try {
             resultados = hiloParaRead.execute(usuarioAux).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            SingleTostada singleTostada = SingleTostada.getInstance();
+            singleTostada.errorConexionBBDD();
         }
 
         if (resultados.size() > 0){ //deberia serlo
@@ -67,7 +68,6 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         String horaUpdate = cabecera.getHoraUltimoUpdate();
 
         holder.titulo.setText(titulo);
-        holder.idAutor.setText(idAutor.toString());
         holder.autor.setText(autor);
         holder.fechaCreacion.setText(fechaCreacion);
         holder.horaCreacion.setText(horaCreacion);
@@ -84,7 +84,6 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView titulo;
-        private TextView idAutor;
         private TextView autor;
         private TextView fechaCreacion;
         private TextView horaCreacion;
@@ -94,8 +93,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
             titulo = (TextView) v.findViewById(R.id.editCabeceraChatTitulo);
-            idAutor = (TextView) v.findViewById(R.id.editCabeceraChatIdUsuario);
-            autor = (TextView) v.findViewById(R.id.editCabeceraChatIdUsuario);
+            autor = (TextView) v.findViewById(R.id.editCabeceraChatAutor);
             fechaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatFechaCreacion);
             horaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatHoraCreacion);
             fechaUpdate = (TextView) v.findViewById(R.id.editCabeceraChatFechaActualizacion);
@@ -113,4 +111,11 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         mListener = listener;
     }
 
+    public Integer ultimaPosicion(){
+        Integer retorno = 0;
+        if (listaCabecera.size()>0){
+            retorno = listaCabecera.size()-1;
+        }
+        return retorno;
+    }
 }

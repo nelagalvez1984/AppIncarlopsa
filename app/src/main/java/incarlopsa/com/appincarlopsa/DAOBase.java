@@ -80,14 +80,12 @@ public abstract class DAOBase implements IDAO, ICodigos{
 
     public Boolean create(Object elementoACrear) throws SQLException {
         boolean resultado = false;
-        try {
-            conectar();
-            prepararCreate(elementoACrear);
-            resultado = ejecutarConsultaCreate();
-            desconectar();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        conectar();
+        prepararCreate(elementoACrear);
+        resultado = ejecutarConsultaCreate();
+        desconectar();
+
         return resultado;
     }
 
@@ -106,59 +104,43 @@ public abstract class DAOBase implements IDAO, ICodigos{
     }
 
     //Contar resultados devueltos
-    protected void getRows(){
+    protected void getRows() throws SQLException{
         numeroResultados = 0;
-        try {
-            resultados.last();
-            numeroResultados = resultados.getRow();
-            resultados.beforeFirst();
-        }
-        catch(Exception ex)  {
-            numeroResultados = 0;
-        }
+        resultados.last();
+        numeroResultados = resultados.getRow();
+        resultados.beforeFirst();
+        numeroResultados = 0;
     }
 
     //Proceso completo de lectura (filtro + consulta)
     public ArrayList<DataBaseItem> read(Object filtro) throws SQLException{
-        try {
-            conectar();
-            prepararRead(filtro);
-            ejecutarConsultaRead();
-            while(resultados.next()) { //Por cada row, meter un objeto al array de resultados
-                rellenarObjetos();
-            }
-            desconectar();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        conectar();
+        prepararRead(filtro);
+        ejecutarConsultaRead();
+        while(resultados.next()) { //Por cada row, meter un objeto al array de resultados
+            rellenarObjetos();
         }
+        desconectar();
         return resultadoMultiple;
     }
 
     //Actualizar una fila correspondiente a un ID con un elemento ya relleno
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         boolean resultado = false;
-        try {
-            conectar();
-            prepararUpdate(elementoConQueActualizar);
-            resultado = ejecutarConsultaUpdate();
-            desconectar();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        conectar();
+        prepararUpdate(elementoConQueActualizar);
+        resultado = ejecutarConsultaUpdate();
+        desconectar();
         return resultado;
     }
 
     @Override
-    public Boolean delete(Object objetoABorrar) {
+    public Boolean delete(Object objetoABorrar) throws SQLException{
         boolean resultado = false;
-        try {
-            conectar();
-            prepararDelete(objetoABorrar);
-            resultado = ejecutarConsultaDelete();
-            desconectar();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        conectar();
+        prepararDelete(objetoABorrar);
+        resultado = ejecutarConsultaDelete();
+        desconectar();
         return resultado;
     }
 

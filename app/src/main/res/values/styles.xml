@@ -22,4 +22,6 @@
         <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Body2</item>
     </style>
 
+    style="@style/Widget.AppCompat.EditText"
+
 </resources>

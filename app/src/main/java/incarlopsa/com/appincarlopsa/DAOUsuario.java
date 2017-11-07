@@ -132,12 +132,12 @@ public class DAOUsuario extends DAOBase implements IDAO{
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         return super.update(elementoConQueActualizar);
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
+    public Boolean delete(Object elementoABorrar) throws SQLException { //NO SE BORRAN USUARIOS DESDE NUESTRA APP!
         return super.delete(elementoABorrar);
     }
 }
