@@ -108,13 +108,13 @@
             android:layout_marginEnd="24dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="124dp"
-            app:layout_constraintEnd_toStartOf="@+id/btnDislikeoff"
+            app:layout_constraintEnd_toStartOf="@+id/btnDislikeof"
             app:layout_constraintStart_toEndOf="@+id/btnResponder"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/me_gusta_web" />
 
         <ImageView
-            android:id="@+id/btnDislikeoff"
+            android:id="@+id/btnDislikeof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
