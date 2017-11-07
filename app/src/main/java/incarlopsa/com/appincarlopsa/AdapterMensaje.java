@@ -1,5 +1,7 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHolder> {
 
     private ArrayList<DataBaseItem> listaMensajes;
+    private SingleCredenciales singleCredenciales = SingleCredenciales.getInstance();
+    private ConstraintLayout container;
 
     public AdapterMensaje(ArrayList<DataBaseItem> listaCabecera) {
         this.listaMensajes = listaCabecera;
@@ -37,6 +41,18 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Mensaje mensaje = (Mensaje)listaMensajes.get(position);
+
+/*
+        container = (ConstraintLayout) findViewById(R.id.cardviewMensaje);
+        container.setBackgroundColor(0x4CAF50);
+        container.setBackgroundColor(getResources().getColor(R.color.blue));
+*/
+        //Cambiar el color si me escribe alguien
+        if (mensaje.getIdUsuario() != singleCredenciales.getIdUsuario()){
+            holder.v.setBackgroundColor(Color.parseColor("#A01D871E"));
+        }else{
+            holder.v.setBackgroundColor(Color.parseColor("#A0FF4081"));
+        }
 
         //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
@@ -81,6 +97,8 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         private TextView fecha;
         private TextView hora;
         private TextView contenidoMensaje;
+        private View v;
+
 
         public ViewHolder(View v) {
             super(v);
@@ -88,8 +106,12 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
             fecha = (TextView) v.findViewById(R.id.mensajeFecha);
             hora = (TextView) v.findViewById(R.id.mensajeHora);
             contenidoMensaje = (TextView) v.findViewById(R.id.textMensajeMensaje);
+            this.v = v;
+
 
         }
+
+
     }
 
     public interface OnItemClickListener {

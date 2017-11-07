@@ -10,7 +10,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
     private String consultaInsercion = "INSERT INTO mensaje SET idChat = ?, idUsuario = ?, mensaje = ?,fecha = NOW(), leidoPorDestino = ?";
     private String consultaLecturaPorId = "SELECT idMensaje, idChat, idUsuario, mensaje, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(fecha, '%d/%m/%y') AS fechaupdate, " +
-            "leidoPorDestino FROM mensaje WHERE idChat = ? ORDER BY fecha DESC";
+            "leidoPorDestino FROM mensaje WHERE idChat = ? ORDER BY fecha ASC";
     private String consultaUpdate = "UPDATE mensaje SET idChat = ?, idUsuario = ?, mensaje = ?, leidoPorDestino = ? WHERE idMensaje = ?";
     private String consultaDeleteChat = "DELETE FROM mensaje WHERE idChat = ?";
     private String consultaDeleteMensaje = "DELETE FROM mensaje WHERE idMensaje = ?";
