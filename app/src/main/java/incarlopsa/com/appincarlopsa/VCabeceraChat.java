@@ -21,6 +21,7 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
     private AdapterChat adapterChatSalientes;
     private HiloParaRead hiloParaRead;
     private Intent intent;
+    private SingleTostada tostada = SingleTostada.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,11 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
 
     @Override
     public void inicializarVista() {
+
+        tostada.setContexto(this);
+        resultadosEntrantes = new ArrayList<>();
+        resultadosSalientes = new ArrayList<>();
+
         recyclerEntrantes = (RecyclerView)findViewById(R.id.recyEntrantesChat);
         recyclerSalientes = (RecyclerView)findViewById(R.id.recySalientesChat);
 
@@ -43,11 +49,12 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         try {
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
 
         adapterChatEntrantes = new AdapterChat(resultadosEntrantes);
         recyclerEntrantes.setAdapter(adapterChatEntrantes);
+        recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
 
         adapterChatEntrantes.setOnItemListener(new AdapterChat.OnItemClickListener() {
             @Override
@@ -67,15 +74,17 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         recyclerSalientes.setLayoutManager(layoutManagerSalientes);
         recyclerSalientes.setItemAnimator(new DefaultItemAnimator());
 
+
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
 
         adapterChatSalientes = new AdapterChat(resultadosSalientes);
         recyclerSalientes.setAdapter(adapterChatSalientes);
+        recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
 
         adapterChatSalientes.setOnItemListener(new AdapterChat.OnItemClickListener() {
             @Override

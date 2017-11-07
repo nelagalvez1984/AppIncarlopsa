@@ -4,10 +4,6 @@ import android.os.AsyncTask;
 
 import java.sql.SQLException;
 
-/**
- * Created by Nela on 02/11/2017.
- */
-
 public class HiloParaDelete extends AsyncTask<Object, Void, Boolean> implements ICodigos{
 
 
@@ -39,11 +35,16 @@ public class HiloParaDelete extends AsyncTask<Object, Void, Boolean> implements 
         boolean operacionCorrecta = false;
 
         if (numParametros==1) { //Para los borrados solo puede haber un parametro!
-            operacionCorrecta = (dao.delete(parametrosParaConsulta[0]));
-            if (operacionCorrecta) {
-                System.out.println("Creacion correcta!");
-            } else {
-                System.out.println("No se ha podido borrar!");
+            try {
+                operacionCorrecta = (dao.delete(parametrosParaConsulta[0]));
+                if (operacionCorrecta) {
+                    System.out.println("Creacion correcta!");
+                } else {
+                    System.out.println("No se ha podido borrar!");
+                }
+            } catch (SQLException e) {
+                SingleTostada singleTostada = SingleTostada.getInstance();
+                singleTostada.errorConexionBBDD();
             }
         }else{ //Error en la llamada!
             return null;

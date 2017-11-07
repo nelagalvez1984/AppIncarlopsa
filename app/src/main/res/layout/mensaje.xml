@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/md_blue_200">
+    app:cardBackgroundColor="@color/colorGris">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_marginStart="8dp"
             android:gravity="left|center"
             android:text="Nombre"
-            android:textColor="#000000"
+            android:textColor="@color/colorNegro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.025"
@@ -37,7 +37,7 @@
             android:layout_marginStart="8dp"
             android:gravity="left|center"
             android:text="Fecha"
-            android:textColor="#000000"
+            android:textColor="@color/colorNegro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/mensajeHora"
             app:layout_constraintHorizontal_bias="1.0"
@@ -57,7 +57,7 @@
             android:ems="10"
             android:hint="Mensaje"
             android:inputType="textPersonName"
-            android:textColor="#000000"
+            android:textColor="@color/colorNegro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -73,7 +73,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="Hora"
-            android:textColor="#000000"
+            android:textColor="@color/colorNegro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.97"
