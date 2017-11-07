@@ -74,6 +74,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         holder.fechaUpdate.setText(fechaUpdate);
         holder.horaUpdate.setText(horaUpdate);
 
+
     }
 
     @Override
@@ -92,13 +93,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         public ViewHolder(View v) {
             super(v);
-            titulo = (TextView) v.findViewById(R.id.textUserName);
-            idAutor = (TextView) v.findViewById(R.id.textUserName);
-            autor = (TextView) v.findViewById(R.id.textUserName);
-            fechaCreacion = (TextView) v.findViewById(R.id.textUserName);
-            horaCreacion = (TextView) v.findViewById(R.id.textUserName);
-            fechaUpdate = (TextView) v.findViewById(R.id.textUserName);
-            horaUpdate = (TextView) v.findViewById(R.id.textUserName);
+            titulo = (TextView) v.findViewById(R.id.editCabeceraChatTitulo);
+            idAutor = (TextView) v.findViewById(R.id.editCabeceraChatIdUsuario);
+            autor = (TextView) v.findViewById(R.id.editCabeceraChatIdUsuario);
+            fechaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatFechaCreacion);
+            horaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatHoraCreacion);
+            fechaUpdate = (TextView) v.findViewById(R.id.editCabeceraChatFechaActualizacion);
+            horaUpdate = (TextView) v.findViewById(R.id.editCabeceraChatHoraActualizacion);
 
         }
     }

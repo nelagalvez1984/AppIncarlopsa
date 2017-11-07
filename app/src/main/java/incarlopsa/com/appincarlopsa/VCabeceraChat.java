@@ -43,7 +43,6 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
 
         chatAdapterEntrantes = new ChatAdapter(resultadosEntrantes);
         recyclerEntrantes.setAdapter(chatAdapterEntrantes);
-        recyclerEntrantes.setAdapter(chatAdapterEntrantes);
 
         chatAdapterEntrantes.setOnItemListener(new ChatAdapter.OnItemClickListener() {
             @Override

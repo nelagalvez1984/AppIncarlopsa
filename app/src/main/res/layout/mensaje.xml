@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/Titulo"
+            android:id="@+id/lblCabeceraChatTitulo"
             android:layout_width="94dp"
             android:layout_height="34dp"
             android:layout_marginTop="8dp"
@@ -30,7 +30,7 @@
             android:gravity="left|center"
             android:text="Fecha/Hora"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/Titulo"
+            app:layout_constraintLeft_toRightOf="@+id/lblCabeceraChatTitulo"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
@@ -46,7 +46,7 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Titulo"
+            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo"
             tools:ignore="RtlHardcoded" />
 
     </android.support.constraint.ConstraintLayout>

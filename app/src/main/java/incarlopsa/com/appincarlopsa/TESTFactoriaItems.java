@@ -39,7 +39,6 @@ public class TESTFactoriaItems implements ICodigos {
     private DAOLikes daoLikes;
     private DAOMensaje daoMensaje;
     private DAOPublicacion daoPublicacion;
-    private BORRARDAOPublicacionAdjunto BORRARDAOPublicacionAdjunto;
     private DAOTipoFichero daoTipoFichero;
     private DAOUsuario daoUsuario;
     private ArrayList<Character> listaLetras;
@@ -52,7 +51,6 @@ public class TESTFactoriaItems implements ICodigos {
         daoLikes = new DAOLikes();
         daoMensaje = new DAOMensaje();
         daoPublicacion = new DAOPublicacion();
-        BORRARDAOPublicacionAdjunto = new BORRARDAOPublicacionAdjunto();
         daoTipoFichero = new DAOTipoFichero();
         daoUsuario = new DAOUsuario();
         generadorAleatorios = new Random();
