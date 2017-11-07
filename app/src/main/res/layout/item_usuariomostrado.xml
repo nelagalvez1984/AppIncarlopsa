@@ -21,7 +21,7 @@
             tools:layout_editor_absoluteY="8dp" />
 
         <TextView
-            android:id="@+id/lblCabeceraChatTitulo"
+            android:id="@+id/lblChatTitulo"
             android:layout_width="227dp"
             android:layout_height="33dp"
             android:layout_marginLeft="16dp"
@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.177"
             app:layout_constraintStart_toEndOf="@+id/foto"
-            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo"
+            app:layout_constraintTop_toBottomOf="@+id/lblChatTitulo"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
     </android.support.constraint.ConstraintLayout>

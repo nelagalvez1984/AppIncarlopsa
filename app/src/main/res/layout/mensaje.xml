@@ -10,34 +10,36 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/lblCabeceraChatTitulo"
-            android:layout_width="94dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/textMensajeAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:gravity="left|center"
             android:text="Nombre"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteX="75dp" />
+            tools:ignore="MissingConstraints,RtlHardcoded"/>
 
         <TextView
-            android:id="@+id/Fecha"
+            android:id="@+id/mensajeFecha"
             android:layout_width="94dp"
-            android:layout_height="34dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:gravity="left|center"
-            android:text="Fecha/Hora"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/lblCabeceraChatTitulo"
+            android:text="Fecha"
+            app:layout_constraintEnd_toStartOf="@+id/mensajeHora"
+            app:layout_constraintHorizontal_bias="0.854"
+            app:layout_constraintLeft_toRightOf="@+id/lblChatTitulo"
+            app:layout_constraintStart_toEndOf="@+id/lblChatTitulo"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
+            tools:ignore="MissingConstraints,RtlHardcoded"/>
 
         <EditText
-            android:id="@+id/mensaje"
+            android:id="@+id/textMensajeMensaje"
             android:layout_width="273dp"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
@@ -46,8 +48,18 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo"
-            tools:ignore="RtlHardcoded" />
+            app:layout_constraintTop_toBottomOf="@+id/lblChatTitulo"
+            tools:ignore="RtlHardcoded"/>
+
+        <TextView
+            android:id="@+id/mensajeHora"
+            android:layout_width="94dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Hora"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 

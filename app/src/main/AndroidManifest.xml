@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".VCabeceraChat">
         </activity>
+        <activity android:name=".VChat">
+        </activity>
     </application>
 
 </manifest>
