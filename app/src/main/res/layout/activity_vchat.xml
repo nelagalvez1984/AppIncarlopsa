@@ -12,44 +12,55 @@
         android:id="@+id/txtChatTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/md_amber_50"
+        android:background="@color/colorRojoCabeceras"
         android:text="@string/chat"
         android:textAlignment="center"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="@color/colorWhiteFondos"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerChats"
         android:layout_width="match_parent"
-        android:layout_height="371dp"
-        android:background="@color/md_cyan_50" />
+        android:layout_height="205dp"
+        android:background="@color/colorGris" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_light_background"
+        android:background="@color/colorWhiteFondos"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/edtChatMensaje"
             android:layout_width="230dp"
             android:layout_height="50dp"
+            android:layout_marginBottom="76dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="28dp"
             android:layout_weight="1"
             android:background="@color/cardview_light_background"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/simpleImageButtonHome"
+            app:layout_constraintStart_toStartOf="parent"
             tools:hint="Introduce tu mensaje" />
 
         <ImageButton
-            android:id="@+id/buttonChatEnviar"
-            android:layout_width="79dp"
-            android:layout_height="51dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            app:srcCompat="@drawable/ic_action_content_send" />
+            android:id="@+id/simpleImageButtonHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_image_button"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_action_content_send"
+            tools:layout_editor_absoluteY="239dp" />
 
-    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

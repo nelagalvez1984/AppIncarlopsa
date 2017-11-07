@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_amber_100">
+    android:background="@color/colorGris">
 
     <TextView
         android:id="@+id/txtTituloPublicacion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorRojoCabeceras"
         android:text="@string/titulo_publicacion"
         android:textAlignment="center"
-        android:textColor="@color/cardview_light_background"
+        android:textColor="@color/colorWhiteFondos"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="349dp"
         android:layout_marginEnd="6dp"
         android:layout_marginStart="6dp"
-        android:background="@color/colorRosaApp"
+        android:background="@color/colorWhiteFondos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

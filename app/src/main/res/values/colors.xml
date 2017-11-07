@@ -689,5 +689,9 @@
     <color name="colorRosaApp">#FF4081</color>
     <color name="colorAzulApp">#3F51B5</color>
     <color name="toolbar">#e1e1e1</color>
+    <color name="colorBotonEnviar">#008443</color>
+    <color name="colorRojoCabeceras">#b50128</color>
+    <color name="colorWhiteFondos">#FFFFFF</color>
+    <color name="colorGris">#EBEBEB</color>
 
 </resources>
