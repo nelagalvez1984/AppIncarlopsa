@@ -6,24 +6,24 @@ import java.util.ArrayList;
 public class DAOChat extends DAOBase implements IDAO, ICodigos {
     //Propiedades
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO mensaje SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
+    private String consultaInsercion = "INSERT INTO chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
             "ultimoUpdate = NOW(), finalizado = ?";
     private String consultaLecturaPorId = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado FROM mensaje WHERE idChat = ?";
-    private String consultaUpdate = "UPDATE mensaje SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
+            "finalizado FROM chat WHERE idChat = ?";
+    private String consultaUpdate = "UPDATE chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
             "finalizado = ? WHERE idChat = ?";
-    private String consultaActualizarFecha = "UPDATE mensaje SET ultimoUpdate = NOW() WHERE idChat = ?";
-    private String consultaDelete = "DELETE FROM mensaje WHERE idChat = ?";
+    private String consultaActualizarFecha = "UPDATE chat SET ultimoUpdate = NOW() WHERE idChat = ?";
+    private String consultaDelete = "DELETE FROM chat WHERE idChat = ?";
     private String consultaTopicsPorAutor = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado FROM mensaje WHERE idUsuario = ? AND finalizado = false";
+            "finalizado FROM chat WHERE idUsuario = ? AND finalizado = false";
     private String consultaTopicsPorDestinatario = "SELECT idChat, idUsuario, idUsuarioDestino, titulo, " +
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
-            "finalizado FROM mensaje WHERE idUsuarioDestino = ? AND finalizado = false";
+            "finalizado FROM chat WHERE idUsuarioDestino = ? AND finalizado = false";
 
     //Constructor
 
@@ -58,6 +58,7 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
                 consultaSQL = consultaTopicsPorDestinatario;
             }
             prepararConsulta(consultaSQL);
+
             cargarConsulta(perfil.getIdUsuario());
 
         }else{ //Es una consulta por Id

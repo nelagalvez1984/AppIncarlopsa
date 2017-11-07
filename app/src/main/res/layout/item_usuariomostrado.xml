@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgUsuariocomentario"
+            android:id="@+id/foto"
             android:layout_width="72dp"
             android:layout_height="71dp"
             android:layout_marginLeft="24dp"
@@ -21,14 +21,14 @@
             tools:layout_editor_absoluteY="8dp" />
 
         <TextView
-            android:id="@+id/lblCabeceraChatTitulo"
+            android:id="@+id/lblChatTitulo"
             android:layout_width="227dp"
             android:layout_height="33dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:gravity="left|center"
             android:text="UserName"
-            app:layout_constraintLeft_toRightOf="@+id/imgUsuariocomentario"
+            app:layout_constraintLeft_toRightOf="@+id/foto"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
@@ -42,8 +42,8 @@
             android:text="Nombre y Apellidos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.177"
-            app:layout_constraintStart_toEndOf="@+id/imgUsuariocomentario"
-            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo"
+            app:layout_constraintStart_toEndOf="@+id/foto"
+            app:layout_constraintTop_toBottomOf="@+id/lblChatTitulo"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
     </android.support.constraint.ConstraintLayout>

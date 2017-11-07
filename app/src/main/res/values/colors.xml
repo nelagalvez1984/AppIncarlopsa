@@ -191,7 +191,7 @@
     </array>
     <color name="md_blue_50">#e3f2fd</color>
     <color name="md_blue_100">#bbdefb</color>
-    <color name="md_blue_200">#90caf9</color>
+    <color name="md_blue_200">#b50128</color>
     <color name="md_blue_300">#64b5f6</color>
     <color name="md_blue_400">#42a5f5</color>
     <color name="md_blue_500">#2196f3</color>
@@ -461,7 +461,7 @@
         <item>@color/md_amber_A400</item>
         <item>@color/md_amber_A700</item>
     </array>
-    <color name="md_amber_50">#d0b50128</color>
+    <color name="md_amber_50">#fff8e1</color>
     <color name="md_amber_100">#ffecb3</color>
     <color name="md_amber_200">#ffe082</color>
     <color name="md_amber_300">#ffd54f</color>
@@ -684,10 +684,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#b4a6ab</color>
-    <color name="colorVerdeApp">#bd1d871e</color>
+    <color name="colorVerdeApp">#1d871e</color>
+    <color name="colorRosaTransparenciaApp">#A0FF4081</color>
     <color name="colorRosaApp">#FF4081</color>
     <color name="colorAzulApp">#3F51B5</color>
     <color name="toolbar">#e1e1e1</color>
-    <color name="colorVerdeDegradado">#BD1D871E</color>
 
 </resources>
