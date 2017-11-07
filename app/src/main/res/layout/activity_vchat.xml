@@ -53,12 +53,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="60dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_image_button"
             android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_action_content_send"
-            tools:layout_editor_absoluteY="239dp" />
+            app:srcCompat="@drawable/ic_action_content_send" />
 
 
     </android.support.constraint.ConstraintLayout>
