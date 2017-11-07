@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/foto"
+            android:id="@+id/imgUsuariocomentario"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginLeft="16dp"
@@ -21,19 +21,19 @@
             tools:layout_editor_absoluteY="8dp" />
 
         <TextView
-            android:id="@+id/lblChatTitulo"
+            android:id="@+id/lblCabeceraChatTitulo"
             android:layout_width="128dp"
             android:layout_height="34dp"
             android:layout_marginLeft="9dp"
             android:layout_marginTop="8dp"
             android:gravity="left|center"
             android:text="@string/nombre"
-            app:layout_constraintLeft_toRightOf="@+id/foto"
+            app:layout_constraintLeft_toRightOf="@+id/imgUsuariocomentario"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/Fecha"
+            android:id="@+id/txtFechacomentario"
             android:layout_width="64dp"
             android:layout_height="34dp"
             android:layout_marginEnd="8dp"
@@ -50,13 +50,14 @@
             android:id="@+id/editCabeceraChatAutor"
             android:layout_width="51dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="8dp"
             android:text="idComentario"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="2dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/comentario"
+            android:id="@+id/txtPlaincomentario"
             android:layout_width="285dp"
             android:layout_height="43dp"
             android:layout_marginBottom="8dp"
@@ -68,8 +69,8 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/foto"
-            app:layout_constraintTop_toBottomOf="@+id/lblChatTitulo"
+            app:layout_constraintLeft_toRightOf="@+id/imgUsuariocomentario"
+            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo"
             tools:ignore="RtlHardcoded" />
 
     </android.support.constraint.ConstraintLayout>
@@ -79,31 +80,51 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btnResponderComentario"
-            android:layout_width="85dp"
-            android:layout_height="31dp"
-            android:layout_marginEnd="36dp"
-            android:text="responder"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            tools:layout_editor_absoluteY="108dp" />
-
-        <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/btnResponderjamon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:srcCompat="@mipmap/me_gusta"
-            tools:layout_editor_absoluteY="106dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="112dp"
+            android:backgroundTint="@color/colorVerdeDegradado"
+            android:drawableLeft="@drawable/jamonsito"
+            android:drawablePadding="8dp"
+            android:text="Responder"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/btnLikeoff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/no_me_gusta"
-            tools:layout_editor_absoluteX="274dp"
-            tools:layout_editor_absoluteY="107dp" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="124dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnDislikeof"
+            app:layout_constraintStart_toEndOf="@+id/btnResponder"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/me_gusta_web" />
+
+        <ImageView
+            android:id="@+id/btnDislikeof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginTop="104dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.714"
+            app:srcCompat="@drawable/no_me_gusta_web" />
 
     </android.support.constraint.ConstraintLayout>
 
