@@ -1,5 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,11 +13,14 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
 
     private RecyclerView recyclerEntrantes;
     private ArrayList<DataBaseItem> resultadosEntrantes;
+    private ArrayList<DataBaseItem> resultadosSalientes;
     private RecyclerView recyclerSalientes;
-    private RecyclerView.LayoutManager layoutManager;
-    private ChatAdapter chatAdapterEntrantes;
+    private RecyclerView.LayoutManager layoutManagerEntrantes;
+    private RecyclerView.LayoutManager layoutManagerSalientes;
+    private AdapterChat adapterChatEntrantes;
+    private AdapterChat adapterChatSalientes;
     private HiloParaRead hiloParaRead;
-
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +34,11 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         recyclerEntrantes = (RecyclerView)findViewById(R.id.recyEntrantesChat);
         recyclerSalientes = (RecyclerView)findViewById(R.id.recySalientesChat);
 
-        layoutManager = new LinearLayoutManager(this);
-        recyclerEntrantes.setLayoutManager(layoutManager);
+        layoutManagerEntrantes = new LinearLayoutManager(this);
+        recyclerEntrantes.setLayoutManager(layoutManagerEntrantes);
         recyclerEntrantes.setItemAnimator(new DefaultItemAnimator());
 
+        //Chats entrantes
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
@@ -41,19 +46,50 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
             e.printStackTrace();
         }
 
-        chatAdapterEntrantes = new ChatAdapter(resultadosEntrantes);
-        recyclerEntrantes.setAdapter(chatAdapterEntrantes);
+        adapterChatEntrantes = new AdapterChat(resultadosEntrantes);
+        recyclerEntrantes.setAdapter(adapterChatEntrantes);
 
-        chatAdapterEntrantes.setOnItemListener(new ChatAdapter.OnItemClickListener() {
+        adapterChatEntrantes.setOnItemListener(new AdapterChat.OnItemClickListener() {
             @Override
             public void onItemClick(DataBaseItem item, int position) {
-                /*
-                Intent intent = new Intent(FilmListActivity.this, FilmDataActivity.class);
-                intent.putExtra(FilmDataActivity.EXTRA_FILM_INDEX, position);
+                Chat c = (Chat)item;
+
+                Intent intent = new Intent(VCabeceraChat.this, VChat.class);
+                intent.putExtra("idChat", c.getId());
+                intent.putExtra("tituloChat", c.getTitulo());
                 startActivity(intent);
-                */
+
             }
         });
+
+        //Chats salientes
+        layoutManagerSalientes = new LinearLayoutManager(this);
+        recyclerSalientes.setLayoutManager(layoutManagerSalientes);
+        recyclerSalientes.setItemAnimator(new DefaultItemAnimator());
+
+        hiloParaRead = new HiloParaRead(new DAOChat());
+        try {
+            resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        adapterChatSalientes = new AdapterChat(resultadosSalientes);
+        recyclerSalientes.setAdapter(adapterChatSalientes);
+
+        adapterChatSalientes.setOnItemListener(new AdapterChat.OnItemClickListener() {
+            @Override
+            public void onItemClick(DataBaseItem item, int position) {
+                Chat c = (Chat)item;
+
+                Intent intent = new Intent(VCabeceraChat.this, VChat.class);
+                intent.putExtra("idChat", c.getId());
+                intent.putExtra("tituloChat", c.getTitulo());
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override

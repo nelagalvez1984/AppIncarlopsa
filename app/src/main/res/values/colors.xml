@@ -25,7 +25,7 @@
     <color name="md_red_300">#e57373</color>
     <color name="md_red_400">#ef5350</color>
     <color name="md_red_500">#f44336</color>
-    <color name="md_red_600">#b50128</color>
+    <color name="md_red_600">#e53935</color>
     <color name="md_red_700">#d32f2f</color>
     <color name="md_red_800">#c62828</color>
     <color name="md_red_900">#b71c1c</color>
@@ -191,7 +191,7 @@
     </array>
     <color name="md_blue_50">#e3f2fd</color>
     <color name="md_blue_100">#bbdefb</color>
-    <color name="md_blue_200">#90caf9</color>
+    <color name="md_blue_200">#b50128</color>
     <color name="md_blue_300">#64b5f6</color>
     <color name="md_blue_400">#42a5f5</color>
     <color name="md_blue_500">#2196f3</color>
@@ -257,7 +257,7 @@
         <item>@color/md_cyan_A400</item>
         <item>@color/md_cyan_A700</item>
     </array>
-    <color name="md_cyan_50">#e3e3e3</color>
+    <color name="md_cyan_50">#e0f7fa</color>
     <color name="md_cyan_100">#b2ebf2</color>
     <color name="md_cyan_200">#80deea</color>
     <color name="md_cyan_300">#4dd0e1</color>
@@ -461,8 +461,8 @@
         <item>@color/md_amber_A400</item>
         <item>@color/md_amber_A700</item>
     </array>
-    <color name="md_amber_50">#b50128</color>
-    <color name="md_amber_100">#e3e3e3</color>
+    <color name="md_amber_50">#fff8e1</color>
+    <color name="md_amber_100">#ffecb3</color>
     <color name="md_amber_200">#ffe082</color>
     <color name="md_amber_300">#ffd54f</color>
     <color name="md_amber_400">#ffca28</color>
@@ -470,7 +470,7 @@
     <color name="md_amber_600">#ffb300</color>
     <color name="md_amber_700">#ffa000</color>
     <color name="md_amber_800">#ff8f00</color>
-    <color name="md_amber_900">#002aff</color>
+    <color name="md_amber_900">#ff6f00</color>
     <color name="md_amber_A100">#ffe57f</color>
     <color name="md_amber_A200">#ffd740</color>
     <color name="md_amber_A400">#ffc400</color>
@@ -681,11 +681,12 @@
 
     <color name="md_statusbar_translucent">#4000</color>
 
-    <color name="colorPrimary">#008443</color>
+    <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#b50128</color>
+    <color name="colorAccent">#b4a6ab</color>
     <color name="colorVerdeApp">#1d871e</color>
-    <color name="colorRosaApp">#f5f4f0</color>
+    <color name="colorRosaTransparenciaApp">#A0FF4081</color>
+    <color name="colorRosaApp">#FF4081</color>
     <color name="colorAzulApp">#3F51B5</color>
     <color name="toolbar">#e1e1e1</color>
 

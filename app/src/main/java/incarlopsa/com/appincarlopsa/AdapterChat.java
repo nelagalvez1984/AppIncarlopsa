@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
     private ArrayList<DataBaseItem> listaCabecera;
 
-    public ChatAdapter(ArrayList<DataBaseItem> listaCabecera) {
+    public AdapterChat(ArrayList<DataBaseItem> listaCabecera) {
         this.listaCabecera = listaCabecera;
     }
 
@@ -107,9 +107,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public interface OnItemClickListener {
         public void onItemClick(DataBaseItem item, int position);
     }
-    private ChatAdapter.OnItemClickListener mListener;
+    private AdapterChat.OnItemClickListener mListener;
 
-    public void setOnItemListener(ChatAdapter.OnItemClickListener listener) {
+    public void setOnItemListener(AdapterChat.OnItemClickListener listener) {
         mListener = listener;
     }
 
