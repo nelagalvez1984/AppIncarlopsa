@@ -138,12 +138,12 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         return super.update(elementoConQueActualizar);
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) {
+    public Boolean delete(Object elementoABorrar) throws SQLException{
         Chat auxChat = (Chat)elementoABorrar;
         //Primero borrar sus mensajes
         DAOMensaje dao = new DAOMensaje();

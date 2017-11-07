@@ -95,7 +95,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
         return retorno;
     }
 
-    private void actualizarFechaChatPadre(Object elemento){
+    private void actualizarFechaChatPadre(Object elemento) throws SQLException{
         //Actualizar la fecha de su mensaje
         Mensaje auxMensaje = (Mensaje)elemento;
         Chat chatAux = new Chat();
@@ -127,7 +127,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         //Primero actualizar el item
         Boolean retorno = super.update(elementoConQueActualizar);
 
@@ -138,7 +138,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) {
+    public Boolean delete(Object elementoABorrar) throws SQLException{
         //Si se va a borrar un unico mensaje, actualizar la comentario
 
 

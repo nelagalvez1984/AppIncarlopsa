@@ -27,29 +27,36 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
     private ActionBar actionBar;
     private ImageView fondo;
     private Intent intent;
+    private SingleTostada tostada = SingleTostada.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tostada.setContexto(this);
 
         //todo RETIRAR ESTO, ESTA DE PRUEBAS!
         credenciales.setLogin(USUARIO_TEST_NORMAL);
         credenciales.setPassword(PASSWORD_TEST_NORMAL);
         credenciales.setUsername(USUARIO_TEST_NORMAL);
         HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
-        ArrayList<DataBaseItem> resultados = null;
+        ArrayList<DataBaseItem> resultados = new ArrayList<>();
         try {
             resultados = hilo.execute(credenciales).get();
+            if (resultados.size()>0){
+                Usuario u = (Usuario)resultados.get(0);
+                credenciales.setIdUsuario(u.getIdUsuario());
+                credenciales.setApellidos(u.getApellidos());
+                credenciales.setDni(u.getDni());
+                credenciales.setFotoBytes(u.getFoto());
+            }else{
+                tostada.errorConexionBBDD();
+            }
+
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
 
-        Usuario u = (Usuario)resultados.get(0);
-        credenciales.setIdUsuario(u.getIdUsuario());
-        credenciales.setApellidos(u.getApellidos());
-        credenciales.setDni(u.getDni());
-        credenciales.setFotoBytes(u.getFoto());
 
         //TODO aqui sigue con naturalidad
 
@@ -117,7 +124,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
 
         //Fijar el drawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer_layout);

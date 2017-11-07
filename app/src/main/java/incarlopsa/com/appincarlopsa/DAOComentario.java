@@ -115,7 +115,7 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         Boolean retorno = super.update(elementoConQueActualizar);
         //Ahora actualizamos la comentario con la fecha actual
         Comentario comentarioAux = (Comentario)elementoConQueActualizar;
@@ -128,7 +128,7 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) {
+    public Boolean delete(Object elementoABorrar) throws SQLException{
         //Borrar primero todos los likes asociados
         Comentario comentarioAux = (Comentario)elementoABorrar;
         DAOLikes dao = new DAOLikes();

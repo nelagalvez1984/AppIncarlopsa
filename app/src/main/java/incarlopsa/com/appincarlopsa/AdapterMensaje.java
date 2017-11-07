@@ -64,7 +64,8 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         try {
             resultados = hiloParaRead.execute(usuarioAux).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            SingleTostada singleTostada = SingleTostada.getInstance();
+            singleTostada.errorConexionBBDD();
         }
 
         if (resultados.size() > 0){ //deberia serlo
@@ -107,11 +108,15 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
             hora = (TextView) v.findViewById(R.id.mensajeHora);
             contenidoMensaje = (TextView) v.findViewById(R.id.textMensajeMensaje);
             this.v = v;
-
-
         }
+    }
 
-
+    public Integer ultimaPosicion(){
+        Integer retorno = 0;
+        if (listaMensajes.size()>0){
+            retorno = listaMensajes.size()-1;
+        }
+        return retorno;
     }
 
     public interface OnItemClickListener {
@@ -121,6 +126,12 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
 
     public void setOnItemListener(AdapterChat.OnItemClickListener listener) {
         mListener = listener;
+    }
+
+    public void update(ArrayList<DataBaseItem> nuevaLista){
+        listaMensajes.clear();
+        listaMensajes.addAll(nuevaLista);
+        notifyDataSetChanged();
     }
 
 }

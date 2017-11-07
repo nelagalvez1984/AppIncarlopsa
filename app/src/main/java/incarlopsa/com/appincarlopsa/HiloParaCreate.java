@@ -45,7 +45,8 @@ public class HiloParaCreate extends AsyncTask<Object, Void, Boolean> implements 
                 return null;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            SingleTostada singleTostada = SingleTostada.getInstance();
+            singleTostada.errorConexionBBDD();
         }
         return operacionCorrecta;
     }

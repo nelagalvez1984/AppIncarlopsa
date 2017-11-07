@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class VChat extends AppCompatActivity implements IVista{
 
@@ -26,6 +27,8 @@ public class VChat extends AppCompatActivity implements IVista{
     private ImageButton botonEnviar;
     private TextView escribirMensaje;
     private TextView tituloFormulario;
+    private SingleTostada tostada = SingleTostada.getInstance();
+    private SingleCredenciales credenciales = SingleCredenciales.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,10 @@ public class VChat extends AppCompatActivity implements IVista{
 
     @Override
     public void inicializarVista() {
+
+        tostada.setContexto(this);
+        resultados = new ArrayList<>();
+
         //Recoger el chat
         recycler = (RecyclerView)findViewById(R.id.recyclerChats);
         intentRecogido = getIntent();
@@ -56,11 +63,12 @@ public class VChat extends AppCompatActivity implements IVista{
         try {
             resultados = hiloParaRead.execute(m).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
 
         adapterMensaje = new AdapterMensaje(resultados);
         recycler.setAdapter(adapterMensaje);
+        recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
 
         //Campo de texto y boton enviar
         botonEnviar = (ImageButton)findViewById(R.id.buttonChatEnviar);
@@ -71,7 +79,19 @@ public class VChat extends AppCompatActivity implements IVista{
     @Override
     public void onClick(View view) {
         //Boton enviar
-
+        hiloParaCreate = new HiloParaCreate(new DAOMensaje());
+        Mensaje m = new Mensaje();
+        m.setIdPublicacion(idChat);
+        m.setIdUsuario(credenciales.getIdUsuario());
+        m.setMensaje(escribirMensaje.getText().toString());
+        try {
+            Boolean creacion = hiloParaCreate.execute(m).get();
+            hiloParaRead = new HiloParaRead(new DAOMensaje());
+            resultados = hiloParaRead.execute(m).get();
+            adapterMensaje.update(resultados);
+        } catch (Exception e) {
+            tostada.errorConexionBBDD();
+        }
 
     }
 }

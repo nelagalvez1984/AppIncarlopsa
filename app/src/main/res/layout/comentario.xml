@@ -41,13 +41,13 @@
             android:layout_marginTop="8dp"
             android:gravity="left|center"
             android:text="@string/fecha_hora"
-            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatIdUsuario"
-            app:layout_constraintLeft_toRightOf="@+id/lblCabeceraChatTitulo"
+            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatAutor"
+            app:layout_constraintLeft_toRightOf="@+id/lblChatTitulo"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/editCabeceraChatIdUsuario"
+            android:id="@+id/editCabeceraChatAutor"
             android:layout_width="51dp"
             android:layout_height="30dp"
             android:layout_marginEnd="12dp"

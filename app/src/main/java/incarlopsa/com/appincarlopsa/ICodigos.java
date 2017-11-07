@@ -39,4 +39,10 @@ public interface ICodigos extends ICodigosAntonio,
     String USUARIO_TEST_RRHH = "TESTRRHH";
     String PASSWORD_TEST_RRHH = "TESTRRHH";
 
+    //Codigos para control de excepciones
+    String ERROR_CONEXION_BBDD = "No se ha podido establecer la conexión con la base de datos";
+    String ERROR_DRIVER = "Error en la carga del driver";
+    String ERROR_LOGIN = "Usuario y contraseña inválidos";
+    String ERROR_INTRODUCIR_DATOS = "Introduzca el usuario y contraseña";
+
 }

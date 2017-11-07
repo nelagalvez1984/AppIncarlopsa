@@ -129,12 +129,12 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         return super.update(elementoConQueActualizar);
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) {
+    public Boolean delete(Object elementoABorrar) throws SQLException{
         Publicacion auxPublicacion = (Publicacion)elementoABorrar;
         Integer idPublicacion = auxPublicacion.getId();
         //1.- Borrar primero sus comentarios
@@ -145,7 +145,7 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
         return super.delete(elementoABorrar);
     }
 
-    private void borradoEnCascada(DAOBase dao, DataBaseItem item, Integer idPublicacion){
+    private void borradoEnCascada(DAOBase dao, DataBaseItem item, Integer idPublicacion) throws SQLException{
 
         ArrayList<DataBaseItem> resultadosCascada = new ArrayList<>();
 
@@ -157,11 +157,8 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
         }
 
         //Leer todos los items con esa idPublicacion
-        try {
-            resultadosCascada = dao.read(item);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        resultadosCascada = dao.read(item);
 
         //Borrarlos uno a uno
         for(DataBaseItem a : resultadosCascada){

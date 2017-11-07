@@ -95,8 +95,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/toolbar"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/custom_image_button"
+
         android:fontFamily="sans-serif"
         android:text="Conectar"
         android:textColor="@color/cardview_light_background"
