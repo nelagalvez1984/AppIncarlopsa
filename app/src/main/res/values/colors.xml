@@ -257,7 +257,7 @@
         <item>@color/md_cyan_A400</item>
         <item>@color/md_cyan_A700</item>
     </array>
-    <color name="md_cyan_50">#e0f7fa</color>
+    <color name="md_cyan_50">#e3e3e3</color>
     <color name="md_cyan_100">#b2ebf2</color>
     <color name="md_cyan_200">#80deea</color>
     <color name="md_cyan_300">#4dd0e1</color>
@@ -461,8 +461,8 @@
         <item>@color/md_amber_A400</item>
         <item>@color/md_amber_A700</item>
     </array>
-    <color name="md_amber_50">#fff8e1</color>
-    <color name="md_amber_100">#ffecb3</color>
+    <color name="md_amber_50">#b50128</color>
+    <color name="md_amber_100">#9c7a14</color>
     <color name="md_amber_200">#ffe082</color>
     <color name="md_amber_300">#ffd54f</color>
     <color name="md_amber_400">#ffca28</color>
@@ -470,7 +470,7 @@
     <color name="md_amber_600">#ffb300</color>
     <color name="md_amber_700">#ffa000</color>
     <color name="md_amber_800">#ff8f00</color>
-    <color name="md_amber_900">#ff6f00</color>
+    <color name="md_amber_900">#002aff</color>
     <color name="md_amber_A100">#ffe57f</color>
     <color name="md_amber_A200">#ffd740</color>
     <color name="md_amber_A400">#ffc400</color>
@@ -681,11 +681,11 @@
 
     <color name="md_statusbar_translucent">#4000</color>
 
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#008443</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#b4a6ab</color>
+    <color name="colorAccent">#eda8c0</color>
     <color name="colorVerdeApp">#1d871e</color>
-    <color name="colorRosaApp">#FF4081</color>
+    <color name="colorRosaApp">#fcb7cf</color>
     <color name="colorAzulApp">#3F51B5</color>
     <color name="toolbar">#e1e1e1</color>
 
