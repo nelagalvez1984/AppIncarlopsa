@@ -26,6 +26,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
     private Toolbar toolbar;
     private ActionBar actionBar;
     private ImageView fondo;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +77,9 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                                 return true;
                             case R.id.item_navigation_drawer_chats: //Ver chats
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(VGeneral.this, VCabeceraChat.class);
+                                startActivity(intent);
                                 return true;
                             case R.id.item_navigation_drawer_nuevo_chat: //Crear mensaje
                                 menuItem.setChecked(true);
@@ -88,7 +90,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-                                Intent intent = new Intent(VGeneral.this, SettingsActivity.class);
+                                intent = new Intent(VGeneral.this, SettingsActivity.class);
                                 startActivity(intent);
                                 return true;
                         }
