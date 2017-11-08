@@ -11,8 +11,9 @@
     <TextView
         android:id="@+id/txtChatTitulo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
         android:background="@color/colorRojoCabeceras"
+        android:paddingVertical="16dp"
         android:text="@string/chat"
         android:textAlignment="center"
         android:textColor="@color/colorWhiteFondos"
@@ -22,8 +23,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerChats"
         android:layout_width="match_parent"
-        android:layout_height="434dp"
-        android:background="@color/colorGris" />
+        android:layout_height="420dp"
+        android:background="@color/colorGris"
+        android:paddingHorizontal="16dp" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
