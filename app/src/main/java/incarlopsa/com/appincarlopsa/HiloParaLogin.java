@@ -3,7 +3,6 @@ package incarlopsa.com.appincarlopsa;
 import android.os.AsyncTask;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class HiloParaLogin extends AsyncTask<Object, Void, Boolean> implements ICodigos{
 
