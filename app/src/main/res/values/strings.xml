@@ -13,5 +13,6 @@
     <string name="menu">Menú</string>
     <string name="desconectar">Desconectar</string>
     <string name="titulo_publicacion">Titulo Publicacion</string>
+    <string name="title_activity_crear_nchat">crear_nchat</string>
 
 </resources>
