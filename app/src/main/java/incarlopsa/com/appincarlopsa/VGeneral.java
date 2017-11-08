@@ -39,6 +39,14 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         credenciales.setLogin(USUARIO_TEST_NORMAL);
         credenciales.setPassword(PASSWORD_TEST_NORMAL);
         credenciales.setUsername(USUARIO_TEST_NORMAL);
+        //1.- INTENTAR CONEXION
+        HiloParaLogin hiloParaLogin = new HiloParaLogin();
+        try {
+            hiloParaLogin.execute().get();
+        } catch (Exception e) {
+            tostada.errorConexionBBDD();
+        }
+
         HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
         try {
@@ -79,8 +87,9 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                         switch (menuItem.getItemId()) {
                             case R.id.item_navigation_drawer_publicaciones: //Ver publicaciones
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(VGeneral.this, VCabeceraPublicacion.class);
+                                startActivity(intent);
                                 return true;
                             case R.id.item_navigation_drawer_chats: //Ver chats
                                 menuItem.setChecked(true);

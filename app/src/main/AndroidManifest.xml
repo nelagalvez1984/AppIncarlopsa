@@ -19,15 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VLogin"></activity>
-        <activity android:name=".VPruebaNOTocar" />
+        <activity android:name=".VLogin">
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="TEST Settings"
-            android:parentActivityName=".VGeneral"></activity>
-        <activity android:name=".VCabeceraChat"></activity>
-        <activity android:name=".VChat"></activity>
-        <activity android:name=".activity_vpublicacion"></activity>
+            android:parentActivityName=".VGeneral">
+        </activity>
+        <activity android:name=".VCabeceraChat">
+        </activity>
+        <activity android:name=".VChat">
+        </activity>
+        <activity android:name=".VCabeceraPublicacion">
+        </activity>
     </application>
 
 </manifest>
