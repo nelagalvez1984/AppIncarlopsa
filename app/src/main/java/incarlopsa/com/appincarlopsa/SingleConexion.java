@@ -20,6 +20,12 @@ class SingleConexion implements ICodigos{
     private SingleConexion() { }
 
     public Connection conectar() {
+
+        return conexion;
+    }
+
+    public Connection conexionInicial() {
+
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             System.out.println("carga correcta del driver");
@@ -40,11 +46,15 @@ class SingleConexion implements ICodigos{
             singleTostada.errorConexionBBDD();
         }
 
+
         return conexion;
     }
 
     public void desconectar(){
+        // Nada
+    }
 
+    public void desconexionInicial(){
         if (conexion != null){
             try {
                 conexion.close();
@@ -53,7 +63,6 @@ class SingleConexion implements ICodigos{
                 singleTostada.errorConexionBBDD();
             }
         }
-
     }
 
 }

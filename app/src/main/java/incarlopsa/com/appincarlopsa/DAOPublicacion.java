@@ -7,16 +7,16 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
 
     //Propiedades
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO comentario SET idUsuario = ?, titulo = ?, fecha = NOW(), ultimoUpdate = NOW()";
+    private String consultaInsercion = "INSERT INTO publicacion SET idUsuario = ?, titulo = ?, fecha = NOW(), ultimoUpdate = NOW()";
     private String consultaLecturaPorId = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
-            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM comentario WHERE idPublicacion = ?";
-    private String consultaUpdate = "UPDATE comentario SET idUsuario = ?, titulo = ?, ultimoUpdate = NOW() WHERE idPublicacion = ?";
-    private String consultaActualizarFecha = "UPDATE comentario SET ultimoUpdate = NOW() WHERE idPublicacion = ?";
-    private String consultaDelete = "DELETE FROM comentario WHERE idPublicacion = ?";
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion WHERE idPublicacion = ?";
+    private String consultaUpdate = "UPDATE publicacion SET idUsuario = ?, titulo = ?, ultimoUpdate = NOW() WHERE idPublicacion = ?";
+    private String consultaActualizarFecha = "UPDATE publicacion SET ultimoUpdate = NOW() WHERE idPublicacion = ?";
+    private String consultaDelete = "DELETE FROM publicacion WHERE idPublicacion = ?";
     private String consultaTopics = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
-            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM comentario ORDER BY ultimoUpdate DESC";
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion ORDER BY ultimoUpdate DESC";
 
     //Constructor
     public DAOPublicacion() {}

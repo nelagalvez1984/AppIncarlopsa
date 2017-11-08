@@ -17,6 +17,7 @@ public class VChat extends AppCompatActivity implements IVista{
 
     private RecyclerView recycler;
     private ArrayList<DataBaseItem> resultados;
+    private ArrayList<DataBaseItem> resultadosUsuarios;
     private RecyclerView.LayoutManager layoutManager;
     private AdapterMensaje adapterMensaje;
     private HiloParaRead hiloParaRead;
@@ -29,6 +30,11 @@ public class VChat extends AppCompatActivity implements IVista{
     private TextView tituloFormulario;
     private SingleTostada tostada = SingleTostada.getInstance();
     private SingleCredenciales credenciales = SingleCredenciales.getInstance();
+    private Usuario autor;
+    private Usuario destino;
+    private Integer idAutor;
+    private Integer idDestino;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,9 @@ public class VChat extends AppCompatActivity implements IVista{
         intentRecogido = getIntent();
         idChat = intentRecogido.getIntExtra("idChat",0);
         tituloChat = intentRecogido.getStringExtra("tituloChat");
+        idAutor = intentRecogido.getIntExtra("idAutor",0);
+        idDestino = intentRecogido.getIntExtra("idDestino",0);
+
         tituloFormulario = (TextView)findViewById(R.id.txtChatTitulo);
         tituloFormulario.setText(tituloChat);
 
@@ -60,15 +69,47 @@ public class VChat extends AppCompatActivity implements IVista{
         Mensaje m = new Mensaje();
         m.setIdPublicacion(idChat);
 
+
+
+
         try {
             resultados = hiloParaRead.execute(m).get();
+            if (resultados.size()>0){
+                //Recoger los usuarios
+                resultadosUsuarios = new ArrayList<>();
+                autor = new Usuario();
+                destino = new Usuario();
+                //Recoger el autor
+                hiloParaRead = new HiloParaRead(new DAOUsuario());
+                autor.setIdUsuario(idAutor);
+                resultadosUsuarios = hiloParaRead.execute(autor).get();
+                if (resultadosUsuarios.size()>0){
+                    autor = (Usuario)resultadosUsuarios.get(0);
+                }else{
+                    throw new Exception();
+                }
+                //Recoger el destino
+                hiloParaRead = new HiloParaRead(new DAOUsuario());
+                destino.setIdUsuario(idDestino);
+                resultadosUsuarios = hiloParaRead.execute(destino).get();
+                if (resultadosUsuarios.size()>0){
+                    destino = (Usuario)resultadosUsuarios.get(0);
+                }else{
+                    throw new Exception();
+                }
+
+                adapterMensaje = new AdapterMensaje(resultados, autor, destino);
+                recycler.setAdapter(adapterMensaje);
+                recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
+            }
+
         } catch (Exception e) {
             tostada.errorConexionBBDD();
+
         }
 
-        adapterMensaje = new AdapterMensaje(resultados);
-        recycler.setAdapter(adapterMensaje);
-        recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
+
+
 
         //Campo de texto y boton enviar
         botonEnviar = (ImageButton)findViewById(R.id.buttonChatEnviar);
@@ -88,7 +129,9 @@ public class VChat extends AppCompatActivity implements IVista{
             Boolean creacion = hiloParaCreate.execute(m).get();
             hiloParaRead = new HiloParaRead(new DAOMensaje());
             resultados = hiloParaRead.execute(m).get();
-            adapterMensaje.update(resultados);
+            adapterMensaje.actualizar(resultados);
+            escribirMensaje.setText("");
+            recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }

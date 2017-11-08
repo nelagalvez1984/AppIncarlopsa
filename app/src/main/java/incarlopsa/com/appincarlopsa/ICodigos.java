@@ -45,4 +45,7 @@ public interface ICodigos extends ICodigosAntonio,
     String ERROR_LOGIN = "Usuario y contraseña inválidos";
     String ERROR_INTRODUCIR_DATOS = "Introduzca el usuario y contraseña";
 
+    //Tostadas variopintas
+    String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";
+
 }

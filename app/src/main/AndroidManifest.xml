@@ -21,7 +21,6 @@
         </activity>
         <activity android:name=".VLogin">
         </activity>
-        <activity android:name=".VPruebaNOTocar"/>
         <activity
             android:name=".SettingsActivity"
             android:label="TEST Settings"
@@ -30,6 +29,8 @@
         <activity android:name=".VCabeceraChat">
         </activity>
         <activity android:name=".VChat">
+        </activity>
+        <activity android:name=".VCabeceraPublicacion">
         </activity>
     </application>
 

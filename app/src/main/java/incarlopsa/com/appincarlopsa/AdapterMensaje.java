@@ -1,7 +1,5 @@
 package incarlopsa.com.appincarlopsa;
 
-import android.graphics.Color;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +11,14 @@ import java.util.ArrayList;
 public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHolder> {
 
     private ArrayList<DataBaseItem> listaMensajes;
-    private SingleCredenciales singleCredenciales = SingleCredenciales.getInstance();
-    private ConstraintLayout container;
+    private Usuario usuarioAutor;
+    private Usuario usuarioDestino;
 
-    public AdapterMensaje(ArrayList<DataBaseItem> listaCabecera) {
+    public AdapterMensaje(ArrayList<DataBaseItem> listaCabecera, Usuario usuarioAutor, Usuario usuarioDestino) {
         this.listaMensajes = listaCabecera;
+        this.usuarioAutor = usuarioAutor;
+        this.usuarioDestino = usuarioDestino;
+
     }
 
     @Override
@@ -43,36 +44,21 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         Mensaje mensaje = (Mensaje)listaMensajes.get(position);
 
 /*
-        container = (ConstraintLayout) findViewById(R.id.cardviewMensaje);
-        container.setBackgroundColor(0x4CAF50);
-        container.setBackgroundColor(getResources().getColor(R.color.blue));
-*/
         //Cambiar el color si me escribe alguien
         if (mensaje.getIdUsuario() != singleCredenciales.getIdUsuario()){
             holder.v.setBackgroundColor(Color.parseColor("#A01D871E"));
         }else{
             holder.v.setBackgroundColor(Color.parseColor("#A0FF4081"));
         }
-
+*/
         //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
 
-        Usuario usuarioAux = new Usuario();
-        Integer idAutor = mensaje.getIdUsuario();
-        usuarioAux.setIdUsuario(idAutor);
-        HiloParaRead hiloParaRead = new HiloParaRead(new DAOUsuario());
-        try {
-            resultados = hiloParaRead.execute(usuarioAux).get();
-        } catch (Exception e) {
-            SingleTostada singleTostada = SingleTostada.getInstance();
-            singleTostada.errorConexionBBDD();
-        }
-
-        if (resultados.size() > 0){ //deberia serlo
-            usuarioAux = (Usuario)resultados.get(0);
+        Usuario usuarioAux;
+        if (mensaje.getIdUsuario() == usuarioAutor.getIdUsuario()){
+            usuarioAux = usuarioAutor;
         }else{ //Por si acaso
-            usuarioAux.setNombre("Desconocido");
-            usuarioAux.setApellidos("Desconocido");
+            usuarioAux = usuarioDestino;
         }
 
         String fecha = mensaje.getFecha();
@@ -86,6 +72,12 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         holder.contenidoMensaje.setText(contenidoMensaje);
         holder.autor.setText(autor);
 
+    }
+
+    public void actualizar(ArrayList<DataBaseItem> nuevaLista){
+        listaMensajes.clear();
+        listaMensajes.addAll(nuevaLista);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -122,16 +114,11 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
     public interface OnItemClickListener {
         public void onItemClick(DataBaseItem item, int position);
     }
-    private AdapterChat.OnItemClickListener mListener;
+    private AdapterMensaje.OnItemClickListener mListener;
 
-    public void setOnItemListener(AdapterChat.OnItemClickListener listener) {
+    public void setOnItemListener(AdapterMensaje.OnItemClickListener listener) {
         mListener = listener;
     }
 
-    public void update(ArrayList<DataBaseItem> nuevaLista){
-        listaMensajes.clear();
-        listaMensajes.addAll(nuevaLista);
-        notifyDataSetChanged();
-    }
 
 }

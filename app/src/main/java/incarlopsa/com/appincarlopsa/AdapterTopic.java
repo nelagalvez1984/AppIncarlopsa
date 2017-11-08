@@ -8,17 +8,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
+public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> {
 
     private ArrayList<DataBaseItem> listaCabecera;
+    private DAOBase dao;
+    private Topic cabecera;
 
-    public AdapterChat(ArrayList<DataBaseItem> listaCabecera) {
+    public AdapterTopic(ArrayList<DataBaseItem> listaCabecera, DAOBase dao) {
         this.listaCabecera = listaCabecera;
+        this.dao = dao;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cabecera_chat, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cabecera, parent, false);
         final ViewHolder viewHolder = new ViewHolder(v);
 
         v.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +39,8 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Chat cabecera = (Chat)listaCabecera.get(position);
+
+        cabecera = (Topic)listaCabecera.get(position);
 
         //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
@@ -60,7 +64,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
         String titulo = cabecera.getTitulo();
         String autor = usuarioAux.getNombre() + " "
-                    + usuarioAux.getApellidos();
+                + usuarioAux.getApellidos();
 
         String fechaCreacion = cabecera.getFechaCreacion();
         String horaCreacion = cabecera.getHoraCreacion();
@@ -105,9 +109,9 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
     public interface OnItemClickListener {
         public void onItemClick(DataBaseItem item, int position);
     }
-    private AdapterChat.OnItemClickListener mListener;
+    private AdapterTopic.OnItemClickListener mListener;
 
-    public void setOnItemListener(AdapterChat.OnItemClickListener listener) {
+    public void setOnItemListener(AdapterTopic.OnItemClickListener listener) {
         mListener = listener;
     }
 

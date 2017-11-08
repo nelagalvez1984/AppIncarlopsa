@@ -19,6 +19,10 @@ class SingleTostada implements ICodigos{
         this.contexto = contexto;
     }
 
+    public void bienvenida(){
+        showTostada(BIENVENIDA);
+    }
+
     public void errorConexionBBDD(){
         showTostada(ERROR_CONEXION_BBDD);
     }
