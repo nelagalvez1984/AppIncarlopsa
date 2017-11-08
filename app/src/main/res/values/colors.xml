@@ -694,7 +694,7 @@
     <color name="colorRojoCabeceras">#b50128</color>
     <color name="colorVerdeCabeceras">#008443</color>
     <color name="colorWhiteFondos">#FFFFFF</color>
-    <color name="colorGris">#EBEBEB</color>
+    <color name="colorGris">#e1e1e1</color>
     <color name="colorNegro">#000000</color>
 
 </resources>

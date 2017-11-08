@@ -1,14 +1,11 @@
 package incarlopsa.com.appincarlopsa;
 
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import java.util.ArrayList;
 
@@ -51,28 +48,27 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
+            adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat());
+            recyclerEntrantes.setAdapter(adapterChatEntrantes);
+            recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
+
+            adapterChatEntrantes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
+                @Override
+                public void onItemClick(DataBaseItem item, int position) {
+                    Chat c = (Chat)item;
+
+                    intent = new Intent(VCabeceraChat.this, VChat.class);
+                    intent.putExtra("idChat", c.getId());
+                    intent.putExtra("tituloChat", c.getTitulo());
+                    intent.putExtra("idAutor", c.getIdUsuario());
+                    intent.putExtra("idDestino", c.getIdUsuarioDestino());
+
+                    startActivity(intent);
+                }
+            });
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
-
-        adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat());
-        recyclerEntrantes.setAdapter(adapterChatEntrantes);
-        recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
-
-        adapterChatEntrantes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
-           @Override
-           public void onItemClick(DataBaseItem item, int position) {
-               Chat c = (Chat)item;
-
-               intent = new Intent(VCabeceraChat.this, VChat.class);
-               intent.putExtra("idChat", c.getId());
-               intent.putExtra("tituloChat", c.getTitulo());
-               intent.putExtra("idAutor", c.getIdUsuario());
-               intent.putExtra("idDestino", c.getIdUsuarioDestino());
-
-               startActivity(intent);
-           }
-       });
 
         //Chats salientes
         layoutManagerSalientes = new LinearLayoutManager(this);
@@ -83,29 +79,27 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
+            adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat());
+            recyclerSalientes.setAdapter(adapterChatSalientes);
+            recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
+
+            adapterChatSalientes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
+                @Override
+                public void onItemClick(DataBaseItem item, int position) {
+                    Chat c = (Chat)item;
+
+                    Intent intent = new Intent(VCabeceraChat.this, VChat.class);
+                    intent.putExtra("idChat", c.getId());
+                    intent.putExtra("tituloChat", c.getTitulo());
+                    intent.putExtra("idAutor", c.getIdUsuario());
+                    intent.putExtra("idDestino", c.getIdUsuarioDestino());
+                    startActivity(intent);
+
+                }
+            });
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
-
-        adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat());
-        recyclerSalientes.setAdapter(adapterChatSalientes);
-        recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
-
-        adapterChatSalientes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
-            @Override
-            public void onItemClick(DataBaseItem item, int position) {
-                Chat c = (Chat)item;
-
-                Intent intent = new Intent(VCabeceraChat.this, VChat.class);
-                intent.putExtra("idChat", c.getId());
-                intent.putExtra("tituloChat", c.getTitulo());
-                intent.putExtra("idAutor", c.getIdUsuario());
-                intent.putExtra("idDestino", c.getIdUsuarioDestino());
-                startActivity(intent);
-
-            }
-        });
-
     }
 
     @Override

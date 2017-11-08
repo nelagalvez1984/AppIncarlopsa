@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
@@ -28,6 +27,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
     private ImageView fondo;
     private Intent intent;
     private SingleTostada tostada = SingleTostada.getInstance();
+    private ArrayList<DataBaseItem> resultados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         }
 
         HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
-        ArrayList<DataBaseItem> resultados = new ArrayList<>();
+        resultados = new ArrayList<>();
         try {
             resultados = hilo.execute(credenciales).get();
             if (resultados.size()>0){
@@ -106,7 +106,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-                                intent = new Intent(VGeneral.this, SettingsActivity.class);
+                                intent = new Intent(VGeneral.this, TESTSettingsActivity.class);
                                 startActivity(intent);
                                 return true;
                         }

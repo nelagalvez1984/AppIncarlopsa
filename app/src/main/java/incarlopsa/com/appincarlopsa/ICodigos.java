@@ -2,9 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 public interface ICodigos extends ICodigosAntonio,
                                 ICodigosDavid,
-                                ICodigosEdu,
-        ICodigosJonatan,
-                                ICodigosNela {
+                                ICodigosJonatan {
 
     //Codigos iguales o inferiores a 100
 
@@ -47,5 +45,10 @@ public interface ICodigos extends ICodigosAntonio,
 
     //Tostadas variopintas
     String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";
+    String USUARIO_DESCONOCIDO = "Usuario desconocido";
+
+    //Tipos Likes
+    String ME_GUSTA = "MeGusta";
+    String NO_ME_GUSTA = "MeDisgusta";
 
 }

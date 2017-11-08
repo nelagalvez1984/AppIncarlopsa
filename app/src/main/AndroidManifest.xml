@@ -22,7 +22,7 @@
         <activity android:name=".VLogin">
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".TESTSettingsActivity"
             android:label="TEST Settings"
             android:parentActivityName=".VGeneral">
         </activity>

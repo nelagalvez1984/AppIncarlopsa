@@ -56,7 +56,7 @@ public class VCabeceraPublicacion extends AppCompatActivity implements IVista {
             public void onItemClick(DataBaseItem item, int position) {
                 Publicacion p = (Publicacion) item;
 
-                Intent intent = new Intent(VCabeceraPublicacion.this, VPublicacion.class);
+                intent = new Intent(VCabeceraPublicacion.this, VPublicacion.class);
                 intent.putExtra("idPublicacion", p.getId());
                 startActivity(intent);
 

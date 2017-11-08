@@ -67,9 +67,6 @@ public class VChat extends AppCompatActivity implements IVista{
         Mensaje m = new Mensaje();
         m.setIdPublicacion(idChat);
 
-
-
-
         try {
             resultados = hiloParaRead.execute(m).get();
             if (resultados.size()>0){
@@ -103,11 +100,7 @@ public class VChat extends AppCompatActivity implements IVista{
 
         } catch (Exception e) {
             tostada.errorConexionBBDD();
-
         }
-
-
-
 
         //Campo de texto y boton enviar
         botonEnviar = (ImageButton)findViewById(R.id.buttonChatEnviar);
@@ -119,20 +112,22 @@ public class VChat extends AppCompatActivity implements IVista{
     public void onClick(View view) {
         //Boton enviar
         hiloParaCreate = new HiloParaCreate(new DAOMensaje());
-        Mensaje m = new Mensaje();
-        m.setIdPublicacion(idChat);
-        m.setIdUsuario(credenciales.getIdUsuario());
-        m.setMensaje(escribirMensaje.getText().toString());
+        Mensaje mensajeAux = new Mensaje();
+        mensajeAux.setIdPublicacion(idChat);
+        mensajeAux.setIdUsuario(credenciales.getIdUsuario());
+        mensajeAux.setMensaje(escribirMensaje.getText().toString());
         try {
-            Boolean creacion = hiloParaCreate.execute(m).get();
+            Boolean creacion = hiloParaCreate.execute(mensajeAux).get();
+            if (!creacion){
+                throw new Exception();
+            }
             hiloParaRead = new HiloParaRead(new DAOMensaje());
-            resultados = hiloParaRead.execute(m).get();
+            resultados = hiloParaRead.execute(mensajeAux).get();
             adapterMensaje.actualizar(resultados);
             escribirMensaje.setText("");
             recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
-
     }
 }

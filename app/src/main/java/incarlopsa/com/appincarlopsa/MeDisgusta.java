@@ -1,9 +1,9 @@
 package incarlopsa.com.appincarlopsa;
 
-public class MeDisgusta extends MeAlgo {
+public class MeDisgusta extends MeAlgo implements ICodigos{
 
     //Propiedades
-    private String tipo="MeDisgusta";
+    private String tipo = NO_ME_GUSTA;
 
     //Constructor
     public MeDisgusta(Integer idLike, Integer idUsuario, Integer idComentario) {
