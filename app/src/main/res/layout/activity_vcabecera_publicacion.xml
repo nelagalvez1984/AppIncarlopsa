@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGris">
+    android:background="@color/colorGris"
+    android:paddingHorizontal="16dp">
 
     <TextView
         android:id="@+id/txtTituloPublicacion"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="83dp"
         android:background="@color/colorRojoCabeceras"
+        android:paddingVertical="25dp"
         android:text="@string/titulo_publicacion"
         android:textAlignment="center"
         android:textColor="@color/colorWhiteFondos"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +32,7 @@
         android:background="@color/colorWhiteFondos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTituloPublicacion" />
 </android.support.constraint.ConstraintLayout>

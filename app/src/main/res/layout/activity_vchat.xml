@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhiteFondos"
+    android:background="@color/colorRojoCabeceras"
     android:orientation="vertical"
     android:textAlignment="center">
 
     <TextView
         android:id="@+id/txtChatTitulo"
         android:layout_width="match_parent"
-        android:layout_height="97dp"
+        android:layout_height="78dp"
         android:background="@color/colorRojoCabeceras"
-        android:paddingVertical="16dp"
+        android:paddingVertical="25dp"
         android:text="@string/chat"
         android:textAlignment="center"
         android:textColor="@color/colorWhiteFondos"
@@ -23,21 +23,21 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerChats"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="412dp"
         android:background="@color/colorGris"
         android:paddingHorizontal="16dp" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhiteFondos"
+        android:background="@color/colorRojoCabeceras"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/edtChatMensaje"
             android:layout_width="230dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="72dp"
+            android:layout_marginBottom="64dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="28dp"
             android:layout_weight="1"
@@ -48,7 +48,7 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonChatEnviar"
-            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintHorizontal_bias="0.633"
             app:layout_constraintStart_toStartOf="parent"
             tools:hint="Introduce tu mensaje" />
 
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="52dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_image_button"
             android:padding="20dp"
