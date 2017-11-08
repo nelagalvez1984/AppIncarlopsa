@@ -684,11 +684,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#b4a6ab</color>
-    <color name="colorVerdeApp">#1d871e</color>
+    <color name="colorVerdeApp">#b41d871e</color>
     <color name="colorRosaTransparenciaApp">#A0FF4081</color>
     <color name="colorRosaApp">#FF4081</color>
     <color name="colorAzulApp">#3F51B5</color>
     <color name="toolbar">#e1e1e1</color>
+    <color name="colorVerdeDegradado">#B41D871E</color>
     <color name="colorBotonEnviar">#008443</color>
     <color name="colorRojoCabeceras">#b50128</color>
     <color name="colorVerdeCabeceras">#008443</color>

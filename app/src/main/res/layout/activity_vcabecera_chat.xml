@@ -5,8 +5,7 @@
     android:id="@+id/consCabecera"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorRojoCabeceras"
-    android:paddingHorizontal="16dp">
+    android:background="@color/colorRojoCabeceras">
 
     <TextView
         android:id="@+id/txtSalientesChat"
@@ -17,7 +16,7 @@
         android:layout_marginTop="14dp"
         android:text="Salientes"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/colorWhiteFondos"
+        android:textColor="@color/cardview_light_background"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,11 +30,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="14dp"
         android:text="Entrantes"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/colorWhiteFondos"
+        android:textColor="@color/cardview_light_background"
         android:textSize="24sp"
         android:textStyle="bold"
 
@@ -47,9 +46,10 @@
         android:id="@+id/recySalientesChat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:background="@color/cardview_light_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSalientesChat"
         tools:ignore="MissingConstraints" />
