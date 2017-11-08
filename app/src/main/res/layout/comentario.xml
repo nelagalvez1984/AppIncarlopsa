@@ -7,18 +7,41 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/txtPlaincomentario"
+        app:layout_constraintTop_toTopOf="@+id/txtPlaincomentario">
+
+        <TextView
+            android:id="@+id/txtNumdislike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="52dp"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="133dp" />
+
+        <TextView
+            android:id="@+id/txtNumlike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="84dp"
+            android:text="0"
+            app:layout_constraintEnd_toStartOf="@+id/txtNumdislike"
+            tools:layout_editor_absoluteY="133dp" />
 
         <ImageView
             android:id="@+id/imgUsuariocomentario"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="7dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
             android:contentDescription=""
+            app:layout_constraintBottom_toTopOf="@+id/txtPlaincomentario"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/foto"
-            tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded"
-            tools:layout_editor_absoluteY="8dp" />
+            tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded" />
 
         <TextView
             android:id="@+id/lblCabeceraChatTitulo"
@@ -79,38 +102,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnResponderjamon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="112dp"
-            android:backgroundTint="@color/colorVerdeDegradado"
-            android:drawableLeft="@drawable/jamonsito"
-            android:drawablePadding="8dp"
-            android:text="Responder"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
         <ImageView
             android:id="@+id/btnLikeoff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="64dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="124dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnDislikeof"
             app:layout_constraintStart_toEndOf="@+id/btnResponder"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/me_gusta_web" />
 
         <ImageView
@@ -118,13 +122,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="104dp"
             android:layout_marginTop="104dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.714"
-            app:srcCompat="@drawable/no_me_gusta_web" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/no_me_gusta_web"
+            tools:layout_editor_absoluteX="279dp" />
 
     </android.support.constraint.ConstraintLayout>
 
