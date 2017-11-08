@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteFondos"
+    tools:context="incarlopsa.com.appincarlopsa.activity_vpublicacion">
+
+    <TextView
+        android:id="@+id/txtContadorNoGustaPublicacion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/imgNogustaPublicacion"
+        app:layout_constraintStart_toEndOf="@+id/imgNogustaPublicacion" />
+
+    <ImageButton
+        android:id="@+id/imgGustaPublicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="26dp"
+        android:background="@color/cardview_shadow_end_color"
+        app:layout_constraintBottom_toBottomOf="@+id/imgNogustaPublicacion"
+        app:layout_constraintStart_toStartOf="@+id/recyPublicacion"
+        app:layout_constraintTop_toTopOf="@+id/imgNogustaPublicacion"
+        app:srcCompat="@drawable/me_gusta_web" />
+
+    <ImageButton
+        android:id="@+id/imgNogustaPublicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="24dp"
+        android:background="@color/cardview_shadow_end_color"
+        app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
+        app:layout_constraintStart_toEndOf="@+id/txtContadorGustaPublicacion"
+        app:srcCompat="@drawable/no_me_gusta_web" />
+
+    <ImageButton
+        android:id="@+id/imgEnviarPublicacion"
+        android:layout_width="77dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="57dp"
+        android:background="@drawable/custom_image_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtMensajePublicacion"
+        app:srcCompat="@drawable/ic_action_content_send" />
+
+    <TextView
+        android:id="@+id/txtContadorGustaPublicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/imgGustaPublicacion"
+        app:layout_constraintStart_toStartOf="@+id/recyPublicacion" />
+
+    <Button
+        android:id="@+id/btnAdjuntosPublicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="41dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/custom_image_button"
+        android:text="Ver Adjuntos"
+        android:textColor="@color/colorWhiteFondos"
+        app:layout_constraintEnd_toEndOf="@+id/recyPublicacion"
+        app:layout_constraintStart_toEndOf="@+id/txtContadorNoGustaPublicacion2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMensajePublicacion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="38dp"
+        android:background="@drawable/borde_edittext"
+        android:hint="Introduce Publicacion"
+        app:layout_constraintBottom_toBottomOf="@+id/imgEnviarPublicacion"
+        app:layout_constraintEnd_toStartOf="@+id/imgEnviarPublicacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgEnviarPublicacion" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyPublicacion"
+        android:layout_width="0dp"
+        android:layout_height="292dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="55dp"
+        android:background="@color/colorGris"
+        app:layout_constraintBottom_toBottomOf="@+id/imgEnviarPublicacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnAdjuntosPublicacion">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/txtTituloPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorRojoCabeceras"
+            android:paddingVertical="25dp"
+            android:text="Titulo"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhiteFondos"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAnuncioPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/colorGris"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="13dp"
+            android:text="Anuncio"
+            android:textAlignment="center"
+            android:textColor="@color/colorRojoCabeceras"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
