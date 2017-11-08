@@ -5,7 +5,8 @@
     android:id="@+id/consCabecera"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorRojoCabeceras">
+    android:background="@color/colorRojoCabeceras"
+    android:paddingHorizontal="16dp">
 
     <TextView
         android:id="@+id/txtSalientesChat"
