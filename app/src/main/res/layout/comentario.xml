@@ -15,19 +15,29 @@
             android:id="@+id/txtNumdislike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="96dp"
             android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="133dp" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtHoracomentario" />
 
         <TextView
             android:id="@+id/txtNumlike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="84dp"
+            android:layout_marginStart="8dp"
             android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txtNumdislike"
-            tools:layout_editor_absoluteY="133dp" />
+            app:layout_constraintHorizontal_bias="0.967"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imgUsuariocomentario"
@@ -58,42 +68,43 @@
         <TextView
             android:id="@+id/txtFechacomentario"
             android:layout_width="64dp"
-            android:layout_height="34dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:gravity="left|center"
-            android:text="@string/fecha_hora"
-            app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatAutor"
+            android:text="Fecha"
+            app:layout_constraintEnd_toStartOf="@+id/txtHoracomentario"
             app:layout_constraintLeft_toRightOf="@+id/lblChatTitulo"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/editCabeceraChatAutor"
+            android:id="@+id/txtHoracomentario"
             android:layout_width="51dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="8dp"
-            android:text="idComentario"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Hora"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/txtPlaincomentario"
             android:layout_width="285dp"
-            android:layout_height="43dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="76dp"
             android:ems="10"
             android:hint="@string/comentario"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtNumlike"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/imgUsuariocomentario"
-            app:layout_constraintTop_toBottomOf="@+id/lblCabeceraChatTitulo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="RtlHardcoded" />
 
     </android.support.constraint.ConstraintLayout>
@@ -112,22 +123,28 @@
             android:layout_marginTop="124dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnDislikeof"
-            app:layout_constraintStart_toEndOf="@+id/btnResponder"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btnLikeoff"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/me_gusta_web" />
+            app:srcCompat="@drawable/me_gusta_web"
+            tools:ignore="NotSibling,UnknownId" />
 
         <ImageView
             android:id="@+id/btnDislikeof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="104dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/no_me_gusta_web"
-            tools:layout_editor_absoluteX="273dp" />
+            app:srcCompat="@drawable/no_me_gusta_web" />
 
     </android.support.constraint.ConstraintLayout>
 

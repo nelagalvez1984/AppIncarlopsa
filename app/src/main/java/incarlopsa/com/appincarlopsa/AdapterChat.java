@@ -93,7 +93,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
             titulo = (TextView) v.findViewById(R.id.editCabeceraChatTitulo);
-            autor = (TextView) v.findViewById(R.id.editCabeceraChatAutor);
+            autor = (TextView) v.findViewById(R.id.txtHoracomentario);
             fechaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatFechaCreacion);
             horaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatHoraCreacion);
             fechaUpdate = (TextView) v.findViewById(R.id.editCabeceraChatFechaActualizacion);
