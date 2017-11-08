@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/txtChatTitulo"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_height="97dp"
         android:background="@color/colorRojoCabeceras"
         android:paddingVertical="16dp"
         android:text="@string/chat"
