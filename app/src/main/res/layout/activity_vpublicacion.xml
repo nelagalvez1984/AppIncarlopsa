@@ -8,7 +8,7 @@
     tools:context="incarlopsa.com.appincarlopsa.activity_vpublicacion">
 
     <TextView
-        android:id="@+id/txtContadorNoGustaPublicacion2"
+        android:id="@+id/txtContadorNoGustaPublicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -47,8 +47,8 @@
         android:background="@drawable/custom_image_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtMensajePublicacion"
-        app:srcCompat="@drawable/ic_action_content_send" />
+        app:layout_constraintStart_toEndOf="@+id/txtPublicacionMensaje"
+        app:srcCompat="@drawable/ic_action_content_send"/>
 
     <TextView
         android:id="@+id/txtContadorGustaPublicacion"
@@ -70,11 +70,11 @@
         android:text="Ver Adjuntos"
         android:textColor="@color/colorWhiteFondos"
         app:layout_constraintEnd_toEndOf="@+id/recyPublicacion"
-        app:layout_constraintStart_toEndOf="@+id/txtContadorNoGustaPublicacion2"
+        app:layout_constraintStart_toEndOf="@+id/txtContadorNoGustaPublicacion"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtMensajePublicacion"
+        android:id="@+id/txtPublicacionMensaje"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="18dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toTopOf="@+id/imgEnviarPublicacion" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyPublicacion"
+        android:id="@+id/recyPublicacionComentarios"
         android:layout_width="0dp"
         android:layout_height="292dp"
         android:layout_marginBottom="60dp"
@@ -128,14 +128,14 @@
         <TextView
             android:id="@+id/txtAnuncioPublicacion"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:background="@color/colorGris"
             android:paddingHorizontal="16dp"
             android:paddingVertical="13dp"
             android:text="Anuncio"
             android:textAlignment="center"
             android:textColor="@color/colorRojoCabeceras"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
     </LinearLayout>
 

@@ -9,9 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class VChat extends AppCompatActivity implements IVista{
 
