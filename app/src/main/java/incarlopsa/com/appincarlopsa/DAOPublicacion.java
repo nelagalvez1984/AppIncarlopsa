@@ -101,7 +101,6 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
             resultadoMultiple = super.read(filtro);
         }else{
             auxPublicacion = (Publicacion)filtro;
-            ArrayList<DataBaseItem> publicacion = null;
             //1.- Leemos la comentario
             resultadoMultiple = super.read(filtro);
             if (resultadoMultiple.size()>0){
@@ -120,8 +119,8 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
                 adjuntos.addAll(daoAdjunto.read(auxAdjunto));
 
                 //4.- Ensamblaje
-                ((Publicacion)publicacion.get(0)).setComentarios(comentarios); //Meterle los comentarios
-                ((Publicacion)publicacion.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
+                ((Publicacion)resultadoMultiple.get(0)).setComentarios(comentarios); //Meterle los comentarios
+                ((Publicacion)resultadoMultiple.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
             }
         }
         //5.- Devolver la comentario o LOS topic

@@ -32,24 +32,6 @@
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/lblChatTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="2dp"
-            android:gravity="left|center"
-            android:text="Titulo"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
-
-        <TextView
             android:id="@+id/editCabeceraChatFechaCreacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -151,19 +133,19 @@
 
         <TextView
             android:id="@+id/editCabeceraChatTitulo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:text="Titulo"
             android:textColor="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editCabeceraChatAutor"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toEndOf="@+id/lblChatTitulo"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"/>
 
     </android.support.constraint.ConstraintLayout>
 

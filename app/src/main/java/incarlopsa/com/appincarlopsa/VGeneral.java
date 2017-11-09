@@ -54,6 +54,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
             if (resultados.size()>0){
                 Usuario u = (Usuario)resultados.get(0);
                 credenciales.setIdUsuario(u.getIdUsuario());
+                credenciales.setNombre(u.getNombre());
                 credenciales.setApellidos(u.getApellidos());
                 credenciales.setDni(u.getDni());
                 credenciales.setFotoBytes(u.getFoto());

@@ -21,6 +21,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     private RecyclerView recycler;
     private ArrayList<DataBaseItem> resultados;
     private ArrayList<DataBaseItem> likesDelAnuncio;
+    private ArrayList<DataBaseItem> comentarios;
     private RecyclerView.LayoutManager layoutManager;
     private AdapterComentario adapterComentario;
     private HiloParaRead hiloParaRead;
@@ -48,7 +49,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vchat);
+        setContentView(R.layout.activity_vpublicacion);
         inicializarVista();
     }
 
@@ -60,7 +61,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
         meGustaAnuncio.setOnClickListener(this);
         meDisgustaAnuncio = (ImageButton)findViewById(R.id.imgNogustaPublicacion);
         meDisgustaAnuncio.setOnClickListener(this);
-        escribirMensaje = (TextView)findViewById(R.id.edtChatMensaje);
+        escribirMensaje = (TextView)findViewById(R.id.txtPublicacionMensaje);
         botonEnviar = (ImageButton)findViewById(R.id.imgEnviarPublicacion);
         botonEnviar.setOnClickListener(this);
         botonAdjuntos = (Button)findViewById(R.id.btnAdjuntosPublicacion);
@@ -85,8 +86,9 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             publicacionAux = (Publicacion)resultados.get(0);
 
             //Extraer el anuncio
-            anuncio = (Comentario)resultados.get(resultados.size()-1);
-            resultados.remove(anuncio);
+            comentarios = publicacionAux.getComentarios();
+            anuncio = (Comentario)comentarios.get(comentarios.size()-1);
+            comentarios.remove(anuncio);
 
             //Poner titulo a la vista
             tituloFormulario = (TextView)findViewById(R.id.txtTituloPublicacion);
@@ -98,11 +100,11 @@ public class VPublicacion extends AppCompatActivity implements IVista{
 
             //Recoger sus likes
             contadorLikes = (TextView)findViewById(R.id.txtContadorGustaPublicacion);
-            contadorLikes.setText(anuncio.getNumeroMeGusta());
+            contadorLikes.setText(anuncio.getNumeroMeGusta().toString());
 
             //Recoger sus dislikes
             contadorDislikes = (TextView)findViewById(R.id.txtContadorNoGustaPublicacion);
-            contadorDislikes.setText(anuncio.getNumeroMeDisgusta());
+            contadorDislikes.setText(anuncio.getNumeroMeDisgusta().toString());
 
             //Habilitar o deshabilitar el boton de adjuntos segun si tiene o no
             if (publicacionAux.getAdjuntos().size()==0){ //No hay adjuntos!
@@ -131,7 +133,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             recycler.setItemAnimator(new DefaultItemAnimator());
 
             //Cargar los mensajes
-            adapterComentario = new AdapterComentario(resultados);
+            adapterComentario = new AdapterComentario(comentarios);
             recycler.setAdapter(adapterComentario);
             recycler.scrollToPosition(adapterComentario.ultimaPosicion());
 
