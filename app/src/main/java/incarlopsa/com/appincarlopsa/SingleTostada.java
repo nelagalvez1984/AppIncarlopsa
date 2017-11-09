@@ -44,7 +44,11 @@ class SingleTostada implements ICodigos{
     public void chatCreadoConExito() { showTostada(CHAT_CREADO_CON_EXITO);}
 
     private void showTostada(String mensaje){
-        Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
+        try{
+            Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
+        }catch (Exception e){ //¿Tostada incompatible con el sistema?
+            e.printStackTrace();
+        }
     }
 
 }

@@ -6,57 +6,76 @@
     android:layout_height="match_parent"
     tools:context="incarlopsa.com.appincarlopsa.VCrearNuevoChat">
 
+    <ImageButton
+        android:id="@+id/imgNuevoChatFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/foto" />
+
     <TextView
         android:id="@+id/tituloNChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="titulo"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="Titulo/asunto:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTituloNChat"
-        android:layout_width="282dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="52dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
         android:ems="10"
+        android:hint="Introduzca el titulo/asunto del chat"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/usuarioNChat"
-        android:layout_width="156dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="168dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="180dp"
+        android:text="Clique para añadir un nuevo usuario"
+        app:layout_constraintEnd_toStartOf="@+id/addUsuarioNChat"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toEndOf="@+id/imgNuevoChatFoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/addUsuarioNChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginTop="92dp"
-        android:src="@mipmap/foto"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="172dp"
+        android:src="@drawable/add"
         android:tint="@color/colorVerdeApp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/mensajeNChat"
-        android:layout_width="242dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="144dp"
         android:layout_marginStart="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text=""
+        android:hint="Introduzca el mensaje"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -64,10 +83,13 @@
         android:id="@+id/enviarNChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="136dp"
         android:layout_marginEnd="48dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/ic_action_content_send"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/mensajeNChat" />
 
 </android.support.constraint.ConstraintLayout>

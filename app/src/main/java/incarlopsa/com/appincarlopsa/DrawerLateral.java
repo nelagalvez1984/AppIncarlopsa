@@ -80,16 +80,17 @@ public class DrawerLateral {
                                 intent = new Intent(contexto, VCabeceraChat.class);
                                 contexto.startActivity(intent);
                                 return true;
-                            case R.id.item_navigation_drawer_nuevo_chat: //Crear mensaje
+                            case R.id.item_navigation_drawer_nuevo_chat: //Crear chat
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(contexto, VCrearNuevoChat.class);
+                                contexto.startActivity(intent);
+
                                 return true;
-                            case R.id.item_navigation_drawer_nueva_publicacion: //Crear comentario
+                            case R.id.item_navigation_drawer_nueva_publicacion: //Crear publicacion
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-                                intent = new Intent(contexto, TESTSettingsActivity.class);
+                                intent = new Intent(contexto, VCrearNuevaPublicacion.class);
                                 contexto.startActivity(intent);
                                 return true;
                         }

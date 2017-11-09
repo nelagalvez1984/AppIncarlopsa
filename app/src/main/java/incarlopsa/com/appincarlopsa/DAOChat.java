@@ -12,6 +12,8 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
             "finalizado FROM chat WHERE idChat = ?";
+    private String consultaLecturaParaRecuperarId = "SELECT idChat FROM chat WHERE idUsuario = ? " +
+            "AND idUsuarioDestino = ? ORDER BY fecha DESC";
     private String consultaUpdate = "UPDATE chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, ultimoUpdate = NOW(), " +
             "finalizado = ? WHERE idChat = ?";
     private String consultaActualizarFecha = "UPDATE chat SET ultimoUpdate = NOW() WHERE idChat = ?";
@@ -61,11 +63,17 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
 
             cargarConsulta(perfil.getIdUsuario());
 
-        }else{ //Es una consulta por Id
+        }else{
             Chat aux = (Chat) filtro;
-            consultaSQL = consultaLecturaPorId;
-            prepararConsulta(consultaSQL);
-            cargarConsulta(aux.getId());
+            if (aux.getId() == null){ //Recuperar un chat por el resto de campos
+                consultaSQL = consultaLecturaParaRecuperarId;
+                prepararConsulta(consultaSQL);
+                cargarConsulta(aux.getIdUsuario(), aux.getIdUsuarioDestino());
+            }else{ // Es una consulta por Id
+                consultaSQL = consultaLecturaPorId;
+                prepararConsulta(consultaSQL);
+                cargarConsulta(aux.getId());
+            }
         }
     }
 

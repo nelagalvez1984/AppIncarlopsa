@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -10,16 +9,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/dialogUsuariosTitulo"
+            android:id="@+id/txtDialogUsuarios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Elija un usuario con quien entablar conversacion"/>
+            android:text="Elija el usuario destino" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyDialogUsuarios"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
+            android:layout_height="match_parent" />
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

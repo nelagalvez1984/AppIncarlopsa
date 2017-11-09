@@ -19,15 +19,13 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
     private ArrayList<DataBaseItem> resultadosUsuarios;
     private SingleTostada tostada = SingleTostada.getInstance();
 
-    public AdapterComentario(ArrayList<DataBaseItem> listaCabecera) {
-        this.listaComentarios = listaCabecera;
+    public AdapterComentario(ArrayList<DataBaseItem> listaComentarios) {
+        this.listaComentarios = listaComentarios;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.comentario, parent, false);
-
-
         final ViewHolder viewHolder = new ViewHolder(v);
 
         final ImageView botonLike = (ImageView)v.findViewById(R.id.btnComentarioLike);

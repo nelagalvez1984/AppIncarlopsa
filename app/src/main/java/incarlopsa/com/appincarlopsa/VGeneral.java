@@ -167,9 +167,14 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
         }
-
-
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        tostada.setContexto(this);
+    }
+
     /* éstas líneas son necesarias para el permiso de descargar archivos de manera externa pero no sé cómo va la cosa*/
                 // el enlace es el de abajo
                 // https://androidstudiofaqs.com/tutoriales/dar-permisos-a-aplicaciones-en-android-studio
