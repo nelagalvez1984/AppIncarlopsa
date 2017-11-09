@@ -7,43 +7,61 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnEnviarpublicacion"
         android:layout_width="60dp"
         android:layout_height="53dp"
         android:layout_marginBottom="200dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/custom_image_button"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtMensajePublicacion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_action_content_send"
         tools:ignore="UnknownId" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/txtComentariopublicacion"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="360dp"
         android:ems="10"
+        android:hint="Descripcion"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="340dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtanadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="324dp"
+        android:layout_marginTop="228dp"
         android:text="Añadir"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="219dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="382dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:height="30sp"
         android:background="@color/colorRojoCabeceras"
         android:text="Nueva Publicacion"
@@ -51,33 +69,57 @@
         android:textColor="@color/cardview_light_background"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edtPubltitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="34dp"
         android:ems="10"
         android:hint="Titulo"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="84dp" />
+        app:layout_constraintBottom_toTopOf="@+id/txtListaadjunto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtListaadjunto"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="420dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="169dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgbtnAnadir"
         android:layout_width="43dp"
         android:layout_height="46dp"
-        app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="206dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/add" />
 </android.support.constraint.ConstraintLayout>
