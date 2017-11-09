@@ -7,43 +7,87 @@
     android:background="@color/colorWhiteFondos"
     tools:context="incarlopsa.com.appincarlopsa.VCabeceraPublicacion">
 
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtTituloPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorRojoCabeceras"
+            android:paddingVertical="25dp"
+            android:text="Titulo"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhiteFondos"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAnuncioPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGris"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="13dp"
+            android:text="Anuncio"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/txtContadorNoGustaPublicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
         android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
+        app:layout_constraintBottom_toTopOf="@+id/recyPublicacionComentarios"
         app:layout_constraintEnd_toStartOf="@+id/btnAdjuntosPublicacion"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgNogustaPublicacion" />
+        app:layout_constraintStart_toEndOf="@+id/imgNogustaPublicacion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868" />
 
     <ImageButton
         android:id="@+id/imgGustaPublicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="52dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@color/cardview_shadow_end_color"
-        app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
+        app:layout_constraintBottom_toTopOf="@+id/recyPublicacionComentarios"
+        app:layout_constraintEnd_toStartOf="@+id/txtContadorGustaPublicacion"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.944"
         app:srcCompat="@drawable/me_gusta_web" />
 
     <ImageButton
         android:id="@+id/imgNogustaPublicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="43dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="8dp"
         android:background="@color/cardview_shadow_end_color"
-        app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
-        app:layout_constraintStart_toEndOf="@+id/imgGustaPublicacion"
+        app:layout_constraintBottom_toTopOf="@+id/recyPublicacionComentarios"
+        app:layout_constraintEnd_toStartOf="@+id/btnAdjuntosPublicacion"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/no_me_gusta_web" />
@@ -61,28 +105,32 @@
 
     <TextView
         android:id="@+id/txtContadorGustaPublicacion"
-        android:layout_width="8dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="145dp"
         android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/recyPublicacion"
+        app:layout_constraintBottom_toTopOf="@+id/recyPublicacionComentarios"
         app:layout_constraintEnd_toStartOf="@+id/imgNogustaPublicacion"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgGustaPublicacion" />
+        app:layout_constraintStart_toEndOf="@+id/imgGustaPublicacion"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAdjuntosPublicacion"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="41dp"
-        android:layout_marginTop="136dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="436dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/custom_image_button"
         android:text="Ver Adjuntos"
         android:textColor="@color/colorWhiteFondos"
-        app:layout_constraintEnd_toEndOf="@+id/recyPublicacion"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/txtPublicacionMensaje"
@@ -112,43 +160,5 @@
         app:layout_constraintTop_toTopOf="@+id/btnAdjuntosPublicacion">
 
     </android.support.v7.widget.RecyclerView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:id="@+id/txtTituloPublicacion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorRojoCabeceras"
-            android:paddingVertical="25dp"
-            android:text="Titulo"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhiteFondos"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtAnuncioPublicacion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorGris"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="13dp"
-            android:text="Anuncio"
-            android:textAlignment="center"
-            android:textColor="@color/colorRojoCabeceras"
-            android:textSize="18sp" />
-
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
