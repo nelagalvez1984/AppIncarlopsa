@@ -42,7 +42,12 @@ public interface ICodigos extends ICodigosAntonio,
     String ERROR_DRIVER = "Error en la carga del driver";
     String ERROR_LOGIN = "Usuario y contraseña inválidos";
     String ERROR_INTRODUCIR_DATOS = "Introduzca el usuario y contraseña";
+
+    //Tostadas de chats/publicaciones
     String ERROR_MENSAJE_VACIO = "No pueden enviarse mensajes vacíos";
+    String ERROR_TITULO_VACIO_CHAT = "Debe introducir un título/asunto para el chat";
+    String ERROR_USUARIO_NO_ELEGIDO = "No ha especificado el destinatario del chat";
+    String CHAT_CREADO_CON_EXITO = "Chat creado con éxito!";
 
     //Tostadas variopintas
     String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";

@@ -86,7 +86,7 @@
             android:gravity="left|center"
             android:text="Fecha"
             app:layout_constraintEnd_toStartOf="@+id/txtComentarioHora"
-            app:layout_constraintLeft_toRightOf="@+id/lblChatTitulo"
+            app:layout_constraintLeft_toRightOf="@+id/lblNombreUsuario"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded"/>
 

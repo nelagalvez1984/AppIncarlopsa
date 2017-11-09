@@ -37,6 +37,12 @@ class SingleTostada implements ICodigos{
 
     public void errorMensajeVacio() { showTostada(ERROR_MENSAJE_VACIO);}
 
+    public void errorTituloVacioChat() { showTostada(ERROR_TITULO_VACIO_CHAT);}
+
+    public void errorUsuarioNoElegido() { showTostada(ERROR_USUARIO_NO_ELEGIDO);}
+
+    public void chatCreadoConExito() { showTostada(CHAT_CREADO_CON_EXITO);}
+
     private void showTostada(String mensaje){
         Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
     }
