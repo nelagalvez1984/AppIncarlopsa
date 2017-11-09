@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
@@ -27,29 +26,46 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
     private ActionBar actionBar;
     private ImageView fondo;
     private Intent intent;
+    private SingleTostada tostada = SingleTostada.getInstance();
+    private ArrayList<DataBaseItem> resultados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tostada.setContexto(this);
 
         //todo RETIRAR ESTO, ESTA DE PRUEBAS!
         credenciales.setLogin(USUARIO_TEST_NORMAL);
         credenciales.setPassword(PASSWORD_TEST_NORMAL);
         credenciales.setUsername(USUARIO_TEST_NORMAL);
-        HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
-        ArrayList<DataBaseItem> resultados = null;
+        //1.- INTENTAR CONEXION
+        HiloParaLogin hiloParaLogin = new HiloParaLogin();
         try {
-            resultados = hilo.execute(credenciales).get();
+            hiloParaLogin.execute().get();
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
 
-        Usuario u = (Usuario)resultados.get(0);
-        credenciales.setIdUsuario(u.getIdUsuario());
-        credenciales.setApellidos(u.getApellidos());
-        credenciales.setDni(u.getDni());
-        credenciales.setFotoBytes(u.getFoto());
+        HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
+        resultados = new ArrayList<>();
+        try {
+            resultados = hilo.execute(credenciales).get();
+            if (resultados.size()>0){
+                Usuario u = (Usuario)resultados.get(0);
+                credenciales.setIdUsuario(u.getIdUsuario());
+                credenciales.setNombre(u.getNombre());
+                credenciales.setApellidos(u.getApellidos());
+                credenciales.setDni(u.getDni());
+                credenciales.setFotoBytes(u.getFoto());
+            }else{
+                tostada.errorConexionBBDD();
+            }
+
+        } catch (Exception e) {
+            tostada.errorConexionBBDD();
+        }
+
 
         //TODO aqui sigue con naturalidad
 
@@ -72,8 +88,9 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                         switch (menuItem.getItemId()) {
                             case R.id.item_navigation_drawer_publicaciones: //Ver publicaciones
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(VGeneral.this, VCabeceraPublicacion.class);
+                                startActivity(intent);
                                 return true;
                             case R.id.item_navigation_drawer_chats: //Ver chats
                                 menuItem.setChecked(true);
@@ -90,7 +107,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-                                intent = new Intent(VGeneral.this, SettingsActivity.class);
+                                intent = new Intent(VGeneral.this, TESTSettingsActivity.class);
                                 startActivity(intent);
                                 return true;
                         }
@@ -117,7 +134,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
 
         //Fijar el drawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer_layout);

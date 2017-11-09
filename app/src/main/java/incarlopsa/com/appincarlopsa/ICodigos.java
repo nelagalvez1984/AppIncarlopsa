@@ -2,9 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 public interface ICodigos extends ICodigosAntonio,
                                 ICodigosDavid,
-                                ICodigosEdu,
-        ICodigosJonatan,
-                                ICodigosNela {
+                                ICodigosJonatan {
 
     //Codigos iguales o inferiores a 100
 
@@ -38,5 +36,19 @@ public interface ICodigos extends ICodigosAntonio,
     String PASSWORD_TEST_NORMAL = "TESTUSER";
     String USUARIO_TEST_RRHH = "TESTRRHH";
     String PASSWORD_TEST_RRHH = "TESTRRHH";
+
+    //Codigos para control de excepciones
+    String ERROR_CONEXION_BBDD = "No se ha podido establecer la conexión con la base de datos";
+    String ERROR_DRIVER = "Error en la carga del driver";
+    String ERROR_LOGIN = "Usuario y contraseña inválidos";
+    String ERROR_INTRODUCIR_DATOS = "Introduzca el usuario y contraseña";
+
+    //Tostadas variopintas
+    String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";
+    String USUARIO_DESCONOCIDO = "Usuario desconocido";
+
+    //Tipos Likes
+    String ME_GUSTA = "MeGusta";
+    String NO_ME_GUSTA = "MeDisgusta";
 
 }

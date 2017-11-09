@@ -3,24 +3,20 @@ package incarlopsa.com.appincarlopsa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.sql.Connection;
-import java.util.concurrent.ExecutionException;
 
 public class VLogin extends AppCompatActivity implements IVista{
 
     //Propiedades
-    EditText etUsuario;
-    EditText etPassword;
-    Button btnConectar;
-    SingleCredenciales credenciales;
-    HiloParaLogin hiloParaLogin;
-    Intent intent;
+    private EditText etUsuario;
+    private EditText etPassword;
+    private Button btnConectar;
+    private SingleCredenciales credenciales;
+    private HiloParaLogin hiloParaLogin;
+    private Intent intent;
+    private SingleTostada tostada = SingleTostada.getInstance();
 
     @Override
     public void inicializarVista() {
@@ -29,6 +25,7 @@ public class VLogin extends AppCompatActivity implements IVista{
         btnConectar = (Button) findViewById(R.id.btnConectar);
         btnConectar.setOnClickListener(this);
         credenciales = SingleCredenciales.getInstance();
+        tostada.setContexto(this);
 
     }
 
@@ -51,19 +48,17 @@ public class VLogin extends AppCompatActivity implements IVista{
                     try {
                         conexionOK = hiloParaLogin.execute().get();
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        tostada.errorConexionBBDD();
                     }
 
                     if (conexionOK) { //El usuario/pass es correcto!
                         intent = new Intent(this, VGeneral.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(getApplicationContext(),
-                                "Usuario y contraseña inválidos", Toast.LENGTH_SHORT).show();
+                        tostada.errorLogin();
                     }
                 }else{
-                    Toast.makeText(getApplicationContext(),
-                            "Introduzca el usuario y contraseña", Toast.LENGTH_SHORT).show();
+                    tostada.errorIntroducirDatos();
                 }
         }
 

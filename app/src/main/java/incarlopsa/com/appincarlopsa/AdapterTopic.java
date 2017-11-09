@@ -8,17 +8,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
+public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> {
 
     private ArrayList<DataBaseItem> listaCabecera;
+    private DAOBase dao;
+    private Topic cabecera;
 
-    public AdapterChat(ArrayList<DataBaseItem> listaCabecera) {
+    public AdapterTopic(ArrayList<DataBaseItem> listaCabecera, DAOBase dao) {
         this.listaCabecera = listaCabecera;
+        this.dao = dao;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cabecera_chat, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cabecera, parent, false);
         final ViewHolder viewHolder = new ViewHolder(v);
 
         v.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +39,8 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Chat cabecera = (Chat)listaCabecera.get(position);
+
+        cabecera = (Topic)listaCabecera.get(position);
 
         //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
@@ -47,7 +51,8 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         try {
             resultados = hiloParaRead.execute(usuarioAux).get();
         } catch (Exception e) {
-            e.printStackTrace();
+            SingleTostada singleTostada = SingleTostada.getInstance();
+            singleTostada.errorConexionBBDD();
         }
 
         if (resultados.size() > 0){ //deberia serlo
@@ -59,7 +64,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
         String titulo = cabecera.getTitulo();
         String autor = usuarioAux.getNombre() + " "
-                    + usuarioAux.getApellidos();
+                + usuarioAux.getApellidos();
 
         String fechaCreacion = cabecera.getFechaCreacion();
         String horaCreacion = cabecera.getHoraCreacion();
@@ -67,7 +72,6 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         String horaUpdate = cabecera.getHoraUltimoUpdate();
 
         holder.titulo.setText(titulo);
-        holder.idAutor.setText(idAutor.toString());
         holder.autor.setText(autor);
         holder.fechaCreacion.setText(fechaCreacion);
         holder.horaCreacion.setText(horaCreacion);
@@ -84,7 +88,6 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView titulo;
-        private TextView idAutor;
         private TextView autor;
         private TextView fechaCreacion;
         private TextView horaCreacion;
@@ -94,8 +97,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
             titulo = (TextView) v.findViewById(R.id.editCabeceraChatTitulo);
-            idAutor = (TextView) v.findViewById(R.id.editCabeceraChatIdUsuario);
-            autor = (TextView) v.findViewById(R.id.editCabeceraChatIdUsuario);
+            autor = (TextView) v.findViewById(R.id.editCabeceraChatAutor);
             fechaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatFechaCreacion);
             horaCreacion = (TextView) v.findViewById(R.id.editCabeceraChatHoraCreacion);
             fechaUpdate = (TextView) v.findViewById(R.id.editCabeceraChatFechaActualizacion);
@@ -107,10 +109,17 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolder> {
     public interface OnItemClickListener {
         public void onItemClick(DataBaseItem item, int position);
     }
-    private AdapterChat.OnItemClickListener mListener;
+    private AdapterTopic.OnItemClickListener mListener;
 
-    public void setOnItemListener(AdapterChat.OnItemClickListener listener) {
+    public void setOnItemListener(AdapterTopic.OnItemClickListener listener) {
         mListener = listener;
     }
 
+    public Integer ultimaPosicion(){
+        Integer retorno = 0;
+        if (listaCabecera.size()>0){
+            retorno = listaCabecera.size()-1;
+        }
+        return retorno;
+    }
 }

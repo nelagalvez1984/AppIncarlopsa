@@ -5,50 +5,76 @@
     android:id="@+id/consCabecera"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_amber_50">
+    android:background="@color/colorWhiteFondos">
+
+    <TextView
+        android:id="@+id/txtTituloES"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="69dp"
+        android:background="@color/colorRojoCabeceras"
+        android:paddingVertical="20dp"
+        android:text="@string/chats"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhiteFondos"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyEntrantesChat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtSalientesChat"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:text="Salientes"
+        android:background="@color/colorRojoCabeceras"
+        android:text="@string/salientes"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/cardview_light_background"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recySalientesChat"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyEntrantesChat"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/txtEntrantesChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Entrantes"
+        android:layout_marginTop="36dp"
+        android:background="@color/colorRojoCabeceras"
+        android:text="@string/entrantes"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/cardview_light_background"
+
         android:textSize="24sp"
         android:textStyle="bold"
-
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloES" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recySalientesChat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@color/cardview_light_background"
+        android:layout_marginBottom="65dp"
+        android:background="@color/colorGris"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSalientesChat"
         tools:ignore="MissingConstraints" />
@@ -57,11 +83,13 @@
         android:id="@+id/recyEntrantesChat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:background="@color/cardview_light_background"
+        android:background="@color/colorGris"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtSalientesChat"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEntrantesChat"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloES"
         tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

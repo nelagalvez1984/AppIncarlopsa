@@ -17,10 +17,11 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
     private RecyclerView recyclerSalientes;
     private RecyclerView.LayoutManager layoutManagerEntrantes;
     private RecyclerView.LayoutManager layoutManagerSalientes;
-    private AdapterChat adapterChatEntrantes;
-    private AdapterChat adapterChatSalientes;
+    private AdapterTopic adapterChatEntrantes;
+    private AdapterTopic adapterChatSalientes;
     private HiloParaRead hiloParaRead;
     private Intent intent;
+    private SingleTostada tostada = SingleTostada.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,11 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
 
     @Override
     public void inicializarVista() {
+
+        tostada.setContexto(this);
+        resultadosEntrantes = new ArrayList<>();
+        resultadosSalientes = new ArrayList<>();
+
         recyclerEntrantes = (RecyclerView)findViewById(R.id.recyEntrantesChat);
         recyclerSalientes = (RecyclerView)findViewById(R.id.recySalientesChat);
 
@@ -42,54 +48,58 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
+            adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat());
+            recyclerEntrantes.setAdapter(adapterChatEntrantes);
+            recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
+
+            adapterChatEntrantes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
+                @Override
+                public void onItemClick(DataBaseItem item, int position) {
+                    Chat c = (Chat)item;
+
+                    intent = new Intent(VCabeceraChat.this, VChat.class);
+                    intent.putExtra("idChat", c.getId());
+                    intent.putExtra("tituloChat", c.getTitulo());
+                    intent.putExtra("idAutor", c.getIdUsuario());
+                    intent.putExtra("idDestino", c.getIdUsuarioDestino());
+
+                    startActivity(intent);
+                }
+            });
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
-
-        adapterChatEntrantes = new AdapterChat(resultadosEntrantes);
-        recyclerEntrantes.setAdapter(adapterChatEntrantes);
-
-        adapterChatEntrantes.setOnItemListener(new AdapterChat.OnItemClickListener() {
-            @Override
-            public void onItemClick(DataBaseItem item, int position) {
-                Chat c = (Chat)item;
-
-                Intent intent = new Intent(VCabeceraChat.this, VChat.class);
-                intent.putExtra("idChat", c.getId());
-                intent.putExtra("tituloChat", c.getTitulo());
-                startActivity(intent);
-
-            }
-        });
 
         //Chats salientes
         layoutManagerSalientes = new LinearLayoutManager(this);
         recyclerSalientes.setLayoutManager(layoutManagerSalientes);
         recyclerSalientes.setItemAnimator(new DefaultItemAnimator());
 
+
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
+            adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat());
+            recyclerSalientes.setAdapter(adapterChatSalientes);
+            recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
+
+            adapterChatSalientes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
+                @Override
+                public void onItemClick(DataBaseItem item, int position) {
+                    Chat c = (Chat)item;
+
+                    Intent intent = new Intent(VCabeceraChat.this, VChat.class);
+                    intent.putExtra("idChat", c.getId());
+                    intent.putExtra("tituloChat", c.getTitulo());
+                    intent.putExtra("idAutor", c.getIdUsuario());
+                    intent.putExtra("idDestino", c.getIdUsuarioDestino());
+                    startActivity(intent);
+
+                }
+            });
         } catch (Exception e) {
-            e.printStackTrace();
+            tostada.errorConexionBBDD();
         }
-
-        adapterChatSalientes = new AdapterChat(resultadosSalientes);
-        recyclerSalientes.setAdapter(adapterChatSalientes);
-
-        adapterChatSalientes.setOnItemListener(new AdapterChat.OnItemClickListener() {
-            @Override
-            public void onItemClick(DataBaseItem item, int position) {
-                Chat c = (Chat)item;
-
-                Intent intent = new Intent(VCabeceraChat.this, VChat.class);
-                intent.putExtra("idChat", c.getId());
-                intent.putExtra("tituloChat", c.getTitulo());
-                startActivity(intent);
-
-            }
-        });
-
     }
 
     @Override

@@ -3,11 +3,6 @@ package incarlopsa.com.appincarlopsa;
 import android.os.AsyncTask;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-
-/**
- * Created by Nela on 06/11/2017.
- */
 
 public class HiloParaLogin extends AsyncTask<Object, Void, Boolean> implements ICodigos{
 
@@ -27,25 +22,25 @@ public class HiloParaLogin extends AsyncTask<Object, Void, Boolean> implements I
     //Propiedades
     SingleConexion conector;
     Connection conexion;
-
-
-    //Constructor
-    public HiloParaLogin() {
-
-    }
+    SingleTostada tostada = SingleTostada.getInstance();
 
     @Override
     protected Boolean doInBackground(Object... parametrosParaConsulta) {
 
         boolean operacionCorrecta = false;
+
+
         conector = SingleConexion.getInstance();
-        conexion = conector.conectar();
+        if (conector.conectar() == null){
+            conexion = conector.conexionInicial();
+        }
 
         if (conexion != null){
             operacionCorrecta = true;
-            conector.desconectar();
+            tostada.bienvenida();
             System.out.println("Login correcto!");
         }else{
+            tostada.errorLogin();
             System.out.println("Login incorrecto!");
         }
 

@@ -39,13 +39,13 @@ public class DAOLikes extends DAOBase implements IDAO{
     @Override
     protected void rellenarObjetos() throws SQLException {
         MeAlgo aux = null;
-        if (resultados.getString(4).equals("MeGusta")){
+        if (resultados.getString(4).equals(ME_GUSTA)){
             aux = new MeGusta(resultados.getInt(1),
                                     resultados.getInt(2),
                                     resultados.getInt(3));
 
         }else{
-            if (resultados.getString(4).equals("NoMeGusta")){
+            if (resultados.getString(4).equals(NO_ME_GUSTA)){
                 aux = new MeDisgusta(resultados.getInt(1),
                         resultados.getInt(2),
                         resultados.getInt(3));
@@ -129,12 +129,12 @@ public class DAOLikes extends DAOBase implements IDAO{
     }
 
     @Override
-    public Boolean update(Object elementoConQueActualizar) {
+    public Boolean update(Object elementoConQueActualizar) throws SQLException{
         return super.update(elementoConQueActualizar);
     }
 
     @Override
-    public Boolean delete(Object elementoABorrar) {
+    public Boolean delete(Object elementoABorrar) throws SQLException{
         return super.delete(elementoABorrar);
     }
 }

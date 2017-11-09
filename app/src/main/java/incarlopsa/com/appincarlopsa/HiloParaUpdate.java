@@ -40,11 +40,17 @@ public class HiloParaUpdate extends AsyncTask<Object, Void, Boolean> implements 
         boolean operacionCorrecta = false;
 
         if (numParametros == 1){ //Para los updates solo puede haber un parametro!
-            operacionCorrecta = (dao.update(parametrosParaConsulta[0]) );
-            if (operacionCorrecta){
-                System.out.println("Actualizacion correcta!");
-            }else{
-                System.out.println("Actualizacion rechazada!");
+            try {
+                operacionCorrecta = (dao.update(parametrosParaConsulta[0]) );
+                if (operacionCorrecta){
+                    System.out.println("Actualizacion correcta!");
+                }else{
+                    System.out.println("Actualizacion rechazada!");
+                }
+
+            } catch (SQLException e) {
+                SingleTostada singleTostada = SingleTostada.getInstance();
+                singleTostada.errorConexionBBDD();
             }
         }else{ //Error en la llamada!
             return null;

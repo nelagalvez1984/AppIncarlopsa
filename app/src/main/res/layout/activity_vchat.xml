@@ -4,50 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_amber_100"
+    android:background="@color/colorRojoCabeceras"
     android:orientation="vertical"
     android:textAlignment="center">
 
     <TextView
         android:id="@+id/txtChatTitulo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/md_green_50"
+        android:layout_height="78dp"
+        android:background="@color/colorRojoCabeceras"
+        android:paddingVertical="25dp"
         android:text="@string/chat"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorWhiteFondos"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerChats"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/md_deep_orange_50" />
+        android:layout_height="412dp"
+        android:background="@color/colorGris"
+        android:paddingHorizontal="16dp" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorRojoCabeceras"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/edtChatMensaje"
             android:layout_width="230dp"
             android:layout_height="50dp"
+            android:layout_marginBottom="64dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="28dp"
             android:layout_weight="1"
-            android:background="@color/cardview_light_background"
+            android:background="@drawable/borde_edittext"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonChatEnviar"
+            app:layout_constraintHorizontal_bias="0.633"
+            app:layout_constraintStart_toStartOf="parent"
             tools:hint="Introduce tu mensaje" />
 
         <ImageButton
             android:id="@+id/buttonChatEnviar"
-            android:layout_width="79dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="52dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_image_button"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_action_content_send" />
 
-    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
