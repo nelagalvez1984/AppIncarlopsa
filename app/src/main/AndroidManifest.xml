@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="incarlopsa.com.appincarlopsa">
+    package="incarlopsa.com.appincarlopsa">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,22 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".VGeneral">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
-        <activity android:name=".VLogin">
-        </activity>
+        <activity android:name=".VLogin" />
         <activity
             android:name=".TESTSettingsActivity"
             android:label="TEST Settings"
-            android:parentActivityName=".VGeneral">
-        </activity>
-        <activity android:name=".VCabeceraChat">
-        </activity>
-        <activity android:name=".VChat">
+            android:parentActivityName=".VGeneral" />
+        <activity android:name=".VCabeceraChat" />
+        <activity android:name=".VChat" />
+        <activity android:name=".fileexplorer">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
         </activity>
         <activity android:name=".VCabeceraPublicacion">
         </activity>

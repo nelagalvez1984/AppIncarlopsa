@@ -16,5 +16,6 @@
 <string name="entrantes">Entrantes</string>
 <string name="salientes">Salientes</string>
 <string name="chats">Chats</string>
+<string name="title_activity_crear_nchat">Crear nuevo chat</string>
 
 </resources>
