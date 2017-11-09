@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="incarlopsa.com.appincarlopsa.crear_nchat">
+    tools:context="incarlopsa.com.appincarlopsa.VCrearNuevoChat">
 
     <TextView
         android:id="@+id/tituloNChat"

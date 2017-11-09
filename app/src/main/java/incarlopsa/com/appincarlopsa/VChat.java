@@ -111,23 +111,28 @@ public class VChat extends AppCompatActivity implements IVista{
     @Override
     public void onClick(View view) {
         //Boton enviar
-        hiloParaCreate = new HiloParaCreate(new DAOMensaje());
-        Mensaje mensajeAux = new Mensaje();
-        mensajeAux.setIdPublicacion(idChat);
-        mensajeAux.setIdUsuario(credenciales.getIdUsuario());
-        mensajeAux.setMensaje(escribirMensaje.getText().toString());
-        try {
-            Boolean creacion = hiloParaCreate.execute(mensajeAux).get();
-            if (!creacion){
-                throw new Exception();
+        if (escribirMensaje.length()>0){
+            hiloParaCreate = new HiloParaCreate(new DAOMensaje());
+            Mensaje mensajeAux = new Mensaje();
+            mensajeAux.setIdPublicacion(idChat);
+            mensajeAux.setIdUsuario(credenciales.getIdUsuario());
+            mensajeAux.setMensaje(escribirMensaje.getText().toString());
+            try {
+                Boolean creacion = hiloParaCreate.execute(mensajeAux).get();
+                if (!creacion){
+                    throw new Exception();
+                }
+                hiloParaRead = new HiloParaRead(new DAOMensaje());
+                resultados = hiloParaRead.execute(mensajeAux).get();
+                adapterMensaje.actualizar(resultados);
+                escribirMensaje.setText("");
+                recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
+            } catch (Exception e) {
+                tostada.errorConexionBBDD();
             }
-            hiloParaRead = new HiloParaRead(new DAOMensaje());
-            resultados = hiloParaRead.execute(mensajeAux).get();
-            adapterMensaje.actualizar(resultados);
-            escribirMensaje.setText("");
-            recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
-        } catch (Exception e) {
-            tostada.errorConexionBBDD();
+        }else{
+            tostada.errorMensajeVacio();
         }
+
     }
 }

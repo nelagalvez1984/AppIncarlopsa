@@ -186,7 +186,12 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.imgEnviarPublicacion: //Boton enviar
-                enviarComentario();
+                if (escribirMensaje.length()>0){
+                    enviarComentario();
+                }else{
+                    tostada.errorMensajeVacio();
+                }
+
                 break;
             case R.id.btnAdjuntosPublicacion: //Mostrar los adjuntos
                 //ToDo

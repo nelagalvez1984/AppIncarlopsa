@@ -98,16 +98,18 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                                 intent = new Intent(VGeneral.this, VCabeceraChat.class);
                                 startActivity(intent);
                                 return true;
-                            case R.id.item_navigation_drawer_nuevo_chat: //Crear mensaje
+                            case R.id.item_navigation_drawer_nuevo_chat: //Crear chat
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(VGeneral.this, VCrearNuevoChat.class);
+                                startActivity(intent);
                                 return true;
-                            case R.id.item_navigation_drawer_nueva_publicacion: //Crear comentario
+                            case R.id.item_navigation_drawer_nueva_publicacion: //Crear publicacion
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-                                intent = new Intent(VGeneral.this, TESTSettingsActivity.class);
+                                intent = new Intent(VGeneral.this, VCrearNuevaPublicacion.class);
                                 startActivity(intent);
                                 return true;
                         }

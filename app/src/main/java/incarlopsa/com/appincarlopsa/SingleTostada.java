@@ -35,6 +35,8 @@ class SingleTostada implements ICodigos{
 
     public void errorIntroducirDatos() { showTostada(ERROR_INTRODUCIR_DATOS);}
 
+    public void errorMensajeVacio() { showTostada(ERROR_MENSAJE_VACIO);}
+
     private void showTostada(String mensaje){
         Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
     }
