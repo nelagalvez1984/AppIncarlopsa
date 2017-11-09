@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -34,7 +35,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     private ImageButton meGustaAnuncio;
     private ImageButton meDisgustaAnuncio;
     private ImageButton botonEnviar;
-    private TextView escribirMensaje;
+    private EditText escribirMensaje;
     private TextView tituloFormulario;
     private TextView anuncioPublicacion;
     private TextView contadorLikes;
@@ -61,7 +62,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
         meGustaAnuncio.setOnClickListener(this);
         meDisgustaAnuncio = (ImageButton)findViewById(R.id.imgNogustaPublicacion);
         meDisgustaAnuncio.setOnClickListener(this);
-        escribirMensaje = (TextView)findViewById(R.id.txtPublicacionMensaje);
+        escribirMensaje = (EditText)findViewById(R.id.txtPublicacionMensaje);
         botonEnviar = (ImageButton)findViewById(R.id.imgEnviarPublicacion);
         botonEnviar.setOnClickListener(this);
         botonAdjuntos = (Button)findViewById(R.id.btnAdjuntosPublicacion);
@@ -135,7 +136,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             //Cargar los mensajes
             adapterComentario = new AdapterComentario(comentarios);
             recycler.setAdapter(adapterComentario);
-            recycler.scrollToPosition(adapterComentario.ultimaPosicion());
+//            recycler.scrollToPosition(adapterComentario.ultimaPosicion());
 
         } catch (Exception e) {
             tostada.errorConexionBBDD();
@@ -230,7 +231,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     }
 
     private void enviarComentario(){
-        hiloParaCreate = new HiloParaCreate(new DAOMensaje());
+        hiloParaCreate = new HiloParaCreate(new DAOComentario());
         Comentario comentarioAux = new Comentario();
         comentarioAux.setIdPublicacion(idPublicacion);
         comentarioAux.setIdUsuario(credenciales.getIdUsuario());
@@ -244,7 +245,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             resultados = hiloParaRead.execute(comentarioAux).get();
             adapterComentario.actualizar(resultados);
             escribirMensaje.setText("");
-            recycler.scrollToPosition(adapterComentario.ultimaPosicion());
+            //recycler.scrollToPosition(adapterComentario.ultimaPosicion());
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
