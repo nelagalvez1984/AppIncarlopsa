@@ -1,5 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.content.res.Resources;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.ViewHolder> implements ICodigos{
 
@@ -24,16 +26,96 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.comentario, parent, false);
+
+
         final ViewHolder viewHolder = new ViewHolder(v);
 
-        v.setOnClickListener(new View.OnClickListener() {
+        final ImageView botonLike = (ImageView)v.findViewById(R.id.btnComentarioLike);
+        botonLike.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View meGusta) {
+                Integer id = meGusta.getId();
                 int position = viewHolder.getAdapterPosition();
                 if(mListener!=null) {
                     mListener.onItemClick(listaComentarios.get(position), position);
                 }
+
+                Comentario comentarioAux = (Comentario)listaComentarios.get(position);
+                ArrayList<DataBaseItem> likes = comentarioAux.getArrayLikes();
+                //Verificar que no he votado ya
+                //1.- Recorrer el Array y ver si estoy
+                MeAlgo meAlgo;
+                Boolean todoOk = true;
+                for(DataBaseItem m : likes){
+                    meAlgo = (MeAlgo)m;
+                    if (meAlgo.getIdUsuario() == credenciales.getIdUsuario()){ //Ya he votado, impedir!
+                        todoOk = false;
+                        break;
+                    }
+                }
+                if (todoOk){
+                    MeGusta meGustaAux = new MeGusta();
+                    meGustaAux.setIdUsuario(credenciales.getIdUsuario());
+                    meGustaAux.setIdComentario(comentarioAux.getId());
+                    HiloParaCreate hiloParaCreate = new HiloParaCreate(new DAOLikes());
+                    try {
+                        todoOk = hiloParaCreate.execute(meGustaAux).get();
+                        viewHolder.fotoMeGusta.setImageDrawable(viewHolder.recursos.getDrawable(R.drawable.likeverde));
+                        viewHolder.fotoMeDisgusta.setEnabled(false);
+                        viewHolder.fotoMeGusta.setEnabled(false);
+                        Integer num = Integer.parseInt(viewHolder.numLikes.getText().toString());
+                        num++;
+                        viewHolder.numLikes.setText(num.toString());
+                    } catch (Exception e) {
+                        tostada.errorConexionBBDD();
+                    }
+                }
             }
+        });
+
+
+        final ImageView botonDislike = (ImageView)v.findViewById(R.id.btnComentarioDislike);
+        botonDislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View meDisgusta) {
+                Integer id = meDisgusta.getId();
+                int position = viewHolder.getAdapterPosition();
+                if(mListener!=null) {
+                    mListener.onItemClick(listaComentarios.get(position), position);
+                }
+
+                Comentario comentarioAux = (Comentario)listaComentarios.get(position);
+                ArrayList<DataBaseItem> likes = comentarioAux.getArrayLikes();
+                //Verificar que no he votado ya
+                //1.- Recorrer el Array y ver si estoy
+                MeAlgo meAlgo;
+                Boolean todoOk = true;
+                for(DataBaseItem m : likes){
+                    meAlgo = (MeAlgo)m;
+                    if (meAlgo.getIdUsuario() == credenciales.getIdUsuario()){ //Ya he votado, impedir!
+                        todoOk = false;
+                        break;
+                    }
+                }
+                if (todoOk){
+                    MeDisgusta meDisgustaAux = new MeDisgusta();
+                    meDisgustaAux.setIdUsuario(credenciales.getIdUsuario());
+                    meDisgustaAux.setIdComentario(comentarioAux.getId());
+                    HiloParaCreate hiloParaCreate = new HiloParaCreate(new DAOLikes());
+                    try {
+                        todoOk = hiloParaCreate.execute(meDisgustaAux).get();
+                        viewHolder.fotoMeDisgusta.setImageDrawable(viewHolder.recursos.getDrawable(R.drawable.dislikerojo));
+                        viewHolder.fotoMeDisgusta.setEnabled(false);
+                        viewHolder.fotoMeGusta.setEnabled(false);
+                        Integer num = Integer.parseInt(viewHolder.numDislikes.getText().toString());
+                        num++;
+                        viewHolder.numDislikes.setText(num.toString());
+                    } catch (Exception e) {
+                        tostada.errorConexionBBDD();
+                    }
+                }
+            }
+
         });
 
         return viewHolder;
@@ -42,6 +124,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Comentario comentario = (Comentario) listaComentarios.get(position);
+
 
         //Recuperar el usuario que ha creado el comentario
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
@@ -69,6 +152,22 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         }
 
         //Comprobar si se ha votado MeGusta o MeDisgusta y en caso afirmativo colorearlo
+        ArrayList<DataBaseItem> likes = comentario.getArrayLikes();
+        MeAlgo meAlgo;
+        for(DataBaseItem m : likes){
+            meAlgo = (MeAlgo)m;
+            if (meAlgo.getIdUsuario() == credenciales.getIdUsuario()){ //Ya he votado! ver que tipo es
+                if (meAlgo instanceof MeGusta){ // MeGusta
+                    holder.fotoMeGusta.setImageDrawable(holder.recursos.getDrawable(R.drawable.likeverde));
+                    holder.fotoMeDisgusta.setEnabled(false);
+                    holder.fotoMeGusta.setEnabled(false);
+                }else{ //NoMegusta
+                    holder.fotoMeDisgusta.setImageDrawable(holder.recursos.getDrawable(R.drawable.dislikerojo));
+                    holder.fotoMeDisgusta.setEnabled(false);
+                    holder.fotoMeGusta.setEnabled(false);
+                }
+            }
+        }
 
 
         //Resto de asignaciones
@@ -108,6 +207,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         private ImageView fotoMeGusta;
         private ImageView fotoMeDisgusta;
         private View v;
+        private Resources recursos;
 
         public ViewHolder(View v) {
             super(v);
@@ -117,7 +217,10 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
             comentarioDicho = (TextView) v.findViewById(R.id.txtComentarioComentario);
             numLikes = (TextView) v.findViewById(R.id.txtComentarioNumLikes);
             numDislikes = (TextView) v.findViewById(R.id.txtComentarioNumDislikes);
+            fotoMeGusta = (ImageView) v.findViewById(R.id.btnComentarioLike);
+            fotoMeDisgusta = (ImageView) v.findViewById(R.id.btnComentarioDislike);
             this.v = v;
+            recursos = v.getResources();
         }
     }
 

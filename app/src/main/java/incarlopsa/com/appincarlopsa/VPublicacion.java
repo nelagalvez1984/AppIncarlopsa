@@ -136,7 +136,6 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             //Cargar los mensajes
             adapterComentario = new AdapterComentario(comentarios);
             recycler.setAdapter(adapterComentario);
-//            recycler.scrollToPosition(adapterComentario.ultimaPosicion());
 
         } catch (Exception e) {
             tostada.errorConexionBBDD();
@@ -145,13 +144,13 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     }
 
     private void marcarMeDisgusta() {
-        meDisgustaAnuncio.setBackgroundColor(recursos.getColor(R.color.colorRojoCabeceras));
-        meGustaAnuncio.setEnabled(false);
+        meDisgustaAnuncio.setImageDrawable(recursos.getDrawable(R.drawable.dislikerojo));
         meDisgustaAnuncio.setEnabled(false);
+        meGustaAnuncio.setEnabled(false);
     }
 
     private void marcarMeGusta() {
-        meGustaAnuncio.setBackgroundColor(recursos.getColor(R.color.colorVerdeApp));
+        meGustaAnuncio.setImageDrawable(recursos.getDrawable(R.drawable.likeverde));
         meGustaAnuncio.setEnabled(false);
         meDisgustaAnuncio.setEnabled(false);
     }
@@ -245,7 +244,6 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             resultados = hiloParaRead.execute(comentarioAux).get();
             adapterComentario.actualizar(resultados);
             escribirMensaje.setText("");
-            //recycler.scrollToPosition(adapterComentario.ultimaPosicion());
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
