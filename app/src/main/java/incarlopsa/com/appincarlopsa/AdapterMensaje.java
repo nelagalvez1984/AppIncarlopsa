@@ -120,5 +120,4 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         mListener = listener;
     }
 
-
 }

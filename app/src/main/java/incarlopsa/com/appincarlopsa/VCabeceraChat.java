@@ -48,28 +48,27 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
+            adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat());
+            recyclerEntrantes.setAdapter(adapterChatEntrantes);
+            recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
+
+            adapterChatEntrantes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
+                @Override
+                public void onItemClick(DataBaseItem item, int position) {
+                    Chat c = (Chat)item;
+
+                    intent = new Intent(VCabeceraChat.this, VChat.class);
+                    intent.putExtra("idChat", c.getId());
+                    intent.putExtra("tituloChat", c.getTitulo());
+                    intent.putExtra("idAutor", c.getIdUsuario());
+                    intent.putExtra("idDestino", c.getIdUsuarioDestino());
+
+                    startActivity(intent);
+                }
+            });
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
-
-        adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat());
-        recyclerEntrantes.setAdapter(adapterChatEntrantes);
-        recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
-
-        adapterChatEntrantes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
-           @Override
-           public void onItemClick(DataBaseItem item, int position) {
-               Chat c = (Chat)item;
-
-               intent = new Intent(VCabeceraChat.this, VChat.class);
-               intent.putExtra("idChat", c.getId());
-               intent.putExtra("tituloChat", c.getTitulo());
-               intent.putExtra("idAutor", c.getIdUsuario());
-               intent.putExtra("idDestino", c.getIdUsuarioDestino());
-
-               startActivity(intent);
-           }
-       });
 
         //Chats salientes
         layoutManagerSalientes = new LinearLayoutManager(this);
@@ -80,29 +79,27 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
+            adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat());
+            recyclerSalientes.setAdapter(adapterChatSalientes);
+            recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
+
+            adapterChatSalientes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
+                @Override
+                public void onItemClick(DataBaseItem item, int position) {
+                    Chat c = (Chat)item;
+
+                    Intent intent = new Intent(VCabeceraChat.this, VChat.class);
+                    intent.putExtra("idChat", c.getId());
+                    intent.putExtra("tituloChat", c.getTitulo());
+                    intent.putExtra("idAutor", c.getIdUsuario());
+                    intent.putExtra("idDestino", c.getIdUsuarioDestino());
+                    startActivity(intent);
+
+                }
+            });
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
-
-        adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat());
-        recyclerSalientes.setAdapter(adapterChatSalientes);
-        recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
-
-        adapterChatSalientes.setOnItemListener(new AdapterTopic.OnItemClickListener() {
-            @Override
-            public void onItemClick(DataBaseItem item, int position) {
-                Chat c = (Chat)item;
-
-                Intent intent = new Intent(VCabeceraChat.this, VChat.class);
-                intent.putExtra("idChat", c.getId());
-                intent.putExtra("tituloChat", c.getTitulo());
-                intent.putExtra("idAutor", c.getIdUsuario());
-                intent.putExtra("idDestino", c.getIdUsuarioDestino());
-                startActivity(intent);
-
-            }
-        });
-
     }
 
     @Override

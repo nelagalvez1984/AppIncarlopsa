@@ -8,11 +8,11 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtPlaincomentario"
-        app:layout_constraintTop_toTopOf="@+id/txtPlaincomentario">
+        app:layout_constraintBottom_toTopOf="@+id/txtComentarioComentario"
+        app:layout_constraintTop_toTopOf="@+id/txtComentarioComentario">
 
         <TextView
-            android:id="@+id/txtNumdislike"
+            android:id="@+id/txtComentarioNumDislikes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -24,10 +24,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHoracomentario" />
+            app:layout_constraintTop_toBottomOf="@+id/txtComentarioHora" />
 
         <TextView
-            android:id="@+id/txtNumlike"
+            android:id="@+id/txtComentarioNumLikes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -35,38 +35,38 @@
             android:layout_marginStart="8dp"
             android:text="0"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtNumdislike"
+            app:layout_constraintEnd_toStartOf="@+id/txtComentarioNumDislikes"
             app:layout_constraintHorizontal_bias="0.967"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imgUsuariocomentario"
+            android:id="@+id/imgComentarioUsuario"
             android:layout_width="64dp"
             android:layout_height="0dp"
             android:layout_marginBottom="7dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:contentDescription=""
-            app:layout_constraintBottom_toTopOf="@+id/txtPlaincomentario"
+            app:layout_constraintBottom_toTopOf="@+id/txtComentarioComentario"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/foto"
             tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/lblCabeceraChatTitulo"
+            android:id="@+id/txtComentarioUsuario"
             android:layout_width="128dp"
             android:layout_height="34dp"
             android:layout_marginLeft="9dp"
             android:layout_marginTop="8dp"
             android:gravity="left|center"
             android:text="@string/nombre"
-            app:layout_constraintLeft_toRightOf="@+id/imgUsuariocomentario"
+            app:layout_constraintLeft_toRightOf="@+id/imgComentarioUsuario"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/txtFechacomentario"
+            android:id="@+id/txtComentarioFecha"
             android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -74,13 +74,13 @@
             android:layout_marginTop="16dp"
             android:gravity="left|center"
             android:text="Fecha"
-            app:layout_constraintEnd_toStartOf="@+id/txtHoracomentario"
+            app:layout_constraintEnd_toStartOf="@+id/txtComentarioHora"
             app:layout_constraintLeft_toRightOf="@+id/lblChatTitulo"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,RtlHardcoded" />
 
         <TextView
-            android:id="@+id/txtHoracomentario"
+            android:id="@+id/txtComentarioHora"
             android:layout_width="51dp"
             android:layout_height="30dp"
             android:layout_marginEnd="16dp"
@@ -89,20 +89,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/txtPlaincomentario"
-            android:layout_width="285dp"
-            android:layout_height="0dp"
+        <TextView
+            android:id="@+id/txtComentarioComentario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="76dp"
-            android:ems="10"
-            android:hint="@string/comentario"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/txtNumlike"
+            app:layout_constraintBottom_toTopOf="@+id/txtComentarioNumLikes"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/imgUsuariocomentario"
+            app:layout_constraintLeft_toRightOf="@+id/imgComentarioUsuario"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="RtlHardcoded" />
@@ -114,7 +111,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/btnLikeoff"
+            android:id="@+id/btnComentarioLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -122,16 +119,16 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="124dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnDislikeof"
+            app:layout_constraintEnd_toStartOf="@+id/btnComentarioDislike"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btnLikeoff"
+            app:layout_constraintStart_toEndOf="@+id/btnComentarioLike"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/me_gusta_web"
             tools:ignore="NotSibling,UnknownId" />
 
         <ImageView
-            android:id="@+id/btnDislikeof"
+            android:id="@+id/btnComentarioDislike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"

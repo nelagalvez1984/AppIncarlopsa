@@ -54,13 +54,10 @@ public class VCabeceraPublicacion extends AppCompatActivity implements IVista {
         adapterPublicacion.setOnItemListener(new AdapterTopic.OnItemClickListener() {
             @Override
             public void onItemClick(DataBaseItem item, int position) {
-                Chat c = (Chat) item;
+                Publicacion p = (Publicacion) item;
 
-                Intent intent = new Intent(VCabeceraPublicacion.this, VChat.class);
-                intent.putExtra("idChat", c.getId());
-                intent.putExtra("tituloChat", c.getTitulo());
-                intent.putExtra("idAutor", c.getIdUsuario());
-                intent.putExtra("idDestino", c.getIdUsuarioDestino());
+                intent = new Intent(VCabeceraPublicacion.this, VPublicacion.class);
+                intent.putExtra("idPublicacion", p.getId());
                 startActivity(intent);
 
             }

@@ -1,52 +1,68 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
-/**
- * Created by Nela on 04/11/2017.
- */
+public class DrawerLateral {
 
-class DrawerLateral {
-
-    //Propiedades
-    private static final DrawerLateral ourInstance = new DrawerLateral();
-    private NavigationView navigationView;
+    private Context contexto;
     private DrawerLayout drawerLayout;
+    Intent intent;
 
-
-    static DrawerLateral getInstance() {
-        return ourInstance;
-    }
-
-    private DrawerLateral() {
-        navigationView = null;
-    }
-
-    public NavigationView getNavigationView() {
-        return navigationView;
-    }
-
-    public void setNavigationView(NavigationView navigationView) {
-        this.navigationView = navigationView;
-    }
-
-    public DrawerLayout getDrawerLayout() {
-        return drawerLayout;
-    }
-
-    public void setDrawerLayout(DrawerLayout drawerLayout) {
+    public DrawerLateral(Context contexto, DrawerLayout drawerLayout){
+        this.contexto = contexto;
         this.drawerLayout = drawerLayout;
     }
 
-    private void setup() {
-        setup(navigationView);
-    }
+    /*
+    1.- A nivel de XML hay que agregar esto con los ID que correspondan:
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        android:id="@+id/navigation_drawer_layout"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:fitsSystemWindows="@bool/fitsSystemWindows">
 
-    private void setup(NavigationView navigationView) {
+    //COSAS
+    //MAS COSAS
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="@bool/fitsSystemWindows"
+        app:headerLayout="@layout/navigation_drawer_header"
+        app:menu="@menu/navigation_drawer_menu"
+        app:theme="@style/NavigationViewTheme" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+    2.- Se asocia el drawerLayout con su id en el XML:
+    DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer_layout);
+
+    3.- Se crea el DrawerLateral
+    public DrawerLateral(Context contexto, DrawerLayout drawerLayout)
+
+    4.- Se crea el navigationView para pasarselo como parametro al DrawerLateral en el setup
+    NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        if (navigationView != null) {
+        drawerLateral.setupDrawer(navigationView);
+    }
+    drawerLateral.setupDrawer(navigationView);
+
+    5.- Si se quiere abrir el drawer ante un determinado click, se saca con esta sentencia:
+    drawerLayout.openDrawer(GravityCompat.START);
+
+
+    */
+
+    public void setupDrawer(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -54,13 +70,15 @@ class DrawerLateral {
                         switch (menuItem.getItemId()) {
                             case R.id.item_navigation_drawer_publicaciones: //Ver publicaciones
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(contexto, VCabeceraPublicacion.class);
+                                contexto.startActivity(intent);
                                 return true;
                             case R.id.item_navigation_drawer_chats: //Ver chats
                                 menuItem.setChecked(true);
-                                //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
+                                intent = new Intent(contexto, VCabeceraChat.class);
+                                contexto.startActivity(intent);
                                 return true;
                             case R.id.item_navigation_drawer_nuevo_chat: //Crear mensaje
                                 menuItem.setChecked(true);
@@ -71,12 +89,12 @@ class DrawerLateral {
                                 menuItem.setChecked(true);
                                 //Hacer cosas
                                 drawerLayout.closeDrawer(GravityCompat.START);
-
+                                intent = new Intent(contexto, TESTSettingsActivity.class);
+                                contexto.startActivity(intent);
                                 return true;
                         }
                         return true;
                     }
                 });
     }
-
 }

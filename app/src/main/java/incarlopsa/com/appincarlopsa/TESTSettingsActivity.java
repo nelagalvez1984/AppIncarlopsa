@@ -8,7 +8,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SettingsActivity extends AppCompatActivity {
+public class TESTSettingsActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TypedValue typedValueColorPrimaryDark = new TypedValue();
-        SettingsActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValueColorPrimaryDark, true);
+        TESTSettingsActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValueColorPrimaryDark, true);
         final int colorPrimaryDark = typedValueColorPrimaryDark.data;
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(colorPrimaryDark);
