@@ -58,4 +58,8 @@ public interface ICodigos extends ICodigosAntonio,
     String ME_GUSTA = "MeGusta";
     String NO_ME_GUSTA = "MeDisgusta";
 
+    //Tostadas de ficheros
+    String ERROR_NO_SE_PUEDE_LEER_IMAGEN = "No se puede leer la imagen del dispositivo";
+    String IMAGEN_ANADIDA_CON_EXITO = "Imagen añadida con éxito";
+
 }

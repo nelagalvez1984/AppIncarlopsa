@@ -43,7 +43,11 @@ class SingleTostada implements ICodigos{
 
     public void errorUsuarioNoElegido() { showTostada(ERROR_USUARIO_NO_ELEGIDO);}
 
+    public void errorNoSePuedeLeerImagen() { showTostada(ERROR_NO_SE_PUEDE_LEER_IMAGEN);}
+
     public void chatCreadoConExito() { showTostada(CHAT_CREADO_CON_EXITO);}
+
+    public void imagenAnadidaConExito() { showTostada(IMAGEN_ANADIDA_CON_EXITO);}
 
     private void showTostada(String mensaje){
         try{

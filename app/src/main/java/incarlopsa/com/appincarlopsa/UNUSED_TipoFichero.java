@@ -1,26 +1,26 @@
 package incarlopsa.com.appincarlopsa;
 
-public class TipoFichero extends DataBaseItem{
+public class UNUSED_TipoFichero extends DataBaseItem{
 
     //Propiedades
     private String nombre = null;
     private Boolean mostrable = true;
 
     //Constructor
-    public TipoFichero(Integer id, String nombre, Boolean mostrable) {
+    public UNUSED_TipoFichero(Integer id, String nombre, Boolean mostrable) {
         this.id = id;
         this.nombre = nombre;
         this.mostrable = mostrable;
     }
 
     //Constructor
-    public TipoFichero(Integer id, String nombre) {
+    public UNUSED_TipoFichero(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
         this.mostrable = true;
     }
 
-    public TipoFichero(){}
+    public UNUSED_TipoFichero(){}
 
     //Getter/Setter
     public void setId(Integer id) {
@@ -52,7 +52,7 @@ public class TipoFichero extends DataBaseItem{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        TipoFichero that = (TipoFichero) o;
+        UNUSED_TipoFichero that = (UNUSED_TipoFichero) o;
 
         if (!nombre.equals(that.nombre)) return false;
         return mostrable.equals(that.mostrable);

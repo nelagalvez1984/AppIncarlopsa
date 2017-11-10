@@ -22,7 +22,7 @@ public class TESTFactoriaItems implements ICodigos {
     private Mensaje mensaje;
     private Publicacion publicacion;
     private PublicacionAdjunto publicacionAdjunto;
-    private TipoFichero tipoFichero;
+    private UNUSED_TipoFichero tipoFichero;
     private Topic topic;
     private Usuario usuario;
 
@@ -39,7 +39,7 @@ public class TESTFactoriaItems implements ICodigos {
     private DAOLikes daoLikes;
     private DAOMensaje daoMensaje;
     private DAOPublicacion daoPublicacion;
-    private DAOTipoFichero daoTipoFichero;
+    private UNUSED_DAOTipoFichero UNUSEDDaoTipoFichero;
     private DAOUsuario daoUsuario;
     private ArrayList<Character> listaLetras;
 
@@ -51,7 +51,7 @@ public class TESTFactoriaItems implements ICodigos {
         daoLikes = new DAOLikes();
         daoMensaje = new DAOMensaje();
         daoPublicacion = new DAOPublicacion();
-        daoTipoFichero = new DAOTipoFichero();
+        UNUSEDDaoTipoFichero = new UNUSED_DAOTipoFichero();
         daoUsuario = new DAOUsuario();
         generadorAleatorios = new Random();
         rellenarListaLetras();
@@ -126,21 +126,11 @@ public class TESTFactoriaItems implements ICodigos {
         return usuario;
     }
 
-    public TipoFichero testCREARTipoFichero(){
-        tipoFichero = new TipoFichero(null,
+    public UNUSED_TipoFichero testCREARTipoFichero(){
+        tipoFichero = new UNUSED_TipoFichero(null,
                 dameCadenaAleatoria(),
                 dameBoolAleatorio());
         return tipoFichero;
-    }
-
-    public Adjunto testCREARAdjunto(){
-        adjunto = new Adjunto(null,
-                            null,
-                            null,
-                            dameCadenaAleatoria(),
-                            dameCadenaAleatoria(),
-                            null);
-        return adjunto;
     }
 
     public Publicacion testCREARPublicacion(){

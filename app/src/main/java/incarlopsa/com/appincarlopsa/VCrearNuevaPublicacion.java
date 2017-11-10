@@ -1,5 +1,8 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +11,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
@@ -22,6 +29,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
     HiloParaRead hiloParaRead;
     ArrayList<DataBaseItem> resultados;
     ArrayList<DataBaseItem> listaAdjuntos;
+    private static final int READ_REQUEST_CODE = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +111,46 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                 }
                 break;
             case R.id.imgNuevaPublicacionBotonAnadir:
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(intent, READ_REQUEST_CODE);
+
                 //Añadir adjuntos
 
 //                showDialog();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri uri = null;
+            if (data != null) {
+                uri = data.getData();
+                String path = RealPath.dameElPath(this, uri);
+                File file = new File(path);
+                Boolean siONo = file.canRead();
+                try {
+
+                    byte[] bytes = FileUtils.readFileToByteArray(file);
+                    Adjunto adjunto = new Adjunto();
+                    adjunto.setNombreAdjunto(file.getName());
+                    adjunto.setFoto(new Foto(bytes));
+                    listaAdjuntos.add(adjunto);
+                    tostada.imagenAnadidaConExito();
+                    String textoAnterior = adjuntosAgregados.getText().toString();
+                    if (adjuntosAgregados.length()>0){
+                        adjuntosAgregados.setText(textoAnterior+="\n"+file.getName());
+                    }else{
+                        adjuntosAgregados.setText(file.getName());
+                    }
+
+                } catch (Exception e) {
+                    tostada.errorNoSePuedeLeerImagen();
+                }
+            }
         }
     }
 
