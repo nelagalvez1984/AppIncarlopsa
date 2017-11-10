@@ -51,9 +51,11 @@ class SingleTostada implements ICodigos{
 
     public void publicacionAnadidaConExito() { showTostada(PUBLICACION_CREADA_CON_EXITO);}
 
+    public void errorPermisoDenegado() { showTostada(ERROR_PERMISO_DENEGADO);}
+
     private void showTostada(String mensaje){
         try{
-            Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
+            Toast.makeText(contexto, mensaje, Toast.LENGTH_LONG).show();
         }catch (Exception e){ //¿Tostada incompatible con el sistema?
             e.printStackTrace();
         }

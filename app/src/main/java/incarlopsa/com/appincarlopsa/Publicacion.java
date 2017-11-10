@@ -31,7 +31,10 @@ public class Publicacion extends Topic{
         this.comentarios = new ArrayList<>();
     }
 
-    public Publicacion(){}
+    public Publicacion(){
+        comentarios = new ArrayList<>();
+        adjuntos = new ArrayList<>();
+    }
 
     //Getters y setters
     public ArrayList<DataBaseItem> getComentarios() {

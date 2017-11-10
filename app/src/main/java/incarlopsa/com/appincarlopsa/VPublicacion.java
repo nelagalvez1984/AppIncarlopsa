@@ -200,6 +200,9 @@ public class VPublicacion extends AppCompatActivity implements IVista{
                 if (!verificacionMeDisgusta && !verificacionMeGusta){
                     try {
                         introducirMeAlgo(new MeGusta());
+                        Integer contador = Integer.parseInt(contadorLikes.getText().toString());
+                        contador++;
+                        contadorLikes.setText(contador.toString());
                     } catch (Exception e) {
                         tostada.errorConexionBBDD();
                     }
@@ -209,6 +212,9 @@ public class VPublicacion extends AppCompatActivity implements IVista{
                 if (!verificacionMeDisgusta && !verificacionMeGusta){
                     try {
                         introducirMeAlgo(new MeDisgusta());
+                        Integer contador = Integer.parseInt(contadorDislikes.getText().toString());
+                        contador++;
+                        contadorDislikes.setText(contador.toString());
                     } catch (Exception e) {
                         tostada.errorConexionBBDD();
                     }

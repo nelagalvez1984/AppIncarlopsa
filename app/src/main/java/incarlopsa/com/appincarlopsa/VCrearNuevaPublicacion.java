@@ -144,47 +144,20 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
             if (data != null) {
                 //Recoger path
                 uri = data.getData();
+                agregarAdjunto();
 
-                try {
-                    dameElPath();
-                    //Recoger la foto
-                    if (filePath.length()==0){
-                        throw new Exception();
-                    }
-                    File file = new File(filePath);
-                    Boolean siONo = file.canRead();
-                    byte[] bytes = FileUtils.readFileToByteArray(file);
-
-                    //Crear el adjunto
-                    Adjunto adjunto = new Adjunto();
-                    adjunto.setNombreAdjunto(file.getName());
-                    adjunto.setFoto(new Foto(bytes));
-                    listaAdjuntos.add(adjunto);
-
-                    //Adjunto creado
-                    tostada.imagenAnadidaConExito();
-                    String textoAnterior = adjuntosAgregados.getText().toString();
-                    if (adjuntosAgregados.length()>0){
-                        adjuntosAgregados.setText(textoAnterior+="\n"+file.getName());
-                    }else{
-                        adjuntosAgregados.setText(file.getName());
-                    }
-
-                } catch (Exception e) {
-                    tostada.errorNoSePuedeLeerImagen();
-                }
             }
         }
     }
-/*
-    public void dameElPath(Context context, Uri uri) {
+
+    public void agregarAdjunto() {
 
         ActivityCompat.requestPermissions(VCrearNuevaPublicacion.this,
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 CODIGO_DEVOLUCION_PATH);
     }
-*/
-/*
+
+
     public void onRequestPermissionsResult(int requestCode,
                                                String permissions[],
                                                int[] grantResults) {
@@ -194,38 +167,20 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    // Image pick from recent
-                    String wholeID = DocumentsContract.getDocumentId(uri);
-
-                    // Split at colon, use second item in the array
-                    String id = wholeID.split(":")[1];
-
-                    String[] column = {MediaStore.Images.Media.DATA};
-
-                    // where id is equal to
-                    String sel = MediaStore.Images.Media._ID + "=?";
-
-                    Cursor cursor = this.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                            column, sel, new String[]{id}, null);
-
-                    int columnIndex = cursor.getColumnIndex(column[0]);
-
-                    if (cursor.moveToFirst()) {
-                        filePath = cursor.getString(columnIndex);
-                    }
-                    cursor.close();
+                    recogerPath();
+                    recogerFoto();
 
                 } else {
-                    //Permiso denegado!
                     filePath = "";
+                    tostada.errorPermisoDenegado();
                 }
 
             }
         }
 
     }
-*/
-    public void dameElPath(){
+
+    private void recogerPath() {
         // Image pick from recent
         String wholeID = DocumentsContract.getDocumentId(uri);
 
@@ -246,6 +201,37 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
             filePath = cursor.getString(columnIndex);
         }
         cursor.close();
+    }
+
+    private void recogerFoto() {
+        try {
+
+            //Recoger la foto
+            if (filePath.length()==0){
+                throw new Exception();
+            }
+            File file = new File(filePath);
+            Boolean siONo = file.canRead();
+            byte[] bytes = FileUtils.readFileToByteArray(file);
+
+            //Crear el adjunto
+            Adjunto adjunto = new Adjunto();
+            adjunto.setNombreAdjunto(file.getName());
+            adjunto.setFoto(new Foto(bytes));
+            listaAdjuntos.add(adjunto);
+
+            //Adjunto creado
+            tostada.imagenAnadidaConExito();
+            String textoAnterior = adjuntosAgregados.getText().toString();
+            if (adjuntosAgregados.length()>0){
+                adjuntosAgregados.setText(textoAnterior+="\n"+file.getName());
+            }else{
+                adjuntosAgregados.setText(file.getName());
+            }
+
+        } catch (Exception e) {
+            tostada.errorNoSePuedeLeerImagen();
+        }
     }
 
 }

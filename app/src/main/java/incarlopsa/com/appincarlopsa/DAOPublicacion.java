@@ -113,23 +113,28 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
             //1.- Leemos la comentario
             resultadoMultiple = super.read(filtro);
             if (resultadoMultiple.size()>0){
-                //2.- Leemos los comentarios asociados
-                DAOComentario daoComentario = new DAOComentario();
-                Comentario auxComentario = new Comentario();
-                auxComentario.setIdPublicacion(auxPublicacion.getId());
-                ArrayList<DataBaseItem> comentarios = new ArrayList<>();
-                comentarios.addAll(daoComentario.read(auxComentario));
+                if (auxPublicacion.getId() != null){ //Si es null es que estamos recuperando una publicacion
+                                                    //de recien creacion, por lo que la estamos recuperando para saber
+                                                    //su ID, ergo no tendria comentarios
+                    //2.- Leemos los comentarios asociados
+                    DAOComentario daoComentario = new DAOComentario();
+                    Comentario auxComentario = new Comentario();
+                    auxComentario.setIdPublicacion(auxPublicacion.getId());
+                    ArrayList<DataBaseItem> comentarios = new ArrayList<>();
+                    comentarios.addAll(daoComentario.read(auxComentario));
 
-                //3.- Leemos los adjuntos asociados
-                DAOAdjunto daoAdjunto = new DAOAdjunto();
-                Adjunto auxAdjunto = new Adjunto();
-                auxAdjunto.setIdPublicacion(auxPublicacion.getId());
-                ArrayList<DataBaseItem> adjuntos = new ArrayList<>();
-                adjuntos.addAll(daoAdjunto.read(auxAdjunto));
+                    //3.- Leemos los adjuntos asociados
+                    DAOAdjunto daoAdjunto = new DAOAdjunto();
+                    Adjunto auxAdjunto = new Adjunto();
+                    auxAdjunto.setIdPublicacion(auxPublicacion.getId());
+                    ArrayList<DataBaseItem> adjuntos = new ArrayList<>();
+                    adjuntos.addAll(daoAdjunto.read(auxAdjunto));
 
-                //4.- Ensamblaje
-                ((Publicacion)resultadoMultiple.get(0)).setComentarios(comentarios); //Meterle los comentarios
-                ((Publicacion)resultadoMultiple.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
+                    //4.- Ensamblaje
+                    ((Publicacion)resultadoMultiple.get(0)).setComentarios(comentarios); //Meterle los comentarios
+                    ((Publicacion)resultadoMultiple.get(0)).setAdjuntos(adjuntos); //Meterle los adjuntos
+                }
+
             }
         }
         //5.- Devolver la comentario o LOS topic

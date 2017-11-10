@@ -22,8 +22,8 @@ public interface ICodigos extends ICodigosAntonio,
     String DAME_LOS_TOPIC_HACIA_MI = "DAME_LOS_TOPIC_HACIA_MI";
 
     //Codigos para conexion a la BBDD
-//    String SERVIDOR_BBDD = "192.168.0.101";
-    String SERVIDOR_BBDD = "10.20.32.116";
+    String SERVIDOR_BBDD = "192.168.0.101";
+//    String SERVIDOR_BBDD = "10.20.32.116";
     String PUERTO_BBDD = "3306";
     String BBDD = "incarlopsa";
     String DIRECCION_BBDD_RAIZ = "jdbc:mysql://"+SERVIDOR_BBDD + ":" + PUERTO_BBDD
@@ -61,5 +61,6 @@ public interface ICodigos extends ICodigosAntonio,
     //Tostadas de ficheros
     String ERROR_NO_SE_PUEDE_LEER_IMAGEN = "No se puede leer la imagen del dispositivo";
     String IMAGEN_ANADIDA_CON_EXITO = "Imagen añadida con éxito";
+    String ERROR_PERMISO_DENEGADO = "Permiso de lectura denegado";
 
 }

@@ -28,7 +28,9 @@ public class Chat extends Topic {
         this.mensajes = new ArrayList<>();
     }
 
-    public Chat(){}
+    public Chat(){
+        mensajes = new ArrayList<>();
+    }
 
     //Metodo para dar por finalizado el mensaje
     public void finalizarChat(){
