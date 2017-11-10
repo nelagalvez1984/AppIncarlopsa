@@ -29,9 +29,9 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
         View v = inflater.inflate(R.layout.dialog_usuarios, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyDialogUsuarios);
         contextoPadre = getActivity();
-//        hiloParaRead = new HiloParaRead(new DAOUsuario());
+        hiloParaRead = new HiloParaRead(new DAOUsuario());
         try {
-/*
+
             resultadosUsuarios = hiloParaRead.execute(DAME_TODOS).get();
             //Retirarse a si mismo de la lista
             Usuario usuarioAux;
@@ -42,7 +42,7 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
                     break;
                 }
             }
-*/
+/*
 
             //ToDO pruebas! Eliminar este bloque!
             resultadosUsuarios = new ArrayList<>();
@@ -87,7 +87,7 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
             resultadosUsuarios.add(temp7);
             resultadosUsuarios.add(temp8);
             //TODO AQUI TERMINA LO DE TEST
-
+*/
             if (resultadosUsuarios.size()>0){ //Deberia serlo, debe haber mas de 1 empleado en la empresa
                 recyclerView = (RecyclerView)v.findViewById(R.id.recyDialogUsuarios);
                 Context contexto = v.getContext();

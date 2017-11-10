@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/btnEnviarpublicacion"
+        android:id="@+id/btnNuevaPublicacionEnviar"
         android:layout_width="60dp"
         android:layout_height="53dp"
         android:layout_marginBottom="200dp"
@@ -21,10 +21,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_action_content_send"
-        tools:ignore="UnknownId" />
+        tools:ignore="UnknownId"/>
 
     <EditText
-        android:id="@+id/txtComentariopublicacion"
+        android:id="@+id/editNuevaPublicacionAnuncio"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -39,10 +39,10 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintVertical_bias="0.009"/>
 
     <TextView
-        android:id="@+id/txtanadir"
+        android:id="@+id/lblNuevaPublicacionInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -55,10 +55,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lblNuevaPublicacionEncabezado"
         android:layout_width="382dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/edtPubltitulo"
+        android:id="@+id/editNuevaPublicacionTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="39dp"
@@ -86,13 +86,13 @@
         android:ems="10"
         android:hint="Titulo"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/txtListaadjunto"
+        app:layout_constraintBottom_toTopOf="@+id/txtNuevaPublicacionAdjuntos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/lblNuevaPublicacionEncabezado"/>
 
     <TextView
-        android:id="@+id/txtListaadjunto"
+        android:id="@+id/txtNuevaPublicacionAdjuntos"
         android:layout_width="58dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="420dp"
@@ -108,7 +108,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imgbtnAnadir"
+        android:id="@+id/imgNuevaPublicacionBotonAnadir"
         android:layout_width="43dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"
@@ -121,5 +121,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/add" />
+        app:srcCompat="@drawable/add"/>
 </android.support.constraint.ConstraintLayout>

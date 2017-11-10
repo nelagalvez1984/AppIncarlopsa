@@ -37,6 +37,8 @@ class SingleTostada implements ICodigos{
 
     public void errorMensajeVacio() { showTostada(ERROR_MENSAJE_VACIO);}
 
+    public void errorAnuncioVacio() { showTostada(ERROR_ANUNCIO_VACIO);}
+
     public void errorTituloVacioChat() { showTostada(ERROR_TITULO_VACIO_CHAT);}
 
     public void errorUsuarioNoElegido() { showTostada(ERROR_USUARIO_NO_ELEGIDO);}
