@@ -12,11 +12,20 @@
             android:id="@+id/txtDialogUsuarios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Elija el usuario destino" />
+            android:background="@color/colorRojoCabeceras"
+            android:fontFamily="sans-serif"
+            android:paddingVertical="16dp"
+            android:text="Elija el usuario destino"
+            android:textAlignment="center"
+
+            android:textColor="@color/colorWhiteFondos"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyDialogUsuarios"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
