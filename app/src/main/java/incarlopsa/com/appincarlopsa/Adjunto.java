@@ -3,47 +3,27 @@ package incarlopsa.com.appincarlopsa;
 public class Adjunto extends DataBaseItem{
 
     //Propiedades
-    private TipoFichero tipo = null;
     private Integer idPublicacion = null;
-    private Integer idTipoFichero = null;
-    private String localizacion = null;
+    private Foto foto = null;
     private String nombreAdjunto = null;
 
     //Constructor
-    public Adjunto(Integer idAdjunto, Integer idPublicacion, Integer idTipoFichero, String localizacion, String nombreAdjunto, TipoFichero tipo ) {
-        this.tipo = tipo;
+    public Adjunto(Integer idAdjunto, Integer idPublicacion, Foto foto, String nombreAdjunto) {
         this.idPublicacion = idPublicacion;
         this.id = idAdjunto;
-        this.idTipoFichero = idTipoFichero;
-        this.localizacion = localizacion;
+        this.foto = foto;
         this.nombreAdjunto = nombreAdjunto;
     }
 
     public Adjunto(){}
 
     //Getter / Setter
-    public TipoFichero getTipo() {
-        return tipo;
+    public Foto getFoto() {
+        return foto;
     }
 
-    public void setTipo(TipoFichero tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getIdTipoFichero() {
-        return idTipoFichero;
-    }
-
-    public void setIdTipoFichero(int idTipoFichero) {
-        this.idTipoFichero = idTipoFichero;
-    }
-
-    public String getLocalizacion() {
-        return localizacion;
-    }
-
-    public void setLocalizacion(String localizacion) {
-        this.localizacion = localizacion;
+    public void setFoto(Foto foto) {
+        this.foto = foto;
     }
 
     public String getNombreAdjunto() {
@@ -62,9 +42,6 @@ public class Adjunto extends DataBaseItem{
         this.idPublicacion = idPublicacion;
     }
 
-    public void setIdTipoFichero(Integer idTipoFichero) {
-        this.idTipoFichero = idTipoFichero;
-    }
 
     //Equals y Hash
 
@@ -76,20 +53,16 @@ public class Adjunto extends DataBaseItem{
 
         Adjunto adjunto = (Adjunto) o;
 
-        if (!tipo.equals(adjunto.tipo)) return false;
         if (!idPublicacion.equals(adjunto.idPublicacion)) return false;
-        if (!idTipoFichero.equals(adjunto.idTipoFichero)) return false;
-        if (!localizacion.equals(adjunto.localizacion)) return false;
+        if (!foto.equals(adjunto.foto)) return false;
         return nombreAdjunto.equals(adjunto.nombreAdjunto);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + tipo.hashCode();
         result = 31 * result + idPublicacion.hashCode();
-        result = 31 * result + idTipoFichero.hashCode();
-        result = 31 * result + localizacion.hashCode();
+        result = 31 * result + foto.hashCode();
         result = 31 * result + nombreAdjunto.hashCode();
         return result;
     }

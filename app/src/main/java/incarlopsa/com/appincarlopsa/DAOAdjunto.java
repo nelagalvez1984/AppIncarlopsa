@@ -6,14 +6,13 @@ import java.util.ArrayList;
 public class DAOAdjunto extends DAOBase implements IDAO {
 
     //Propiedades
-    TipoFichero tipoFicheroRecogido = null;
 
     //Consultas parametrizadas
-    private String consultaInsercion = "INSERT INTO adjunto SET idPublicacion = ?, idTipoFichero = ?, localizacion = ? "
+    private String consultaInsercion = "INSERT INTO adjunto SET idPublicacion = ?, binario = ? "
             + " , nombre = ?";
-    private String consultaLecturaPorId = "SELECT idAdjunto, idPublicacion, idTipoFichero, localizacion, nombre "
+    private String consultaLecturaPorId = "SELECT idAdjunto, idPublicacion, binario, nombre "
             + "FROM adjunto WHERE idPublicacion = ?";
-    private String consultaUpdate = "UPDATE adjunto SET idPublicacion = ?, idTipoFichero = ?, localizacion = ?, nombre = ? "
+    private String consultaUpdate = "UPDATE adjunto SET idPublicacion = ?, binario = ?, nombre = ? "
             + "WHERE idAdjunto = ?";
     private String consultaDeleteAdjunto = "DELETE FROM adjunto WHERE idAdjunto = ?";
     private String consultaDeletePublicacion = "DELETE FROM adjunto WHERE idPublicacion = ?";
@@ -24,7 +23,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
         Adjunto aux = (Adjunto) elementoAModelar;
         prepararConsulta(consultaInsercion);
-        cargarConsulta(aux.getIdTipoFichero(), aux.getLocalizacion(), aux.getNombreAdjunto());
+        cargarConsulta(aux.getIdPublicacion(), aux.getFoto().getFotoBytes(), aux.getNombreAdjunto());
     }
 
     //LECTURA
@@ -43,10 +42,8 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     protected void rellenarObjetos() throws SQLException {
         Adjunto adjunto = new Adjunto(resultados.getInt(1),//idAdjunto
                 resultados.getInt(2), //idPublicacion
-                resultados.getInt(3), // idTipoFichero
-                resultados.getString(4), //localizacion
-                resultados.getString(5), //nombre
-                tipoFicheroRecogido); //El tipo de fichero al que corresponde
+                new Foto(resultados.getBytes(3)), // binario
+                resultados.getString(4)); //Nombre del fichero
         resultadoMultiple.add(adjunto);
     }
 
@@ -56,8 +53,8 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
         Adjunto elementoConQueActualizar = (Adjunto)elementoAModelar;
         prepararConsulta(consultaUpdate);
-        cargarConsulta(elementoConQueActualizar.getIdTipoFichero(),
-                        elementoConQueActualizar.getLocalizacion(),
+        cargarConsulta(elementoConQueActualizar.getIdPublicacion(),
+                        elementoConQueActualizar.getFoto().getFotoBytes(),
                         elementoConQueActualizar.getNombreAdjunto(),
                         elementoConQueActualizar.getId());
     }
@@ -85,19 +82,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
 
     @Override
     public ArrayList<DataBaseItem> read(Object filtro) throws SQLException {
-        DAOTipoFichero dao = new DAOTipoFichero();
-        Adjunto aux = (Adjunto)filtro;
-        resultadoMultiple = super.read(filtro); //Buscar todos los adjuntos
-        //Ahora se busca su tipo asociado
-        ArrayList<DataBaseItem> resultadosTipoFichero;
-        for(DataBaseItem item:resultadoMultiple){ //Bucle para asignarle el tipo a cada uno
-            Adjunto adjuntoAux = (Adjunto)item;
-            TipoFichero tipoAux = new TipoFichero();
-            tipoAux.setId(adjuntoAux.getIdTipoFichero()); //Meter el ID del tipo al tipoAux
-            resultadosTipoFichero = dao.read(tipoAux); //Solo deberia haber un resultado
-            adjuntoAux.setTipo((TipoFichero)resultadosTipoFichero.get(0)); //Asignarle el tipo
-        }
-        return resultadoMultiple;
+        return resultadoMultiple = super.read(filtro);
     }
 
     @Override

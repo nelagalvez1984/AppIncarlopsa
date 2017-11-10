@@ -2,7 +2,6 @@ package incarlopsa.com.appincarlopsa;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SingleTiposFicherosSoportados implements ICodigos{
 
@@ -15,11 +14,11 @@ public class SingleTiposFicherosSoportados implements ICodigos{
     }
 
     private ArrayList<DataBaseItem> listaFicheros;
-    private DAOTipoFichero dao;
+    private UNUSED_DAOTipoFichero dao;
 
     private SingleTiposFicherosSoportados() {
         listaFicheros = new ArrayList<>();
-        dao = new DAOTipoFichero();
+        dao = new UNUSED_DAOTipoFichero();
         try {
             listaFicheros = dao.read(DAME_TODOS);
         } catch (SQLException e) {

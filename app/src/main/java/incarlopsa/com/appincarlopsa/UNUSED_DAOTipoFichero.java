@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DAOTipoFichero extends DAOBase implements IDAO {
+public class UNUSED_DAOTipoFichero extends DAOBase implements IDAO {
 
     //Esta clase tal vez no se acabe usando. En tal caso modificar la clase "ADJUNTO"
 
@@ -18,7 +18,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     private String consultaDelete = "DELETE FROM tipofichero WHERE idTipoFichero = ?";
 
     //Constructor
-    public DAOTipoFichero() {
+    public UNUSED_DAOTipoFichero() {
     }
 
 
@@ -26,7 +26,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //Preparar una consulta de create y cargar sus parametros
     @Override
     protected void prepararCreate(Object elementoAModelar) throws SQLException {
-        TipoFichero aux = (TipoFichero) elementoAModelar;
+        UNUSED_TipoFichero aux = (UNUSED_TipoFichero) elementoAModelar;
         consultaSQL = consultaInsercion;
         prepararConsulta(consultaInsercion);
         cargarConsulta(aux.getNombre(), aux.getMostrable(), aux.getId());
@@ -45,10 +45,10 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
                 cargarConsulta(DAME_TODOS);
             }
         } else {
-            if (filtro instanceof TipoFichero) {
+            if (filtro instanceof UNUSED_TipoFichero) {
                 consultaSQL = consultaLecturaPorId;
                 prepararConsulta(consultaSQL);
-                TipoFichero aux = (TipoFichero)filtro;
+                UNUSED_TipoFichero aux = (UNUSED_TipoFichero)filtro;
                 cargarConsulta(aux.getId());
             }
         }
@@ -57,7 +57,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //Rellenar el array de resultados con cada resultado
     @Override
     protected void rellenarObjetos() throws SQLException {
-        TipoFichero tipoFichero = new TipoFichero(resultados.getInt(1),//idTipoFichero
+        UNUSED_TipoFichero tipoFichero = new UNUSED_TipoFichero(resultados.getInt(1),//idTipoFichero
                 resultados.getString(2), //nombre
                 resultados.getBoolean(3)); //mostrable
         resultadoMultiple.add(tipoFichero);
@@ -67,7 +67,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //Preparar una consulta de update y cargar sus parametros
     @Override
     protected void prepararUpdate(Object elementoAModelar) throws SQLException {
-        TipoFichero elementoConQueActualizar = (TipoFichero) elementoAModelar;
+        UNUSED_TipoFichero elementoConQueActualizar = (UNUSED_TipoFichero) elementoAModelar;
         consultaSQL = consultaUpdate;
         prepararConsulta(consultaSQL);
         cargarConsulta(elementoConQueActualizar.getNombre(),
@@ -78,7 +78,7 @@ public class DAOTipoFichero extends DAOBase implements IDAO {
     //DELETE
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
-        TipoFichero elementoABorrar = (TipoFichero) elementoAModelar;
+        UNUSED_TipoFichero elementoABorrar = (UNUSED_TipoFichero) elementoAModelar;
         consultaSQL = consultaDelete;
         prepararConsulta(consultaSQL);
         cargarConsulta(elementoABorrar.getId());
