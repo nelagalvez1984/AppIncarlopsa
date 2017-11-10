@@ -49,6 +49,8 @@ class SingleTostada implements ICodigos{
 
     public void imagenAnadidaConExito() { showTostada(IMAGEN_ANADIDA_CON_EXITO);}
 
+    public void publicacionAnadidaConExito() { showTostada(PUBLICACION_CREADA_CON_EXITO);}
+
     private void showTostada(String mensaje){
         try{
             Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();

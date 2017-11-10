@@ -11,6 +11,9 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     private String consultaLecturaPorId = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
             "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion WHERE idPublicacion = ?";
+    private String consultaLecturaParaRecuperarId = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
+            "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
+            "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion WHERE idUsuario = ? ORDER BY fecha DESC";
     private String consultaUpdate = "UPDATE publicacion SET idUsuario = ?, titulo = ?, ultimoUpdate = NOW() WHERE idPublicacion = ?";
     private String consultaActualizarFecha = "UPDATE publicacion SET ultimoUpdate = NOW() WHERE idPublicacion = ?";
     private String consultaDelete = "DELETE FROM publicacion WHERE idPublicacion = ?";
@@ -43,9 +46,15 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
             // No se hace --->   cargarConsulta();   <--- Porque NO hay nada que cargar
         }else{
             Publicacion aux = (Publicacion)filtro;
-            consultaSQL = consultaLecturaPorId;
-            prepararConsulta(consultaSQL);
-            cargarConsulta(aux.getId());
+            if (aux.getId() == null){ //Recuperar un chat por el resto de campos
+                consultaSQL = consultaLecturaParaRecuperarId;
+                prepararConsulta(consultaSQL);
+                cargarConsulta(aux.getIdUsuario());
+            }else{ // Es una consulta por Id
+                consultaSQL = consultaLecturaPorId;
+                prepararConsulta(consultaSQL);
+                cargarConsulta(aux.getId());
+            }
         }
     }
 

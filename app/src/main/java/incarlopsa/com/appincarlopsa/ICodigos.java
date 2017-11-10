@@ -4,13 +4,12 @@ public interface ICodigos extends ICodigosAntonio,
                                 ICodigosDavid,
                                 ICodigosJonatan {
 
-    //Codigos iguales o inferiores a 100
-
     //Codigos universales
     int TODO_OK = 0;
     int CANCELAR = -1;
     int SALIR = -999;
     int ENTRADA_DUPLICADA = 1062;
+    int CODIGO_DEVOLUCION_PATH = 100;
 
     //Codigos para TEST de consultas
     String TEST_TIPO_EMPLEADO = "Empleado";
@@ -49,6 +48,7 @@ public interface ICodigos extends ICodigosAntonio,
     String ERROR_TITULO_VACIO_CHAT = "Debe introducir un título/asunto para el chat";
     String ERROR_USUARIO_NO_ELEGIDO = "No ha especificado el destinatario del chat";
     String CHAT_CREADO_CON_EXITO = "Chat creado con éxito!";
+    String PUBLICACION_CREADA_CON_EXITO = "Publicación creada con éxito!";
 
     //Tostadas variopintas
     String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";
