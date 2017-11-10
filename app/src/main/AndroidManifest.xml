@@ -13,34 +13,42 @@
         android:roundIcon="@mipmap/icono_incarlopsa"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VGeneral"
+        <activity
+            android:name=".VGeneral"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".VLogin"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".VCabeceraChat"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".VChat"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".VCabeceraPublicacion"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".VPublicacion"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".VCrearNuevoChat"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".VCrearNuevaPublicacion"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".TEST_archivo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
-        </activity>
-        <activity android:name=".VLogin"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".VCabeceraChat"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".VChat"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".VCabeceraPublicacion"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".VPublicacion"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".VCrearNuevoChat"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".VCrearNuevaPublicacion"
-            android:screenOrientation="portrait">
-
         </activity>
     </application>
 
