@@ -106,8 +106,6 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
                             }catch(Exception e){
                                 tostada.errorConexionBBDD();
                             }
-
-
                         }
                     }
                 }

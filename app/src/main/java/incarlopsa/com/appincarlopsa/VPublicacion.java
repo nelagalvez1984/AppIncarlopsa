@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class VPublicacion extends AppCompatActivity implements IVista{
 
@@ -45,6 +44,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     private SingleCredenciales credenciales = SingleCredenciales.getInstance();
     private Publicacion publicacionAux;
     private Comentario anuncio;
+    private DialogAdjuntos dialogAdjuntos;
 
 
     @Override
@@ -195,6 +195,17 @@ public class VPublicacion extends AppCompatActivity implements IVista{
                 break;
             case R.id.btnAdjuntosPublicacion: //Mostrar los adjuntos
                 //ToDo
+                if (publicacionAux.getAdjuntos().size()>0){
+                    showDialog();
+
+
+
+                }
+
+
+
+
+
                 break;
             case R.id.imgGustaPublicacion: //Se ha clicado en meGusta
                 if (!verificacionMeDisgusta && !verificacionMeGusta){
@@ -258,5 +269,11 @@ public class VPublicacion extends AppCompatActivity implements IVista{
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }
+    }
+
+    void showDialog() {
+        DialogAdjuntos.listaAdjuntos = publicacionAux.getAdjuntos();
+        dialogAdjuntos = new DialogAdjuntos();
+        dialogAdjuntos.show(getFragmentManager(), "dialog");
     }
 }

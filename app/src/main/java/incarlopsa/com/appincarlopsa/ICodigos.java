@@ -10,9 +10,11 @@ public interface ICodigos extends ICodigosAntonio,
     int SALIR = -999;
     int ENTRADA_DUPLICADA = 1062;
     int CODIGO_DEVOLUCION_PATH = 100;
+    int CODIGO_DEVOLUCION_FOTO = 42;
 
     //Codigos para TEST de consultas
     String TEST_TIPO_EMPLEADO = "Empleado";
+//    String cosa = getResources().getString(R.string.app_name);
 
     //Codigos para consultas
     String DAME_TODOS = "DAME_TODOS";
@@ -36,6 +38,11 @@ public interface ICodigos extends ICodigosAntonio,
     String USUARIO_TEST_RRHH = "TESTRRHH";
     String PASSWORD_TEST_RRHH = "TESTRRHH";
 
+    //Tipos de usuario
+    String EMPLEADO = "Empleado";
+    String RRHH = "RRHH";
+    String ADMIN = "Admin";
+
     //Codigos para control de excepciones
     String ERROR_CONEXION_BBDD = "No se ha podido establecer la conexión con la base de datos";
     String ERROR_DRIVER = "Error en la carga del driver";
@@ -53,6 +60,7 @@ public interface ICodigos extends ICodigosAntonio,
     //Tostadas variopintas
     String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";
     String USUARIO_DESCONOCIDO = "Usuario desconocido";
+    String CARGANDO = "Cargando...";
 
     //Tipos Likes
     String ME_GUSTA = "MeGusta";
@@ -62,5 +70,7 @@ public interface ICodigos extends ICodigosAntonio,
     String ERROR_NO_SE_PUEDE_LEER_IMAGEN = "No se puede leer la imagen del dispositivo";
     String IMAGEN_ANADIDA_CON_EXITO = "Imagen añadida con éxito";
     String ERROR_PERMISO_DENEGADO = "Permiso de lectura denegado";
+    String ERROR_TAMANO_SUPERADO = "No se admiten imágenes de tamaño superior a 1MB";
+    String FOTO_PERFIL_ACTUALIZADA = "Foto de perfil actualizada";
 
 }

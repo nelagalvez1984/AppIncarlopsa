@@ -129,10 +129,12 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
 
         //Recuperar el nombre del usuario
         String nombreUsuario;
+        Usuario usuarioAux;
         if (comentario.getIdUsuario() == credenciales.getIdUsuario()){
             nombreUsuario = credenciales.getNombre()+" "+credenciales.getApellidos();
+            usuarioAux = (Usuario)credenciales;
         }else{ //Por si acaso
-            Usuario usuarioAux = new Usuario();
+            usuarioAux = new Usuario();
             usuarioAux.setIdUsuario(comentario.getIdUsuario());
             hiloParaRead = new HiloParaRead(new DAOUsuario());
             try {
@@ -181,6 +183,10 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         holder.comentarioDicho.setText(comentarioDicho);
         holder.numLikes.setText(numLikes);
         holder.numDislikes.setText(numDislikes);
+        if (usuarioAux.getFotoBytes() != null){ //Poner su foto en caso de que tenga
+            holder.fotoUsuario.setImageBitmap(usuarioAux.getFotoBMP());
+        }
+
 
     }
 
@@ -204,6 +210,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         private TextView numDislikes;
         private ImageView fotoMeGusta;
         private ImageView fotoMeDisgusta;
+        private ImageView fotoUsuario;
         private View v;
         private Resources recursos;
 
@@ -217,6 +224,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
             numDislikes = (TextView) v.findViewById(R.id.txtComentarioNumDislikes);
             fotoMeGusta = (ImageView) v.findViewById(R.id.btnComentarioLike);
             fotoMeDisgusta = (ImageView) v.findViewById(R.id.btnComentarioDislike);
+            fotoUsuario = (ImageView) v.findViewById(R.id.imgComentarioUsuario);
             this.v = v;
             recursos = v.getResources();
         }

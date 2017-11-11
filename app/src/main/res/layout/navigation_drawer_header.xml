@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="192dp"
-    android:gravity="bottom"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="192dp"
+             android:background="@color/md_white_1000"
+             android:gravity="bottom"
+             android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/md_white_1000"
-        android:scaleType="centerCrop"/>
+        android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="192dp"
-        android:layout_height="96dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="@dimen/navigation_drawer_header_margin"
-        android:scaleType="centerCrop"
-        android:src="@drawable/icono_incarlopsa"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/drawerLogo"
+                android:layout_width="192dp"
+                android:layout_height="96dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="@dimen/navigation_drawer_header_margin"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icono_incarlopsa"/>
+
+            <ImageView
+                android:id="@+id/drawerFotoUsuario"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/foto_usuario_peque"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,20 +50,22 @@
         android:paddingRight="16dp">
 
         <TextView
+            android:id="@+id/drawerTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:text="IncarlopsApp!"
+            android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/md_black_1000"/>
 
         <TextView
+            android:id="@+id/drawerWeb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_vertical"
-            android:text="www.incarlopsa.es"
+            android:text="@string/app_web"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/md_black_1000"/>
 

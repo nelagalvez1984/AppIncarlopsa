@@ -42,52 +42,20 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
                     break;
                 }
             }
-/*
 
-            //ToDO pruebas! Eliminar este bloque!
-            resultadosUsuarios = new ArrayList<>();
-            Usuario temp1 = new Usuario();
-            temp1.setNombre("Fulano");
-            temp1.setApellidos("Martinez");
-            temp1.setTipoEmpleado("Empleado");
-            Usuario temp2 = new Usuario();
-            temp2.setNombre("Sotano");
-            temp2.setApellidos("Fernandez");
-            temp2.setTipoEmpleado("Empleado");
-            Usuario temp3 = new Usuario();
-            temp3.setNombre("Mengano");
-            temp3.setApellidos("Velasco");
-            temp3.setTipoEmpleado("RRHH");
-            Usuario temp4 = new Usuario();
-            temp4.setNombre("Tralalá");
-            temp4.setApellidos("Galvez");
-            temp4.setTipoEmpleado("Admin");
-            Usuario temp5 = new Usuario();
-            temp5.setNombre("Asuncion");
-            temp5.setApellidos("Jimenez");
-            temp5.setTipoEmpleado("Empleado");
-            Usuario temp6 = new Usuario();
-            temp6.setNombre("Marta");
-            temp6.setApellidos("Jar");
-            temp6.setTipoEmpleado("Empleado");
-            Usuario temp7 = new Usuario();
-            temp7.setNombre("Pepa");
-            temp7.setApellidos("Mendez");
-            temp7.setTipoEmpleado("Empleado");
-            Usuario temp8 = new Usuario();
-            temp8.setNombre("Julia");
-            temp8.setApellidos("Andele");
-            temp8.setTipoEmpleado("Empleado");
-            resultadosUsuarios.add(temp1);
-            resultadosUsuarios.add(temp2);
-            resultadosUsuarios.add(temp3);
-            resultadosUsuarios.add(temp4);
-            resultadosUsuarios.add(temp5);
-            resultadosUsuarios.add(temp6);
-            resultadosUsuarios.add(temp7);
-            resultadosUsuarios.add(temp8);
-            //TODO AQUI TERMINA LO DE TEST
-*/
+            //Comprobar si soy empleado raso (para dejar en la lista solo a RRHH)
+            if (credenciales.getTipoEmpleado().equals(EMPLEADO)){
+                //Retirar de la lista todos los empleados rasos
+                ArrayList<DataBaseItem> usuariosFiltrados = new ArrayList<>();
+                for(DataBaseItem item : resultadosUsuarios){
+                    usuarioAux = (Usuario)item;
+                    if (usuarioAux.getTipoEmpleado().equals(RRHH)){
+                        usuariosFiltrados.add(usuarioAux);
+                    }
+                }
+                resultadosUsuarios = usuariosFiltrados;
+            }
+
             if (resultadosUsuarios.size()>0){ //Deberia serlo, debe haber mas de 1 empleado en la empresa
                 recyclerView = (RecyclerView)v.findViewById(R.id.recyDialogUsuarios);
                 Context contexto = v.getContext();

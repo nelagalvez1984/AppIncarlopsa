@@ -17,6 +17,7 @@ public class VLogin extends AppCompatActivity implements IVista{
     private HiloParaLogin hiloParaLogin;
     private Intent intent;
     private SingleTostada tostada = SingleTostada.getInstance();
+    private SingleConexion conexion = SingleConexion.getInstance();
 
     @Override
     public void inicializarVista() {
@@ -44,6 +45,9 @@ public class VLogin extends AppCompatActivity implements IVista{
                     Boolean conexionOK = false;
 
                     //1.- INTENTAR CONEXION
+                    if (conexion.conectar() != null){ //Si ya habia una conexion anterior, cerrarla
+                        conexion.conexionInicial();
+                    }
                     hiloParaLogin = new HiloParaLogin();
                     try {
                         conexionOK = hiloParaLogin.execute().get();
@@ -52,6 +56,7 @@ public class VLogin extends AppCompatActivity implements IVista{
                     }
 
                     if (conexionOK) { //El usuario/pass es correcto!
+                        tostada.cargando();
                         intent = new Intent(this, VGeneral.class);
                         startActivity(intent);
                     } else {

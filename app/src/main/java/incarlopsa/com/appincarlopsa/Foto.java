@@ -3,6 +3,8 @@ package incarlopsa.com.appincarlopsa;
 import android.graphics.BitmapFactory;
 
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -10,7 +12,7 @@ import java.io.FileInputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
-public class Foto{
+public class Foto implements Parcelable{
 
     //Para dudas, consultar: https://stackoverflow.com/questions/13854742/byte-array-of-image-into-imageview
     //En caso de duda consultar: https://stackoverflow.com/questions/10513976/how-to-convert-image-into-byte-array-and-byte-array-to-base64-string-in-android
@@ -57,6 +59,36 @@ public class Foto{
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         fotoBMP.compress(Bitmap.CompressFormat.JPEG, 100 , baos);
         setFotoBytes(baos.toByteArray());
+    }
+
+    private Foto(Parcel in){
+        readFromParcel(in);
+    }
+
+    //Metodos parcelables
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeByteArray(foto);
+    }
+
+    public static final Parcelable.Creator<Foto> CREATOR
+            = new Parcelable.Creator<Foto>() {
+        public Foto createFromParcel(Parcel in) {
+            return new Foto(in);
+        }
+
+        public Foto[] newArray(int size) {
+            return new Foto[size];
+        }
+    };
+
+    private void readFromParcel(Parcel in){
+        foto = in.createByteArray();
     }
 
 }

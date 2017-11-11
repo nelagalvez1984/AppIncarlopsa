@@ -53,6 +53,12 @@ class SingleTostada implements ICodigos{
 
     public void errorPermisoDenegado() { showTostada(ERROR_PERMISO_DENEGADO);}
 
+    public void cargando() {showTostada(CARGANDO);}
+
+    public void errorTamanoSuperado() { showTostada(ERROR_TAMANO_SUPERADO);}
+
+    public void fotoDePerfilActualizada() { showTostada(FOTO_PERFIL_ACTUALIZADA);}
+
     private void showTostada(String mensaje){
         try{
             Toast.makeText(contexto, mensaje, Toast.LENGTH_LONG).show();

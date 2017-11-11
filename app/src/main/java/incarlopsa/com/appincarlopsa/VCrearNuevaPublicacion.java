@@ -2,7 +2,6 @@ package incarlopsa.com.appincarlopsa;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,7 +21,6 @@ import android.widget.TextView;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
@@ -36,7 +35,6 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
     private HiloParaRead hiloParaRead;
     private ArrayList<DataBaseItem> resultadosPublicaciones;
     private ArrayList<DataBaseItem> listaAdjuntos;
-    private static final int READ_REQUEST_CODE = 42;
     private static String filePath = "";
     private static Uri uri = null;
 
@@ -99,6 +97,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                             Comentario comentarioAux = new Comentario();
                             comentarioAux.setMensaje(anuncioNuevaPublicacion.getText().toString());
                             comentarioAux.setIdPublicacion(publicacionAux.getId());
+                            comentarioAux.setIdUsuario(credenciales.getIdUsuario());
                             hiloParaCreate = new HiloParaCreate(new DAOComentario());
                             todoOK = hiloParaCreate.execute(comentarioAux).get();
                             if (!todoOK){
@@ -129,18 +128,14 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
-                startActivityForResult(intent, READ_REQUEST_CODE);
-
-                //Añadir adjuntos
-
-//                showDialog();
+                startActivityForResult(intent, CODIGO_DEVOLUCION_FOTO);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == CODIGO_DEVOLUCION_FOTO && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 //Recoger path
                 uri = data.getData();
@@ -213,6 +208,11 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
             File file = new File(filePath);
             Boolean siONo = file.canRead();
             byte[] bytes = FileUtils.readFileToByteArray(file);
+            Integer longitud = bytes.length;
+            if (longitud>1048576){//Maximo de 1MB
+                throw new EXCTamanoSuperado();
+            }
+//            getMimeType(filePath); //Usar si procede
 
             //Crear el adjunto
             Adjunto adjunto = new Adjunto();
@@ -229,9 +229,20 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                 adjuntosAgregados.setText(file.getName());
             }
 
+        } catch (EXCTamanoSuperado e) {
+            tostada.errorTamanoSuperado();
         } catch (Exception e) {
             tostada.errorNoSePuedeLeerImagen();
         }
+    }
+
+    public static String getMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+        }
+        return type;
     }
 
 }

@@ -2,7 +2,6 @@ package incarlopsa.com.appincarlopsa;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,9 +96,9 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
 
         public ViewHolder(View v) {
             super(v);
-            nombreUsuario = (TextView) v.findViewById(R.id.lblUsuarioNombre);
+            nombreUsuario = (TextView) v.findViewById(R.id.lblAdjuntoNombre);
             tipoEmpleado = (TextView) v.findViewById(R.id.lblUsuarioTipo);
-            foto = (ImageView) v.findViewById(R.id.imgUsuarioFoto);
+            foto = (ImageView) v.findViewById(R.id.imgAdjuntoMiniatura);
             this.v = v;
             recursos = v.getResources();
         }

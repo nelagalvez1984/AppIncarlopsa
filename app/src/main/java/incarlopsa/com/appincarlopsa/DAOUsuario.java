@@ -9,7 +9,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
     private String consultaInsercion = "INSERT INTO usuario SET nombre = ?, "
                                 + "apellidos = ?, dni = ?, tipoEmpleado = ?, foto = ?, userName = ?";
     private String consultaLecturaDameTodos = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
-            + "FROM usuario";
+            + "FROM usuario ORDER BY tipoEmpleado , apellidos, nombre DESC";
     private String consultaLecturaPorId = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "
                                 + "FROM usuario WHERE idUsuario = ?";
     private String consultaLecturaPorTipoEmpleado = "SELECT idUsuario, nombre, apellidos, dni, tipoEmpleado, foto "

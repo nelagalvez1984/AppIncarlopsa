@@ -1,6 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
-public abstract class DataBaseItem {
+public abstract class DataBaseItem{
 
     //SuperClase de los items de un unico ID
     protected Integer id;

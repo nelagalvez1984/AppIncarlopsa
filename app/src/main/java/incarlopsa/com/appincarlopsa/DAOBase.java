@@ -50,12 +50,8 @@ public abstract class DAOBase implements IDAO, ICodigos{
                         consulta.setString(i+1 , (String) (parametros[i]) );
                         continue;
                     }
-                    if (parametros[i] instanceof Date){ //Es una fecha!
-                        consulta.setDate(i+1 , (Date) (parametros[i]) );
-                        continue;
-                    }
                     if (parametros[i] instanceof byte[]){ //Es un blob!
-                        consulta.setBytes(i+1 , (byte[])(parametros[i]) );
+                        consulta.setBytes(i+1 , (byte[]) (parametros[i]) );
                         continue;
                     }
                     if (parametros[i] instanceof Boolean){ //Es un boolean!

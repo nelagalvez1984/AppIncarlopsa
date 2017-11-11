@@ -1,21 +1,28 @@
 package incarlopsa.com.appincarlopsa;
 
-public class Adjunto extends DataBaseItem{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Adjunto extends DataBaseItem implements Parcelable{
 
     //Propiedades
     private Integer idPublicacion = null;
     private Foto foto = null;
     private String nombreAdjunto = null;
 
-    //Constructor
+    //Constructores
     public Adjunto(Integer idAdjunto, Integer idPublicacion, Foto foto, String nombreAdjunto) {
-        this.idPublicacion = idPublicacion;
         this.id = idAdjunto;
+        this.idPublicacion = idPublicacion;
         this.foto = foto;
         this.nombreAdjunto = nombreAdjunto;
     }
 
     public Adjunto(){}
+
+    private Adjunto(Parcel in){
+        readFromParcel(in);
+    }
 
     //Getter / Setter
     public Foto getFoto() {
@@ -65,5 +72,38 @@ public class Adjunto extends DataBaseItem{
         result = 31 * result + foto.hashCode();
         result = 31 * result + nombreAdjunto.hashCode();
         return result;
+    }
+
+    //Metodos parcelables
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeInt(id);
+        out.writeInt(idPublicacion);
+        out.writeParcelable(foto,0);
+        out.writeString(nombreAdjunto);
+    }
+
+    public static final Parcelable.Creator<Adjunto> CREATOR
+            = new Parcelable.Creator<Adjunto>() {
+        public Adjunto createFromParcel(Parcel in) {
+            return new Adjunto(in);
+        }
+
+        public Adjunto[] newArray(int size) {
+            return new Adjunto[size];
+        }
+    };
+
+    private void readFromParcel(Parcel in){
+        id = in.readInt();
+        idPublicacion = in.readInt();
+        foto = in.readParcelable(Foto.class.getClassLoader());
+        nombreAdjunto = in.readString();
+
     }
 }

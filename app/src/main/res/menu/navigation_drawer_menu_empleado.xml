@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <group android:checkableBehavior="single">
+            <item
+                android:checked="true"
+                android:id="@+id/item_navigation_drawer_publicaciones"
+                android:icon="@drawable/ic_action_content_report"
+                android:title="Publicaciones" />
+            <item
+                android:id="@+id/item_navigation_drawer_chats"
+                android:icon="@drawable/ic_action_content_mail"
+                android:title="Chats" />
+        </group>
+
+    <item android:title="Contactar con RRHH">
+        <menu>
+            <item
+                android:id="@+id/item_navigation_drawer_nuevo_chat"
+                android:icon="@drawable/ic_action_content_send"
+                android:title="Iniciar nuevo chat" />
+        </menu>
+    </item>
+</menu>
