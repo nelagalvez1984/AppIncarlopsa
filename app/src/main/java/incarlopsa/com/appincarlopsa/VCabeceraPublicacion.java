@@ -47,7 +47,7 @@ public class VCabeceraPublicacion extends AppCompatActivity implements IVista {
             tostada.errorConexionBBDD();
         }
 
-        adapterPublicacion = new AdapterTopic(resultados, new DAOPublicacion());
+        adapterPublicacion = new AdapterTopic(resultados, new DAOPublicacion(), TOPIC_PUBLICACION);
         recycler.setAdapter(adapterPublicacion);
 //        recycler.scrollToPosition(adapterPublicacion.ultimaPosicion());
 

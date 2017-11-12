@@ -1,95 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/consCabecera"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhiteFondos">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/consCabecera"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="10dp"
+              android:background="@color/colorWhiteFondos"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtTituloES"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="69dp"
-        android:background="@color/colorRojoCabeceras"
-        android:paddingVertical="20dp"
-        android:text="@string/chats"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhiteFondos"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyEntrantesChat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtSalientesChat"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/cabeceraChatLayoutTxtTitulo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:background="@color/colorRojoCabeceras"
-        android:text="@string/salientes"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recySalientesChat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyEntrantesChat"
-        tools:ignore="MissingConstraints" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtEntrantesChat"
-        android:layout_width="0dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:background="@color/colorRojoCabeceras"
-        android:text="@string/entrantes"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/cardview_light_background"
+        <TextView
+            android:id="@+id/txtTituloES"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorRojoCabeceras"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/chats"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhiteFondos"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloES" />
+    </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recySalientesChat"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/cabeceraChatLayoutTxtEntrantes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="65dp"
-        android:background="@color/colorGris"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSalientesChat"
-        tools:ignore="MissingConstraints" />
+        android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyEntrantesChat"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtEntrantesChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorRojoCabeceras"
+            android:text="@string/entrantes"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/cardview_light_background"
+
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cabeceraChatLayoutRecyEntrantes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorGris"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtSalientesChat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTituloES"
-        tools:ignore="MissingConstraints" />
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyEntrantesChat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/md_white_1000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cabeceraChatLayoutTxtSalientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtSalientesChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorRojoCabeceras"
+            android:text="@string/salientes"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cabeceraChatLayoutRecySalientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recySalientesChat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="42dp"
+            android:layout_weight="1"
+            android:background="@color/md_white_1000"/>
+    </LinearLayout>
+
+</LinearLayout>

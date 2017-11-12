@@ -1,156 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    xmlns:tools="http://schemas.android.com/tools"
+                                    android:id="@+id/cardViewComentario"
+                                    android:background="@drawable/mensaje_degradado_entrante"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/layoutComentario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtComentarioComentario"
-        app:layout_constraintTop_toTopOf="@+id/txtComentarioComentario">
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@drawable/mensaje_degradado_entrante"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtComentarioNumDislikes"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btnComentarioDislike"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtComentarioNumLikes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            <ImageView
+                android:id="@+id/imgComentarioUsuario"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/borde_edittext"
+                app:srcCompat="@mipmap/foto"/>
 
-        <ImageView
-            android:id="@+id/imgComentarioUsuario"
-            android:layout_width="64dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginEnd="284dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription=""
-            app:layout_constraintBottom_toTopOf="@+id/txtComentarioComentario"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@mipmap/foto"
-            tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtComentarioUsuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="136dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:gravity="left|center"
-            android:text="@string/nombre"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtComentarioFecha"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgComentarioUsuario"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints,RtlHardcoded"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtComentarioFecha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="28dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:gravity="left|center"
-            android:text="Fecha"
-            app:layout_constraintEnd_toStartOf="@+id/txtComentarioHora"
-            app:layout_constraintLeft_toRightOf="@+id/lblAdjuntoNombre"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded"/>
+                    <TextView
+                        android:id="@+id/txtComentarioUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginStart="3dp"
+                        android:inputType="textMultiLine"
+                        android:text="@string/nombre"
+                        android:textColor="@color/colorNegro"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/txtComentarioHora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Hora"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+                    <TextView
+                        android:id="@+id/txtComentarioFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorNegro"/>
+
+                    <TextView
+                        android:id="@+id/txtComentarioHora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="5dp"
+                        android:text="Hora"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorNegro"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/btnComentarioLike"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/me_gusta_web"/>
+
+                    <TextView
+                        android:id="@+id/txtComentarioNumLikes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBotonEnviar"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/btnComentarioDislike"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/no_me_gusta_web"/>
+
+                    <TextView
+                        android:id="@+id/txtComentarioNumDislikes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorRojoCabeceras"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtComentarioComentario"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/borde_edittext"
+            android:inputType="textMultiLine"
             android:text="mensajeDelSusodicho"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtComentarioNumLikes"
-            tools:ignore="RtlHardcoded" />
+            android:textAlignment="center"/>
 
-        <ImageView
-            android:id="@+id/btnComentarioDislike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.723"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/no_me_gusta_web" />
-
-        <ImageView
-            android:id="@+id/btnComentarioLike"
-            android:layout_width="32dp"
-            android:layout_height="31dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.363"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/me_gusta_web"
-            tools:ignore="NotSibling,UnknownId" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

@@ -696,5 +696,13 @@
     <color name="colorWhiteFondos">#FFFFFF</color>
     <color name="colorGris">#e1e1e1</color>
     <color name="colorNegro">#000000</color>
+    <color name="degradadoEntranteInicial">#501D871E</color>
+    <color name="degradadoEntranteFinal">#FFFFFF</color>
+    <color name="degradadoSalienteInicial">#501D871E</color>
+    <color name="degradadoSalienteFinal">#FFFFFF</color>
+    <color name="degradadoCabeceraInicial">#b50128</color>
+    <color name="degradadoCabeceraFinal">#20b50128</color>
+
+
 
 </resources>

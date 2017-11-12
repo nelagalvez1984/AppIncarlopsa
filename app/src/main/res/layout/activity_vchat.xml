@@ -8,64 +8,114 @@
     android:orientation="vertical"
     android:textAlignment="center">
 
-    <TextView
-        android:id="@+id/txtChatTitulo"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:background="@color/colorRojoCabeceras"
-        android:paddingVertical="25dp"
-        android:text="@string/chat"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhiteFondos"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerChats"
-        android:layout_width="match_parent"
-        android:layout_height="412dp"
-        android:background="@color/colorGris"
-        android:paddingHorizontal="16dp" />
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorRojoCabeceras"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edtChatMensaje"
-            android:layout_width="230dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="64dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="28dp"
+        <ImageView
+            android:id="@+id/chatFotoCabecera"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorRojoCabeceras"
+            app:srcCompat="@mipmap/foto"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/chatRelleno1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/txtChatTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorRojoCabeceras"
+                android:inputType="textMultiLine"
+                android:maxLines="2"
+                android:text="@string/chat"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhiteFondos"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/chatRelleno2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/md_white_1000"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerChats"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/md_white_1000">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorRojoCabeceras"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="42dp"
             android:layout_weight="1"
-            android:background="@drawable/borde_edittext"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
+            android:orientation="horizontal">
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonChatEnviar"
-            app:layout_constraintHorizontal_bias="0.633"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:hint="Introduce tu mensaje" />
+            <EditText
+                android:id="@+id/edtChatMensaje"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/borde_edittext"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:textAlignment="center"
+                tools:hint="Introduce tu mensaje"/>
 
-        <ImageButton
-            android:id="@+id/buttonChatEnviar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="52dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/custom_image_button"
-            android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_action_content_send" />
+            <ImageButton
+                android:id="@+id/buttonChatEnviar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/custom_image_button"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_action_content_send"/>
+        </LinearLayout>
 
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </LinearLayout>

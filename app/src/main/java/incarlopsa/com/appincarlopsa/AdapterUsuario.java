@@ -2,6 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-/**
- * Created by Anonymous on 09/11/2017.
- */
 
 public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHolder> implements ICodigos{
 
@@ -68,17 +65,17 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
 
         holder.nombreUsuario.setText(nombre+" "+apellidos);
         holder.tipoEmpleado.setText(tipoEmpleado);
-/*
-        //Asignar foto
-        Bitmap foto = usuarioAux.getFotoBMP();
-        holder.foto.setImageBitmap(foto);
-*/
 
+        //Asignar foto
+        if (usuarioAux.getFotoBytes() != null){
+            Bitmap foto = usuarioAux.getFotoBMP();
+            holder.foto.setImageBitmap(foto);
+        }else{
+            holder.foto.setImageDrawable(holder.v.getResources().getDrawable(R.mipmap.foto));
+        }
     }
 
     public void actualizar(ArrayList<DataBaseItem> nuevaLista){
-        listaUsuarios.clear();
-        listaUsuarios.addAll(nuevaLista);
         notifyDataSetChanged();
     }
 
@@ -113,7 +110,7 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
     }
 
     public interface OnItemClickListener {
-        public void onItemClick(DataBaseItem item, int position);
+        void onItemClick(DataBaseItem item, int position);
     }
     private AdapterUsuario.OnItemClickListener mListener;
 
@@ -121,7 +118,7 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
         mListener = listener;
     }
 
-    public static interface RetornoAdaptadorUsuario{
+    public interface RetornoAdaptadorUsuario{
         void devolverUsuario(Usuario usuarioRetornado);
     }
 

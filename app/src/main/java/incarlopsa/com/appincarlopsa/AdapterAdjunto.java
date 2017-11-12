@@ -66,6 +66,11 @@ public class AdapterAdjunto extends RecyclerView.Adapter<AdapterAdjunto.ViewHold
 
     }
 
+    public void actualizarAumentandoLista(){
+        notifyDataSetChanged();
+    }
+
+
     public void actualizar(ArrayList<DataBaseItem> nuevaLista){
         listaAdjuntos.clear();
         listaAdjuntos.addAll(nuevaLista);
@@ -101,7 +106,7 @@ public class AdapterAdjunto extends RecyclerView.Adapter<AdapterAdjunto.ViewHold
     }
 
     public interface OnItemClickListener {
-        public void onItemClick(DataBaseItem item, int position);
+        void onItemClick(DataBaseItem item, int position);
     }
     private AdapterAdjunto.OnItemClickListener mListener;
 

@@ -6,19 +6,19 @@
                 android:checked="true"
                 android:id="@+id/item_navigation_drawer_publicaciones"
                 android:icon="@drawable/ic_action_content_report"
-                android:title="Publicaciones" />
+                android:title="@string/publicaciones" />
             <item
                 android:id="@+id/item_navigation_drawer_chats"
                 android:icon="@drawable/ic_action_content_mail"
-                android:title="Chats" />
+                android:title="@string/chat" />
         </group>
 
-    <item android:title="Contactar con RRHH">
+    <item android:title="@string/contactar_con_cualquiera">
         <menu>
             <item
                 android:id="@+id/item_navigation_drawer_nuevo_chat"
                 android:icon="@drawable/ic_action_content_send"
-                android:title="Iniciar nuevo chat" />
+                android:title="@string/iniciar_nuevo_chat" />
         </menu>
     </item>
 </menu>

@@ -43,6 +43,7 @@ public class VLogin extends AppCompatActivity implements IVista{
                     //                credenciales.setPassword(PASSWORD_TEST_NORMAL);
 
                     Boolean conexionOK = false;
+                    tostada.conectando();
 
                     //1.- INTENTAR CONEXION
                     if (conexion.conectar() != null){ //Si ya habia una conexion anterior, cerrarla
@@ -56,7 +57,6 @@ public class VLogin extends AppCompatActivity implements IVista{
                     }
 
                     if (conexionOK) { //El usuario/pass es correcto!
-                        tostada.cargando();
                         intent = new Intent(this, VGeneral.class);
                         startActivity(intent);
                     } else {

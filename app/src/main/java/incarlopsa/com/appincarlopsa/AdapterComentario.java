@@ -3,6 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import android.content.res.Resources;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,12 +59,17 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
                     HiloParaCreate hiloParaCreate = new HiloParaCreate(new DAOLikes());
                     try {
                         todoOk = hiloParaCreate.execute(meGustaAux).get();
+                        if (!todoOk){
+                            throw new EXCErrorBBDD();
+                        }
                         viewHolder.fotoMeGusta.setImageDrawable(viewHolder.recursos.getDrawable(R.drawable.likeverde));
                         viewHolder.fotoMeDisgusta.setEnabled(false);
                         viewHolder.fotoMeGusta.setEnabled(false);
                         Integer num = Integer.parseInt(viewHolder.numLikes.getText().toString());
                         num++;
                         viewHolder.numLikes.setText(num.toString());
+                    } catch (EXCErrorBBDD e) {
+                        tostada.errorConexionBBDD();
                     } catch (Exception e) {
                         tostada.errorConexionBBDD();
                     }
@@ -102,12 +108,17 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
                     HiloParaCreate hiloParaCreate = new HiloParaCreate(new DAOLikes());
                     try {
                         todoOk = hiloParaCreate.execute(meDisgustaAux).get();
+                        if (!todoOk){
+                            throw new EXCErrorBBDD();
+                        }
                         viewHolder.fotoMeDisgusta.setImageDrawable(viewHolder.recursos.getDrawable(R.drawable.dislikerojo));
                         viewHolder.fotoMeDisgusta.setEnabled(false);
                         viewHolder.fotoMeGusta.setEnabled(false);
                         Integer num = Integer.parseInt(viewHolder.numDislikes.getText().toString());
                         num++;
                         viewHolder.numDislikes.setText(num.toString());
+                    } catch (EXCErrorBBDD e) {
+                        tostada.errorConexionBBDD();
                     } catch (Exception e) {
                         tostada.errorConexionBBDD();
                     }
@@ -126,6 +137,13 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
 
         //Recuperar el usuario que ha creado el comentario
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
+
+        //Colorear el cardview
+        View cardView = holder.v;
+        Resources recursos = cardView.getResources();
+
+ //       Layout l = (Layout)cardView.findViewById(R.id.) ;
+        cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_entrante));
 
         //Recuperar el nombre del usuario
         String nombreUsuario;
@@ -239,7 +257,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
     }
 
     public interface OnItemClickListener {
-        public void onItemClick(DataBaseItem item, int position);
+        void onItemClick(DataBaseItem item, int position);
     }
     private AdapterComentario.OnItemClickListener mListener;
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class VChat extends AppCompatActivity implements IVista{
     private Usuario destino;
     private Integer idAutor;
     private Integer idDestino;
+    private ImageView fotoChat;
 
 
     @Override
@@ -91,6 +93,12 @@ public class VChat extends AppCompatActivity implements IVista{
                     destino = (Usuario)resultadosUsuarios.get(0);
                 }else{
                     throw new Exception();
+                }
+
+                //Ponerle foto al chat
+                fotoChat = (ImageView)findViewById(R.id.chatFotoCabecera);
+                if (destino.getFotoBytes() != null){
+                    fotoChat.setImageBitmap(destino.getFotoBMP());
                 }
 
                 adapterMensaje = new AdapterMensaje(resultados, autor, destino);

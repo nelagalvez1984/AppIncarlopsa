@@ -48,7 +48,7 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
-            adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat());
+            adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat(), TOPIC_CHAT_ENTRANTE);
             recyclerEntrantes.setAdapter(adapterChatEntrantes);
             recyclerEntrantes.scrollToPosition(adapterChatEntrantes.ultimaPosicion());
 
@@ -79,7 +79,7 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         hiloParaRead = new HiloParaRead(new DAOChat());
         try {
             resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
-            adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat());
+            adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat(), TOPIC_CHAT_SALIENTE);
             recyclerSalientes.setAdapter(adapterChatSalientes);
             recyclerSalientes.scrollToPosition(adapterChatSalientes.ultimaPosicion());
 

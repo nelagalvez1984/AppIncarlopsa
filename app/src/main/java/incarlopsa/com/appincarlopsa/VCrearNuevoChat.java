@@ -68,6 +68,9 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
 
                             try{
                                 //Crear chat
+                                if (tituloNuevoChat.length()>TAMANO_MAXIMO_TITULO){
+                                    throw new EXCTamanoSuperado();
+                                }
                                 Chat chatAux = new Chat();
                                 chatAux.setId(null);
                                 chatAux.setIdUsuario(credenciales.getIdUsuario());
@@ -77,13 +80,13 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
                                 hiloParaCreate = new HiloParaCreate(new DAOChat());
                                 todoOK = hiloParaCreate.execute(chatAux).get();
                                 if (!todoOK){
-                                    throw new Exception();
+                                    throw new EXCErrorBBDD();
                                 }
                                 //Recuperar el ID del chat recien creado
                                 hiloParaRead = new HiloParaRead(new DAOChat());
                                 resultados = hiloParaRead.execute(chatAux).get();
                                 if (resultados.size()==0){
-                                    throw new Exception();
+                                    throw new EXCErrorBBDD();
                                 }
                                 //El primer elemento del array debe contener el chat mas nuevo de todos
                                 //es decir, el recien creado
@@ -98,12 +101,16 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
                                 hiloParaCreate = new HiloParaCreate(new DAOMensaje());
                                 todoOK = hiloParaCreate.execute(mensaje).get();
                                 if (!todoOK){
-                                    throw new Exception();
+                                    throw new EXCErrorBBDD();
                                 }
 
                                 tostada.chatCreadoConExito();
                                 finish();
-                            }catch(Exception e){
+                            }catch(EXCErrorBBDD e){
+                                tostada.errorConexionBBDD();
+                            }catch (EXCTamanoSuperado e){
+                                tostada.errorTamanoTituloSuperado();
+                            }catch (Exception e){
                                 tostada.errorConexionBBDD();
                             }
                         }
@@ -130,7 +137,11 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
         usuarioCazado.setText(usuarioRetornado.getNombre()
                             +" "+usuarioRetornado.getApellidos()
                             +"\n"+usuarioRetornado.getTipoEmpleado());
-//        fotoUsuario.setImageBitmap(this.usuarioRetornado.getFotoBMP());
+        if (usuarioRetornado.getFotoBytes() != null){
+            fotoUsuario.setImageBitmap(this.usuarioRetornado.getFotoBMP());
+        }else{
+            fotoUsuario.setImageDrawable(getDrawable(R.mipmap.foto));
+        }
         dialogUsuarios.dismiss();
     }
 

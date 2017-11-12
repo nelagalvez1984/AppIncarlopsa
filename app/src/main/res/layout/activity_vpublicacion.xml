@@ -1,143 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhiteFondos"
-    tools:context="incarlopsa.com.appincarlopsa.VCabeceraPublicacion">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorWhiteFondos"
+              android:orientation="vertical"
+              android:id="@+id/fondoPublicacion"
+              tools:context="incarlopsa.com.appincarlopsa.VCabeceraPublicacion">
 
-    <TextView
-        android:id="@+id/txtTituloPublicacion"
+    <LinearLayout
+        android:id="@+id/linearPublicacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorRojoCabeceras"
-        android:paddingTop="20dp"
-        android:paddingVertical="25dp"
-        android:text="Titulo"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhiteFondos"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/borde_edittext"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtAnuncioPublicacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_light_background"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="13dp"
-        android:text="Anuncio"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        tools:layout_editor_absoluteY="82dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/borde_edittext"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearPublicacionTitulo"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTituloPublicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorRojoCabeceras"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="20dp"
+                    android:text="Titulo"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhiteFondos"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtAnuncioPublicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/borde_edittext"
+                android:inputType="textMultiLine"
+                android:maxLines="8"
+                android:text="Anuncio"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imgGustaPublicacion"
+                    android:layout_width="52dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/me_gusta_web"/>
+
+                <TextView
+                    android:id="@+id/txtContadorGustaPublicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="center"/>
+
+                <ImageButton
+                    android:id="@+id/imgNogustaPublicacion"
+                    android:layout_width="52dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/no_me_gusta_web"/>
+
+                <TextView
+                    android:id="@+id/txtContadorNoGustaPublicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/btnAdjuntosPublicacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_image_button"
+                    android:text="Ver Adjuntos"
+                    android:textColor="@color/colorWhiteFondos"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="637dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="71dp"
-            android:layout_marginTop="150dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imgGustaPublicacion"
-                android:layout_width="52dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="80dp"
-                android:background="@color/cardview_shadow_end_color"
-                app:srcCompat="@drawable/me_gusta_web" />
-
-            <TextView
-                android:id="@+id/txtContadorGustaPublicacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="0"
-                tools:layout_editor_absoluteX="74dp" />
-
-            <ImageButton
-                android:id="@+id/imgNogustaPublicacion"
-                android:layout_width="43dp"
-                android:layout_height="44dp"
-                android:background="@color/cardview_shadow_end_color"
-                app:srcCompat="@drawable/no_me_gusta_web"
-                tools:layout_editor_absoluteX="123dp" />
-
-            <TextView
-                android:id="@+id/txtContadorNoGustaPublicacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="0"
-                tools:layout_editor_absoluteX="210dp" />
-
-            <Button
-                android:id="@+id/btnAdjuntosPublicacion"
-                android:layout_width="wrap_content"
-                android:layout_height="39dp"
-                android:layout_marginLeft="80dp"
-                android:background="@drawable/custom_image_button"
-                android:text="Ver Adjuntos"
-                android:textColor="@color/colorWhiteFondos"
-                tools:layout_editor_absoluteX="266dp"
-                tools:layout_editor_absoluteY="162dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="196dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/borde_edittext"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyPublicacionComentarios"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@color/cardview_light_background"
-                android:paddingLeft="16dp"
-                tools:layout_editor_absoluteX="329dp"
-                tools:layout_editor_absoluteY="183dp">
+                android:layout_height="match_parent"
+                android:background="@drawable/borde_edittext">
 
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="42dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/txtPublicacionMensaje"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginTop="50dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/borde_edittext"
-                android:hint="Introduce Publicacion" />
+                android:hint="Introduzca su comentario"/>
 
             <ImageButton
                 android:id="@+id/imgEnviarPublicacion"
-                android:layout_width="0dp"
-                android:layout_height="47dp"
-                android:layout_marginLeft="90dp"
-                android:layout_marginTop="50dp"
-                android:layout_weight="1"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/custom_image_button"
-                app:srcCompat="@drawable/ic_action_content_send"
-                tools:layout_editor_absoluteX="291dp"
-                tools:layout_editor_absoluteY="488dp" />
+                app:srcCompat="@drawable/ic_action_content_send"/>
         </LinearLayout>
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

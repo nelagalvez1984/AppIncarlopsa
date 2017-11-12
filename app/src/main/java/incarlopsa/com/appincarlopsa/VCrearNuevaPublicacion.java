@@ -11,6 +11,9 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -28,13 +31,15 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
     private EditText anuncioNuevaPublicacion;
     private ImageView anadirAdjunto;
     private ImageButton enviar;
-    private TextView adjuntosAgregados;
     private SingleCredenciales credenciales = SingleCredenciales.getInstance();
     private SingleTostada tostada = SingleTostada.getInstance();
+    private RecyclerView recyclerView;
     private HiloParaCreate hiloParaCreate;
     private HiloParaRead hiloParaRead;
     private ArrayList<DataBaseItem> resultadosPublicaciones;
     private ArrayList<DataBaseItem> listaAdjuntos;
+    private RecyclerView.LayoutManager layoutManager;
+    private AdapterAdjunto adapterAdjunto;
     private static String filePath = "";
     private static Uri uri = null;
 
@@ -48,14 +53,21 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
     @Override
     public void inicializarVista() {
         tostada.setContexto(this);
+
         listaAdjuntos = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.recyNuevaPublicacion);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        adapterAdjunto = new AdapterAdjunto(listaAdjuntos);
+        recyclerView.setAdapter(adapterAdjunto);
+
         tituloNuevaPublicacion = (EditText)findViewById(R.id.editNuevaPublicacionTitulo);
         anuncioNuevaPublicacion = (EditText)findViewById(R.id.editNuevaPublicacionAnuncio);
         anadirAdjunto = (ImageView)findViewById(R.id.imgNuevaPublicacionBotonAnadir);
         anadirAdjunto.setOnClickListener(this);
         enviar = (ImageButton)findViewById(R.id.btnNuevaPublicacionEnviar);
         enviar.setOnClickListener(this);
-        adjuntosAgregados = (TextView)findViewById(R.id.txtNuevaPublicacionAdjuntos);
     }
 
     @Override
@@ -71,6 +83,9 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
 
                         try{
                             //Crear la publicacion
+                            if (tituloNuevaPublicacion.length()>TAMANO_MAXIMO_TITULO){
+                                throw new EXCTamanoSuperado();
+                            }
                             Boolean todoOK = false;
                             Publicacion publicacionAux = new Publicacion();
                             publicacionAux.setTitulo(anuncioNuevaPublicacion.getText().toString());
@@ -118,6 +133,8 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
 
                             tostada.publicacionAnadidaConExito();
                             finish();
+                        }catch (EXCTamanoSuperado e){
+                            tostada.errorTamanoTituloSuperado();
                         }catch(Exception e){
                             tostada.errorConexionBBDD();
                         }
@@ -209,7 +226,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
             Boolean siONo = file.canRead();
             byte[] bytes = FileUtils.readFileToByteArray(file);
             Integer longitud = bytes.length;
-            if (longitud>1048576){//Maximo de 1MB
+            if (longitud>TAMANO_MAXIMO_FICHERO){//Maximo de 1MB
                 throw new EXCTamanoSuperado();
             }
 //            getMimeType(filePath); //Usar si procede
@@ -222,12 +239,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
 
             //Adjunto creado
             tostada.imagenAnadidaConExito();
-            String textoAnterior = adjuntosAgregados.getText().toString();
-            if (adjuntosAgregados.length()>0){
-                adjuntosAgregados.setText(textoAnterior+="\n"+file.getName());
-            }else{
-                adjuntosAgregados.setText(file.getName());
-            }
+            adapterAdjunto.actualizarAumentandoLista();
 
         } catch (EXCTamanoSuperado e) {
             tostada.errorTamanoSuperado();

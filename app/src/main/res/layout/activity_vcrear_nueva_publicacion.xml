@@ -4,14 +4,104 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/colorGris"
-              >
+              android:background="@color/colorWhiteFondos"
+              android:layout_margin="10dp"
+              android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/NuevaPublicacionLayoutHorizontal"
+        android:id="@+id/layoutNPubCabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorRojoCabeceras"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lblNuevaPublicacionEncabezado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:text="Nueva Publicación"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNPubTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editNuevaPublicacionTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Introduzca el título de la publicación"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNPubEscribir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editNuevaPublicacionAnuncio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/borde_edittext"
+            android:ems="10"
+            android:hint="Introduzca el anuncio"
+            android:inputType="textMultiLine"
+            android:maxLines="8"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/NuevaPublicacionLayoutVertical2"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnNuevaPublicacionEnviar"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_image_button"
+                app:srcCompat="@drawable/ic_action_content_send"/>
+
+            <ImageView
+                android:id="@+id/imgNuevaPublicacionBotonAnadir"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_image_button"
+                android:tint="@color/colorVerdeApp"
+                app:srcCompat="@drawable/add"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNPubRecy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="4"
         android:orientation="vertical">
 
         <LinearLayout
@@ -19,152 +109,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/lblNuevaPublicacionEncabezado"
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_marginBottom="8dp"
-                android:height="30sp"
-                android:background="@color/colorRojoCabeceras"
-                android:paddingVertical="16dp"
-                android:text="Nueva Publicación"
-                android:textAlignment="center"
-                android:textColor="@color/cardview_light_background"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/NuevaPublicacionLayoutVertical1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editNuevaPublicacionTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="Introduzca el título de la publicación"
-                android:inputType="textPersonName"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/NuevaPublicacionLayoutVertical2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical"
-            android:weightSum="2">
-
-            <ScrollView
-                android:id="@+id/NuevaPublicacionScroll"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:fillViewport="true"
-                android:scrollbars="vertical">
-
-                <TextView
-                    android:id="@+id/txtNuevaPublicacionAdjuntos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-
-                    android:hint="Sin archivos adjuntos"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:verticalScrollbarPosition="right"/>
-            </ScrollView>
-
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyNuevaPublicacion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/lblNuevaPublicacionInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="75dp"
-                    android:layout_weight="1"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="5dp"
-                    android:text="Añadir imagen"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="334dp"
-                    tools:layout_editor_absoluteY="589dp"/>
-
-                <ImageView
-                    android:id="@+id/imgNuevaPublicacionBotonAnadir"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:layout_marginRight="75dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_image_button"
-                    android:tint="@color/colorVerdeApp"
-                    app:srcCompat="@drawable/add"
-                    tools:layout_editor_absoluteX="288dp"
-                    tools:layout_editor_absoluteY="575dp"/>
-            </LinearLayout>
-
+                android:layout_marginTop="10dp"
+                android:scrollbars="vertical"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/NuevaPublicacionLayoutVertical3"
+        <TextView
+            android:id="@+id/crearPublicacionRelleno2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
+            android:layout_height="42dp"
+            />
 
-            android:gravity="bottom"
-            android:weightSum="3"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp">
-
-            <EditText
-                android:id="@+id/editNuevaPublicacionAnuncio"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
-                android:layout_marginTop="100dp"
-                android:layout_weight="1"
-                android:background="@drawable/borde_edittext"
-                android:ems="10"
-                android:hint="Introduzca el anuncio"
-                android:inputType="text"
-                android:paddingHorizontal="16dp"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <ImageButton
-                android:id="@+id/btnNuevaPublicacionEnviar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_marginBottom="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="100dp"
-                android:layout_weight="2"
-                android:background="@drawable/custom_image_button"
-                android:paddingHorizontal="16dp"
-                app:srcCompat="@drawable/ic_action_content_send"/>
-
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

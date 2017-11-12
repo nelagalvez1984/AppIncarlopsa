@@ -1,8 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
-public interface ICodigos extends ICodigosAntonio,
-                                ICodigosDavid,
-                                ICodigosJonatan {
+public interface ICodigos {
 
     //Codigos universales
     int TODO_OK = 0;
@@ -43,6 +41,15 @@ public interface ICodigos extends ICodigosAntonio,
     String RRHH = "RRHH";
     String ADMIN = "Admin";
 
+    //Diferenciador para topics
+    Integer TOPIC_CHAT_ENTRANTE = 0;
+    Integer TOPIC_CHAT_SALIENTE = 1;
+    Integer TOPIC_PUBLICACION = 0;
+
+    //Limites del sistema
+    Integer TAMANO_MAXIMO_TITULO = 80; //Caracteres
+    Integer TAMANO_MAXIMO_FICHERO = 1048576; //Maximo de 1MB
+
     //Codigos para control de excepciones
     String ERROR_CONEXION_BBDD = "No se ha podido establecer la conexión con la base de datos";
     String ERROR_DRIVER = "Error en la carga del driver";
@@ -56,11 +63,14 @@ public interface ICodigos extends ICodigosAntonio,
     String ERROR_USUARIO_NO_ELEGIDO = "No ha especificado el destinatario del chat";
     String CHAT_CREADO_CON_EXITO = "Chat creado con éxito!";
     String PUBLICACION_CREADA_CON_EXITO = "Publicación creada con éxito!";
+    String TAMANO_TITULO_SUPERADO = "No se pueden hacer títulos con tamaño superior a " +
+            ""+TAMANO_MAXIMO_TITULO.toString()+" caracteres";
 
     //Tostadas variopintas
     String BIENVENIDA = "Bienvenid@ a IncarlopsAPP!";
     String USUARIO_DESCONOCIDO = "Usuario desconocido";
     String CARGANDO = "Cargando...";
+    String CONECTANDO = "Conectando...";
 
     //Tipos Likes
     String ME_GUSTA = "MeGusta";

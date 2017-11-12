@@ -8,15 +8,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> {
+public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> implements ICodigos{
 
     private ArrayList<DataBaseItem> listaCabecera;
     private DAOBase dao;
     private Topic cabecera;
+    private Integer claseTopic;
 
-    public AdapterTopic(ArrayList<DataBaseItem> listaCabecera, DAOBase dao) {
+    public AdapterTopic(ArrayList<DataBaseItem> listaCabecera, DAOBase dao, Integer claseTopic) {
         this.listaCabecera = listaCabecera;
         this.dao = dao;
+        this.claseTopic = claseTopic;
     }
 
     @Override
@@ -45,7 +47,12 @@ public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> 
         //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
         Usuario usuarioAux = new Usuario();
-        Integer idAutor = cabecera.getIdUsuario();
+        Integer idAutor;
+        if (claseTopic == TOPIC_CHAT_SALIENTE){ //Lo que se recupera aqui es el destinatario
+            idAutor = ((Chat)cabecera).getIdUsuarioDestino();
+        }else{ //Es chat entrante o publicacion, se recupera el autor
+            idAutor = cabecera.getIdUsuario();
+        }
         usuarioAux.setIdUsuario(idAutor);
         HiloParaRead hiloParaRead = new HiloParaRead(new DAOUsuario());
         try {

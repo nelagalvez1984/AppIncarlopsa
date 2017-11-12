@@ -19,11 +19,12 @@ public class VMostrarImagen extends AppCompatActivity implements IVista{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vmostrar_imagen);
+        inicializarVista();
     }
 
     @Override
     public void inicializarVista() {
-        foto = (ImageView)findViewById(R.id.MostrarImagenFoto);
+        foto = (ImageView)findViewById(R.id.mostrarImagenFoto);
         foto.setOnClickListener(this);
         Adjunto adjuntoAux = galeria.getFotoAdjunta();
         foto.setImageBitmap(adjuntoAux.getFoto().getFotoBMP());

@@ -24,7 +24,10 @@
         </activity>
         <activity
             android:name=".VLogin"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+
+
+        </activity>
         <activity
             android:name=".VCabeceraChat"
             android:screenOrientation="portrait"/>

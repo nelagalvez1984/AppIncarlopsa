@@ -1,113 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/md_white_1000"
-    tools:context="incarlopsa.com.appincarlopsa.VLogin">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/colorWhiteFondos"
+              android:layout_margin="10dp"
+              tools:context="incarlopsa.com.appincarlopsa.VLogin">
 
-    <ImageView
-        android:id="@+id/imgIncarlopsamenu"
-        android:layout_width="329dp"
-        android:layout_height="113dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datostxt"
-        app:layout_constraintVertical_bias="0.16"
-        app:srcCompat="@drawable/icono_incarlopsa" />
-
-    <EditText
-        android:id="@+id/etUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="320dp"
-        android:background="@color/cardview_light_background"
-        android:ems="10"
-        android:hint="Usuario"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:textColor="#1d871e"
-        android:textStyle="bold|italic"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@color/cardview_light_background"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        android:maxLines="1"
-        android:password="true"
-        android:textColor="#1d871e"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsuario"
-        tools:ignore="Deprecated,HardcodedText,MissingConstraints"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_weight="1"
+        android:background="@color/colorWhiteFondos"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/datostxt"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/loginRelleno6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/loginRelleno9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/imgIncarlopsamenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/icono_incarlopsa"/>
+
+                <TextView
+                    android:id="@+id/loginRelleno8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/loginRelleno7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhiteFondos"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="61dp"
-        android:layout_marginTop="62dp"
-        android:background="@color/md_white_1000"
-        android:text="¡Bienvenido!"
-        android:textColor="#1d871e"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_weight="1"
+        android:background="@color/colorWhiteFondos"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/loginRelleno10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhiteFondos"
+            />
 
-    <Button
-        android:id="@+id/btnConectar"
-        style="@android:style/Widget.Material.ImageButton"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:ems="10"
+            android:hint="Usuario"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:textAlignment="center"
+            android:textColor="@color/colorVerdeCabeceras"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhiteFondos"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorVerdeCabeceras"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/datostxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/md_white_1000"
+            android:text="¡Bienvenido!"
+            android:textAlignment="center"
+            android:textColor="@color/colorVerdeApp"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/loginRelleno5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhiteFondos"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_image_button"
+        android:background="@color/colorWhiteFondos"
+        android:layout_marginBottom="42dp"
+        android:orientation="horizontal">
 
-        android:fontFamily="sans-serif"
-        android:text="Conectar"
-        android:textColor="@color/cardview_light_background"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.322"
-        tools:ignore="HardcodedText"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        <TextView
+            android:id="@+id/loginRelleno2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteFondos"
+            android:layout_weight="1"/>
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btnConectar"
+            style="@android:style/Widget.Material.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_image_button"
+            android:fontFamily="sans-serif"
+            android:text="Conectar"
+            android:textColor="@color/cardview_light_background"
+            android:textStyle="bold|italic"/>
+
+        <TextView
+            android:id="@+id/loginRelleno3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteFondos"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">IncarlopsAPP!</string>
     <string name="app_web">www.incarlopsa.es</string>
-    <string name="settings">Settings</string>
-    <string name="action_settings">A saco paco</string>
     <string name="nombre">Nombre</string>
     <string name="comentario">Comentario</string>
     <string name="fecha_hora">fecha/hora</string>
@@ -10,10 +8,19 @@
     <string name="chat">Chat</string>
     <string name="menu">Menú</string>
     <string name="desconectar">Desconectar</string>
-    <string name="titulo_publicacion">Titulo Publicacion</string>
+    <string name="titulo_publicacion">Publicaciones</string>
     <string name="entrantes">Entrantes</string>
     <string name="salientes">Salientes</string>
     <string name="chats">Chats</string>
+    <string name="publicaciones">Publicaciones</string>
     <string name="title_activity_crear_nchat">Crear nuevo chat</string>
+    <string name="iniciar_nuevo_chat">Iniciar nuevo chat</string>
+    <string name="crear_nueva_publicacion">Crear publicacion</string>
+    <string name="contactar_con_rrhh">Contactar con RRHH</string>
+    <string name="contactar_con_cualquiera">Contactar</string>
+    <string name="seccion_rrhh">Seccion RRHH</string>
+    <string name="seccion_admin">Seccion Admin</string>
+    <string name="cosas_de_admin">Cosas de admin</string>
+
 
 </resources>

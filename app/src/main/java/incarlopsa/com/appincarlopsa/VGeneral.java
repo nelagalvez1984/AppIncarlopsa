@@ -29,7 +29,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     //Propiedades
     private SingleCredenciales credenciales = SingleCredenciales.getInstance();
-    private TESTFactoriaItems factoriaItems = new TESTFactoriaItems();
 
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -297,7 +296,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
             Boolean siONo = file.canRead();
             byte[] bytes = FileUtils.readFileToByteArray(file);
             Integer longitud = bytes.length;
-            if (longitud>1048576){//Maximo de 1MB
+            if (longitud>TAMANO_MAXIMO_FICHERO){//Maximo de 1MB
                 throw new EXCTamanoSuperado();
             }
 
