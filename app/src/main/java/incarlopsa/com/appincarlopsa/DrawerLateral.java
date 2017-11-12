@@ -59,7 +59,6 @@ public class DrawerLateral {
     5.- Si se quiere abrir el drawer ante un determinado click, se saca con esta sentencia:
     drawerLayout.openDrawer(GravityCompat.START);
 
-
     */
 
     public void setupDrawer(NavigationView navigationView) {

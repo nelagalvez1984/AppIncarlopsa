@@ -49,7 +49,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vgeneral_empleado);
         tostada.setContexto(this);
-
+/*
         //todo RETIRAR ESTO, ESTA DE PRUEBAS!
         credenciales.setLogin(USUARIO_TEST_NORMAL);
         credenciales.setPassword(PASSWORD_TEST_NORMAL);
@@ -82,7 +82,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
             tostada.errorConexionBBDD();
         }
 
-
+*/
         //TODO aqui sigue con naturalidad
 
         inicializarVista();
@@ -133,11 +133,14 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         //Fijar el drawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer_layout);
 
-        //Poner si procede la foto de usuario en el drawer
-
+        //Fijar la cabecera
         View headerView = navigationView.inflateHeaderView(R.layout.navigation_drawer_header);
+
+        //Poner la foto de la cabecera a la escucha
         fotoUsuario = (ImageView)headerView.findViewById(R.id.drawerFotoUsuario);
         fotoUsuario.setOnClickListener(this);
+
+        //Poner la foto del usuario si la tiene personalizada
         Foto fotoAux = credenciales.getFoto();
         if (fotoAux.getFotoBytes() != null){ //Si ha personalizado la foto, ponerla, si no dejar la default
             fotoUsuario.setImageBitmap(fotoAux.getFotoBMP());
@@ -204,12 +207,12 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     @Override
     public void onClick(View v) {
-        //Al hacer click en el fondo, sacar el menu
+
         switch (v.getId()){
-            case R.id.fondoInicial:
+            case R.id.fondoInicial: //Al hacer click en el fondo, sacar el menu
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.drawerFotoUsuario:
+            case R.id.drawerFotoUsuario: //Al pinchar en la foto, abrir el explorador para sustituirla
                 intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
@@ -226,7 +229,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                 //Recoger path
                 uri = data.getData();
                 agregarAdjunto();
-
             }
         }
         tostada.setContexto(this);
@@ -256,7 +258,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
                     filePath = "";
                     tostada.errorPermisoDenegado();
                 }
-
             }
         }
     }
@@ -287,7 +288,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
 
     private void recogerFoto() {
         try {
-
             //Recoger la foto
             if (filePath.length()==0){
                 throw new EXCFotoNoSePuedeLeer();
@@ -337,7 +337,4 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
             tostada.errorConexionBBDD();
         }
     }
-
-
-
 }

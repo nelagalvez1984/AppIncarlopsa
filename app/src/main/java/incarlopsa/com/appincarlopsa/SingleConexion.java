@@ -61,6 +61,7 @@ class SingleConexion implements ICodigos{
             try {
                 conexion.close();
                 System.out.println("Desconexion!");
+                conexion = null;
             } catch (SQLException e) {
                 singleTostada.errorConexionBBDD();
             }

@@ -33,6 +33,7 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
         try {
 
             resultadosUsuarios = hiloParaRead.execute(DAME_TODOS).get();
+
             //Retirarse a si mismo de la lista
             Usuario usuarioAux;
             for(DataBaseItem item : resultadosUsuarios){
@@ -45,6 +46,7 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
 
             //Comprobar si soy empleado raso (para dejar en la lista solo a RRHH)
             if (credenciales.getTipoEmpleado().equals(EMPLEADO)){
+
                 //Retirar de la lista todos los empleados rasos
                 ArrayList<DataBaseItem> usuariosFiltrados = new ArrayList<>();
                 for(DataBaseItem item : resultadosUsuarios){
@@ -56,7 +58,7 @@ public class DialogUsuarios extends DialogFragment implements ICodigos{
                 resultadosUsuarios = usuariosFiltrados;
             }
 
-            if (resultadosUsuarios.size()>0){ //Deberia serlo, debe haber mas de 1 empleado en la empresa
+            if (resultadosUsuarios.size()>0){ //Deberia serlo, debe haber al menos 1 empleado en la empresa
                 recyclerView = (RecyclerView)v.findViewById(R.id.recyDialogUsuarios);
                 Context contexto = v.getContext();
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(contexto);
