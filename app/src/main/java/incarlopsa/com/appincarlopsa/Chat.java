@@ -11,8 +11,6 @@ public class Chat extends Topic {
     private ArrayList<DataBaseItem> mensajes = null;
 
     //Constructores
-
-
     public Chat(Integer idTopic, Integer idUsuario, Integer idUsuarioDestino, String titulo, String fechaCreacion,
                 String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate, Boolean finalizado,
                 ArrayList<DataBaseItem> mensajes) {
@@ -41,22 +39,19 @@ public class Chat extends Topic {
     public ArrayList<DataBaseItem> getMensajes() {
         return mensajes;
     }
-
     public void setMensajes(ArrayList<DataBaseItem> mensajes) {
         this.mensajes = mensajes;
-    }
-
-    public void setNuevoMensaje(Mensaje mensaje){
-        mensajes.add(mensaje);
     }
 
     public Integer getIdUsuarioDestino() {
         return idUsuarioDestino;
     }
+    public void setIdUsuarioDestino(Integer idUsuarioDestino) { this.idUsuarioDestino = idUsuarioDestino; }
 
-    public void setIdUsuarioDestino(Integer idUsuarioDestino) {
-        this.idUsuarioDestino = idUsuarioDestino;
+    public void setNuevoMensaje(Mensaje mensaje){
+        mensajes.add(mensaje);
     }
+
 
     //Equals y hash
 

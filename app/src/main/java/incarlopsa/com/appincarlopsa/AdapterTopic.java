@@ -43,17 +43,19 @@ public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         cabecera = (Topic)listaCabecera.get(position);
-
-        //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
         Usuario usuarioAux = new Usuario();
         Integer idAutor;
+
+        //Comprobar de que clase de topic hablamos
         if (claseTopic == TOPIC_CHAT_SALIENTE){ //Lo que se recupera aqui es el destinatario
             idAutor = ((Chat)cabecera).getIdUsuarioDestino();
         }else{ //Es chat entrante o publicacion, se recupera el autor
             idAutor = cabecera.getIdUsuario();
         }
         usuarioAux.setIdUsuario(idAutor);
+
+        //Recuperar el usuario
         HiloParaRead hiloParaRead = new HiloParaRead(new DAOUsuario());
         try {
             resultados = hiloParaRead.execute(usuarioAux).get();
@@ -69,22 +71,22 @@ public class AdapterTopic extends RecyclerView.Adapter<AdapterTopic.ViewHolder> 
             usuarioAux.setApellidos("Desconocido");
         }
 
+        //Asignaciones
         String titulo = cabecera.getTitulo();
         String autor = usuarioAux.getNombre() + " "
                 + usuarioAux.getApellidos();
-
         String fechaCreacion = cabecera.getFechaCreacion();
         String horaCreacion = cabecera.getHoraCreacion();
         String fechaUpdate = cabecera.getFechaUltimoUpdate();
         String horaUpdate = cabecera.getHoraUltimoUpdate();
 
+        //Actualizar graficamente el holder
         holder.titulo.setText(titulo);
         holder.autor.setText(autor);
         holder.fechaCreacion.setText(fechaCreacion);
         holder.horaCreacion.setText(horaCreacion);
         holder.fechaUpdate.setText(fechaUpdate);
         holder.horaUpdate.setText(horaUpdate);
-
 
     }
 

@@ -3,7 +3,7 @@ package incarlopsa.com.appincarlopsa;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Adjunto extends DataBaseItem implements Parcelable{
+public class Adjunto extends DataBaseItem{
 
     //Propiedades
     private Integer idPublicacion = null;
@@ -20,15 +20,10 @@ public class Adjunto extends DataBaseItem implements Parcelable{
 
     public Adjunto(){}
 
-    private Adjunto(Parcel in){
-        readFromParcel(in);
-    }
-
     //Getter / Setter
     public Foto getFoto() {
         return foto;
     }
-
     public void setFoto(Foto foto) {
         this.foto = foto;
     }
@@ -36,7 +31,6 @@ public class Adjunto extends DataBaseItem implements Parcelable{
     public String getNombreAdjunto() {
         return nombreAdjunto;
     }
-
     public void setNombreAdjunto(String nombreAdjunto) {
         this.nombreAdjunto = nombreAdjunto;
     }
@@ -44,7 +38,6 @@ public class Adjunto extends DataBaseItem implements Parcelable{
     public Integer getIdPublicacion() {
         return idPublicacion;
     }
-
     public void setIdPublicacion(Integer idPublicacion) {
         this.idPublicacion = idPublicacion;
     }
@@ -74,36 +67,4 @@ public class Adjunto extends DataBaseItem implements Parcelable{
         return result;
     }
 
-    //Metodos parcelables
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel out, int flags) {
-        out.writeInt(id);
-        out.writeInt(idPublicacion);
-        out.writeParcelable(foto,0);
-        out.writeString(nombreAdjunto);
-    }
-
-    public static final Parcelable.Creator<Adjunto> CREATOR
-            = new Parcelable.Creator<Adjunto>() {
-        public Adjunto createFromParcel(Parcel in) {
-            return new Adjunto(in);
-        }
-
-        public Adjunto[] newArray(int size) {
-            return new Adjunto[size];
-        }
-    };
-
-    private void readFromParcel(Parcel in){
-        id = in.readInt();
-        idPublicacion = in.readInt();
-        foto = in.readParcelable(Foto.class.getClassLoader());
-        nombreAdjunto = in.readString();
-
-    }
 }

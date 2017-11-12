@@ -55,21 +55,17 @@ public class DAOUsuario extends DAOBase implements IDAO{
                 prepararConsulta(consultaSQL);
                 cargarConsulta(usuarioTemporal.getTipoEmpleado());
 
-
             }else{
                 if (usuarioTemporal.getUsername() != null){ //Se esta reclamando el perfil completo
                     consultaSQL = consultaLecturaPorUsername;
                     prepararConsulta(consultaSQL);
                     cargarConsulta(usuarioTemporal.getUsername());
 
-
                 }else{
                     //Resto de casos. Si no se nos ocurren mas casos, es que sera una lectura por ID
                     consultaSQL = consultaLecturaPorId;
                     prepararConsulta(consultaSQL);
                     cargarConsulta(usuarioTemporal.getId());
-
-
                 }
             }
         }
@@ -86,6 +82,7 @@ public class DAOUsuario extends DAOBase implements IDAO{
                     resultados.getString(5), //TipoEmpleado
                     new Foto(resultados.getBytes(6)), //Foto
                     resultados.getString(7) ); //Username
+
         }else{ //sin username
             usuarioAux = new Usuario( resultados.getInt(1), //IdUsuario
                     resultados.getString(2), //Nombre

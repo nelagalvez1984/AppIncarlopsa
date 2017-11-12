@@ -1,4 +1,3 @@
 package incarlopsa.com.appincarlopsa;
 
-public class EXCTamanoSuperado extends Exception {
-}
+public class EXCTamanoSuperado extends Exception {}

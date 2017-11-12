@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 public class DAOAdjunto extends DAOBase implements IDAO {
 
-    //Propiedades
-
     //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO adjunto SET idPublicacion = ?, binario = ? "
             + " , nombre = ?";
@@ -63,7 +61,7 @@ public class DAOAdjunto extends DAOBase implements IDAO {
     @Override
     protected void prepararDelete(Object elementoAModelar) throws SQLException {
         Adjunto elementoABorrar = (Adjunto)elementoAModelar;
-        if (elementoABorrar.getIdPublicacion() != null){ //Borrar toda la comentario
+        if (elementoABorrar.getIdPublicacion() != null){ //Borrar toda la publicacion
             consultaSQL = consultaDeletePublicacion;
             prepararConsulta(consultaSQL);
             cargarConsulta(elementoABorrar.getIdPublicacion());

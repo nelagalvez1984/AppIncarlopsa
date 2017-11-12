@@ -19,7 +19,6 @@ public class SingleCredenciales extends Usuario{
     public String getLogin() {
         return LOGIN;
     }
-
     public void setLogin(String login) {
         this.LOGIN = login;
     }
@@ -27,7 +26,6 @@ public class SingleCredenciales extends Usuario{
     public String getPassword() {
         return PASSWORD;
     }
-
     public void setPassword(String password) {
         this.PASSWORD = password;
     }

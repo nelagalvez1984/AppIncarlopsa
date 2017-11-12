@@ -5,11 +5,6 @@ import java.util.ArrayList;
 
 public class DAOComentario extends DAOBase implements IDAO, ICodigos {
 
-    //Propiedades
-
-    //Constructor
-    public DAOComentario() { }
-
     //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO comentario SET idPublicacion = ?, idUsuario = ?, fecha = NOW(), comentario = ?";
     private String consultaLecturaPorId = "SELECT idComentario,idPublicacion, idUsuario, "
@@ -30,8 +25,6 @@ public class DAOComentario extends DAOBase implements IDAO, ICodigos {
                         aux.getIdUsuario(),
                         aux.getMensaje());
     }
-
-
 
     //LECTURA
     //Tipo de filtro a aplicar a la consulta de lectura

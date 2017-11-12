@@ -10,9 +10,7 @@ public class Publicacion extends Topic{
     private ArrayList<DataBaseItem> comentarios = null;
     private ArrayList<DataBaseItem> adjuntos = null;
 
-    //Constructor
-
-
+    //Constructores
     public Publicacion(Integer idTopic, Integer idUsuario, String titulo, String fechaCreacion, String horaCreacion, String fechaUltimoUpdate, String horaUltimoUpdate, ArrayList<DataBaseItem> adjuntos) {
         super(idTopic, idUsuario, titulo, fechaCreacion, horaCreacion, fechaUltimoUpdate, horaUltimoUpdate);
         this.adjuntos = adjuntos;
@@ -40,22 +38,16 @@ public class Publicacion extends Topic{
     public ArrayList<DataBaseItem> getComentarios() {
         return comentarios;
     }
-
-    public void setComentarios(ArrayList<DataBaseItem> comentarios) {
-        this.comentarios = comentarios;
-    }
+    public void setComentarios(ArrayList<DataBaseItem> comentarios) { this.comentarios = comentarios; }
 
     public ArrayList<DataBaseItem> getAdjuntos() {
         return adjuntos;
     }
-
     public void setAdjuntos(ArrayList<DataBaseItem> adjuntos) {
         this.adjuntos = adjuntos;
     }
 
     //Equals y hash
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

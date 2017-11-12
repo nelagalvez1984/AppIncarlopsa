@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class DAOLikes extends DAOBase implements IDAO{
 
-    //Propiedades
+    //Consultas parametrizadas
     String consultaLecturaPorId = "SELECT idLike, idUsuario, idComentario, tipoLike FROM likes WHERE idComentario = ?";
     String consultaVerSiHaVotado = "SELECT idLike, idUsuario, idComentario, tipoLike FROM likes " +
             "WHERE idComentario = ? AND idUsuario = ?";
@@ -13,10 +13,6 @@ public class DAOLikes extends DAOBase implements IDAO{
     String consultaUpdate = "UPDATE likes SET idUsuario = ? , idComentario = ? , tipoLike = ? WHERE idLike = ?";
     String consultaDeleteComentarioEntero = "DELETE FROM likes WHERE idComentario = ?";
     String consultaDeleteSoloLike = "DELETE FROM likes WHERE idLike = ?";
-
-    //Constructores
-
-    public DAOLikes() { }
 
     //Metodos
     //LECTURA
@@ -55,7 +51,6 @@ public class DAOLikes extends DAOBase implements IDAO{
         }
 
         resultadoMultiple.add(aux);
-
     }
 
     //CREACION

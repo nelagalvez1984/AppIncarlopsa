@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
 
-    //Propiedades
     //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO publicacion SET idUsuario = ?, titulo = ?, fecha = NOW(), ultimoUpdate = NOW()";
     private String consultaLecturaPorId = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
@@ -20,9 +19,6 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
     private String consultaTopics = "SELECT idPublicacion, idUsuario, titulo, DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, " +
             "TIME_FORMAT(fecha, '%H:%i') AS horacreacion, DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, " +
             "TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate FROM publicacion ORDER BY ultimoUpdate DESC";
-
-    //Constructor
-    public DAOPublicacion() {}
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -170,14 +166,11 @@ public class DAOPublicacion extends DAOBase implements IDAO, ICodigos {
         }
 
         //Leer todos los items con esa idPublicacion
-
         resultadosCascada = dao.read(item);
 
         //Borrarlos uno a uno
         for(DataBaseItem a : resultadosCascada){
             dao.delete(a);
         }
-
     }
-
 }

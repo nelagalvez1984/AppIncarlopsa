@@ -7,8 +7,10 @@ import java.sql.SQLException;
 public class HiloParaCreate extends AsyncTask<Object, Void, Boolean> implements ICodigos{
 
 
-    //CODIGO DE EJEMPLO DE CREACION // Creacion --> llamada: execute(objetoACrear)
+
     /*
+        // CODIGO DE EJEMPLO DE CREACION //
+
         Usuario usuarioParaCrear = new Usuario(1,"a","b","c","d",null);
         HiloParaCreate hilo = new HiloParaCreate(new DAOUsuario());
         boolean retornoCreacion = false;
@@ -21,6 +23,7 @@ public class HiloParaCreate extends AsyncTask<Object, Void, Boolean> implements 
 
     //Propiedades
     private DAOBase dao;
+    SingleTostada tostada = SingleTostada.getInstance();
 
     //Constructor
     public HiloParaCreate(DAOBase dao) {
@@ -40,14 +43,19 @@ public class HiloParaCreate extends AsyncTask<Object, Void, Boolean> implements 
                     System.out.println("Creacion correcta!");
                 } else {
                     System.out.println("No se ha podido crear!");
+                    throw new EXCErrorBBDD();
                 }
             }else{ //Error en la llamada!
-                return null;
+                throw new EXCNumParametrosIncorrecto();
             }
-        } catch (SQLException e) {
-            SingleTostada singleTostada = SingleTostada.getInstance();
-            singleTostada.errorConexionBBDD();
+        }catch(EXCNumParametrosIncorrecto e) {
+            tostada.errorNumeroParametrosIncorrecto();
+        }catch(EXCErrorBBDD e) {
+            tostada.errorConexionBBDD();
+        }catch(SQLException e) {
+            tostada.errorConexionBBDD();
         }
+
         return operacionCorrecta;
     }
 

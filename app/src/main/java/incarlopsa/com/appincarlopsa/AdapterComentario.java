@@ -30,9 +30,13 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         final ViewHolder viewHolder = new ViewHolder(v);
 
         final ImageView botonLike = (ImageView)v.findViewById(R.id.btnComentarioLike);
+
+        //Evento: Me gusta
         botonLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View meGusta) {
+
+                //Obtener la posicion en el adaptador
                 Integer id = meGusta.getId();
                 int position = viewHolder.getAdapterPosition();
                 if(mListener!=null) {
@@ -41,8 +45,9 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
 
                 Comentario comentarioAux = (Comentario)listaComentarios.get(position);
                 ArrayList<DataBaseItem> likes = comentarioAux.getArrayLikes();
+
                 //Verificar que no he votado ya
-                //1.- Recorrer el Array y ver si estoy
+                //1.- Recorrer el Array y ver si estoy (Osea, si he votado antes)
                 MeAlgo meAlgo;
                 Boolean todoOk = true;
                 for(DataBaseItem m : likes){
@@ -52,7 +57,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
                         break;
                     }
                 }
-                if (todoOk){
+                if (todoOk){ //Si no habia votado aun...
                     MeGusta meGustaAux = new MeGusta();
                     meGustaAux.setIdUsuario(credenciales.getIdUsuario());
                     meGustaAux.setIdComentario(comentarioAux.getId());
@@ -62,12 +67,17 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
                         if (!todoOk){
                             throw new EXCErrorBBDD();
                         }
+
+                        //Actualizar la parte grafica del holder
                         viewHolder.fotoMeGusta.setImageDrawable(viewHolder.recursos.getDrawable(R.drawable.likeverde));
                         viewHolder.fotoMeDisgusta.setEnabled(false);
                         viewHolder.fotoMeGusta.setEnabled(false);
+
+                        //Aumentar en 1 los MeGusta (visualmente)
                         Integer num = Integer.parseInt(viewHolder.numLikes.getText().toString());
                         num++;
                         viewHolder.numLikes.setText(num.toString());
+
                     } catch (EXCErrorBBDD e) {
                         tostada.errorConexionBBDD();
                     } catch (Exception e) {
@@ -79,9 +89,13 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
 
 
         final ImageView botonDislike = (ImageView)v.findViewById(R.id.btnComentarioDislike);
+
+        //Evento: No me gusta
         botonDislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View meDisgusta) {
+
+                //Obtener la posicion en el adaptador
                 Integer id = meDisgusta.getId();
                 int position = viewHolder.getAdapterPosition();
                 if(mListener!=null) {
@@ -90,6 +104,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
 
                 Comentario comentarioAux = (Comentario)listaComentarios.get(position);
                 ArrayList<DataBaseItem> likes = comentarioAux.getArrayLikes();
+
                 //Verificar que no he votado ya
                 //1.- Recorrer el Array y ver si estoy
                 MeAlgo meAlgo;
@@ -101,7 +116,8 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
                         break;
                     }
                 }
-                if (todoOk){
+
+                if (todoOk){ //Si no habia votado aun...
                     MeDisgusta meDisgustaAux = new MeDisgusta();
                     meDisgustaAux.setIdUsuario(credenciales.getIdUsuario());
                     meDisgustaAux.setIdComentario(comentarioAux.getId());
@@ -111,12 +127,17 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
                         if (!todoOk){
                             throw new EXCErrorBBDD();
                         }
+
+                        //Actualizar la parte grafica del holder
                         viewHolder.fotoMeDisgusta.setImageDrawable(viewHolder.recursos.getDrawable(R.drawable.dislikerojo));
                         viewHolder.fotoMeDisgusta.setEnabled(false);
                         viewHolder.fotoMeGusta.setEnabled(false);
+
+                        //Aumentar en 1 los NoMeGusta (visualmente)
                         Integer num = Integer.parseInt(viewHolder.numDislikes.getText().toString());
                         num++;
                         viewHolder.numDislikes.setText(num.toString());
+
                     } catch (EXCErrorBBDD e) {
                         tostada.errorConexionBBDD();
                     } catch (Exception e) {
@@ -134,24 +155,23 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         Comentario comentario = (Comentario) listaComentarios.get(position);
 
-
         //Recuperar el usuario que ha creado el comentario
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
 
         //Colorear el cardview
         View cardView = holder.v;
         Resources recursos = cardView.getResources();
-
- //       Layout l = (Layout)cardView.findViewById(R.id.) ;
         cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_entrante));
 
         //Recuperar el nombre del usuario
         String nombreUsuario;
         Usuario usuarioAux;
+
         if (comentario.getIdUsuario() == credenciales.getIdUsuario()){
             nombreUsuario = credenciales.getNombre()+" "+credenciales.getApellidos();
             usuarioAux = (Usuario)credenciales;
-        }else{ //Por si acaso
+
+        }else{ //Por si acaso, etiquetar como "usuario desconocido" si no se recoge el usuario
             usuarioAux = new Usuario();
             usuarioAux.setIdUsuario(comentario.getIdUsuario());
             hiloParaRead = new HiloParaRead(new DAOUsuario());
@@ -175,10 +195,12 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         for(DataBaseItem m : likes){
             meAlgo = (MeAlgo)m;
             if (meAlgo.getIdUsuario() == credenciales.getIdUsuario()){ //Ya he votado! ver que tipo es
+
                 if (meAlgo instanceof MeGusta){ // MeGusta
                     holder.fotoMeGusta.setImageDrawable(holder.recursos.getDrawable(R.drawable.likeverde));
                     holder.fotoMeDisgusta.setEnabled(false);
                     holder.fotoMeGusta.setEnabled(false);
+
                 }else{ //NoMegusta
                     holder.fotoMeDisgusta.setImageDrawable(holder.recursos.getDrawable(R.drawable.dislikerojo));
                     holder.fotoMeDisgusta.setEnabled(false);
@@ -187,7 +209,6 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
             }
         }
 
-
         //Resto de asignaciones
         String fecha = comentario.getFecha();
         String hora = comentario.getHora();
@@ -195,6 +216,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         String numLikes = comentario.getNumeroMeGusta().toString();
         String numDislikes = comentario.getNumeroMeDisgusta().toString();
 
+        //Actualizar visualmente el holder
         holder.nombreUsuario.setText(nombreUsuario);
         holder.fecha.setText(fecha);
         holder.hora.setText(hora);
@@ -204,7 +226,6 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         if (usuarioAux.getFotoBytes() != null){ //Poner su foto en caso de que tenga
             holder.fotoUsuario.setImageBitmap(usuarioAux.getFotoBMP());
         }
-
 
     }
 

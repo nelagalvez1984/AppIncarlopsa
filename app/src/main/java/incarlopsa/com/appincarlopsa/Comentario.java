@@ -24,7 +24,6 @@ public class Comentario extends MensajeBase {
     Integer getNumeroMeGusta(){
         return contar("MeGusta");
     }
-
     Integer getNumeroMeDisgusta(){
         return contar("MeDisgusta");
     }
@@ -32,7 +31,6 @@ public class Comentario extends MensajeBase {
     ArrayList<DataBaseItem> getMeGusta(){
         return recoger("MeGusta");
     }
-
     ArrayList<DataBaseItem> getMeDisgusta(){
         return recoger("MeDisgusta");
     }
@@ -40,7 +38,6 @@ public class Comentario extends MensajeBase {
     public ArrayList<DataBaseItem> getArrayLikes() {
         return arrayLikes;
     }
-
     public void setArrayLikes(ArrayList<DataBaseItem> arrayLikes) {
         this.arrayLikes = arrayLikes;
     }
@@ -55,7 +52,6 @@ public class Comentario extends MensajeBase {
         Comentario that = (Comentario) o;
 
         return arrayLikes != null ? arrayLikes.equals(that.arrayLikes) : that.arrayLikes == null;
-
     }
 
     @Override

@@ -15,10 +15,6 @@ import java.util.ArrayList;
 public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHolder> implements ICodigos{
 
     private ArrayList<DataBaseItem> listaUsuarios;
-    private SingleCredenciales credenciales = SingleCredenciales.getInstance();
-    private HiloParaRead hiloParaRead;
-    private ArrayList<DataBaseItem> resultadosUsuarios;
-    private SingleTostada tostada = SingleTostada.getInstance();
     private RetornoAdaptadorUsuario retornoAdaptadorUsuario;
 
     public AdapterUsuario(ArrayList<DataBaseItem> listaUsuarios, Context contexto) {
@@ -44,8 +40,9 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
                     mListener.onItemClick(listaUsuarios.get(position), position);
                 }
 
+                //Devolucion del usuario
                 Usuario usuarioAux = (Usuario) listaUsuarios.get(position);
-                retornoAdaptadorUsuario.devolverUsuario(usuarioAux); //Aqui se devuelve
+                retornoAdaptadorUsuario.devolverUsuario(usuarioAux); //Aqui se devuelve, metodo callback
 
             }
         });
@@ -62,7 +59,7 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
         String apellidos = usuarioAux.getApellidos();
         String tipoEmpleado = usuarioAux.getTipoEmpleado();
 
-
+        //Actualizar graficamente el holder
         holder.nombreUsuario.setText(nombre+" "+apellidos);
         holder.tipoEmpleado.setText(tipoEmpleado);
 

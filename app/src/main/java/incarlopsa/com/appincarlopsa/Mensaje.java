@@ -24,7 +24,6 @@ public class Mensaje extends MensajeBase {
     public Boolean getLeidoPorDestino() {
         return leidoPorDestino;
     }
-
     public void setLeidoPorDestino(Boolean leidoPorDestino) {
         this.leidoPorDestino = leidoPorDestino;
     }

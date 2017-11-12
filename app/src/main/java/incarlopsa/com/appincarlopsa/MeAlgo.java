@@ -18,13 +18,11 @@ public abstract class MeAlgo extends DataBaseItem{
 
     //Getter/Setter
     public abstract String getTipo();
-
     public abstract void setTipo(String tipo);
 
     public Integer getIdUsuario() {
         return idUsuario;
     }
-
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -32,13 +30,11 @@ public abstract class MeAlgo extends DataBaseItem{
     public Integer getIdComentario() {
         return idComentario;
     }
-
     public void setIdComentario(Integer idComentario) {
         this.idComentario = idComentario;
     }
-//Equals y Hash
 
-
+    //Equals y Hash
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,7 +44,6 @@ public abstract class MeAlgo extends DataBaseItem{
         MeAlgo meAlgo = (MeAlgo) o;
 
         return tipo.equals(meAlgo.tipo);
-
     }
 
     @Override

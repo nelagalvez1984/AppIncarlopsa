@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class AdapterAdjunto extends RecyclerView.Adapter<AdapterAdjunto.ViewHolder> implements ICodigos{
 
     private ArrayList<DataBaseItem> listaAdjuntos;
-    private SingleTostada tostada = SingleTostada.getInstance();
 
     public AdapterAdjunto(ArrayList<DataBaseItem> listaAdjuntos) {
         this.listaAdjuntos = listaAdjuntos;
@@ -50,16 +49,21 @@ public class AdapterAdjunto extends RecyclerView.Adapter<AdapterAdjunto.ViewHold
 
         //Asignaciones
         String nombreAdjunto = adjuntoAux.getNombreAdjunto();
+
+        //Calculo del tamaño del archivo
         Integer tamanoAdjunto = (adjuntoAux.getFoto().getFotoBytes().length)/1000;
         String tamanoFormateado = "";
-        if (tamanoAdjunto >= 1000){//Se trata de megas
+        if (tamanoAdjunto >= 1000){//Se trata de MB
             tamanoAdjunto = (tamanoAdjunto/1000);
             tamanoFormateado = tamanoAdjunto.toString()+"MB";
-        }else{
+        }else{ //Se trata de KB
             tamanoFormateado = tamanoAdjunto.toString()+"KB";
         }
+
+        //Convertir la foto a BMP
         Bitmap foto = adjuntoAux.getFoto().getFotoBMP();
 
+        //Actualizar el holder con los datos de la foto
         holder.nombreAdjunto.setText(nombreAdjunto);
         holder.tamanoAdjunto.setText(tamanoFormateado);
         holder.imagenMiniatura.setImageBitmap(foto);
@@ -69,7 +73,6 @@ public class AdapterAdjunto extends RecyclerView.Adapter<AdapterAdjunto.ViewHold
     public void actualizarAumentandoLista(){
         notifyDataSetChanged();
     }
-
 
     public void actualizar(ArrayList<DataBaseItem> nuevaLista){
         listaAdjuntos.clear();

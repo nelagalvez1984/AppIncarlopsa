@@ -12,18 +12,18 @@ class SingleConexion implements ICodigos{
     private String URLServidor;
     SingleTostada singleTostada = SingleTostada.getInstance();
 
+    //Constructor
+    private SingleConexion() { }
 
+    //Get Instance
     static SingleConexion getInstance() {
         return ourInstance;
     }
 
-    private SingleConexion() { }
+    //Recuperar la conexion
+    public Connection conectar() { return conexion; }
 
-    public Connection conectar() {
-
-        return conexion;
-    }
-
+    //Crear una conexion (se emplea solo al inicio)
     public Connection conexionInicial() {
 
         try {
@@ -50,11 +50,13 @@ class SingleConexion implements ICodigos{
         return conexion;
     }
 
+    //Metodo simbolico
     public void desconectar(){
         // Nada
     }
 
-    public void desconexionInicial(){
+    //Desconexion del sistema
+    public void desconexionDelSistema(){
         if (conexion != null){
             try {
                 conexion.close();
@@ -64,5 +66,4 @@ class SingleConexion implements ICodigos{
             }
         }
     }
-
 }

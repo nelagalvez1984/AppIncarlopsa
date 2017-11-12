@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAOChat extends DAOBase implements IDAO, ICodigos {
-    //Propiedades
+
     //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO chat SET idUsuario = ?, idUsuarioDestino = ?, titulo = ?, fecha = NOW(), " +
             "ultimoUpdate = NOW(), finalizado = ?";
@@ -28,11 +28,6 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
             "DATE_FORMAT(fecha, '%d/%m/%y') AS fechacreacion, TIME_FORMAT(fecha, '%H:%i') AS horacreacion, " +
             "DATE_FORMAT(ultimoUpdate, '%d/%m/%y') AS fechaupdate, TIME_FORMAT(ultimoUpdate, '%H:%i') AS horaupdate, " +
             "finalizado FROM chat WHERE idUsuarioDestino = ? AND finalizado = false";
-
-    //Constructor
-
-    public DAOChat() {
-    }
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -82,7 +77,6 @@ public class DAOChat extends DAOBase implements IDAO, ICodigos {
     //Rellenar el array de resultados con cada resultado
     @Override
     protected void rellenarObjetos() throws SQLException {
-
         Chat aux = new Chat(resultados.getInt(1), //IdChat
                 resultados.getInt(2), //IdUsuario
                 resultados.getInt(3), //IdUsuarioDestino

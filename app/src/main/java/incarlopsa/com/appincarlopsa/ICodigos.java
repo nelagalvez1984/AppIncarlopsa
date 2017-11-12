@@ -3,10 +3,6 @@ package incarlopsa.com.appincarlopsa;
 public interface ICodigos {
 
     //Codigos universales
-    int TODO_OK = 0;
-    int CANCELAR = -1;
-    int SALIR = -999;
-    int ENTRADA_DUPLICADA = 1062;
     int CODIGO_DEVOLUCION_PATH = 100;
     int CODIGO_DEVOLUCION_FOTO = 42;
 
@@ -28,8 +24,6 @@ public interface ICodigos {
     String BBDD = "incarlopsa";
     String DIRECCION_BBDD_RAIZ = "jdbc:mysql://"+SERVIDOR_BBDD + ":" + PUERTO_BBDD
                             +"/"+BBDD;
-    String DIRECCION_BBDD_USUARIO = "?user=";
-    String DIRECCION_BBDD_PASSWORD = "&password=";
 
     String USUARIO_TEST_NORMAL = "TESTUSER";
     String PASSWORD_TEST_NORMAL = "TESTUSER";
@@ -55,6 +49,7 @@ public interface ICodigos {
     String ERROR_DRIVER = "Error en la carga del driver";
     String ERROR_LOGIN = "Usuario y contraseña inválidos";
     String ERROR_INTRODUCIR_DATOS = "Introduzca el usuario y contraseña";
+    String NUMERO_PARAMETROS_INCORRECTO = "Llamada a función incorrecta! revisar el código";
 
     //Tostadas de chats/publicaciones
     String ERROR_MENSAJE_VACIO = "No pueden enviarse mensajes vacíos";

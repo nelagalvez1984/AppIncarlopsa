@@ -41,7 +41,6 @@ public class Usuario extends DataBaseItem{
     public Integer getIdUsuario() {
         return getId();
     }
-
     public void setIdUsuario(Integer idUsuario) {
         setId(idUsuario);
     }
@@ -49,7 +48,6 @@ public class Usuario extends DataBaseItem{
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -57,7 +55,6 @@ public class Usuario extends DataBaseItem{
     public String getApellidos() {
         return apellidos;
     }
-
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
@@ -65,7 +62,6 @@ public class Usuario extends DataBaseItem{
     public String getDni() {
         return dni;
     }
-
     public void setDni(String dni) {
         this.dni = dni;
     }
@@ -73,7 +69,6 @@ public class Usuario extends DataBaseItem{
     public String getTipoEmpleado() {
         return tipoEmpleado;
     }
-
     public void setTipoEmpleado(String tipoEmpleado) {
         this.tipoEmpleado = tipoEmpleado;
     }
@@ -81,21 +76,17 @@ public class Usuario extends DataBaseItem{
     public Foto getFoto() {
         return foto;
     }
-
     public void setFotoBytes(Foto foto) {
         this.foto = foto;
     }
-
     public byte[] getFotoBytes() {
         return foto.getFotoBytes();
     }
-
     public Bitmap getFotoBMP() {
         return foto.getFotoBMP();
     }
 
     public String getUsername() { return username; }
-
     public void setUsername(String username) { this.username = username; }
 
     //Equals&Hash

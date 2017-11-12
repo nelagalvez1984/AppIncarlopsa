@@ -6,12 +6,15 @@ import java.util.ArrayList;
 
 public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem>> implements ICodigos {
 
-    //CODIGO DE EJEMPLO
+
     /*
+        // CODIGO DE EJEMPLO DE LECTURA //
+
         Usuario usuarioPrueba = new Usuario(1,"a","b","c","d",null);
         Integer idALeer = usuarioPrueba.getIdUsuario();
         HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
         ArrayList<DataBaseItem> resultados;
+
         try {
             resultados = hilo.execute(idALeer).get();
 
@@ -19,7 +22,6 @@ public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem
             for(DataBaseItem u:resultados){
                 ((Usuario)u).toString(); //HACER ALGO CON EL ITEM
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -27,6 +29,7 @@ public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem
 
     //Propiedades
     private DAOBase dao;
+    SingleTostada tostada = SingleTostada.getInstance();
 
     public HiloParaRead(DAOBase dao){
         this.dao = dao;
@@ -40,15 +43,23 @@ public class HiloParaRead extends AsyncTask<Object, Void, ArrayList<DataBaseItem
         ArrayList<DataBaseItem> retorno = new ArrayList<>();
 
         try {
-            retorno = dao.read(parametrosParaConsulta[0]);
-        } catch (SQLException e) {
-            SingleTostada singleTostada = SingleTostada.getInstance();
-            singleTostada.errorConexionBBDD();
-        }
-        if (retorno != null){
-            System.out.println("Lectura correcta!");
-        }else{
-            System.out.println("No se ha leido nada!");
+            if (numParametros==1) { //Para las escrituras solo puede haber un parametro!
+                retorno = dao.read(parametrosParaConsulta[0]);
+                if (retorno != null) {
+                    System.out.println("Lectura correcta!");
+                } else {
+                    System.out.println("No se ha leido nada!");
+                    throw new EXCErrorBBDD();
+                }
+            }else{ //Error en la llamada!
+                throw new EXCNumParametrosIncorrecto();
+            }
+        }catch(EXCNumParametrosIncorrecto e) {
+            tostada.errorNumeroParametrosIncorrecto();
+        }catch(EXCErrorBBDD e) {
+            tostada.errorConexionBBDD();
+        }catch(SQLException e) {
+            tostada.errorConexionBBDD();
         }
 
         return retorno;

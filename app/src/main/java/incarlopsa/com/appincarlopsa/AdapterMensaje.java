@@ -25,7 +25,6 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         this.usuarioAutor = usuarioAutor;
         this.usuarioDestino = usuarioDestino;
         mensajeAnterior = new Mensaje();
-
     }
 
     @Override
@@ -53,6 +52,7 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         //Recuperar el usuario que ha creado el chat
         ArrayList<DataBaseItem> resultados = new ArrayList<>();
 
+        //Comprobar si se es destinatario o autor
         Usuario usuarioAux;
         if (mensaje.getIdUsuario() == usuarioAutor.getIdUsuario()){
             usuarioAux = usuarioAutor;
@@ -60,12 +60,14 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
             usuarioAux = usuarioDestino;
         }
 
+        //Asignaciones
         String fecha = mensaje.getFecha();
         String hora = mensaje.getHora();
         String contenidoMensaje = mensaje.getMensaje();
         String autor = usuarioAux.getNombre() + " "
                 + usuarioAux.getApellidos();
 
+        //Actualizar visualmente el holder
         holder.hora.setText(hora);
         holder.contenidoMensaje.setText(contenidoMensaje);
         holder.leido.setChecked(mensaje.getLeidoPorDestino());
@@ -77,15 +79,18 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
 
         //Personalizacion: Cambiar el color y alineacion si me escribe alguien
         if (mensaje.getIdUsuario() != credenciales.getIdUsuario()){ // Mensaje entrante, alineado a la izquierda
+
             cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_entrante));
             holder.contenidoMensaje.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             holder.leido.setVisibility(View.VISIBLE);
             personalizar(cardView, holder.autor, holder.fecha, autor, fecha);
 
         }else{ // Mensaje saliente, alineado a la derecha
+
             cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_saliente));
             holder.leido.setVisibility(View.INVISIBLE);
             holder.contenidoMensaje.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+
             //Permutar el orden de fecha y autor
             personalizar(cardView, holder.fecha, holder.autor, autor, fecha);
         }
@@ -97,14 +102,15 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         //Ojo que los mensajes estan almacenados del mas viejo al mas nuevo
         //Y la lista la recorre del final hasta el inicio
         if (position != 0){ //Comprobar que no soy el ultimo mensaje de la lista
+
             mensajeAnterior = (Mensaje)listaMensajes.get(position-1);
+
             if (mensaje.getIdUsuario() != credenciales.getIdUsuario()) {
                 cambiarVisibilidad(holder.autor, holder.fecha, mensaje);
-            }else{
-                //Permutar el orden de hora y autor
+
+            }else{ //Permutar el orden de hora y autor
                 cambiarVisibilidad(holder.fecha, holder.autor, mensaje);
             }
-
         }
         mensajeAnterior = mensaje;
 
@@ -151,7 +157,6 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
         private TextView contenidoMensaje;
         private CheckBox leido;
         private View v;
-
 
         public ViewHolder(View v) {
             super(v);

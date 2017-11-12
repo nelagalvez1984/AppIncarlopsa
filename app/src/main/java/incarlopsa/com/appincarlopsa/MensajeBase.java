@@ -11,9 +11,7 @@ public abstract class MensajeBase extends DataBaseItem{
     private String hora = null;
     private String mensaje = null;
 
-    //Constructor
-
-
+    //Constructores
     public MensajeBase(Integer idMensaje, Integer idPublicacion, Integer idUsuario, String fecha, String hora, String mensaje) {
         this.id = idMensaje;
         this.idPublicacion = idPublicacion;
@@ -26,11 +24,9 @@ public abstract class MensajeBase extends DataBaseItem{
     public MensajeBase(){}
 
     //Getter/Setter
-
     public Integer getIdPublicacion() {
         return idPublicacion;
     }
-
     public void setIdPublicacion(Integer idPublicacion) {
         this.idPublicacion = idPublicacion;
     }
@@ -38,7 +34,6 @@ public abstract class MensajeBase extends DataBaseItem{
     public Integer getIdUsuario() {
         return idUsuario;
     }
-
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -46,7 +41,6 @@ public abstract class MensajeBase extends DataBaseItem{
     public String getMensaje() {
         return mensaje;
     }
-
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
@@ -54,7 +48,6 @@ public abstract class MensajeBase extends DataBaseItem{
     public String getFecha() {
         return fecha;
     }
-
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
@@ -62,12 +55,9 @@ public abstract class MensajeBase extends DataBaseItem{
     public String getHora() {
         return hora;
     }
-
     public void setHora(String hora) {
         this.hora = hora;
     }
-
-
 
     //Equals y Hash
 

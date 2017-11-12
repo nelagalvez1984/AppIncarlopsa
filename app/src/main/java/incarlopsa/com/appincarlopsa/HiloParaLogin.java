@@ -6,21 +6,8 @@ import java.sql.Connection;
 
 public class HiloParaLogin extends AsyncTask<Object, Void, Boolean> implements ICodigos{
 
-
-    //CODIGO DE EJEMPLO DE CREACION // Creacion --> llamada: execute(objetoACrear)
-    /*
-        Usuario usuarioParaCrear = new Usuario(1,"a","b","c","d",null);
-        HiloParaCreate hilo = new HiloParaCreate(new DAOUsuario());
-        boolean retornoCreacion = false;
-        try {
-            retornoCreacion = hilo.execute(usuarioParaCrear).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    */
-
     //Propiedades
-    SingleConexion conector;
+    SingleConexion conector = SingleConexion.getInstance();;
     Connection conexion;
     SingleTostada tostada = SingleTostada.getInstance();
 
@@ -29,8 +16,7 @@ public class HiloParaLogin extends AsyncTask<Object, Void, Boolean> implements I
 
         boolean operacionCorrecta = false;
 
-
-        conector = SingleConexion.getInstance();
+        //Conectarse
         if (conector.conectar() == null){
             conexion = conector.conexionInicial();
         }

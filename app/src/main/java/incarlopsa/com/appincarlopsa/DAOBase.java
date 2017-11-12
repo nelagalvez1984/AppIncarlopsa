@@ -74,6 +74,7 @@ public abstract class DAOBase implements IDAO, ICodigos{
         return retorno;
     }
 
+    //Creacion
     public Boolean create(Object elementoACrear) throws SQLException {
         boolean resultado = false;
 
@@ -130,6 +131,7 @@ public abstract class DAOBase implements IDAO, ICodigos{
         return resultado;
     }
 
+    //Borrado
     @Override
     public Boolean delete(Object objetoABorrar) throws SQLException{
         boolean resultado = false;
@@ -140,6 +142,7 @@ public abstract class DAOBase implements IDAO, ICodigos{
         return resultado;
     }
 
+    //Para borrar se usa el mismo chequeo que para el create
     private boolean ejecutarConsultaDelete() throws SQLException {
         return ejecutarConsultaCreate();
     }

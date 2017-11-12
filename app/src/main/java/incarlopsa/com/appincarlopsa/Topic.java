@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Topic extends DataBaseItem{
 
-
     //Es la cabecera de una comentario o mensaje
 
     //Propiedades
@@ -16,10 +15,7 @@ public class Topic extends DataBaseItem{
     private String fechaUltimoUpdate = null;
     private String horaUltimoUpdate = null;
 
-
-    //Constructor
-
-
+    //Constructores
     public Topic(Integer idTopic, Integer idUsuario, String titulo, String fechaCreacion, String horaCreacion, Boolean finalizado, String fechaUltimoUpdate, String horaUltimoUpdate) {
         this.id = idTopic;
         this.idUsuario = idUsuario;
@@ -48,7 +44,6 @@ public class Topic extends DataBaseItem{
     public Integer getIdUsuario() {
         return idUsuario;
     }
-
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -56,7 +51,6 @@ public class Topic extends DataBaseItem{
     public String getTitulo() {
         return titulo;
     }
-
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -64,7 +58,6 @@ public class Topic extends DataBaseItem{
     public String getFechaCreacion() {
         return fechaCreacion;
     }
-
     public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
@@ -72,7 +65,6 @@ public class Topic extends DataBaseItem{
     public String getHoraCreacion() {
         return horaCreacion;
     }
-
     public void setHoraCreacion(String horaCreacion) {
         this.horaCreacion = horaCreacion;
     }
@@ -80,7 +72,6 @@ public class Topic extends DataBaseItem{
     public Boolean getFinalizado() {
         return finalizado;
     }
-
     public void setFinalizado(Boolean finalizado) {
         this.finalizado = finalizado;
     }
@@ -88,7 +79,6 @@ public class Topic extends DataBaseItem{
     public String getFechaUltimoUpdate() {
         return fechaUltimoUpdate;
     }
-
     public void setFechaUltimoUpdate(String fechaUltimoUpdate) {
         this.fechaUltimoUpdate = fechaUltimoUpdate;
     }
@@ -96,7 +86,6 @@ public class Topic extends DataBaseItem{
     public String getHoraUltimoUpdate() {
         return horaUltimoUpdate;
     }
-
     public void setHoraUltimoUpdate(String horaUltimoUpdate) {
         this.horaUltimoUpdate = horaUltimoUpdate;
     }

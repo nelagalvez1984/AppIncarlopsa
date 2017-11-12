@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class DAOMensaje extends DAOBase implements IDAO {
 
-    //Propiedades
     //Consultas parametrizadas
     private String consultaInsercion = "INSERT INTO mensaje SET idChat = ?, idUsuario = ?, mensaje = ?,fecha = NOW(), leidoPorDestino = ?";
     private String consultaLecturaPorId = "SELECT idMensaje, idChat, idUsuario, mensaje, " +
@@ -14,9 +13,6 @@ public class DAOMensaje extends DAOBase implements IDAO {
     private String consultaUpdate = "UPDATE mensaje SET idChat = ?, idUsuario = ?, mensaje = ?, leidoPorDestino = ? WHERE idMensaje = ?";
     private String consultaDeleteChat = "DELETE FROM mensaje WHERE idChat = ?";
     private String consultaDeleteMensaje = "DELETE FROM mensaje WHERE idMensaje = ?";
-
-    //Constructor
-    public DAOMensaje() { }
 
     //CREACION
     //Preparar una consulta de create y cargar sus parametros
@@ -86,9 +82,9 @@ public class DAOMensaje extends DAOBase implements IDAO {
     //CONTROL DE CONSULTAS CRUD:
     @Override
     public Boolean create(Object elementoACrear) throws SQLException {
+
         //Crear el mensaje
         Boolean retorno = super.create(elementoACrear);
-
         actualizarFechaChatPadre(elementoACrear);
 
         //Ahora crear el mensaje
@@ -128,6 +124,7 @@ public class DAOMensaje extends DAOBase implements IDAO {
 
     @Override
     public Boolean update(Object elementoConQueActualizar) throws SQLException{
+
         //Primero actualizar el item
         Boolean retorno = super.update(elementoConQueActualizar);
 
@@ -139,9 +136,6 @@ public class DAOMensaje extends DAOBase implements IDAO {
 
     @Override
     public Boolean delete(Object elementoABorrar) throws SQLException{
-        //Si se va a borrar un unico mensaje, actualizar la comentario
-
-
         return super.delete(elementoABorrar);
     }
 }
