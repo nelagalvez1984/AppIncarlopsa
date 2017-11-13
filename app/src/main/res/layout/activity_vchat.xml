@@ -18,6 +18,8 @@
             android:layout_width="100dp"
             android:layout_height="75dp"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:background="@color/colorRojoCabeceras"
             app:srcCompat="@mipmap/foto"/>
@@ -44,7 +46,7 @@
                 android:text="@string/chat"
                 android:textAlignment="center"
                 android:textColor="@color/colorWhiteFondos"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
 
             <TextView

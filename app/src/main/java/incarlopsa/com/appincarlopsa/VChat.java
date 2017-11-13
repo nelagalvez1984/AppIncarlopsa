@@ -1,5 +1,6 @@
 package incarlopsa.com.appincarlopsa;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class VChat extends AppCompatActivity implements IVista{
     private Integer idAutor;
     private Integer idDestino;
     private ImageView fotoChat;
+    private Adjunto fotoAdjunta;
+    private SingleGaleria galeria = SingleGaleria.getInstance();
 
 
     @Override
@@ -97,12 +100,18 @@ public class VChat extends AppCompatActivity implements IVista{
 
                 //Ponerle foto al chat
                 fotoChat = (ImageView)findViewById(R.id.chatFotoCabecera);
+                fotoChat.setOnClickListener(this);
+                fotoAdjunta = new Adjunto();
                 if (credenciales.getIdUsuario() == idDestino){ //Si soy la destino, poner la foto del autor
                     if (autor.getFotoBytes() != null){
+                        fotoAdjunta.setFoto(autor.getFoto());
+                        galeria.setFotoAdjunta(fotoAdjunta);
                         fotoChat.setImageBitmap(autor.getFotoBMP());
                     }
                 }else{ //Si soy la autora, poner la foto del destino
                     if (destino.getFotoBytes() != null){
+                        fotoAdjunta.setFoto(destino.getFoto());
+                        galeria.setFotoAdjunta(fotoAdjunta);
                         fotoChat.setImageBitmap(destino.getFotoBMP());
                     }
                 }
@@ -124,29 +133,45 @@ public class VChat extends AppCompatActivity implements IVista{
 
     @Override
     public void onClick(View view) {
-        //Boton enviar
-        if (escribirMensaje.length()>0){
-            hiloParaCreate = new HiloParaCreate(new DAOMensaje());
-            Mensaje mensajeAux = new Mensaje();
-            mensajeAux.setIdPublicacion(idChat);
-            mensajeAux.setIdUsuario(credenciales.getIdUsuario());
-            mensajeAux.setMensaje(escribirMensaje.getText().toString());
-            try {
-                Boolean creacion = hiloParaCreate.execute(mensajeAux).get();
-                if (!creacion){
-                    throw new Exception();
+        switch (view.getId()){
+            case R.id.chatFotoCabecera:
+                if (fotoAdjunta.getFoto() != null){
+                    Intent intent = new Intent(this, VMostrarImagen.class);
+                    galeria.setFotoAdjunta(fotoAdjunta);
+                    startActivity(intent);
                 }
-                hiloParaRead = new HiloParaRead(new DAOMensaje());
-                resultados = hiloParaRead.execute(mensajeAux).get();
-                adapterMensaje.actualizar(resultados);
-                escribirMensaje.setText("");
-                recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
-            } catch (Exception e) {
-                tostada.errorConexionBBDD();
-            }
-        }else{
-            tostada.errorMensajeVacio();
+                break;
+
+            case R.id.buttonChatEnviar:
+
+                //Boton enviar
+                if (escribirMensaje.length()>0){
+                    hiloParaCreate = new HiloParaCreate(new DAOMensaje());
+                    Mensaje mensajeAux = new Mensaje();
+                    mensajeAux.setIdPublicacion(idChat);
+                    mensajeAux.setIdUsuario(credenciales.getIdUsuario());
+                    mensajeAux.setMensaje(escribirMensaje.getText().toString());
+                    try {
+                        Boolean creacion = hiloParaCreate.execute(mensajeAux).get();
+                        if (!creacion){
+                            throw new Exception();
+                        }
+                        hiloParaRead = new HiloParaRead(new DAOMensaje());
+                        resultados = hiloParaRead.execute(mensajeAux).get();
+                        adapterMensaje.actualizar(resultados);
+                        escribirMensaje.setText("");
+                        recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
+                    } catch (Exception e) {
+                        tostada.errorConexionBBDD();
+                    }
+                }else{
+                    tostada.errorMensajeVacio();
+                }
+
+                break;
         }
+
+
 
     }
 }
