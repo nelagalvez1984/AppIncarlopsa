@@ -144,7 +144,7 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
         }else{
             fotoUsuario.setImageDrawable(getDrawable(R.mipmap.foto));
         }
-        dialogUsuarios.dismiss();;
+        dialogUsuarios.dismiss();
     }
 
 }
