@@ -21,6 +21,7 @@ public class VLogin extends AppCompatActivity implements IVista{
     private SingleTostada tostada = SingleTostada.getInstance();
     private SingleConexion conexion = SingleConexion.getInstance();
     private ArrayList<DataBaseItem> resultados;
+    //ok
 
     @Override
     public void inicializarVista() {
