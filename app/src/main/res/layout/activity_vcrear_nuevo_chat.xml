@@ -92,8 +92,9 @@
             android:layout_width="100dp"
             android:layout_height="75dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/custom_image_button"
-            android:src="@drawable/ic_action_content_send"/>
+            android:background="@color/colorWhiteFondos"
+            android:scaleType="fitCenter"
+            android:src="@drawable/send"/>
     </LinearLayout>
 
     <LinearLayout
@@ -146,9 +147,9 @@
             android:id="@+id/addUsuarioNChat"
             android:layout_width="100dp"
             android:layout_height="75dp"
-            android:background="@drawable/custom_image_button"
-            android:src="@drawable/add"
-            android:tint="@color/colorVerdeApp"/>
+            android:background="@color/colorWhiteFondos"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add"/>
     </LinearLayout>
 
     <ImageView
