@@ -28,7 +28,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:gravity="start|center"
-                android:text="Nombre"
+                android:text="@string/nombre"
                 android:textColor="@color/colorNegro"/>
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:gravity="start|center"
-                android:text="Hora"
+                android:text="@string/hora"
                 android:textAlignment="center"
                 android:textColor="@color/colorNegro"/>
 
@@ -53,7 +53,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:text="Fecha"
+                android:text="@string/fecha"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorNegro"/>
         </LinearLayout>
@@ -77,7 +77,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Mensaje"
+                    android:hint="@string/mensaje"
                     android:inputType="textMultiLine"
                     android:textColor="@color/colorNegro"/>
 

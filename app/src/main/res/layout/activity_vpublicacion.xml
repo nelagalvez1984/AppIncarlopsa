@@ -39,7 +39,7 @@
                     android:background="@color/colorRojoCabeceras"
                     android:paddingBottom="10dp"
                     android:paddingTop="20dp"
-                    android:text="Titulo"
+                    android:text="@string/titulo"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhiteFondos"
                     android:textSize="24sp"
@@ -55,7 +55,7 @@
                 android:background="@drawable/borde_edittext"
                 android:inputType="textMultiLine"
                 android:maxLines="8"
-                android:text="Anuncio"
+                android:text="@string/anuncio"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"
+                    android:text="@string/cero"
                     android:textAlignment="center"/>
 
                 <ImageButton
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"
+                    android:text="@string/cero"
                     android:textAlignment="center"/>
 
                 <Button
@@ -154,7 +154,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/borde_edittext"
-                android:hint="Introduzca su comentario"/>
+                android:hint="@string/introduzca_comentario"/>
 
             <ImageButton
                 android:id="@+id/imgEnviarPublicacion"

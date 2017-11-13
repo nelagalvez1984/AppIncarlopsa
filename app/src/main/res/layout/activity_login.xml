@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
             android:ems="10"
-            android:hint="Usuario"
+            android:hint="@string/usuario"
             android:inputType="textPersonName"
             android:selectAllOnFocus="false"
             android:singleLine="false"
@@ -102,7 +102,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/colorWhiteFondos"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:maxLines="1"
             android:textAlignment="center"
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/md_white_1000"
-            android:text="¡Bienvenido!"
+            android:text="@string/welcome"
             android:textAlignment="center"
             android:textColor="@color/colorVerdeApp"
             android:textSize="24sp"/>
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/custom_image_button"
             android:fontFamily="sans-serif"
-            android:text="Conectar"
+            android:text="@string/conectar"
             android:textColor="@color/cardview_light_background"
             android:textStyle="bold|italic"/>
 

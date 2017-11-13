@@ -22,7 +22,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Titulo"
+                android:text="@string/titulo"
                 android:textColor="@color/colorVerdeApp"
                 android:textStyle="bold"/>
 
@@ -30,7 +30,7 @@
                 android:id="@+id/editCabeceraChatAutor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Autor"
+                android:text="@string/autor"
                 android:textColor="@color/colorRojoCabeceras"/>
         </LinearLayout>
 
@@ -44,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Creado:"
+                android:text="@string/creado"
                 android:textColor="@color/colorNegro"/>
 
             <TextView
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="start|center"
-                android:text="Fecha_creación"
+                android:text="@string/fecha_creacion"
                 android:textColor="@color/colorNegro"/>
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Hora_creación"
+                android:text="@string/hora_creacion"
                 android:textColor="@color/colorNegro"/>
         </LinearLayout>
 
@@ -75,7 +75,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ultima modificación:"
+                android:text="@string/ultima_modificacion"
                 android:textColor="@color/colorNegro"/>
 
             <TextView
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="start|center"
-                android:text="Fecha_update"
+                android:text="@string/fecha_update"
                 android:textColor="@color/colorNegro"/>
 
             <TextView
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Hora_update"
+                android:text="@string/hora_update"
                 android:textColor="@color/colorNegro"/>
         </LinearLayout>
     </LinearLayout>

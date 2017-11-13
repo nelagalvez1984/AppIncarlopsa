@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorRojoCabeceras"
                 android:fontFamily="sans-serif"
-                android:text="Elija el archivo adjunto"
+                android:text="@string/elija_adjunto"
                 android:textAlignment="center"
                 android:layout_margin="10dp"
                 android:textColor="@color/colorWhiteFondos"

@@ -21,6 +21,40 @@
     <string name="seccion_rrhh">Seccion RRHH</string>
     <string name="seccion_admin">Seccion Admin</string>
     <string name="cosas_de_admin">Cosas de admin</string>
+    <string name="usuario">Usuario</string>
+    <string name="password">Password</string>
+    <string name="welcome">¡Bienvenido!</string>
+    <string name="conectar">Conectar</string>
+    <string name="nueva_publicacion">Nueva Publicacion</string>
+    <string name="introduzca_titulo">Introduzca el título de la publicación</string>
+    <string name="introduzca_anuncio">Introduzca el anuncio</string>
+    <string name="nuevo_chat">Nuevo Chat</string>
+    <string name="titulo_asunto">Titulo/asunto</string>
+    <string name="introducir_titulo_asunto_chat">Introduzca el título/asunto del chat</string>
+    <string name="mensaje_inicial">Mensaje Inicial</string>
+    <string name="introduzca_mensaje">Introduzca el mensaje</string>
+    <string name="titulo">Título</string>
+    <string name="anuncio">Anuncio</string>
+    <string name="cero">0</string>
+    <string name="introduzca_comentario">Introduzca su comentario</string>
+    <string name="tama">Tamaño</string>
+    <string name="nombre_fichero">Nombre del fichero</string>
+    <string name="autor">Autor</string>
+    <string name="creado">Creado:</string>
+    <string name="fecha_creacion">Fecha Creacion</string>
+    <string name="hora_creacion">Hora Creacion</string>
+    <string name="ultima_modificacion">Ultima Modificación:</string>
+    <string name="fecha_update">Fecha_update</string>
+    <string name="hora_update">Hora_update:</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
+    <string name="mensaje_susodicho">Mensaje del susodicho</string>
+    <string name="elija_adjunto">Elija el archivo adjunto</string>
+    <string name="elija_usuario_destino">Elija el usuario destino</string>
+    <string name="mensaje">Mensaje</string>
+    <string name="introduzca_mensaje_largo">Introduzca aqui su mensaje                                                             </string>
+    <string name="nombre_apellidos">Nombre y apellidos</string>
+    <string name="tipo_empleado">Tipo de empleado</string>
 
 
 </resources>

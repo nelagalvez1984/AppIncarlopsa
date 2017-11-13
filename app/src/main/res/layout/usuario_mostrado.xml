@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start|center"
-                android:text="Nombre y Apellidos"/>
+                android:text="@string/nombre_apellidos"/>
 
             <TextView
                 android:id="@+id/lblUsuarioTipo"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="start|center"
-                android:text="Tipo de Empleado"/>
+                android:text="@string/tipo_empleado"/>
 
             <TextView
                 android:id="@+id/usuarioMostradoRelleno2"
