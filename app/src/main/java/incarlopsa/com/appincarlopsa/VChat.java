@@ -97,8 +97,14 @@ public class VChat extends AppCompatActivity implements IVista{
 
                 //Ponerle foto al chat
                 fotoChat = (ImageView)findViewById(R.id.chatFotoCabecera);
-                if (destino.getFotoBytes() != null){
-                    fotoChat.setImageBitmap(destino.getFotoBMP());
+                if (credenciales.getIdUsuario() == idDestino){ //Si soy la destino, poner la foto del autor
+                    if (autor.getFotoBytes() != null){
+                        fotoChat.setImageBitmap(autor.getFotoBMP());
+                    }
+                }else{ //Si soy la autora, poner la foto del destino
+                    if (destino.getFotoBytes() != null){
+                        fotoChat.setImageBitmap(destino.getFotoBMP());
+                    }
                 }
 
                 adapterMensaje = new AdapterMensaje(resultados, autor, destino);

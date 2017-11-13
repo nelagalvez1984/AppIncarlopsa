@@ -43,15 +43,15 @@ public class VLogin extends AppCompatActivity implements IVista{
                     Boolean conexionOK = false;
                     tostada.conectando();
 
+                    //Comprobar si hay que deslogarse antes
+                    if (conexion.conectar() != null){ //Si ya habia una conexion anterior, se cierra primeramente
+                        conexion.desconexionDelSistema();
+                    }
+
                     //Rellenar la parte de login de las credenciales
                     credenciales.setLogin(etUsuario.getText().toString());
                     credenciales.setPassword(etPassword.getText().toString());
                     credenciales.setUsername(etUsuario.getText().toString());
-
-                    //1.- Comprobar si hay que deslogarse antes
-                    if (conexion.conectar() != null){ //Si ya habia una conexion anterior, se cierra primeramente
-                        conexion.desconexionDelSistema();
-                    }
 
                     //Intentar conexion
                     hiloParaLogin = new HiloParaLogin();

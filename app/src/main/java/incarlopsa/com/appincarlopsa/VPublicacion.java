@@ -211,14 +211,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
                 //ToDo
                 if (publicacionAux.getAdjuntos().size()>0){
                     showDialog();
-
-
-
                 }
-
-
-
-
 
                 break;
             case R.id.imgGustaPublicacion: //Se ha clicado en meGusta
@@ -278,6 +271,11 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             }
             hiloParaRead = new HiloParaRead(new DAOComentario());
             resultados = hiloParaRead.execute(comentarioAux).get();
+
+            //Quitar el anuncio
+            anuncio = (Comentario)resultados.get(resultados.size()-1);
+            resultados.remove(anuncio);
+
             adapterComentario.actualizar(resultados);
             escribirMensaje.setText("");
         } catch (Exception e) {

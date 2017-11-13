@@ -82,13 +82,13 @@ public class AdapterMensaje extends RecyclerView.Adapter<AdapterMensaje.ViewHold
 
             cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_entrante));
             holder.contenidoMensaje.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-            holder.leido.setVisibility(View.VISIBLE);
+            holder.leido.setVisibility(View.INVISIBLE);
             personalizar(cardView, holder.autor, holder.fecha, autor, fecha);
 
         }else{ // Mensaje saliente, alineado a la derecha
 
             cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_saliente));
-            holder.leido.setVisibility(View.INVISIBLE);
+            holder.leido.setVisibility(View.VISIBLE);
             holder.contenidoMensaje.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
 
             //Permutar el orden de fecha y autor

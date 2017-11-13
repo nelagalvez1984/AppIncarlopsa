@@ -35,4 +35,15 @@ public class SingleCredenciales extends Usuario{
         return ourInstance;
     }
 
+    //Limpiar las credenciales
+    public void limpiarCredenciales(){
+        setIdUsuario(null);
+        setNombre(null);
+        setApellidos(null);
+        setDni(null);
+        setTipoEmpleado(null);
+        setFotoBytes(null);
+        setUsername(null);
+    }
+
 }

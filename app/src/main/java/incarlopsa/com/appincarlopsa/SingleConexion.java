@@ -46,7 +46,6 @@ class SingleConexion implements ICodigos{
             singleTostada.errorConexionBBDD();
         }
 
-
         return conexion;
     }
 
@@ -60,6 +59,7 @@ class SingleConexion implements ICodigos{
         if (conexion != null){
             try {
                 conexion.close();
+                credenciales.limpiarCredenciales();
                 System.out.println("Desconexion!");
                 conexion = null;
             } catch (SQLException e) {

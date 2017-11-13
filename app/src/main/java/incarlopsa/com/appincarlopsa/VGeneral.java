@@ -49,8 +49,9 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vgeneral_empleado);
         tostada.setContexto(this);
-/*
+
         //todo RETIRAR ESTO, ESTA DE PRUEBAS!
+/*
         credenciales.setLogin(USUARIO_TEST_NORMAL);
         credenciales.setPassword(PASSWORD_TEST_NORMAL);
         credenciales.setUsername(USUARIO_TEST_NORMAL);
