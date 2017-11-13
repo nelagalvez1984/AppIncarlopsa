@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Fecha"
+                        android:text="@string/fecha"
                         android:textAlignment="center"
                         android:textColor="@color/colorNegro"/>
 
@@ -65,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginEnd="5dp"
-                        android:text="Hora"
+                        android:text="@string/hora"
                         android:textAlignment="center"
                         android:textColor="@color/colorNegro"/>
                 </LinearLayout>
@@ -95,7 +95,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text="0"
+                        android:text="@string/cero"
                         android:textAlignment="center"
                         android:textColor="@color/colorBotonEnviar"
                         android:textSize="18sp"
@@ -115,7 +115,7 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text="0"
+                        android:text="@string/cero"
                         android:textAlignment="center"
                         android:textColor="@color/colorRojoCabeceras"
                         android:textSize="18sp"
@@ -136,7 +136,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/borde_edittext"
             android:inputType="textMultiLine"
-            android:text="mensajeDelSusodicho"
+            android:text="@string/mensaje_susodicho"
             android:textAlignment="center"/>
 
     </LinearLayout>

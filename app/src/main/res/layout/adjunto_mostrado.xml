@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start|center"
-                    android:text="Tamaño"
+                    android:text="@string/tama"
                     android:textColor="@color/colorNegro"/>
 
                 <TextView

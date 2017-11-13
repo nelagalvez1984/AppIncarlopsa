@@ -22,7 +22,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/colorRojoCabeceras"
-            android:text="Nuevo Chat"
+            android:text="@string/nuevo_chat"
             android:textAlignment="center"
             android:textColor="@color/cardview_light_background"
             android:textSize="30sp"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Titulo/asunto"
+            android:text="@string/titulo_asunto"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="italic"/>
@@ -51,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/borde_edittext"
             android:ems="10"
-            android:hint="Introduzca el titulo/asunto del chat"
+            android:hint="@string/introducir_titulo_asunto_chat"
             android:inputType="textMultiLine"
             android:text=""
             android:textAlignment="center"/>
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Mensaje inicial"
+            android:text="@string/mensaje_inicial"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="italic"/>
@@ -80,12 +80,12 @@
             android:layout_weight="1"
             android:background="@drawable/borde_edittext"
             android:ems="10"
-            android:hint="Introduzca el mensaje"
+            android:hint="@string/introduzca_mensaje"
             android:inputType="textMultiLine"
             android:maxLines="8"
             android:text=""
             android:textAlignment="center"
-            tools:hint="Introduce tu mensaje"/>
+            tools:hint="@string/introduzca_mensaje"/>
 
         <ImageButton
             android:id="@+id/enviarNChat"
