@@ -73,7 +73,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnNuevaPublicacionEnviar:
+            case R.id.btnNuevaPublicacionEnviar: //Boton enviar
                 if (tituloNuevaPublicacion.length()==0){
                     tostada.errorTituloVacioChat();
                 }else{
@@ -94,7 +94,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                             hiloParaCreate = new HiloParaCreate(new DAOPublicacion());
                             todoOK = hiloParaCreate.execute(publicacionAux).get();
                             if (!todoOK){
-                                throw new Exception();
+                                throw new EXCErrorBBDD();
                             }
 
                             //Recoger la publicacion
@@ -102,7 +102,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                             resultadosPublicaciones = hiloParaRead.execute(publicacionAux).get();
 
                             if (resultadosPublicaciones.size() == 0){
-                                throw new Exception();
+                                throw new EXCErrorBBDD();
                             }
 
                             //Recoger solo la primera publicacion
@@ -116,7 +116,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                             hiloParaCreate = new HiloParaCreate(new DAOComentario());
                             todoOK = hiloParaCreate.execute(comentarioAux).get();
                             if (!todoOK){
-                                throw new Exception();
+                                throw new EXCErrorBBDD();
                             }
 
                             //Crear los adjuntos
@@ -127,7 +127,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                                 hiloParaCreate = new HiloParaCreate(new DAOAdjunto());
                                 todoOK = hiloParaCreate.execute(adjuntoAux).get();
                                 if (!todoOK){
-                                    throw new Exception();
+                                    throw new EXCErrorBBDD();
                                 }
                             }
 
@@ -135,13 +135,15 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
                             finish();
                         }catch (EXCTamanoSuperado e){
                             tostada.errorTamanoTituloSuperado();
-                        }catch(Exception e){
+                        }catch (EXCErrorBBDD e) {
+                            tostada.errorConexionBBDD();
+                        }catch (Exception e){
                             tostada.errorConexionBBDD();
                         }
                     }
                 }
                 break;
-            case R.id.imgNuevaPublicacionBotonAnadir:
+            case R.id.imgNuevaPublicacionBotonAnadir: //Añadir foto
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
@@ -198,12 +200,10 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
 
         // Split at colon, use second item in the array
         String id = wholeID.split(":")[1];
-
         String[] column = {MediaStore.Images.Media.DATA};
 
         // where id is equal to
         String sel = MediaStore.Images.Media._ID + "=?";
-
         Cursor cursor = this.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 column, sel, new String[]{id}, null);
 
@@ -226,7 +226,7 @@ public class VCrearNuevaPublicacion extends AppCompatActivity implements IVista{
             Boolean siONo = file.canRead();
             byte[] bytes = FileUtils.readFileToByteArray(file);
             Integer longitud = bytes.length;
-            if (longitud>TAMANO_MAXIMO_FICHERO){//Maximo de 1MB
+            if (longitud > TAMANO_MAXIMO_FICHERO){//Maximo de 1MB
                 throw new EXCTamanoSuperado();
             }
 //            getMimeType(filePath); //Usar si procede

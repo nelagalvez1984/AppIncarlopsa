@@ -78,11 +78,13 @@
                 android:id="@+id/btnNuevaPublicacionEnviar"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/custom_image_button"
-                app:srcCompat="@drawable/ic_action_content_send"/>
+                android:background="@color/colorWhiteFondos"
+                android:scaleType="fitCenter"
+                android:tint="@color/colorRojoCabeceras"
+                app:srcCompat="@drawable/send" />
 
             <ImageView
                 android:id="@+id/imgNuevaPublicacionBotonAnadir"
@@ -90,9 +92,8 @@
                 android:layout_height="75dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/custom_image_button"
-                android:tint="@color/colorVerdeApp"
-                app:srcCompat="@drawable/add"/>
+                android:tint="@color/colorRojoCabeceras"
+                app:srcCompat="@drawable/add" />
 
         </LinearLayout>
 

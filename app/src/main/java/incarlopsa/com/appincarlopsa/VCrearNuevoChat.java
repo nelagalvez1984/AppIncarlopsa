@@ -49,13 +49,12 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
         enviar.setOnClickListener(this);
         usuarioCazado = (TextView)findViewById(R.id.usuarioNChat);
         fotoUsuario = (ImageButton)findViewById(R.id.imgNuevoChatFoto);
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.enviarNChat:
+            case R.id.enviarNChat: // Boton enviar
                 if (tituloNuevoChat.length()==0){
                     tostada.errorTituloVacioChat();
                 }else{
@@ -67,10 +66,13 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
                         }else{
 
                             try{
-                                //Crear chat
+
+                                // Comprobar que el titulo es inferior a determinada cantidad de caracteres
                                 if (tituloNuevoChat.length()>TAMANO_MAXIMO_TITULO){
                                     throw new EXCTamanoSuperado();
                                 }
+
+                                //Crear chat
                                 Chat chatAux = new Chat();
                                 chatAux.setId(null);
                                 chatAux.setIdUsuario(credenciales.getIdUsuario());
@@ -82,12 +84,14 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
                                 if (!todoOK){
                                     throw new EXCErrorBBDD();
                                 }
+
                                 //Recuperar el ID del chat recien creado
                                 hiloParaRead = new HiloParaRead(new DAOChat());
                                 resultados = hiloParaRead.execute(chatAux).get();
                                 if (resultados.size()==0){
                                     throw new EXCErrorBBDD();
                                 }
+
                                 //El primer elemento del array debe contener el chat mas nuevo de todos
                                 //es decir, el recien creado
                                 chatAux = (Chat)resultados.get(0);
@@ -118,13 +122,12 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
                 }
                 break;
             case R.id.addUsuarioNChat:
-
-                showDialog();
+                showDialogUsuarios();
         }
     }
 
 
-    void showDialog() {
+    void showDialogUsuarios() {
         // Create the fragment and show it as a dialog.
         dialogUsuarios = new DialogUsuarios();
         dialogUsuarios.show(getFragmentManager(), "dialog");
@@ -132,6 +135,7 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
 
     @Override
     public void devolverUsuario(Usuario usuarioRetornado) {
+
         //Ya tenemos el usuario!
         this.usuarioRetornado = usuarioRetornado;
         usuarioCazado.setText(usuarioRetornado.getNombre()

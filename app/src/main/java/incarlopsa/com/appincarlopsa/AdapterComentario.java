@@ -161,7 +161,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Vi
         //Colorear el cardview
         View cardView = holder.v;
         Resources recursos = cardView.getResources();
-        cardView.setBackground(recursos.getDrawable(R.drawable.mensaje_degradado_entrante));
+        cardView.setBackground(recursos.getDrawable(R.drawable.comentario_degradado));
 
         //Recuperar el nombre del usuario
         String nombreUsuario;

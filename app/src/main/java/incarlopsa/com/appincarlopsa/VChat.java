@@ -75,10 +75,12 @@ public class VChat extends AppCompatActivity implements IVista{
         try {
             resultados = hiloParaRead.execute(m).get();
             if (resultados.size()>0){
+
                 //Recoger los usuarios
                 resultadosUsuarios = new ArrayList<>();
                 autor = new Usuario();
                 destino = new Usuario();
+
                 //Recoger el autor
                 hiloParaRead = new HiloParaRead(new DAOUsuario());
                 autor.setIdUsuario(idAutor);
@@ -134,7 +136,7 @@ public class VChat extends AppCompatActivity implements IVista{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.chatFotoCabecera:
+            case R.id.chatFotoCabecera: //Mostrar la foto del chat en grande
                 if (fotoAdjunta.getFoto() != null){
                     Intent intent = new Intent(this, VMostrarImagen.class);
                     galeria.setFotoAdjunta(fotoAdjunta);
@@ -145,23 +147,25 @@ public class VChat extends AppCompatActivity implements IVista{
             case R.id.buttonChatEnviar:
 
                 //Boton enviar
-                if (escribirMensaje.length()>0){
-                    hiloParaCreate = new HiloParaCreate(new DAOMensaje());
-                    Mensaje mensajeAux = new Mensaje();
-                    mensajeAux.setIdPublicacion(idChat);
-                    mensajeAux.setIdUsuario(credenciales.getIdUsuario());
-                    mensajeAux.setMensaje(escribirMensaje.getText().toString());
+                if (escribirMensaje.length()>0) {
                     try {
+                        hiloParaCreate = new HiloParaCreate(new DAOMensaje());
+                        Mensaje mensajeAux = new Mensaje();
+                        mensajeAux.setIdPublicacion(idChat);
+                        mensajeAux.setIdUsuario(credenciales.getIdUsuario());
+                        mensajeAux.setMensaje(escribirMensaje.getText().toString());
                         Boolean creacion = hiloParaCreate.execute(mensajeAux).get();
-                        if (!creacion){
-                            throw new Exception();
+                        if (!creacion) {
+                            throw new EXCErrorBBDD();
                         }
                         hiloParaRead = new HiloParaRead(new DAOMensaje());
                         resultados = hiloParaRead.execute(mensajeAux).get();
                         adapterMensaje.actualizar(resultados);
                         escribirMensaje.setText("");
                         recycler.scrollToPosition(adapterMensaje.ultimaPosicion());
-                    } catch (Exception e) {
+                    }catch (EXCErrorBBDD e){
+                        tostada.errorConexionBBDD();
+                    }catch (Exception e) {
                         tostada.errorConexionBBDD();
                     }
                 }else{

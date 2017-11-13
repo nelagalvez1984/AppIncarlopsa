@@ -40,8 +40,8 @@ public class VCabeceraPublicacion extends AppCompatActivity implements IVista {
         recycler.setItemAnimator(new DefaultItemAnimator());
 
         //Publicaciones
-        hiloParaRead = new HiloParaRead(new DAOPublicacion());
         try {
+            hiloParaRead = new HiloParaRead(new DAOPublicacion());
             resultados = hiloParaRead.execute(DAME_LOS_TOPIC).get();
         } catch (Exception e) {
             tostada.errorConexionBBDD();
@@ -49,7 +49,6 @@ public class VCabeceraPublicacion extends AppCompatActivity implements IVista {
 
         adapterPublicacion = new AdapterTopic(resultados, new DAOPublicacion(), TOPIC_PUBLICACION);
         recycler.setAdapter(adapterPublicacion);
-//        recycler.scrollToPosition(adapterPublicacion.ultimaPosicion());
 
         adapterPublicacion.setOnItemListener(new AdapterTopic.OnItemClickListener() {
             @Override

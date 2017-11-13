@@ -61,33 +61,34 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     public void inicializarVista() {
 
         //Inicializar elementos
-        meGustaAnuncio = (ImageButton)findViewById(R.id.imgGustaPublicacion);
+        meGustaAnuncio = (ImageButton) findViewById(R.id.imgGustaPublicacion);
         meGustaAnuncio.setOnClickListener(this);
-        meDisgustaAnuncio = (ImageButton)findViewById(R.id.imgNogustaPublicacion);
+        meDisgustaAnuncio = (ImageButton) findViewById(R.id.imgNogustaPublicacion);
         meDisgustaAnuncio.setOnClickListener(this);
-        escribirMensaje = (EditText)findViewById(R.id.txtPublicacionMensaje);
-        botonEnviar = (ImageButton)findViewById(R.id.imgEnviarPublicacion);
+        escribirMensaje = (EditText) findViewById(R.id.txtPublicacionMensaje);
+        botonEnviar = (ImageButton) findViewById(R.id.imgEnviarPublicacion);
         botonEnviar.setOnClickListener(this);
-        botonAdjuntos = (Button)findViewById(R.id.btnAdjuntosPublicacion);
+        botonAdjuntos = (Button) findViewById(R.id.btnAdjuntosPublicacion);
         botonAdjuntos.setOnClickListener(this);
-        tituloFormulario = (TextView)findViewById(R.id.txtTituloPublicacion);
+        tituloFormulario = (TextView) findViewById(R.id.txtTituloPublicacion);
         tostada.setContexto(this);
         resultados = new ArrayList<>();
         recursos = getResources();
 
         //Recoger el id de la publicacion
         intentRecogido = getIntent();
-        idPublicacion = intentRecogido.getIntExtra("idPublicacion",0);
+        idPublicacion = intentRecogido.getIntExtra("idPublicacion", 0);
         publicacionAux = new Publicacion();
         publicacionAux.setId(idPublicacion);
-        HiloParaRead hilo = new HiloParaRead(new DAOPublicacion());
+
         try {
             //Recoger la publicacion asociada en la BBDD
+            HiloParaRead hilo = new HiloParaRead(new DAOPublicacion());
             resultados = hilo.execute(publicacionAux).get();
-            if (resultados.size()==0){
-                throw new Exception();
+            if (resultados.size() == 0) {
+                throw new EXCErrorBBDD();
             }
-            publicacionAux = (Publicacion)resultados.get(0);
+            publicacionAux = (Publicacion) resultados.get(0);
 
             //Colorear el fondo de la cabecera
             LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearPublicacionTitulo);
@@ -102,27 +103,27 @@ public class VPublicacion extends AppCompatActivity implements IVista{
 
             //Extraer el anuncio
             comentarios = publicacionAux.getComentarios();
-            anuncio = (Comentario)comentarios.get(comentarios.size()-1);
+            anuncio = (Comentario) comentarios.get(comentarios.size() - 1);
             comentarios.remove(anuncio);
 
             //Poner titulo a la vista
-            tituloFormulario = (TextView)findViewById(R.id.txtTituloPublicacion);
+            tituloFormulario = (TextView) findViewById(R.id.txtTituloPublicacion);
             tituloFormulario.setText(publicacionAux.getTitulo());
 
             //Poner el anuncio
-            anuncioPublicacion = (TextView)findViewById(R.id.txtAnuncioPublicacion);
+            anuncioPublicacion = (TextView) findViewById(R.id.txtAnuncioPublicacion);
             anuncioPublicacion.setText(anuncio.getMensaje());
 
             //Recoger sus likes
-            contadorLikes = (TextView)findViewById(R.id.txtContadorGustaPublicacion);
+            contadorLikes = (TextView) findViewById(R.id.txtContadorGustaPublicacion);
             contadorLikes.setText(anuncio.getNumeroMeGusta().toString());
 
             //Recoger sus dislikes
-            contadorDislikes = (TextView)findViewById(R.id.txtContadorNoGustaPublicacion);
+            contadorDislikes = (TextView) findViewById(R.id.txtContadorNoGustaPublicacion);
             contadorDislikes.setText(anuncio.getNumeroMeDisgusta().toString());
 
             //Habilitar o deshabilitar el boton de adjuntos segun si tiene o no
-            if (publicacionAux.getAdjuntos().size()==0){ //No hay adjuntos!
+            if (publicacionAux.getAdjuntos().size() == 0) { //No hay adjuntos!
                 botonAdjuntos.setBackgroundColor(recursos.getColor(R.color.colorGris));
                 botonAdjuntos.setEnabled(false);
             }
@@ -131,18 +132,18 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             likesDelAnuncio = anuncio.getArrayLikes();
             //Comprobar si he votado MeGusta y colorearlo en caso afirmativo
             verificacionMeGusta = verificarLikes(likesDelAnuncio, new MeGusta());
-            if (verificacionMeGusta){ //Ya he votado MeGusta
+            if (verificacionMeGusta) { //Ya he votado MeGusta
                 marcarMeGusta();
             }
 
             //Comprobar si he votado NoMeGusta y colorearlo en caso afirmativo
             verificacionMeDisgusta = verificarLikes(likesDelAnuncio, new MeDisgusta());
-            if (verificacionMeDisgusta){ //Ya he votado MeDisgusta
+            if (verificacionMeDisgusta) { //Ya he votado MeDisgusta
                 marcarMeDisgusta();
             }
 
             //Recycler y adapter
-            recycler = (RecyclerView)findViewById(R.id.recyPublicacionComentarios);
+            recycler = (RecyclerView) findViewById(R.id.recyPublicacionComentarios);
             layoutManager = new LinearLayoutManager(this);
             recycler.setLayoutManager(layoutManager);
             recycler.setItemAnimator(new DefaultItemAnimator());
@@ -151,7 +152,9 @@ public class VPublicacion extends AppCompatActivity implements IVista{
             adapterComentario = new AdapterComentario(comentarios);
             recycler.setAdapter(adapterComentario);
 
-        } catch (Exception e) {
+        }catch (EXCErrorBBDD e){
+            tostada.errorConexionBBDD();
+        }catch (Exception e) {
             tostada.errorConexionBBDD();
         }
 
@@ -199,21 +202,21 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+
             case R.id.imgEnviarPublicacion: //Boton enviar
                 if (escribirMensaje.length()>0){
                     enviarComentario();
                 }else{
                     tostada.errorMensajeVacio();
                 }
-
                 break;
+
             case R.id.btnAdjuntosPublicacion: //Mostrar los adjuntos
-                //ToDo
                 if (publicacionAux.getAdjuntos().size()>0){
                     showDialog();
                 }
-
                 break;
+
             case R.id.imgGustaPublicacion: //Se ha clicado en meGusta
                 if (!verificacionMeDisgusta && !verificacionMeGusta){
                     try {
@@ -226,6 +229,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
                     }
                 }
                 break;
+
             case R.id.imgNogustaPublicacion: //Se ha clicado en meDisgusta
                 if (!verificacionMeDisgusta && !verificacionMeGusta){
                     try {
@@ -233,6 +237,8 @@ public class VPublicacion extends AppCompatActivity implements IVista{
                         Integer contador = Integer.parseInt(contadorDislikes.getText().toString());
                         contador++;
                         contadorDislikes.setText(contador.toString());
+                    } catch (EXCErrorBBDD e){
+                        tostada.errorConexionBBDD();
                     } catch (Exception e) {
                         tostada.errorConexionBBDD();
                     }
@@ -247,7 +253,7 @@ public class VPublicacion extends AppCompatActivity implements IVista{
         hiloParaCreate = new HiloParaCreate(new DAOLikes());
         Boolean retorno = hiloParaCreate.execute(meAlgo).get();
         if (!retorno){
-            throw new Exception();
+            throw new EXCErrorBBDD();
         }
         if (meAlgo instanceof MeGusta){
             verificacionMeGusta = true;
@@ -259,25 +265,34 @@ public class VPublicacion extends AppCompatActivity implements IVista{
     }
 
     private void enviarComentario(){
-        hiloParaCreate = new HiloParaCreate(new DAOComentario());
-        Comentario comentarioAux = new Comentario();
-        comentarioAux.setIdPublicacion(idPublicacion);
-        comentarioAux.setIdUsuario(credenciales.getIdUsuario());
-        comentarioAux.setMensaje(escribirMensaje.getText().toString());
+
         try {
+
+            hiloParaCreate = new HiloParaCreate(new DAOComentario());
+            Comentario comentarioAux = new Comentario();
+            comentarioAux.setIdPublicacion(idPublicacion);
+            comentarioAux.setIdUsuario(credenciales.getIdUsuario());
+            comentarioAux.setMensaje(escribirMensaje.getText().toString());
+
             Boolean creacion = hiloParaCreate.execute(comentarioAux).get();
-            if (!creacion){
-                throw new Exception();
+            if (!creacion) {
+                throw new EXCErrorBBDD();
             }
             hiloParaRead = new HiloParaRead(new DAOComentario());
             resultados = hiloParaRead.execute(comentarioAux).get();
 
+            if (resultados.size() == 0){
+                throw new EXCErrorBBDD();
+            }
+
             //Quitar el anuncio
-            anuncio = (Comentario)resultados.get(resultados.size()-1);
+            anuncio = (Comentario) resultados.get(resultados.size() - 1);
             resultados.remove(anuncio);
 
             adapterComentario.actualizar(resultados);
             escribirMensaje.setText("");
+        } catch (EXCErrorBBDD e) {
+            tostada.errorConexionBBDD();
         } catch (Exception e) {
             tostada.errorConexionBBDD();
         }

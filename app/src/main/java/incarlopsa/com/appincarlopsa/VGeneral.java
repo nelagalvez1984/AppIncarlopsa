@@ -2,6 +2,7 @@ package incarlopsa.com.appincarlopsa;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -43,6 +45,7 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
     private String filePath = "";
     private Uri uri;
     private HiloParaUpdate hiloParaUpdate;
+    private SingleConexion conector = SingleConexion.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -337,5 +340,38 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         } catch (Exception e){
             tostada.errorConexionBBDD();
         }
+    }
+
+    @Override
+    public void onBackPressed() { //Boton volver
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+        // Titulo
+        alertDialog.setTitle("Vas a abandonar la sesión");
+
+        // Mensaje
+        alertDialog.setMessage("¿Estás segur@ de querer desconectarte?");
+
+        // Ponerle un icono
+        alertDialog.setIcon(R.drawable.send);
+
+        // Evento SI
+        alertDialog.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                conector.desconexionDelSistema();
+                finish();
+            }
+        });
+
+        // Evento NO
+        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,	int which) {
+                dialog.cancel();
+            }
+        });
+
+        // Mostrar el dialog
+        alertDialog.show();
     }
 }

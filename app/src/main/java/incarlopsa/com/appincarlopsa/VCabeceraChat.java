@@ -40,13 +40,13 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         recyclerEntrantes = (RecyclerView)findViewById(R.id.recyEntrantesChat);
         recyclerSalientes = (RecyclerView)findViewById(R.id.recySalientesChat);
 
+        //Chats entrantes
         layoutManagerEntrantes = new LinearLayoutManager(this);
         recyclerEntrantes.setLayoutManager(layoutManagerEntrantes);
         recyclerEntrantes.setItemAnimator(new DefaultItemAnimator());
 
-        //Chats entrantes
-        hiloParaRead = new HiloParaRead(new DAOChat());
         try {
+            hiloParaRead = new HiloParaRead(new DAOChat());
             resultadosEntrantes = hiloParaRead.execute(DAME_LOS_TOPIC_HACIA_MI).get();
             adapterChatEntrantes = new AdapterTopic(resultadosEntrantes, new DAOChat(), TOPIC_CHAT_ENTRANTE);
             recyclerEntrantes.setAdapter(adapterChatEntrantes);
@@ -75,9 +75,8 @@ public class VCabeceraChat extends AppCompatActivity implements IVista{
         recyclerSalientes.setLayoutManager(layoutManagerSalientes);
         recyclerSalientes.setItemAnimator(new DefaultItemAnimator());
 
-
-        hiloParaRead = new HiloParaRead(new DAOChat());
         try {
+            hiloParaRead = new HiloParaRead(new DAOChat());
             resultadosSalientes = hiloParaRead.execute(DAME_LOS_TOPIC_DESDE_MI).get();
             adapterChatSalientes = new AdapterTopic(resultadosSalientes, new DAOChat(), TOPIC_CHAT_SALIENTE);
             recyclerSalientes.setAdapter(adapterChatSalientes);
