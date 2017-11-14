@@ -53,42 +53,6 @@ public class VGeneral extends AppCompatActivity implements IVista, ICodigos {
         setContentView(R.layout.activity_vgeneral_empleado);
         tostada.setContexto(this);
 
-        //todo RETIRAR ESTO, ESTA DE PRUEBAS!
-/*
-        credenciales.setLogin(USUARIO_TEST_NORMAL);
-        credenciales.setPassword(PASSWORD_TEST_NORMAL);
-        credenciales.setUsername(USUARIO_TEST_NORMAL);
-        //1.- INTENTAR CONEXION
-        HiloParaLogin hiloParaLogin = new HiloParaLogin();
-        try {
-            hiloParaLogin.execute().get();
-        } catch (Exception e) {
-            tostada.errorConexionBBDD();
-        }
-
-        HiloParaRead hilo = new HiloParaRead(new DAOUsuario());
-        resultados = new ArrayList<>();
-        try {
-            resultados = hilo.execute(credenciales).get();
-            if (resultados.size()>0){
-                Usuario u = (Usuario)resultados.get(0);
-                credenciales.setIdUsuario(u.getIdUsuario());
-                credenciales.setNombre(u.getNombre());
-                credenciales.setApellidos(u.getApellidos());
-                credenciales.setDni(u.getDni());
-                credenciales.setTipoEmpleado(u.getTipoEmpleado());
-                credenciales.setFotoBytes(u.getFoto());
-            }else{
-                tostada.errorConexionBBDD();
-            }
-
-        } catch (Exception e) {
-            tostada.errorConexionBBDD();
-        }
-
-*/
-        //TODO aqui sigue con naturalidad
-
         inicializarVista();
 
     }
