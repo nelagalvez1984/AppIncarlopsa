@@ -10,13 +10,37 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
 
-        <ImageView
-            android:id="@+id/imgAdjuntoMiniatura"
+        <LinearLayout
             android:layout_width="100dp"
             android:layout_height="75dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/borde_edittext"
-            app:srcCompat="@mipmap/foto" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/usuarioRellenoFoto1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/imgAdjuntoMiniatura"
+                android:layout_width="98dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="4dp"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/foto_usuario_peque"/>
+
+            <TextView
+                android:id="@+id/usuarioRellenoFoto2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

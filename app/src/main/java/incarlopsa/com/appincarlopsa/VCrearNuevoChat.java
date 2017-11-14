@@ -146,7 +146,8 @@ public class VCrearNuevoChat extends AppCompatActivity implements IVista,
             fotoUsuario.setAdjustViewBounds(true);
             fotoUsuario.setImageBitmap(this.usuarioRetornado.getFotoBMP());
         }else{
-            fotoUsuario.setImageDrawable(getDrawable(R.mipmap.foto));
+            fotoUsuario.setImageDrawable(getDrawable(R.drawable.foto_usuario_peque));
+            fotoUsuario.setAdjustViewBounds(true);
         }
         dialogUsuarios.dismiss();
     }

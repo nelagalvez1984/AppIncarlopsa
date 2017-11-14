@@ -19,7 +19,7 @@ public interface ICodigos {
 
     //Codigos para conexion a la BBDD
 //    String SERVIDOR_BBDD = "192.168.0.101";
-    String SERVIDOR_BBDD = "192.168.1.102";
+    String SERVIDOR_BBDD = "192.168.1.100";
 //    String SERVIDOR_BBDD = "10.20.32.116";
     String PUERTO_BBDD = "3306";
     String BBDD = "incarlopsa";
@@ -42,7 +42,7 @@ public interface ICodigos {
     Integer TOPIC_PUBLICACION = 0;
 
     //Limites del sistema
-    Integer TAMANO_MAXIMO_TITULO = 80; //Caracteres
+    Integer TAMANO_MAXIMO_TITULO = 50; //Caracteres
     Integer TAMANO_MAXIMO_FICHERO = 1048576; //Maximo de 1MB
 
     //Codigos para control de excepciones

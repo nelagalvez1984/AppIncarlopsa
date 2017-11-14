@@ -68,7 +68,8 @@ public class AdapterUsuario extends RecyclerView.Adapter<AdapterUsuario.ViewHold
             Bitmap foto = usuarioAux.getFotoBMP();
             holder.foto.setImageBitmap(foto);
         }else{
-            holder.foto.setImageDrawable(holder.v.getResources().getDrawable(R.mipmap.foto));
+            holder.foto.setImageDrawable(holder.v.getResources().getDrawable(R.drawable.foto_usuario_peque));
+            holder.foto.setAdjustViewBounds(true);
         }
     }
 

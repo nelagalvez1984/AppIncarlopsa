@@ -74,26 +74,113 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/btnNuevaPublicacionEnviar"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="100dp"
                 android:layout_height="75dp"
+                android:layout_weight="1"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:background="@color/colorWhiteFondos"
-                android:scaleType="fitCenter"
-                android:tint="@color/colorRojoCabeceras"
-                app:srcCompat="@drawable/send" />
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imgNuevaPublicacionBotonAnadir"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/rellenoCPubFotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rellenoCPubFotos4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/btnNuevaPublicacionEnviar"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/colorWhiteFondos"
+                        android:scaleType="fitCenter"
+                        android:tint="@color/colorRojoCabeceras"
+                        app:srcCompat="@drawable/send"/>
+
+                    <TextView
+                        android:id="@+id/rellenoCPubFotos3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/rellenoCPubFotos2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
                 android:layout_height="75dp"
-                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:tint="@color/colorRojoCabeceras"
-                app:srcCompat="@drawable/add" />
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rellenoCPubFotos6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rellenoCPubFotos8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageView
+                        android:id="@+id/imgNuevaPublicacionBotonAnadir"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+
+                        android:layout_weight="1"
+                        android:tint="@color/colorRojoCabeceras"
+                        app:srcCompat="@drawable/add"/>
+
+                    <TextView
+                        android:id="@+id/rellenoCPubFotos7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/rellenoCPubFotos5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -701,6 +701,7 @@
     <color name="degradadoSalienteInicial">#501D871E</color>
     <color name="degradadoSalienteFinal">#FFFFFF</color>
     <color name="degradadoCabeceraInicial">#b50128</color>
+    <color name="degradadoCabeceraFinal">#FFFFFF</color>
     <color name="degradadoComentarioInicial">#0F00DD00</color>
     <color name="degradadoComentarioFinal">#FFFFFFFF</color>
 
